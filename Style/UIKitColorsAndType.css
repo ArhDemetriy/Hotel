@@ -1,0 +1,72 @@
+ul.palette > li > div.shade-100 {
+  background: #1F2041;
+}
+ul.palette > li > div.shade-75 {
+  background: rgba(31, 32, 65, 0.75);
+}
+ul.palette > li > div.shade-50 {
+  background: rgba(31, 32, 65, 0.5);
+}
+ul.palette > li > div.shade-25 {
+  background: rgba(31, 32, 65, 0.25);
+}
+ul.palette > li > div.shade-5 {
+  background: rgba(31, 32, 65, 0.05);
+}
+ul.palette > li > div.purple {
+  background: #BC9CFF;
+}
+ul.palette > li > div.green {
+  background: #6FCF97;
+}
+
+ul , ul > li {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 16.1111%;
+}
+
+ul.palette {
+  margin-left: 10.4166%;
+  text-align: left;
+  float: left
+  
+}
+
+ul.palette > li > div.color_example {
+  display: inline-block;
+  width: 70px;
+  height: 70px;
+  border-radius: 6px; 
+  vertical-align: middle;
+}
+
+ul.palette > li > section {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+ul.text_style {
+  margin-right: 13.2638%;
+  float: right;
+}
+
+ul.text_style > li span.text_style_name{
+  position: absolute;
+  text-align: right;
+}
+
+ul.text_style > li span + span{
+  margin-left: 35px;
+  text-align: center
+}
+
+p {
+  border: #1F2041 solid 5px;
+}

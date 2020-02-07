@@ -1,0 +1,56 @@
+body {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 24px;
+
+  background: #E5E5E5;
+}
+
+h1 {
+  font-family: Quicksand;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 30px;
+}
+h2 {
+  font-family: Quicksand;
+font-style: normal;
+font-weight: bold;
+font-size: 19px;
+line-height: 24px;
+}
+h3 {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 15px;
+
+  /* identical to box height */
+  text-transform: uppercase;  
+}
+
+.shade-100 {
+  color: #1F2041;
+}
+.shade-75 {
+  color: rgba(31, 32, 65, 0.75);
+}
+.shade-50 {
+  color: rgba(31, 32, 65, 0.50);
+}
+.shade-25 {
+  color: rgba(31, 32, 65, 0.25);
+}
+.shade-5 {
+  color: rgba(31, 32, 65, 0.05);
+}
+.purple {
+  color: #BC9CFF;
+}
+.green {
+  color: #6FCF97;
+}
