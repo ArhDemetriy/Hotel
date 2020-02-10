@@ -67,6 +67,6 @@ ul.text_style > li span + span{
   text-align: center
 }
 
-p {
-  border: #1F2041 solid 5px;
+ul.text_style li{
+  border: black solid 1px;
 }
