@@ -20,14 +20,19 @@ ul.palette > li > div.green {
   background: #6FCF97;
 }
 
-ul , ul > li {
+ul, 
+ul > li, 
+ul > li > span, 
+ul > li > div, 
+ul > li > div > span{
   margin: 0;
   padding: 0;
 }
 
 ul {
   list-style: none;
-  display: inline-block;
+  /*display: inline-block; 
+  не нужно изза float, соответсвенно вернуть если откажусь от float*/
   vertical-align: top;
   margin-top: 145px;
 }
@@ -35,7 +40,7 @@ ul {
 ul.palette {
   margin-left: 10.4166%;
   text-align: left;
-  float: left  
+  float: left;
 }
 
 ul.palette > li > div.color_example {
@@ -60,42 +65,26 @@ footer {
   clear: both;
 }
 
-ul.text_style > li{
-  position: relative;
-  border: #6FCF97 solid 1px;
-  margin: 0;
-  padding: 0;
-}
-
 ul.text_style > li > span,
 ul.text_style > li > span > h1,
 ul.text_style > li > span > h2,
-ul.text_style > li > span > h3{
+ul.text_style > li > span > h3,
+ul.text_style > li > div,
+ul.text_style > li > div > span
+{
   display: inline;  
   vertical-align: top;
 }
 
-ul.text_style > li > .text_style_name{
-  position: absolute;
-  text-align: right;
-  right: 0px;
-}
-
-ul.text_style > li span + span{
-  text-align: right;
-}
-
-/*test*/
-ul.text_style > li.test > div{
-  display: inline;  
-  vertical-align: top;
+ul.text_style > li > div{
   position: relative;
 }
 
-ul.text_style > li.test > div > span{
+ul.text_style > li > div > span{
   position: absolute;
-  left: 0px;
+  right: 30px;
 }
-ul.text_style > li.test > span{
-  margin-left: 50px;
+
+ul.text_style{
+  margin-left: 70px;
 }
