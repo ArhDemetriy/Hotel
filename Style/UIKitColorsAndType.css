@@ -57,16 +57,29 @@ ul.text_style {
   float: right;
 }
 
-ul.text_style > li span.text_style_name{
+footer {
+  clear: both;
+}
+
+ul.text_style > li{
+  position: relative;
+  border: black solid 1px;
+  margin: 0;
+  padding: 0;
+}
+
+ul.text_style > li > span > h1,h2,h3{
+  display: inline;
+}
+
+ul.text_style > li > .text_style_name{
   position: absolute;
   text-align: right;
+  right: 0px;
 }
 
 ul.text_style > li span + span{
-  margin-left: 35px;
-  text-align: center
+  margin-left: 50px;
+  text-align: right;
 }
 
-ul.text_style li{
-  border: black solid 1px;
-}
