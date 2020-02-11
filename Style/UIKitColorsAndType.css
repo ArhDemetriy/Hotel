@@ -67,10 +67,11 @@ ul.text_style > li{
   padding: 0;
 }
 
+ul.text_style > li > span,
 ul.text_style > li > span > h1,
 ul.text_style > li > span > h2,
 ul.text_style > li > span > h3{
-  display: inline-block;  
+  display: inline;  
   vertical-align: top;
 }
 
