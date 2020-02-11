@@ -29,14 +29,13 @@ ul {
   list-style: none;
   display: inline-block;
   vertical-align: top;
-  margin-top: 16.1111%;
+  margin-top: 145px;
 }
 
 ul.palette {
   margin-left: 10.4166%;
   text-align: left;
-  float: left
-  
+  float: left  
 }
 
 ul.palette > li > div.color_example {
@@ -68,8 +67,11 @@ ul.text_style > li{
   padding: 0;
 }
 
-ul.text_style > li > span > h1,h2,h3{
-  display: inline;
+ul.text_style > li > span > h1,
+ul.text_style > li > span > h2,
+ul.text_style > li > span > h3{
+  display: inline-block;  
+  vertical-align: top;
 }
 
 ul.text_style > li > .text_style_name{
@@ -82,4 +84,3 @@ ul.text_style > li span + span{
   margin-left: 50px;
   text-align: right;
 }
-
