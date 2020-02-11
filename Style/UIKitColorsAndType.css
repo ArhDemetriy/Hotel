@@ -62,7 +62,7 @@ footer {
 
 ul.text_style > li{
   position: relative;
-  border: black solid 1px;
+  border: #6FCF97 solid 1px;
   margin: 0;
   padding: 0;
 }
@@ -82,6 +82,20 @@ ul.text_style > li > .text_style_name{
 }
 
 ul.text_style > li span + span{
-  margin-left: 50px;
   text-align: right;
+}
+
+/*test*/
+ul.text_style > li.test > div{
+  display: inline;  
+  vertical-align: top;
+  position: relative;
+}
+
+ul.text_style > li.test > div > span{
+  position: absolute;
+  left: 0px;
+}
+ul.text_style > li.test > span{
+  margin-left: 50px;
 }
