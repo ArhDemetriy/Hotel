@@ -83,8 +83,25 @@ ul.text_style > li > div{
 ul.text_style > li > div > span{
   position: absolute;
   right: 30px;
+  text-align: right;
 }
 
 ul.text_style{
   margin-left: 70px;
+}
+
+ul.text_style > li.h1 > div > span {
+  font-size: 24px;
+  line-height: 29px;
+}
+
+ul.text_style > li.h2 > div > span {
+  font-size: 19px;
+  line-height: 23px;
+}
+
+ul.text_style > li.h3 > div > span {
+  font-size: 12px;
+  line-height: 15px;
+  text-transform: uppercase;
 }
