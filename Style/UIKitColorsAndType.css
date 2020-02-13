@@ -46,6 +46,10 @@ footer {
   clear: both;
 }
 
+ul.palette > li {
+  margin-bottom: 20px;
+}
+
 ul.palette > li > div.color_example {
   display: inline-block;
   width: 70px;
@@ -67,6 +71,7 @@ ul.palette > li > section span{
 ul.text_style > li {
   margin-bottom: 50px;
   padding-top: 1px;
+  max-width: 336px;
 }
 
 ul.text_style > li .text_style-name,
@@ -75,15 +80,14 @@ ul.text_style > li .text_style-title{
   vertical-align: middle;
 }
 
+ul.text_style > li .text_style-title{
+  position: relative;
+}
 ul.text_style > li .text_style-name {
   position: absolute;
   left: -30px;
   top: 0px;
   transform: translate(-100%, 0%);
-}
-
-ul.text_style > li .text_style-title{
-  position: relative;
 }
 
 ul.text_style > li.h1 span.text_style-name {
