@@ -51,10 +51,17 @@ ul.palette > li > div.color_example {
   width: 70px;
   height: 70px;
   border-radius: 6px; 
+  vertical-align: baseline;
 }
 
 ul.palette > li > section {
   display: inline-block;
+  vertical-align: top;
+  margin-left: 40px;
+}
+
+ul.palette > li > section span{
+  font-weight: normal;
 }
 
 ul.text_style > li {
