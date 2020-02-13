@@ -57,6 +57,11 @@ ul.palette > li > section {
   display: inline-block;
 }
 
+ul.text_style > li {
+  margin-bottom: 50px;
+  padding-top: 1px;
+}
+
 ul.text_style > li .text_style-name,
 ul.text_style > li .text_style-title{
   display: inline;
