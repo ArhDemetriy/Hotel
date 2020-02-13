@@ -39,6 +39,7 @@ ul.palette {
 }
 ul.text_style {
   margin-right: 13.2638%;
+  margin-left: 70px;
   float: right;
 }
 footer {
@@ -56,130 +57,48 @@ ul.palette > li > section {
   display: inline-block;
 }
 
-/*
-ul.text_style > li,
-ul.text_style > li > span,
-ul.text_style > li > span > h1,
-ul.text_style > li > span > h2,
-ul.text_style > li > span > h3,
-ul.text_style > li > div,
-ul.text_style > li > div > span{
-  border: black solid 1px;
-}
-ul.text_style > li > span{
-  border-color: blue;
-}
-ul.text_style > li > span > h1,
-ul.text_style > li > span > h2,
-ul.text_style > li > span > h3{
-  border-color: red;
-}
-ul.text_style > li > div{
-  border-color: saddlebrown;
-  border-width: 2px;
-  border: none;
-}
-ul.text_style > li > div > span{
-  border-color: green;
-  border-width: 2px;
-}
-*/
-
-/*
-ul.text_style > li > span,
-ul.text_style > li > span > h1,
-ul.text_style > li > span > h2,
-ul.text_style > li > span > h3,
-ul.text_style > li > div,
-ul.text_style > li > div > span
-{
-  display: inline;  
-
-  border: burlywood solid 1px;
-}
-ul.text_style > li {
-  border: green solid 1px;
-}
-
-ul.text_style > li > span,
-ul.text_style > li > span > h1,
-ul.text_style > li > span > h2,
-ul.text_style > li > span > h3
-{
+ul.text_style > li .text_style-name,
+ul.text_style > li .text_style-title{
+  display: inline;
   vertical-align: middle;
 }
 
-ul.text_style > li > div,
-ul.text_style > li > div > span
-{
-
-}
-ul.text_style > li > div{
-  border-color: black;
-}
-*/
-
-ul.text_style > li h1,
-ul.text_style > li h2,
-ul.text_style > li h3,
-ul.text_style > li span
-{
-  border: blue solid 1px;
-}
-ul.text_style > li h1,
-ul.text_style > li h2,
-ul.text_style > li h3,
-ul.text_style > li.body span.text_style-title
-{
-  position: relative;
-  display: inline;
-}
-ul.text_style > li span.text_style-name {
-  display: inline;
+ul.text_style > li .text_style-name {
   position: absolute;
   left: -30px;
   top: 0px;
   transform: translate(-100%, 0%);
 }
 
-/*
-ul.text_style > li > div{
+ul.text_style > li .text_style-title{
   position: relative;
-  border: blueviolet solid 1px;
-  width: 1px;
-}
-ul.text_style > li{
-  height: 70px;
-  width: 600px;
 }
 
-ul.text_style > li > div > .text_style-name{
-  position: absolute;
-  right: 1px;
-  text-align: right;
-  width: 600px;
-}
-ul.text_style > li > div > .text_style-title{
-  position: absolute;
-  left: 1px;
-  text-align: left;
-  width: 600px;
-}
-
-
-
-ul.text_style > li.h1 > span.text_style-name {
+ul.text_style > li.h1 span.text_style-name {
+  font-style: normal;
+  font-weight: normal;
   font-size: 24px;
   line-height: 29px;
 }
 
-ul.text_style > li.h2 > span.text_style-name {
+ul.text_style > li.h2 span.text_style-name {
+  font-style: normal;
+  font-weight: normal;
   font-size: 19px;
   line-height: 23px;
 }
 
-ul.text_style > li.h3 > span.text_style-name {
+ul.text_style > li.h3 span.text_style-name {
+  font-style: normal;
+  font-weight: normal;
   font-size: 12px;
   line-height: 15px;
   text-transform: uppercase;
-}*/
+}
+
+ul.text_style > li.body span.text_style-name {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 100%;
+}
