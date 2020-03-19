@@ -1,5 +1,5 @@
-body {
-  font-family: "Montserrat", "Arial", sans-serif;
+body, .body {
+  font-family: 'Montserrat', 'Arial', sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
@@ -8,22 +8,22 @@ body {
   background: #E5E5E5;
 }
 
-h1 {
-  font-family: "Quicksand", "Comfortaa", sans-serif;
+h1, .h1 {
+  font-family: 'Quicksand', 'Open Sans', sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 24px;
   line-height: 125%;
 }
-h2 {
-  font-family: "Quicksand", "Comfortaa", sans-serif;
+h2, .h2 {
+  font-family: 'Quicksand', 'Open Sans', sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 19px;
   line-height: 126.3157895%;
 }
-h3 {
-  font-family: "Montserrat", "Arial", sans-serif;
+h3, .h3 {
+  font-family: 'Montserrat', 'Arial', sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 12px;
