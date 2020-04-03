@@ -3,3 +3,8 @@ git-bash.lnk
 */index.pug
 index.html
 .gitignore
+package.json
+package-lock.json
+.cache/
+node_modules/
+dist/*

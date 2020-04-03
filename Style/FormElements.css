@@ -1,0 +1,6 @@
+.button{
+  border-radius: 5%;
+  width: 100px;
+  height: 50px;
+  background: linear-gradient(to top, red, hsl(143, 95%, 48%));
+}
