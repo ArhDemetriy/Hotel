@@ -1,4 +1,4 @@
-Img/*
+Img/
 git-bash.lnk
 */index.pug
 index.html
@@ -7,4 +7,5 @@ package.json
 package-lock.json
 .cache/
 node_modules/
-dist/*
+dist/
+fonts/
