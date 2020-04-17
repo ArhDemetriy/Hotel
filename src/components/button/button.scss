@@ -1,5 +1,10 @@
 
 .button{
+  font: var(--font-upper);
+  text-transform: uppercase;
+}
+
+.button{
   background: #BC9CFF;
   border-color: #BC9CFF;
   color: white;

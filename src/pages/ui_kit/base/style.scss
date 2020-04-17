@@ -1,33 +1,17 @@
 *{
-  background-color: var(--background, none, white);
+  background-color: var(--background_color, none, white);
 }
 
-body, .body {
-  font-family: 'Montserrat', 'Arial', sans-serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 171.4285714%;
-}
 h1, .h1 {
-  font-family: 'Quicksand', 'Open Sans', sans-serif;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 24px;
-  line-height: 125%;
+  font: var(--font-biggest);
 }
 h2, .h2 {
-  font-family: 'Quicksand', 'Open Sans', sans-serif;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 19px;
-  line-height: 126.3157895%;
+  font: var(--font-big);
 }
 h3, .h3 {
-  font-family: 'Montserrat', 'Arial', sans-serif;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 12px;
-  line-height: 125%;
+  font: var(--font-upper);
   text-transform: uppercase;
+}
+body, .body {
+  font: var(--font-regular, 14px/171.4285714% 'Montserrat', 'Arial', sans-serif);
 }
