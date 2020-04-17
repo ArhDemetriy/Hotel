@@ -1,0 +1,17 @@
+block mixins
+
+doctype html
+html(lang="ru")
+  head
+    meta(charset = 'utf-8')
+    block styles
+      link(rel="stylesheet", href="../base/variables.scss")
+      link(rel="stylesheet" href="../../../fonts/quicksand.css")
+      link(href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;700&family=Raleway:wght@400;700&display=swap" rel="stylesheet")
+      link(rel="stylesheet", href="../base/style.scss")
+
+  body
+    header
+      block header
+    main
+      block main

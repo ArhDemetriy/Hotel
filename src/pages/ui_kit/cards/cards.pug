@@ -1,0 +1,10 @@
+extends ../base/base.pug
+include ../../../components/button/button_a.pug
+
+append main
+  h1 qwerty
+append header
+  .kek ander
+append main
+  h2 asdfgh
+  +button_a({mod:"colored",block_class:""})

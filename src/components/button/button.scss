@@ -1,0 +1,13 @@
+
+.button{
+  background: #BC9CFF;
+  border-color: #BC9CFF;
+  color: white;
+
+  background: linear-gradient(180deg, var(--header-color, blue), 0%, #8BA4F9 100%);
+  border-color: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%);
+}
+
+.button:hover{
+  opacity: 0.5;
+}

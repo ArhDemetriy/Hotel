@@ -1,0 +1,15 @@
+append styles
+  link(rel="stylesheet", href="../../../components/button/button.scss")
+
+append mixins
+  mixin button_a (options)
+    if !options
+      - options = {}
+    -
+      var classes = 'button'
+      classes += options.mod ? ' button-' + options.mod : ''
+      classes += options.block_class ? ' ' + options.block_class : ''
+
+    a(class=classes
+      href= options.href ? options.href : 'УКАЖИ ССЫЛКУ'
+      )=options.text ? options.text : 'УКАЖИ ПОДПИСЬ'
