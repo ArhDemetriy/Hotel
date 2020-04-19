@@ -7,6 +7,7 @@ append mixins
       - options = {}
     -
       var classes = 'button'
+      classes += options.font_style ? ' ' + options.font_style : ' font-upper'
       classes += options.mod ? ' button-' + options.mod : ''
       classes += options.block_class ? ' ' + options.block_class : ''
 
