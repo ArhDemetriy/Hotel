@@ -6,10 +6,24 @@ append mixins
     if !options
       - options = {}
     -
-      var classes = 'button'
-      classes += options.font_style ? ' ' + options.font_style : ' font-upper'
-      classes += options.mod ? ' button-' + options.mod : ''
+      var classes = ''
       classes += options.block_class ? ' ' + options.block_class : ''
+      classes += ' button'
+      if options.mod
+        classes += ' button-' + options.mod
+        case options.mod
+          when 'colored'
+            classes += ' color-contrast_with_colored'
+            break
+          when 'transparent'
+            classes += ' color-main'
+            break
+          when 'frameless'
+            classes += ' color-main'
+            break
+          default
+            classes += ' color-main'
+      classes += options.font_style ? ' ' + options.font_style : ' font-upper'
 
     a(class=classes
       href= options.href ? options.href : 'УКАЖИ ССЫЛКУ'
