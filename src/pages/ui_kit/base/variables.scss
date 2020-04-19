@@ -8,6 +8,7 @@
   --color-main_grad : #8BA4F9;
   --color-second : #6FCF97;
   --color-second_grad : #66D2EA;
+  --color-contrast_with_colored : white;
   --color-under_background : #E5E5E5;
   --color-background : none;
 
@@ -15,4 +16,7 @@
   --font-big : bold 19px/126.3157895% 'Quicksand', 'Open Sans', sans-serif;
   --font-upper : bold 12px/125% 'Montserrat', 'Arial', sans-serif;
   --font-regular : 14px/171.4285714% 'Montserrat', 'Arial', sans-serif;
+
+  --gradient-main : linear-gradient(var(--color-main, #BC9CFF), var(--color-main_grad, #8BA4F9));
+  --gradient-second : linear-gradient(var(--color-second, #6FCF97), var(--color-second_grad, #66D2EA));
 }
