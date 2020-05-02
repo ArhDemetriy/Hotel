@@ -4,6 +4,8 @@
 .button{
   text-decoration: none;
   padding: 15px 20px;
+  display: inline-block;
+  border-radius: 10000px;
   &-colored{
     background: map.get($gradient, 'main');
     &:hover{
@@ -11,9 +13,9 @@
     }
   }
   &-transparent{
-    border: 1px solid map.get($gradient, 'main');
+    border: 1px solid map.get($color, 'main');
     &:hover{
-      border-color: get($gradient, 'main-opacity');
+      border-color: map.get($gradient, 'main-opacity');
     }
   }
   &-frameless{
