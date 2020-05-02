@@ -1,10 +1,19 @@
 extends ../base/base.pug
 include ../../../components/button/button_a.pug
 
+append styles
+  link(rel="stylesheet", href="cards.scss")
+
 append main
   h1 qwerty
 append header
   .kek ander
 append main
   h2 asdfgh
-  +button_a({mod:"colored",block_class:""})
+
+  -
+    var list = ["colored", "transparent", "frameless"]
+    var rows = ['left','double','right','none']
+  each mod in list
+    each row in rows
+      +button_a({mod:mod,row:row,block_class:"button-tra"})
