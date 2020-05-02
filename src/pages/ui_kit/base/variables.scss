@@ -1,13 +1,20 @@
 *{
-  --color-shade-100 : #1F2041;
+  --color-shade-100 : rgb(31, 32, 65);
   --color-shade-75 : rgba(31, 32, 65, 0.75);
   --color-shade-50 : rgba(31, 32, 65, 0.5);
   --color-shade-25 : rgba(31, 32, 65, 0.25);
   --color-shade-5 : rgba(31, 32, 65, 0.05);
   --color-main : #BC9CFF;
   --color-main_grad : #8BA4F9;
+  --color-main-opacity : rgba(188, 156, 255, 0.5);
+  --color-main_grad-opacity : rgba(139, 164, 249, 0.5);
+
   --color-second : #6FCF97;
   --color-second_grad : #66D2EA;
+  --color-happy : #FFE39C;
+  --color-happy_grad : #FFBA9C;
+  --color-sad : #919191;
+  --color-sad_grad : #3D4975;
   --color-contrast_with_colored : white;
   --color-under_background : #E5E5E5;
   --color-background : none;
@@ -18,5 +25,7 @@
   --font-regular : 14px/171.4285714% 'Montserrat', 'Arial', sans-serif;
 
   --gradient-main : linear-gradient(var(--color-main, #BC9CFF), var(--color-main_grad, #8BA4F9));
+  --gradient-main-opacity : linear-gradient(var(--color-main-opacity, rgba(188, 156, 255, 0.5)), var(--color-main_grad-opacity, rgba(139, 164, 249, 0.5)));
+  --gradient-test : linear-gradient(var(--color-main, #BC9CFF), var(--color-second, #6FCF97));
   --gradient-second : linear-gradient(var(--color-second, #6FCF97), var(--color-second_grad, #66D2EA));
 }
