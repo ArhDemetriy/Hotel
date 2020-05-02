@@ -1,23 +1,25 @@
+@use 'sass:map';
+@import '../global_mixins/global_mixins';
 
 .button{
   text-decoration: none;
-  display: inline-block;
+  padding: 15px 20px;
   &-colored{
-    background: var(--gradient-main,#BC9CFF);
+    background: map.get($gradient, 'main');
     &:hover{
       opacity: 0.5;
     }
   }
   &-transparent{
-    border: var(--gradient-main,#BC9CFF);
+    border: 1px solid map.get($gradient, 'main');
     &:hover{
-      opacity: 0.5;
+      border-color: get($gradient, 'main-opacity');
     }
   }
   &-frameless{
-
+    color: map.get($color, 'main');
     &:hover{
-      color: var(--color-shade-50,rgba(31, 32, 65, 0.5) ,#1F2041);
+      color: map.get($color, 'shade-50');
     }
   }
 }
