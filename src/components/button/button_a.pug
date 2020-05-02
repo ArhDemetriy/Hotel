@@ -33,4 +33,7 @@ append mixins
 
     a(class=classes
       href= options.href ? options.href : 'УКАЖИ ССЫЛКУ'
-      )=options.text ? options.text : 'УКАЖИ ПОДПИСЬ'
+      )
+      span=options.row=='left'||options.row=='all' ? '<' : ''
+      span=options.text ? options.text : 'УКАЖИ ПОДПИСЬ'
+      span=options.row=='right'||options.row=='all' ? '>' : ''
