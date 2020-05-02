@@ -13,7 +13,7 @@ append main
 
   -
     var list = ["colored", "transparent", "frameless"]
-    var rows = ['left','all','right','none']
+    var arrows = ['left','all','right','none']
   each mod in list
-    each row in rows
-      +button_a({mod:mod,row:row,block_class:"button-tra"})
+    each arrow in arrows
+      +button_a({mod:mod,arrow:arrow,block_class:"button-tra"})

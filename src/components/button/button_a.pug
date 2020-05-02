@@ -10,30 +10,18 @@ append mixins
       var classes = ''
       classes += options.block_class ? ' ' + options.block_class : ''
       classes += ' button'
-      classes += options.font_style ? ' ' + options.font_style : ' font-upper'
+      classes += options.mod ? ' button-' + options.mod : ''
 
-    if options.mod
-      -classes += ' button-' + options.mod
-      case options.mod
-        when 'colored'
-          -
-            classes += ' color-contrast_with_colored'
-            break
-        when 'transparent'
-          -
-            classes += ' color-main'
-            break
-        when 'frameless'
-          -
-            classes += ' color-main'
-            break
-        default
-          -
-            classes += ' color-main'
-
-    a(class=classes
-      href= options.href ? options.href : 'УКАЖИ ССЫЛКУ'
-      )
-      span=options.row=='left'||options.row=='all' ? '<' : ''
-      span=options.text ? options.text : 'УКАЖИ ПОДПИСЬ'
-      span=options.row=='right'||options.row=='all' ? '>' : ''
+    .button
+      a(class=classes
+        href= options.href ? options.href : 'УКАЖИ ССЫЛКУ'
+        )
+        if options.mod=='transparent'
+          .button__border_creator
+            span(class='button__left_arrow')=options.arrow=='left'||options.arrow=='all' ? '<' : ''
+            span=options.text ? options.text : 'УКАЖИ ПОДПИСЬ'
+            span(class='button__right_arrow')=options.arrow=='right'||options.arrow=='all' ? '>' : ''
+        else
+          span(class='button__left_arrow')=options.arrow=='left'||options.arrow=='all' ? '<' : ''
+          span=options.text ? options.text : 'УКАЖИ ПОДПИСЬ'
+          span(class='button__right_arrow')=options.arrow=='right'||options.arrow=='all' ? '>' : ''
