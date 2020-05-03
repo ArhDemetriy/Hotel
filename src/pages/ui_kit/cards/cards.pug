@@ -12,8 +12,11 @@ append main
   h2 asdfgh
 
   -
-    var list = ["colored", "transparent", "frameless"]
+    var texts = ['yf', '']
+    var list = ['colored', 'transparent', 'frameless']
     var arrows = ['left','all','right','none']
-  each mod in list
-    each arrow in arrows
-      +button_a({mod:mod,arrow:arrow,block_class:"button-tra"})
+
+  each text in texts
+    each mod in list
+      each arrow in arrows
+        +button_a({mod:mod,arrow:arrow,block_class:'button-tra',text:text})
