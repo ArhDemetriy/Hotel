@@ -3,19 +3,54 @@
 
 .button{
   text-decoration: none;
-  padding: 15px 20px;
-  display: inline-block;
+  padding: 15px 7px;
   border-radius: 10000px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font: map.get($font, 'upper');
+  text-transform: uppercase;
+  &__border_creator{
+    margin: 1px;
+    border-radius: 10000px;
+    background-color: map.get($color, 'contrast_with_colored');
+    padding: 14px 6px;
+    width: inherit;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  &__left_arrow{
+    font-family: 'Material Icons';
+    text-transform: none;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 24px;
+  }
+  &__right_arrow{
+    font-family: 'Material Icons';
+    text-transform: none;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 24px;
+  }
+
   &-colored{
     background: map.get($gradient, 'main');
+    color: map.get($color, 'contrast_with_colored');
     &:hover{
-      opacity: 0.5;
+      background: map.get($gradient, 'main-opacity');
     }
   }
   &-transparent{
-    border: 1px solid map.get($color, 'main');
+    background: map.get($gradient, 'main');
+    color: map.get($color, 'main');
+    padding: 1px;
     &:hover{
-      border-color: map.get($gradient, 'main-opacity');
+      background: map.get($gradient, 'main-opacity');
     }
   }
   &-frameless{
