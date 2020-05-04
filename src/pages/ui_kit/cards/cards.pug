@@ -1,22 +1,20 @@
 extends ../base/base.pug
-include ../../../components/button/button_a.pug
+include ../../../components/button/button.pug
 
 append styles
-  link(rel="stylesheet", href="cards.scss")
+  link(rel='stylesheet', href='cards.scss')
 
-append main
-  h1 qwerty
 append header
-  .kek ander
 append main
-  h2 asdfgh
-
   -
-    var texts = ['yf', '']
+    var texts = ['', 'yf']
     var list = ['colored', 'transparent', 'frameless']
     var arrows = ['left','all','right','none']
 
-  each text in texts
-    each mod in list
-      each arrow in arrows
-        +button_a({mod:mod,arrow:arrow,block_class:'button-tra',text:text})
+
+  .flexcontainer
+    +button_a({block_class:'button-tra',type:'submit'})
+    each text in texts
+      each mod in list
+        each arrow in arrows
+          +button_a({mod:mod,arrow:arrow,block_class:'button-tra',text:text})

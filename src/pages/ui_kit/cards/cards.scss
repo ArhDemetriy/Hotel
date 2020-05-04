@@ -1,3 +1,9 @@
 .button-tra{
   width: 200px;
 }
+.flexcontainer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
