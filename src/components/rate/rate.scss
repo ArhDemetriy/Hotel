@@ -1,3 +1,11 @@
+@use 'sass:map';
+@import '../global_mixins/global_mixins';
+
 .rate{
-  color: map.get($color, 'main');;
+  color: map.get($gradient, 'main');
+  font-family: 'Material Icons';
+  text-transform: none;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
 }
