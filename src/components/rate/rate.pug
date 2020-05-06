@@ -11,7 +11,17 @@ append mixins
       classes += ' rate'
       classes += options.mod ? ' rate-' + options.mod : ''
 
-    .rate_container(class=classes)
-      - var rates = ['rate-0', 'rate-1', 'rate-2', 'rate-3', 'rate-4', 'rate-5']
-      - for (var x = 0; x <= 5; x++)
-        span(class=('rate-'+toString(x)))
+    -
+      var temp = 'rate-'
+      var rates = [temp+'0',temp+'1',temp+'2',temp+'3',temp+'4',temp+'5']
+      var str = ''
+      var n = 5
+    - for (var x = 0; x <= n; x++)
+      -
+        str = ''
+        for (var i = 1; i <= x; i++)
+          str += ' star'
+        for (var i = x+1; i <= n; i++)
+          str += ' star_border'
+      .rate__container(class=classes + ' ' + rates[x])
+        span(class=('rate__stars '))=str

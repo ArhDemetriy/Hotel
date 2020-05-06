@@ -2,10 +2,24 @@
 @import '../global_mixins/global_mixins';
 
 .rate{
-  color: map.get($gradient, 'main');
-  font-family: 'Material Icons';
-  text-transform: none;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 24px;
+
+  &__container{
+    display: inline-block;
+    background: map.get($gradient, 'main');
+    text-transform: none;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    font-family: 'Material Icons';
+    border: solid 1px black;
+    display: none;
+  }
+  &__stars{
+    background: white; //важен сам факт установки значения, значение = white независимо от того что тут указано, всегда
+    mix-blend-mode: screen; //виновен в этом данный параметр, но без него градиентный текст придётся делать картинками.
+
+  }
+  &-2{
+    display: var(--inh,none);
+  }
 }

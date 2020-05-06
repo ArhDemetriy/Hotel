@@ -1,17 +1,21 @@
 extends ../base/base.pug
 include ../../../components/button/button.pug
+include ../../../components/rate/rate.pug
+
 
 append styles
   link(rel='stylesheet', href='cards.scss')
 
 append header
 append main
+
+  +rate(options)
+
+
   -
     var texts = ['', 'yf']
     var list = ['colored', 'transparent', 'frameless']
     var arrows = ['left','all','right','none']
-
-
   .flexcontainer
     +button({block_class:'button-tra',type:'submit'})
     each text in texts
