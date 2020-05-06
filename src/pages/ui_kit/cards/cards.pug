@@ -13,8 +13,8 @@ append main
 
 
   .flexcontainer
-    +button_a({block_class:'button-tra',type:'submit'})
+    +button({block_class:'button-tra',type:'submit'})
     each text in texts
       each mod in list
         each arrow in arrows
-          +button_a({mod:mod,arrow:arrow,block_class:'button-tra',text:text})
+          +button({mod:mod,arrow:arrow,block_class:'button-tra',text:text})

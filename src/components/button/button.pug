@@ -9,7 +9,7 @@ append mixins
       span(class='button__text')=options.text ? options.text : options.arrow=='left'||options.arrow=='all'||options.arrow=='right' ? '' : 'УКАЖИ ПОДПИСЬ'
       span(class='button__right_arrow')=options.arrow=='right'||options.arrow=='all' ? 'arrow_forward' : ''
 
-  mixin button_a (options)
+  mixin button (options)
     if !options
       - options = {}
 
