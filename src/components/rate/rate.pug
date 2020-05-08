@@ -8,20 +8,40 @@ append mixins
     -
       var classes = ''
       classes += options.block_class ? ' ' + options.block_class : ''
-      classes += ' rate'
       classes += options.mod ? ' rate-' + options.mod : ''
 
     -
-      var temp = 'rate-'
-      var rates = [temp+'0',temp+'1',temp+'2',temp+'3',temp+'4',temp+'5']
-      var str = ''
+      var temp = ' rate-'
+      var temp_half = '_5'
       var n = 5
-    - for (var x = 0; x <= n; x++)
-      -
-        str = ''
-        for (var i = 1; i <= x; i++)
-          str += ' star'
-        for (var i = x+1; i <= n; i++)
-          str += ' star_border'
-      .rate__container(class=classes + ' ' + rates[x])
-        span(class=('rate__stars '))=str
+      var str_numbers = ['0','1','2','3','4','5']
+      var name_rates = []
+      for (var i = 0; i < n; i++){
+        name_rates[i*2] = temp+str_numbers[i]
+        name_rates[i*2+1] = temp+str_numbers[i]+temp_half}
+      name_rates[n*2] = temp+str_numbers[n]
+      var str_rate_int = ''
+      var str_rate_half = ''
+      var rates = []
+      for (var i = 0; i <= n; i++){
+        str_rate_int = ''
+        str_rate_half = ''
+        for (var j = 1; j <= i; j++)
+            str_rate_int+=' star'
+        str_rate_half = str_rate_int + ' star_half'
+        for (var j = i+2; j <= n; j++){
+            str_rate_int+=' star_border'
+            str_rate_half+=' star_border'
+            }
+        if (i < n){
+          str_rate_int+=' star_border'}
+
+        rates[i*2] = str_rate_int
+        rates[i*2+1] = str_rate_half
+
+      }
+
+    .rate(class=classes)
+      each name_rate, i in name_rates
+        .rate__container(class=name_rate)
+          span(class='rate__stars')=rates[i]

@@ -2,7 +2,6 @@
 @import '../global_mixins/global_mixins';
 
 .rate{
-
   &__container{
     display: inline-block;
     background: map.get($gradient, 'main');
@@ -11,7 +10,6 @@
     font-weight: normal;
     font-size: 24px;
     font-family: 'Material Icons';
-    border: solid 1px black;
     display: none;
   }
   &__stars{
@@ -19,7 +17,12 @@
     mix-blend-mode: screen; //виновен в этом данный параметр, но без него градиентный текст придётся делать картинками.
 
   }
-  &-2{
-    display: var(--inh,none);
+  @for $i from 0 to 6 {
+    &-#{$i}{
+      display: var(--rate-#{$i},none);    //в классе от хозяина должна быть созданы переменные на все значения рейтинга
+    &_5{                                  //инициализированы none
+        display: var(--rate-#{$i}_5,none);//и ТОЛЬКО нужное значение задано inline-block
+      }                                   //для статики можно создать только одну переменую
+    }
   }
 }
