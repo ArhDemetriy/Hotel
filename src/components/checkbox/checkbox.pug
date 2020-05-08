@@ -1,0 +1,14 @@
+append styles
+  link(rel="stylesheet", href="../../../components/checkbox/checkbox.scss")
+
+append mixins
+  mixin checkbox(options)
+    if !options
+      - options = {}
+    -
+      var classes = ''
+      classes += options.block_class ? ' ' + options.block_class : ''
+      classes += ' checkbox'
+      classes += options.mod ? ' checkbox-' + options.mod : ''
+
+    .checkbox цыук
