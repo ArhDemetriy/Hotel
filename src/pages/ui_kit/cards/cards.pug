@@ -1,6 +1,8 @@
 extends ../base/base.pug
 include ../../../components/button/button.pug
 include ../../../components/rate/rate.pug
+include ../../../components/checkbox/checkbox.pug
+
 
 
 append styles
@@ -8,6 +10,8 @@ append styles
 
 append header
 append main
+
+  +checkbox()
 
   +rate({block_class:'set_rate-3_5'})
   -

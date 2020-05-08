@@ -11,4 +11,7 @@ append mixins
       classes += ' checkbox'
       classes += options.mod ? ' checkbox-' + options.mod : ''
 
-    .checkbox цыук
+    .checkbox
+      label(class='checkbox__container')='One'
+        input(class='checkbox__input',type='checkbox',checked=false)
+        .checkbox__checkmark
