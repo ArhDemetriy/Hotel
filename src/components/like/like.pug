@@ -1,0 +1,18 @@
+append styles
+  link(rel="stylesheet", href="../../../components/like/like.scss")
+
+append mixins
+  mixin like(options)
+    if !options
+      - options = {}
+    -
+      var classes = ''
+      classes += options.block_class ? ' ' + options.block_class : ''
+      classes += options.mod ? ' like-' + options.mod : ''
+
+    .like(class=classes)
+      label(class='like__container')
+        input(class='like__input',type='checkbox',checked=false)
+        .like__box
+          .like__mark
+        span(class='like__text')=options.text ? options.text : 'SET text'
