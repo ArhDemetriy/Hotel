@@ -1,0 +1,18 @@
+append styles
+  link(rel="stylesheet", href="../../../components/toggle/toggle.scss")
+
+append mixins
+  mixin toggle(options)
+    if !options
+      - options = {}
+    -
+      var classes = ''
+      classes += options.block_class ? ' ' + options.block_class : ''
+      classes += options.mod ? ' toggle-' + options.mod : ''
+
+    .toggle(class=classes)
+      label(class='toggle__container')
+        input(class='toggle__input',type='checkbox',checked=false)
+        .toggle__box
+          .toggle__mark
+        span(class='toggle__text')=options.text ? options.text : 'SET text'

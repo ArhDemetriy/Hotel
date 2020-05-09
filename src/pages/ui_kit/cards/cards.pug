@@ -3,6 +3,8 @@ include ../../../components/button/button.pug
 include ../../../components/rate/rate.pug
 include ../../../components/checkbox/checkbox.pug
 include ../../../components/radio/radio.pug
+include ../../../components/toggle/toggle.pug
+
 
 
 
@@ -14,6 +16,8 @@ append header
 append main
 
 
+  +toggle()
+  br
 
   +radio(name='something')
   +radio(name='something')
