@@ -1,0 +1,13 @@
+append styles
+  link(rel="stylesheet", href="../../../components/pagination/pagination.scss")
+
+append mixins
+  mixin pagination(options)
+    if !options
+      - options = {}
+    -
+      var classes = ''
+      classes += options.block_class ? ' ' + options.block_class : ''
+      classes += options.mod ? ' pagination-' + options.mod : ''
+
+    .pagination(class=classes) qwerty

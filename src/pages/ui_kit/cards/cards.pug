@@ -5,9 +5,7 @@ include ../../../components/checkbox/checkbox.pug
 include ../../../components/radio/radio.pug
 include ../../../components/toggle/toggle.pug
 include ../../../components/like/like.pug
-
-
-
+include ../../../components/pagination/pagination.pug
 
 
 append styles
@@ -17,8 +15,12 @@ append header
 append main
 
 
+  +pagination()
+  br
+  +like()
   +like()
   br
+  +toggle()
   +toggle()
   br
 
@@ -26,6 +28,7 @@ append main
   +radio(name='something')
   br
 
+  +checkbox()
   +checkbox()
   br
 
