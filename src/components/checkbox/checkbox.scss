@@ -35,7 +35,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    transition: 0.5s;
+    transition: map.get($timer, 'secondary-slow');
   }
   &__mark {
     @include user_select;
@@ -52,7 +52,7 @@
     border-image-slice: 1;
     opacity: 0;
     //visibility: hidden;
-    transition: 0.8s opacity;
+    transition: map.get($timer, 'main-slow') opacity;
 
     position: relative;
     top: -1px;
@@ -71,11 +71,11 @@
       }
       ~ .checkbox__box{
         border-color: map.get($color, 'main');
-        transition: 0.15s;
+        transition: map.get($timer, 'secondary-fast');
         .checkbox__mark{
           opacity: 1;
           //visibility: visible;
-          transition: 0.3s opacity;
+          transition: map.get($timer, 'main-fast') opacity;
         }
       }
     }
