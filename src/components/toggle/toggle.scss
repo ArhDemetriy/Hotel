@@ -26,37 +26,29 @@
   &__box{
     @include user_select;
     box-sizing: border-box;
-    width: 20px;
+    width: 40px;
     height: 20px;
     flex-shrink: 0;
     flex-grow: 0;
     border: 2px solid map.get($color, 'shade-25');
-    border-radius: 4px;
+    border-radius: 40px;
     margin-right: 0.5em;
     display: inline-flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     transition: map.get($timer, 'secondary-slow');
   }
   &__mark {
     @include user_select;
     user-select: none;
     box-sizing: border-box;
-    width: 6px;
-    height: 8px;
-    border: solid map.get($color, 'main');
-    border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-    border-image: map.get($gradient, 'main');
-    border-image-slice: 1;
-    opacity: 0;
-    //visibility: hidden;
-    transition: map.get($timer, 'main-slow') opacity;
-
-    position: relative;
-    top: -1px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-left: 4px;
+    margin-right: 4px;
+    background: map.get($color, 'shade-25');
+    transition: map.get($timer, 'main-slow');
 
   }
   &__input{
@@ -73,10 +65,10 @@
       ~ .toggle__box{
         border-color: map.get($color, 'main');
         transition: map.get($timer, 'secondary-fast');
+        justify-content: flex-end;
         .toggle__mark{
-          opacity: 1;
-          //visibility: visible;
-          transition: map.get($timer, 'main-fast') opacity;
+          background: map.get($gradient, 'main');
+          transition: map.get($timer, 'main-fast');
         }
       }
     }
