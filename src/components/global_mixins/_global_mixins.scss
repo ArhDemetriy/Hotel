@@ -9,8 +9,8 @@ $color: (
   'main_grad' : var(--color-main_grad,#8BA4F9),
   'main-opacity' : var(--color-main-opacity,rgba(188, 156, 255, 0.5)),
   'main_grad-opacity' : var(--color-main_grad-opacity,rgba(139, 164, 249, 0.5)),
-  'second' : var(--color-second,#6FCF97),
-  'second_grad' : var(--color-second_grad,#66D2EA),
+  'secondary' : var(--color-secondary,#6FCF97),
+  'secondary_grad' : var(--color-secondary_grad,#66D2EA),
   'happy' : var(--color-happy,#FFE39C),
   'happy_grad' : var(--color-happy_grad,#FFBA9C),
   'sad' : var(--color-sad,#919191),
@@ -22,7 +22,7 @@ $color: (
 $gradient: (
   'main' : linear-gradient(map.get($color, 'main'), map.get($color, 'main_grad')),
   'main-opacity' : linear-gradient(map.get($color, 'main-opacity'), map.get($color, 'main_grad-opacity')),
-  'second' : linear-gradient(map.get($color, 'second'), map.get($color, 'second_grad')),
+  'secondary' : linear-gradient(map.get($color, 'secondary'), map.get($color, 'secondary_grad')),
   'happy' : linear-gradient(map.get($color, 'happy'), map.get($color, 'happy_grad')),
   'sad' : linear-gradient(map.get($color, 'sad'), map.get($color, 'sad_grad'))
 );
@@ -33,67 +33,9 @@ $font: (
   'regular' : var(--font-regular, 14px/171.4285714% 'Montserrat', 'Arial', sans-serif),
   'regular_bold' : var(--font-regular_bold, bold 14px/171.4285714% 'Montserrat', 'Arial', sans-serif),
 );
-
-@mixin color($color_name : '') {
-  @if $color_name == 'shade-100' {
-      color: var(--color-shade-100,#1F2041);
-  } @else if $color_name == 'shade-75' {
-      color: var(--color-shade-75,rgba(31, 32, 65, 0.75),#1F2041);
-  } @else if $color_name == 'shade-50' {
-      color: var(--color-shade-50,rgba(31, 32, 65, 0.5),#1F2041);
-  } @else if $color_name == 'shade-25' {
-      color: var(--color-shade-25,rgba(31, 32, 65, 0.25),#1F2041);
-  } @else if $color_name == 'shade-5' {
-      color: var(--color-shade-5,rgba(31, 32, 65, 0.05),#1F2041);
-  } @else if $color_name == 'main' {
-      color: var(--color-main,#BC9CFF);
-  } @else if $color_name == 'main_grad' {
-      color: var(--color-main_grad,#8BA4F9);
-  } @else if $color_name == 'second' {
-      color: var(--color-second,#6FCF97);
-  } @else if $color_name == 'second_grad' {
-      color: var(--color-second_grad,#66D2EA);
-  } @else if $color_name == 'contrast_with_colored' {
-      color: var(--color-contrast_with_colored,white);
-  } @else if $color_name == 'background' {
-      color: var(--color-background,none);
-  } @else if $color_name == 'under_background' {
-      color: var(--color-under_background,#E5E5E5);
-  } @else if $color_name == '' {
-      color: none;
-  } @else {
-      color: none;
-  }
-}
-
-@mixin border_color($color_name : '') {
-  @if $color_name == 'shade-100' {
-      border-color: var(--color-shade-100,#1F2041);
-  } @else if $color_name == 'shade-75' {
-      border-color: var(--color-shade-75,rgba(31, 32, 65, 0.75),#1F2041);
-  } @else if $color_name == 'shade-50' {
-      border-color: var(--color-shade-50,rgba(31, 32, 65, 0.5),#1F2041);
-  } @else if $color_name == 'shade-25' {
-      border-color: var(--color-shade-25,rgba(31, 32, 65, 0.25),#1F2041);
-  } @else if $color_name == 'shade-5' {
-      border-color: var(--color-shade-5,rgba(31, 32, 65, 0.05),#1F2041);
-  } @else if $color_name == 'main' {
-      border-color: var(--color-main,#BC9CFF);
-  } @else if $color_name == 'main_grad' {
-      border-color: var(--color-main_grad,#8BA4F9);
-  } @else if $color_name == 'second' {
-      border-color: var(--color-second,#6FCF97);
-  } @else if $color_name == 'second_grad' {
-      border-color: var(--color-second_grad,#66D2EA);
-  } @else if $color_name == 'contrast_with_colored' {
-      border-color: var(--color-contrast_with_colored,white);
-  } @else if $color_name == 'background' {
-      border-color: var(--color-background,none);
-  } @else if $color_name == 'under_background' {
-      border-color: var(--color-under_background,#E5E5E5);
-  } @else if $color_name == '' {
-      border-color: none;
-  } @else {
-      border-color: none;
-  }
-}
+$timer: (
+  'main-slow' : var(--timer-main-slow, 0.8s),
+  'main-fast' : var(--timer-main-fast, 0.3s),
+  'secondary-slow' : var(--timer-main-slow, 0.5s),
+  'secondary-fast' : var(--timer-main-fast, 0.15s),
+);

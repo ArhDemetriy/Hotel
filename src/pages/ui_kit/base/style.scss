@@ -1,7 +1,3 @@
-*{
-  background-color: var(--color-background, none, white);
-}
-
 h1, .h1, .font-biggest{
   font: var(--font-biggest, bold 24px/125% 'Quicksand', 'Open Sans', sans-serif);
 }
@@ -14,41 +10,4 @@ h3, .h3 , .font-upper{
 }
 body, .body, .font-regular{
   font: var(--font-regular, 14px/171.4285714% 'Montserrat', 'Arial', sans-serif);
-}
-
-.color-shade-100{
-  color: var(--color-shade-100,#1F2041);
-}
-.color-shade-75{
-  color: var(--color-shade-75,rgba(31, 32, 65, 0.75),#1F2041);
-}
-.color-shade-50{
-  color: var(--color-shade-50,rgba(31, 32, 65, 0.5),#1F2041);
-}
-.color-shade-25{
-  color: var(--color-shade-25,rgba(31, 32, 65, 0.25),#1F2041);
-}
-.color-shade-5{
-  color: var(--color-shade-5,rgba(31, 32, 65, 0.05),#1F2041);
-}
-.color-main{
-  color: var(--color-main,#BC9CFF);
-}
-.color-main_grad{
-  color: var(--color-main_grad,#8BA4F9);
-}
-.color-second{
-  color: var(--color-second,#6FCF97);
-}
-.color-second_grad{
-  color: var(--color-second_grad,#66D2EA);
-}
-.color-contrast_with_colored{
-  color: var(--color-contrast_with_colored,white);
-}
-.color-under_background{
-  color: var(--color-under_background,#E5E5E5);
-}
-.color-background{
-  color: var(--color-background,none);
 }
