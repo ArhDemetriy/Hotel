@@ -20,35 +20,50 @@
   }
   &__text{
     @include user_select;
-    color: map.get($color, 'shade-50');
+    color: map.get($color, 'shade-25');
     font: map.get($font, 'regular');
+    font-size: 10px;
   }
   &__box{
     @include user_select;
-    box-sizing: border-box;
-    width: 40px;
-    height: 20px;
-    flex-shrink: 0;
-    flex-grow: 0;
-    border: 2px solid map.get($color, 'shade-25');
     border-radius: 40px;
-    margin-right: 0.5em;
     display: inline-flex;
     align-items: center;
-    justify-content: flex-start;
-    transition: map.get($timer, 'secondary-slow');
+    justify-content: center;
+    padding: 1px;
+    background: map.get($color, 'shade-25');
+  }
+  &__border_creator{
+    @include user_select;
+    margin: 1px;
+    padding-left: 5px;
+    padding-right: 5px;
+
+    box-sizing: border-box;
+    min-width: 39px;
+    height: 19px;
+    background-color: map.get($color, 'contrast_with_colored');
+    border-radius: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
   &__mark {
     @include user_select;
-    user-select: none;
-    box-sizing: border-box;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    margin-left: 4px;
-    margin-right: 4px;
-    background: map.get($color, 'shade-25');
-    transition: map.get($timer, 'main-slow');
+    font: map.get($font, 'regular');
+    font-family: 'Material Icons';
+    font-size: 10px;
+
+    &-checked{
+      @include user_select;
+      color: map.get($color, 'main');
+      display: none;
+    }
+    &-unchecked{
+      @include user_select;
+      color: map.get($color, 'shade-25');
+    }
+
 
   }
   &__input{
@@ -59,16 +74,19 @@
     width: 0;
 
     &:checked{
-      ~ .like__text{
-
-      }
       ~ .like__box{
-        border-color: map.get($color, 'main');
-        transition: map.get($timer, 'secondary-fast');
-        justify-content: flex-end;
+        background: map.get($gradient, 'main');
+        .like__text{
+          color: map.get($color, 'main');
+          transition: map.get($timer, 'secondary-fast');
+        }
         .like__mark{
-          background: map.get($gradient, 'main');
-          transition: map.get($timer, 'main-fast');
+          &-checked{
+            display: inline-block;
+          }
+          &-unchecked{
+            display: none;
+          }
         }
       }
     }

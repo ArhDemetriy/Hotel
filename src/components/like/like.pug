@@ -14,5 +14,7 @@ append mixins
       label(class='like__container')
         input(class='like__input',type='checkbox',checked=false)
         .like__box
-          .like__mark
-        span(class='like__text')=options.text ? options.text : 'SET text'
+          .like__border_creator
+            span(class='like__mark like__mark-unchecked')='favorite_border'
+            span(class='like__mark like__mark-checked')='favorite'
+            span(class='like__text')=options.text ? options.text : 'NAN'
