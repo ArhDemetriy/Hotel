@@ -8,10 +8,11 @@ append mixins
     -
       var classes = ''
       classes += options.block_class ? ' ' + options.block_class : ''
-      classes += ' checkbox'
       classes += options.mod ? ' checkbox-' + options.mod : ''
 
-    .checkbox
-      label(class='checkbox__container')='One'
-        input(class='checkbox__input',type='checkbox',checked=false)
-        .checkbox__checkmark
+    .checkbox(class=classes)
+      label(class='checkbox__container')
+        input(class='checkbox__input',type='checkbox',checked=false,value='asd')
+        .checkbox__box
+          .checkbox__mark
+        span(class='checkbox__text')=options.text ? options.text : 'SET text'
