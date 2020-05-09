@@ -35,7 +35,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    transition: 0.5s;
+    transition: map.get($timer, 'secondary-slow');
   }
   &__mark {
     @include user_select;
@@ -48,7 +48,7 @@
     background: map.get($gradient, 'main');
     opacity: 0;
     //visibility: hidden;
-    transition: 0.8s opacity;
+    transition: map.get($timer, 'main-slow') opacity;
 
   }
   &__input{
@@ -64,11 +64,11 @@
       }
       ~ .radio__box{
         border-color: map.get($color, 'main');
-        transition: 0.15s;
+        transition: map.get($timer, 'secondary-fast');
         .radio__mark{
           opacity: 1;
           //visibility: visible;
-          transition: 0.3s opacity;
+          transition: map.get($timer, 'main-fast') opacity;
         }
       }
     }
