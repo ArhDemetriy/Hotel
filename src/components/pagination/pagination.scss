@@ -1,0 +1,6 @@
+@use 'sass:map';
+@import '../global_mixins/global_mixins';
+
+.pagination{
+  background: map.get($color, 'background');
+}
