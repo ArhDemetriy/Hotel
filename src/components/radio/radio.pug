@@ -12,7 +12,8 @@ append mixins
 
     .radio(class=classes)
       label(class='radio__container')
-        input(class='radio__input',type='radio',checked=false,value='asd')
+        input(class='radio__input', name=(options.name ? options.name : 'NOTHING'),
+              type='radio', checked=false)
         .radio__box
           .radio__mark
         span(class='radio__text')=options.text ? options.text : 'SET text'

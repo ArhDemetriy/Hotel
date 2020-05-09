@@ -2,6 +2,8 @@ extends ../base/base.pug
 include ../../../components/button/button.pug
 include ../../../components/rate/rate.pug
 include ../../../components/checkbox/checkbox.pug
+include ../../../components/radio/radio.pug
+
 
 
 
@@ -11,7 +13,14 @@ append styles
 append header
 append main
 
+
+
+  +radio(name='something')
+  +radio(name='something')
+  br
+
   +checkbox()
+  br
 
   +rate({block_class:'set_rate-3_5'})
   -
