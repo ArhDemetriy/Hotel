@@ -30,7 +30,7 @@
     flex-shrink: 0;
     flex-grow: 0;
     border: 2px solid map.get($color, 'shade-25');
-    border-radius: 4px;
+    border-radius: 50%;
     margin-right: 0.5em;
     display: inline-flex;
     align-items: center;
@@ -41,21 +41,14 @@
     @include user_select;
     user-select: none;
     box-sizing: border-box;
-    width: 6px;
-    height: 8px;
-    border: solid map.get($color, 'main');
-    border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-    border-image: map.get($gradient, 'main');
-    border-image-slice: 1;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: map.get($color, 'main');
+    background: map.get($gradient, 'main');
     opacity: 0;
     //visibility: hidden;
     transition: 0.8s opacity;
-
-    position: relative;
-    top: -1px;
 
   }
   &__input{
