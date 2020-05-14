@@ -19,9 +19,9 @@ append mixins
       classes += ' button'
       classes += options.mod ? ' button-' + options.mod : ' button-colored'
       classes += options.type=='input'||options.type=='submit' ? ' button-input' : ''
+      classes += options.class ? ' ' + options.class : ''
 
-
-    if options.type=='linck'|| !options.type
+    if !options.type || options.type == 'linck'
       a(class=classes
         href= options.href ? options.href : 'УКАЖИ ССЫЛКУ')
         +button__text(options)
