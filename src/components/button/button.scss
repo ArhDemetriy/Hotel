@@ -49,6 +49,14 @@
     &:hover{
       background: map.get($gradient, 'main-opacity');
     }
+    &_secondary{
+      background: map.get($gradient, 'secondary');
+      color: map.get($color, 'contrast_with_colored');
+      &:hover{
+        background: map.get($gradient, 'secondary-opacity');
+      }
+
+    }
   }
   &-transparent{
     background: map.get($gradient, 'main');
@@ -62,7 +70,14 @@
     &:hover{
       color: map.get($color, 'shade-50');
     }
+    &_invert{
+      color: map.get($color, 'shade-50');
+      &:hover{
+        color: map.get($color, 'main');
+      }
+    }
   }
+
   &-input{
     padding: var(--margin);
   }
