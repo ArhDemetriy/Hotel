@@ -1,0 +1,13 @@
+append styles
+  link(rel="stylesheet", href="../../../components/text_field/text_field.scss")
+
+append mixins
+  mixin text_field(options)
+    if !options
+      - options = {}
+    -
+      var classes = ''
+      classes += options.block_class ? ' ' + options.block_class : ''
+      classes += options.mod ? ' text_field-' + options.mod : ''
+
+    .text_field(class=classes) qwerty
