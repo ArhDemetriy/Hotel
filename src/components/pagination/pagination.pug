@@ -11,4 +11,21 @@ append mixins
       classes += options.block_class ? ' ' + options.block_class : ''
       classes += options.mod ? ' pagination-' + options.mod : ''
 
-    .pagination(class=classes) qwerty
+    .pagination(class=classes)
+      nav(class='pagination__links')
+        +button({mod:'colored_secondary',arrow:'left'})
+        +button({mod:'frameless'})
+        span()='...'
+        +button({mod:'frameless'})
+        +button({mod:'frameless'})
+        +button({mod:'colored'})
+        +button({mod:'frameless'})
+        +button({mod:'frameless'})
+        span()='...'
+        +button({mod:'frameless'})
+        +button({mod:'colored_secondary',arrow:'right'})
+      span(class='pagination__text')
+        span(class='pagination__text_selection')='–'
+        span()=' из '
+        span(class='pagination__text_population')='+ вариант'
+        span()=' аренды'
