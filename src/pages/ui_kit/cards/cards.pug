@@ -6,6 +6,8 @@ include ../../../components/radio/radio.pug
 include ../../../components/toggle/toggle.pug
 include ../../../components/like/like.pug
 include ../../../components/pagination/pagination.pug
+include ../../../components/text_field/text_field.pug
+
 
 
 append styles
@@ -14,7 +16,12 @@ append styles
 append header
 append main
 
+  - var types = ['date','email','']
+  each typ in types
+    +text_field({type:typ})
 
+  br
+  +pagination()
   +pagination()
   br
   +like()
@@ -23,11 +30,9 @@ append main
   +toggle()
   +toggle()
   br
-
-  +radio(name='something')
-  +radio(name='something')
+  +radio({name:'something'})
+  +radio({name:'something'})
   br
-
   +checkbox()
   +checkbox()
   br

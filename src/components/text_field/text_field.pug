@@ -10,4 +10,5 @@ append mixins
       classes += options.block_class ? ' ' + options.block_class : ''
       classes += options.mod ? ' text_field-' + options.mod : ''
 
-    .text_field(class=classes) qwerty
+    .text_field(class=classes)
+      input(class='text_field__input', type=(options.type ? options.type : 'text'))

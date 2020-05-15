@@ -2,5 +2,21 @@
 @import '../global_mixins/global_mixins';
 
 .text_field{
-  background: map.get($color, 'background');
+  display: inline-block;
+  font: map.get($font, 'regular');
+
+  &__input {
+    font: map.get($font, 'regular');
+    padding: 0.929em 1.071em;
+    border: 1px solid map.get($color, 'shade-25');
+    border-radius: 4px;
+    color: map.get($color, 'shade-25');
+    &:hover{
+      border-color: map.get($color, 'shade-50');
+      color: map.get($color, 'shade-75');
+    }
+    &:focus{
+      @extend :hover
+    }
+  }
 }
