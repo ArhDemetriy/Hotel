@@ -10,5 +10,7 @@ append mixins
       classes += options.block_class ? ' ' + options.block_class : ''
       classes += options.mod ? ' text_field-' + options.mod : ''
 
-    .text_field(class=classes)
+    label.text_field(class=classes)
       input(class='text_field__input', type=(options.type ? options.type : 'text'))
+      if !options.mod||options.mod=='arrow'
+        span(class='text_field__arrow')='arrow_forward'

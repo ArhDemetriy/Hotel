@@ -2,8 +2,11 @@
 @import '../global_mixins/global_mixins';
 
 .text_field{
-  display: inline-block;
   font: map.get($font, 'regular');
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
   &__input {
     font: map.get($font, 'regular');
@@ -18,5 +21,17 @@
     &:focus{
       @extend :hover
     }
+  }
+  &__arrow{
+    font: map.get($font, 'material');
+    font-size: 2em;
+    color: map.get($color, 'main');
+    position: absolute;
+    right: 0.3em;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
 }
