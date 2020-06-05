@@ -10,3 +10,4 @@ node_modules/
 dist/
 fonts/
 src/components/def
+experiment/

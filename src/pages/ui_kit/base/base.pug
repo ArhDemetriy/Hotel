@@ -4,6 +4,9 @@ doctype html
 html(lang='ru')
   head
     meta(charset = 'utf-8')
+    block skripts__before_load
+      script(src='../base/loading_check.js')
+
     block styles
       link(rel='stylesheet', href='../base/variables.scss')
       link(rel='stylesheet', href='../base/style.scss')
