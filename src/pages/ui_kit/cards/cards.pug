@@ -21,30 +21,5 @@ append main
     +text_field({type:typ})
 
   br
-  +pagination()
-  +pagination()
-  br
-  +like()
-  +like()
-  br
-  +toggle()
-  +toggle()
-  br
-  +radio({name:'something'})
-  +radio({name:'something'})
-  br
-  +checkbox()
-  +checkbox()
-  br
 
-  +rate({block_class:'set_rate-3_5'})
-  -
-    var texts = ['', 'yf']
-    var list = ['colored', 'transparent', 'frameless']
-    var arrows = ['left','all','right','none']
-  .flexcontainer
-    +button({block_class:'button-tra',type:'submit'})
-    each text in texts
-      each mod in list
-        each arrow in arrows
-          +button({mod:mod,arrow:arrow,block_class:'button-tra',text:text})
+  +rate({block_class:'set_rate-three'})
