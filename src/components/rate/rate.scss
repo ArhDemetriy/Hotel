@@ -2,27 +2,34 @@
 @import '../global_mixins/global_mixins';
 
 .rate{
-  &__container{
-    display: inline-block;
-    background: map.get($gradient, 'main');
-    text-transform: none;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 24px;
-    font-family: 'Material Icons';
-    display: none;
-  }
-  &__stars{
+  display: inline-block;
+  background: map.get($gradient, 'main');
+  text-transform: none;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  font-family: 'Material Icons';
+
+  border: red solid 1px;
+
+  &__star{
     background: white; //важен сам факт установки значения, значение = white независимо от того что тут указано, всегда
     mix-blend-mode: screen; //виновен в этом данный параметр, но без него градиентный текст придётся делать картинками.
+    display: none;
 
   }
-  @for $i from 0 to 6 {
+  &-half{
+      display: var(--rate-half,none);
+    }
+  @for $i from 0 through 5 {
     &-#{$i}{
-      display: var(--rate-#{$i},none);    //в классе от хозяина должна быть созданы переменные на все значения рейтинга
-    &_5{                                  //инициализированы none
-        display: var(--rate-#{$i}_5,none);//и ТОЛЬКО нужное значение задано inline-block
-      }                                   //для статики можно создать только одну переменую
+      &.rate__star-star{
+        display: var(--rate-#{$i},var(--rate-#{$i+1},var(--rate-#{$i+2},var(--rate-#{$i+3},var(--rate-#{$i+4},var(--rate-#{$i+5},none))))));
+      }
+      &.rate__star-border{
+        display: var(--rate-#{$i},var(--rate-#{$i - 1},var(--rate-#{$i - 2},var(--rate-#{$i - 3},var(--rate-#{$i - 4},var(--rate-#{$i - 5},none))))));
+      }
+
     }
   }
 }

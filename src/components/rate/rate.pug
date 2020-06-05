@@ -6,42 +6,43 @@ append mixins
     if !options
       - options = {}
     -
-      var classes = ''
+      let classes = ''
       classes += options.block_class ? ' ' + options.block_class : ''
       classes += options.mod ? ' rate-' + options.mod : ''
 
     -
-      var temp = ' rate-'
-      var temp_half = '_5'
-      var n = 5
-      var str_numbers = ['0','1','2','3','4','5']
-      var name_rates = []
-      for (var i = 0; i < n; i++){
-        name_rates[i*2] = temp+str_numbers[i]
-        name_rates[i*2+1] = temp+str_numbers[i]+temp_half}
-      name_rates[n*2] = temp+str_numbers[n]
-      var str_rate_int = ''
-      var str_rate_half = ''
-      var rates = []
-      for (var i = 0; i <= n; i++){
-        str_rate_int = ''
-        str_rate_half = ''
-        for (var j = 1; j <= i; j++)
-            str_rate_int+=' star'
-        str_rate_half = str_rate_int + ' star_half'
-        for (var j = i+2; j <= n; j++){
-            str_rate_int+=' star_border'
-            str_rate_half+=' star_border'
-            }
-        if (i < n){
-          str_rate_int+=' star_border'}
-
-        rates[i*2] = str_rate_int
-        rates[i*2+1] = str_rate_half
-
+      let n = 5;
+      let rates_star = {
+        rates: [],
+        from: 0,
+        to: 5,
+        rate: ' rate-',
+        *[Symbol.iterator] () { //- краткая запись для [Symbol.iterator]: function*()
+          for(let value = this.from+1; value <= this.to; value++) {
+            yield this.rate+value;
+          }
+        }
       }
+      let rates_star_half = ' rate-half';
+      let rates_star_border = {
+        rates: [],
+        from: 0,
+        to: 5,
+        rate: ' rate-',
+        *[Symbol.iterator] () { //- краткая запись для [Symbol.iterator]: function*()
+          for(let value = this.to-1; value >= this.from; value--) {
+            yield this.rate+value;
+          }
+        }
+      }
+      for(_rate of rates_star){ rates_star.rates.push(_rate)}
+      for(_rate of rates_star_border){ rates_star_border.rates.push(_rate)}
 
     .rate(class=classes)
-      each name_rate, i in name_rates
-        .rate__container(class=name_rate)
-          span(class='rate__stars')=rates[i]
+      each rate_name in rates_star.rates
+        span(class= ('rate__star rate__star-star'+rate_name) )='star'
+
+      span(class= ('rate__star rate__star-half'+rates_star_half) )='star_half'
+
+      each rate_name in rates_star_border.rates
+        span(class= ('rate__star rate__star-border'+rate_name) )='star_border'
