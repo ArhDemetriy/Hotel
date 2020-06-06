@@ -1,7 +1,7 @@
 `use strict`;
 {
   const MAX_RATE = 5;
-  const f = function (rate) {
+  const setter = function (rate) {
     const maxRate = MAX_RATE;
     if (!isFinite(rate) || rate < 0 || rate > maxRate || !this || !this.style) { return; }
 
@@ -15,21 +15,21 @@
     Promise.all(a).then();
   }
   const rate = 'rate';
+  const handler = (event) => {
+    const classList = event.target.classList;
+    if (!classList || !classList.contains(`${rate}__star`)) { return; }
+
+    for (let i = 0; i < MAX_RATE; i++) {
+      if (classList.contains(`${rate}__star_pos-${i}`) || classList.contains(`${rate}__star_neg-${i-1}`)) {
+        event.currentTarget.setRate(i);
+        return;
+       }
+    }
+  }
   const elements = document.querySelectorAll(`.${rate}`);
+
   elements.forEach((_, i, a) => {
-    a[i].setRate = f;
-    a[i].addEventListener('mouseover', (event) => {
-      const classList = event.target.classList;
-      if (!classList || !classList.contains(`${rate}__star`)) { return; }
-
-      for (let i = 0; i < MAX_RATE; i++) {
-        if (classList.contains(`${rate}__star_pos-${i}`) || classList.contains(`${rate}__star_neg-${i-1}`)) {
-          event.currentTarget.setRate(i);
-          return;
-         }
-      }
-
-
-    });
+    a[i].setRate = setter;
+    a[i].addEventListener('mouseover', handler);
   });
 }
