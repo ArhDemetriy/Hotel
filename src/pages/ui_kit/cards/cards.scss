@@ -8,9 +8,10 @@
   flex-wrap: wrap;
 }
 .set_rate-three{
+  //inline-block inherit initial
+  --rate-1 : unset;
+  --rate-2 : unset;
   --rate-3 : inline-block;
-  --rate-1 : none;
-
-
-
+  --rate-4 : unset;
+  --rate-5 : unset;
 }

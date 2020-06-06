@@ -10,26 +10,41 @@
   font-size: 24px;
   font-family: 'Material Icons';
 
-  border: red solid 1px;
-
   &__star{
     background: white; //важен сам факт установки значения, значение = white независимо от того что тут указано, всегда
     mix-blend-mode: screen; //виновен в этом данный параметр, но без него градиентный текст придётся делать картинками.
     display: none;
 
   }
-  &-half{
-      display: var(--rate-half,none);
-    }
-  @for $i from 0 through 5 {
-    &-#{$i}{
-      &.rate__star-star{
-        display: var(--rate-#{$i},var(--rate-#{$i+1},var(--rate-#{$i+2},var(--rate-#{$i+3},var(--rate-#{$i+4},var(--rate-#{$i+5},none))))));
-      }
-      &.rate__star-border{
-        display: var(--rate-#{$i},var(--rate-#{$i - 1},var(--rate-#{$i - 2},var(--rate-#{$i - 3},var(--rate-#{$i - 4},var(--rate-#{$i - 5},none))))));
-      }
 
+  &-half{
+    display: var(--rate-half,none);
+  }
+
+  $begin: 'var(--rate-';
+  $end: 'none';
+  $n: 5;
+  @for $i from ($n - 1) through 0 {
+    $b: '';
+    $e: $end;
+    @for $j from 0 through $i {
+      $b : $b + $begin + $j + ',';
+      $e : $e + ')';
+    }
+    &-#{$i}.rate__star-border{
+      display: #{$b+$e};
+    }
+  }
+
+  @for $i from 1 through $n {
+    $b: '';
+    $e: $end;
+    @for $j from $i through $n {
+      $b : $b + $begin + $j + ',';
+      $e : $e + ')';
+    }
+    &-#{$i}.rate__star-star{
+      display: #{$b+$e};
     }
   }
 }
