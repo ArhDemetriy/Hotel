@@ -16,7 +16,7 @@ append mixins
         rates: [],
         from: 0,
         to: 5,
-        rate: ' rate-',
+        rate: ' rate__star_pos-',
         *[Symbol.iterator] () { //- краткая запись для [Symbol.iterator]: function*()
           for(let value = this.from+1; value <= this.to; value++) {
             yield this.rate+value;
@@ -28,7 +28,7 @@ append mixins
         rates: [],
         from: 0,
         to: 5,
-        rate: ' rate-',
+        rate: ' rate__star_neg-',
         *[Symbol.iterator] () { //- краткая запись для [Symbol.iterator]: function*()
           for(let value = this.to-1; value >= this.from; value--) {
             yield this.rate+value;
@@ -40,9 +40,12 @@ append mixins
 
     .rate(class=classes)
       each rate_name in rates_star.rates
-        span(class= ('rate__star rate__star-star'+rate_name) )='star'
+        span(class= ('rate__star '+rate_name) )='star'
 
-      span(class= ('rate__star rate__star-half'+rates_star_half) )='star_half'
+      //-span(class= ('rate__star rate__star-half'+rates_star_half) )='star_half'
 
       each rate_name in rates_star_border.rates
-        span(class= ('rate__star rate__star-border'+rate_name) )='star_border'
+        span(class= ('rate__star '+rate_name) )='star_border'
+
+append skripts__after_load
+  script(defer src='../../../components/rate/rate.js')
