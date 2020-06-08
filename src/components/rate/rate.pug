@@ -14,10 +14,11 @@ append mixins
       -
         const n = options.max_rate ? options.max_rate : 5
         let i = 1
-      div(class='material-icons rate__0')
+        const material = 'material-icons '
+      div(class=material + 'rate__0')
       while i <= n
-        span(class='material-icons rate__star_b rate__' + i)=('star_border')
-        span(class='material-icons rate__star_f rate__' + i++)=('star')
+        span(class=material + 'rate__star_b rate__' + i)=('star_border')
+        span(class=material + 'rate__star_f rate__' + i++)=('star')
 
 append skripts__after_load
   script(defer src='../../../components/rate/rate.js')

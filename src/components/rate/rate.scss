@@ -11,6 +11,8 @@
   cursor: pointer;
 
   background: map.get($gradient, 'main');
+  margin: 0px;
+  padding: 0px;
 
   & *{
     border: solid red 1px;
