@@ -10,7 +10,7 @@ include ../../../components/text_field/text_field.pug
 
 append mixins
   mixin test(r,i=1)
-    -let name = 'test';
+    -const name = 'test';
     span(class=(name + i))
       span(class='star')=('o' + i)
       span(class=(name + '-' + i))
@@ -24,7 +24,7 @@ append styles
 append header
 append main
 
-  - var types = ['date','email','']
+  - const types = ['date','email','']
   each typ in types
     +text_field({type:typ})
 
@@ -34,5 +34,11 @@ append main
 
   br
 
-  .test
-    +test(4)
+  span(class='test')
+    -
+      let i = 1
+      const n = 6
+    .test__rate-0
+    while i <= n
+      span(class='test__border test__rate-' + i)=('x')
+      span(class='test__star test__rate-' + i++)=('o')

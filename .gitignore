@@ -11,3 +11,4 @@ dist/
 fonts/
 src/components/def
 experiment/
+report.*.json
