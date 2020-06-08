@@ -8,16 +8,6 @@ include ../../../components/like/like.pug
 include ../../../components/pagination/pagination.pug
 include ../../../components/text_field/text_field.pug
 
-append mixins
-  mixin test(r,i=1)
-    -const name = 'test';
-    span(class=(name + i))
-      span(class='star')=('o' + i)
-      span(class=(name + '-' + i))
-        -if (i<r)
-          +test(r,(i+1))
-        span(class='border')=('x' + i)
-
 append styles
   link(rel='stylesheet', href='cards.scss')
 

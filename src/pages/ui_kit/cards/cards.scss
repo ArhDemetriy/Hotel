@@ -25,6 +25,7 @@
   user-select: none;
 
   cursor: pointer;
+  background-color: blue;
 
   position: relative;
   $n: 6;
@@ -43,9 +44,11 @@
     &__rate-#{$i}{
       &.test__star{
         display: var(--r-s-#{$i});
+        background-color: greenyellow;
       }
       &.test__border{
         display: var(--r-b-#{$i});
+        background-color: blueviolet;
       }
     }
   }

@@ -10,42 +10,14 @@ append mixins
       classes += options.block_class ? ' ' + options.block_class : ''
       classes += options.mod ? ' rate-' + options.mod : ''
 
-    -
-      let n = 5;
-      let rates_star = {
-        rates: [],
-        from: 0,
-        to: 5,
-        rate: ' rate__star_pos-',
-        *[Symbol.iterator] () { //- краткая запись для [Symbol.iterator]: function*()
-          for(let value = this.from+1; value <= this.to; value++) {
-            yield this.rate+value;
-          }
-        }
-      }
-      let rates_star_half = ' rate-half';
-      let rates_star_border = {
-        rates: [],
-        from: 0,
-        to: 5,
-        rate: ' rate__star_neg-',
-        *[Symbol.iterator] () { //- краткая запись для [Symbol.iterator]: function*()
-          for(let value = this.to-1; value >= this.from; value--) {
-            yield this.rate+value;
-          }
-        }
-      }
-      for(_rate of rates_star){ rates_star.rates.push(_rate)}
-      for(_rate of rates_star_border){ rates_star_border.rates.push(_rate)}
-
-    .rate(class=classes)
-      each rate_name in rates_star.rates
-        span(class= ('rate__star '+rate_name) )='star'
-
-      //-span(class= ('rate__star rate__star-half'+rates_star_half) )='star_half'
-
-      each rate_name in rates_star_border.rates
-        span(class= ('rate__star '+rate_name) )='star_border'
+    span(class='rate ' + classes)
+      -
+        const n = options.max_rate ? options.max_rate : 5
+        let i = 1
+      div(class='material-icons rate__0')
+      while i <= n
+        span(class='material-icons rate__star_b rate__' + i)=('star_border')
+        span(class='material-icons rate__star_f rate__' + i++)=('star')
 
 append skripts__after_load
   script(defer src='../../../components/rate/rate.js')
