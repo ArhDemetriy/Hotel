@@ -22,39 +22,30 @@
     mix-blend-mode: screen; //виновен в этом данный параметр, но без него градиентный текст придётся делать картинками.
   }
   &__radio{
-    display: none;
+    @extend %hide;
   }
 
   //стартовое состояние, которое перегружается :checked и :hover
   &__star_b{
-    display: none;
+    @extend %hide;
   }
   &__star_f{
-    display: inline-block;
+    @extend %show;
   }
+
 
   // :not добавлен, потому-что без него приходится городить кучу правил
   &__radio:checked:not(:hover){
     //нельзя использовать + т.к. контейнер должен быть после звёздочек,
     //чтобы положение звёздочек отражало положение radio
     & ~ .rate__gradient_creator{
-      & .rate__star_f{
-        display: none;
-      }
-      & .rate__star_b{
-        display: inline-block;
-      }
+      @extend %hide_star__show_border;
     }
   }
 
   &__star_f:hover{
     & + .rate__gradient_creator{
-      & .rate__star_f{
-        display: none;
-      }
-      & .rate__star_b{
-        display: inline-block;
-      }
+      @extend %hide_star__show_border;
     }
   }
 
@@ -67,13 +58,20 @@
     z-index: 1;
     &:hover{
       & + .rate__gradient_creator{
-        & .rate__star_f{
-          display: none;
-        }
-        & .rate__star_b{
-          display: inline-block;
-        }
+        @extend %hide_star__show_border;
       }
     }
+  }
+}
+
+%hide{display: none;}
+%show{display: inline-block;}
+
+%hide_star__show_border{
+  & .rate__star_f{
+    @extend %hide;
+  }
+  & .rate__star_b{
+    @extend %show;
   }
 }
