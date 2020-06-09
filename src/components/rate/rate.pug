@@ -14,7 +14,7 @@ append mixins
       -
         const n = options.max_rate ? options.max_rate : 5
         let i = 1
-        const material = 'material-icons '
+        const material = options.off_material ? '' : 'material-icons '
       div(class=material + 'rate__0')
       while i <= n
         span(class=material + 'rate__star_b rate__' + i)=('star_border')

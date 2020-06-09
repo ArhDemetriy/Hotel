@@ -11,11 +11,9 @@
   cursor: pointer;
 
   background: map.get($gradient, 'main');
-  margin: 0px;
-  padding: 0px;
 
   & *{
-    border: solid red 1px;
+    //border: solid green 3px;
   }
 
   &__star_b, &__star_f{
@@ -23,17 +21,18 @@
     mix-blend-mode: screen; //виновен в этом данный параметр, но без него градиентный текст придётся делать картинками.
   }
 
+  display: inline-flex;
   position: relative;
   $n: 5;
   $r: 2;
   @if $r > $n {$r: $n}
   @for $i from 1 through $r {
-    --r-s-#{$i} : inline;
+    --r-s-#{$i} : inline-block;
     --r-b-#{$i} : none;
   }
   $i: $r + 1; @while $i <= $n {
     --r-s-#{$i} : none;
-    --r-b-#{$i} : inline;
+    --r-b-#{$i} : inline-block;
     $i: $i + 1;
   }
 
@@ -50,7 +49,7 @@
 
   &:hover{
     & > .rate__star_f{
-      display: inline;
+      display: inline-block;
     }
     & > .rate__star_b{
       display: none;
@@ -62,24 +61,24 @@
       display: none;
     }
     & ~ .rate__star_b{
-      display: inline;
+      display: inline-block;
     }
   }
 
   &__0{
     display: inline-block;
     position: absolute;
-    left: -0.2em;
-
-    //border: red solid 1px;
     height: 1em;
     width: 0.3em;
+    left: -0.1em;
+    z-index: 1;
+    //border: red solid 1px;
     &:hover{
       & ~ .rate__star_f{
         display: none;
       }
       & ~ .rate__star_b{
-        display: inline;
+        display: inline-block;
       }
     }
   }
