@@ -10,21 +10,26 @@ append mixins
       classes += options.block_class ? ' ' + options.block_class : ''
       classes += options.mod ? ' rate-' + options.mod : ''
 
-    span(class='rate ' + classes)
+    span(class='rate rate__gradient_creator' + classes)
       -
-        const n = options.max_rate ? options.max_rate : 5
-        let i = 0
-        const material = options.off_material ? '' : 'material-icons-outlined '
+        const max_rate = options.max_rate ? options.max_rate : 5
+        const material = options.off_material ? '' : ' material-icons-outlined '
 
-      label(class=material + 'rate__' + i)
+      label(class=material + ' rate__gradient_creator')
         input(class='rate__radio', name=(options.block_class ? options.block_class : 'NOTHING'),
-              type='radio', value=i, checked=false)
-      while ++i <= n
-        span(class=material + 'rate__star_b rate__' + i)='star_border'
-        label(class='rate__star_f rate__' + i)
-          input(class='rate__radio', name=(options.block_class ? options.block_class : 'NOTHING'),
-                type='radio', value=i, checked=false)
-          span(class=material)='star'
+              type='radio', value=0, checked=false)
+        span(class='rate__zero')=''
+
+        mixin rate__generate(n,i=1)
+          label(class='rate__gradient_creator')
+            input(class='rate__radio', name=(options.block_class ? options.block_class : 'NOTHING'),
+                  type='radio', value=i, checked=false)
+            span(class=material + ' rate__star_b')='star_border'
+            span(class=material + ' rate__star_f')='star'
+            if i<n
+              +rate__generate(n,i+1)
+        +rate__generate(max_rate)
+
 
 append skripts__after_load
   //-script(defer src='../../../components/rate/rate.js')

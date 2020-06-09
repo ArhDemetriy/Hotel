@@ -10,7 +10,10 @@
 
   cursor: pointer;
 
-  background: map.get($gradient, 'main');
+  &__gradient_creator{
+    background: map.get($gradient, 'main');
+    display: inline-flex;
+  }
 
   & *{
     //border: solid green 3px;
@@ -24,64 +27,53 @@
     display: none;
   }
 
-  display: inline-flex;
   position: relative;
-  $n: 5;
-  $r: 2;
-  @if $r > $n {$r: $n}
-  @for $i from 1 through $r {
-    --r-s-#{$i} : inline-block;
-    --r-b-#{$i} : none;
+
+  &__star_b{
+    display: none;
   }
-  $i: $r + 1; @while $i <= $n {
-    --r-s-#{$i} : none;
-    --r-b-#{$i} : inline-block;
-    $i: $i + 1;
+  &__star_f{
+    display: inline-block;
   }
 
-  @for $i from 1 through $n {
-    &__#{$i}{
-      &.rate__star_f{
-        display: var(--r-s-#{$i});
+  &__radio:checked:not(:hover){
+    & ~ .rate__gradient_creator{
+      & .rate__star_f{
+        display: none;
       }
-      &.rate__star_b{
-        display: var(--r-b-#{$i});
+      & .rate__star_b{
+        display: inline-block;
       }
-    }
-  }
-
-  &:hover{
-    & > .rate__star_f{
-      display: inline-block;
-    }
-    & > .rate__star_b{
-      display: none;
     }
   }
 
   &__star_f:hover{
-    & ~ .rate__star_f{
-      display: none;
-    }
-    & ~ .rate__star_b{
-      display: inline-block;
+    & + .rate__gradient_creator{
+      & .rate__star_f{
+        display: none;
+      }
+      & .rate__star_b{
+        display: inline-block;
+      }
     }
   }
 
-  &__0{
+  &__zero{
     display: inline-block;
-    position: absolute;
+    //position: absolute;
     height: 1em;
     width: 0.3em;
-    left: -0.1em;
-    z-index: 1;
-    //border: red solid 1px;
+    //left: -0.1em;
+    //z-index: 1;
+    border: red solid 1px;
     &:hover{
-      & ~ .rate__star_f{
-        display: none;
-      }
-      & ~ .rate__star_b{
-        display: inline-block;
+      & + .rate__gradient_creator{
+        & .rate__star_f{
+          display: none;
+        }
+        & .rate__star_b{
+          display: inline-block;
+        }
       }
     }
   }
