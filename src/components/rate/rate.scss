@@ -10,15 +10,13 @@
 
   cursor: pointer;
 
+  //нужно для частичного наложения .rate__zero на первую звёздочку
+  position: relative;
+
   &__gradient_creator{
     background: map.get($gradient, 'main');
     display: inline-flex;
   }
-
-  & *{
-    //border: solid green 3px;
-  }
-
   &__star_b, &__star_f{
     background: white; //важен сам факт установки значения, значение = white независимо от того что тут указано, всегда
     mix-blend-mode: screen; //виновен в этом данный параметр, но без него градиентный текст придётся делать картинками.
@@ -27,8 +25,7 @@
     display: none;
   }
 
-  position: relative;
-
+  //стартовое состояние, которое перегружается :checked и :hover
   &__star_b{
     display: none;
   }
@@ -36,7 +33,10 @@
     display: inline-block;
   }
 
+  // :not добавлен, потому-что без него приходится городить кучу правил
   &__radio:checked:not(:hover){
+    //нельзя использовать + т.к. контейнер должен быть после звёздочек,
+    //чтобы положение звёздочек отражало положение radio
     & ~ .rate__gradient_creator{
       & .rate__star_f{
         display: none;
@@ -60,12 +60,11 @@
 
   &__zero{
     display: inline-block;
-    //position: absolute;
-    height: 1em;
-    width: 0.3em;
-    //left: -0.1em;
-    //z-index: 1;
-    border: red solid 1px;
+    position: absolute;
+    height: 0.85em;
+    width: 0.35em;
+    left: -0.045em;
+    z-index: 1;
     &:hover{
       & + .rate__gradient_creator{
         & .rate__star_f{
