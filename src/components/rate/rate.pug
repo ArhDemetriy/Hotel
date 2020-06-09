@@ -13,12 +13,18 @@ append mixins
     span(class='rate ' + classes)
       -
         const n = options.max_rate ? options.max_rate : 5
-        let i = 1
-        const material = options.off_material ? '' : 'material-icons '
-      div(class=material + 'rate__0')
-      while i <= n
-        span(class=material + 'rate__star_b rate__' + i)=('star_border')
-        span(class=material + 'rate__star_f rate__' + i++)=('star')
+        let i = 0
+        const material = options.off_material ? '' : 'material-icons-outlined '
+
+      label(class=material + 'rate__' + i)
+        input(class='rate__radio', name=(options.block_class ? options.block_class : 'NOTHING'),
+              type='radio', value=i, checked=false)
+      while ++i <= n
+        span(class=material + 'rate__star_b rate__' + i)='star_border'
+        label(class='rate__star_f rate__' + i)
+          input(class='rate__radio', name=(options.block_class ? options.block_class : 'NOTHING'),
+                type='radio', value=i, checked=false)
+          span(class=material)='star'
 
 append skripts__after_load
-  script(defer src='../../../components/rate/rate.js')
+  //-script(defer src='../../../components/rate/rate.js')

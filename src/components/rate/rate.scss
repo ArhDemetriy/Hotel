@@ -20,6 +20,9 @@
     background: white; //важен сам факт установки значения, значение = white независимо от того что тут указано, всегда
     mix-blend-mode: screen; //виновен в этом данный параметр, но без него градиентный текст придётся делать картинками.
   }
+  &__radio{
+    display: none;
+  }
 
   display: inline-flex;
   position: relative;
