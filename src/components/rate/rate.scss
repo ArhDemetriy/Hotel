@@ -2,13 +2,7 @@
 @import '../global_mixins/global_mixins';
 
 .rate{
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -o-user-select: none;
-  -webkit-user-select: none;
-  user-select: none;
-
-  cursor: pointer;
+  @extend %not_select_and_pointer;
 
   //нужно для частичного наложения .rate__zero на первую звёздочку
   position: relative;

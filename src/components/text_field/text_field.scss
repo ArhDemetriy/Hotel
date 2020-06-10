@@ -14,24 +14,18 @@
     border: 1px solid map.get($color, 'shade-25');
     border-radius: 4px;
     color: map.get($color, 'shade-25');
-    &:hover{
+    &:hover, &:focus{
       border-color: map.get($color, 'shade-50');
       color: map.get($color, 'shade-75');
     }
-    &:focus{
-      @extend :hover
-    }
   }
   &__arrow{
+    @extend %not_select_and_pointer;
+
     font: map.get($font, 'material');
     font-size: 2em;
     color: map.get($color, 'main');
     position: absolute;
     right: 0.3em;
-
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
   }
 }
