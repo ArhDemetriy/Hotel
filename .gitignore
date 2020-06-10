@@ -12,3 +12,4 @@ fonts/
 src/components/def
 experiment/
 report.*.json
+all_merge_master.js
