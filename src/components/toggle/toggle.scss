@@ -1,12 +1,7 @@
 @use 'sass:map';
 @import '../global_mixins/global_mixins';
 
-@mixin user_select($value:none) {
-  -webkit-user-select: $value;
-  -moz-user-select: $value;
-  -ms-user-select: $value;
-  user-select: $value;
-}
+
 
 .toggle{
   display: inline-block;
