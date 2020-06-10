@@ -22,7 +22,6 @@
   &__arrow{
     @extend %not_select_and_pointer;
 
-    font: map.get($font, 'material');
     font-size: 2em;
     color: map.get($color, 'main');
     position: absolute;

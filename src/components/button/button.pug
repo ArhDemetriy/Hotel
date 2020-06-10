@@ -5,9 +5,9 @@ append mixins
   mixin button__text(options)
     div(class=  'button__flex_container' +
                 (options.mod=='transparent' ? ' button__border_creator' : ''))
-      span(class='button__left_arrow')=options.arrow=='left'||options.arrow=='all' ? 'arrow_back' : ''
+      span(class='button__left_arrow material-icons-outlined ')=options.arrow=='left'||options.arrow=='all' ? 'arrow_back' : ''
       span(class='button__text')=options.text ? options.text : options.arrow=='left'||options.arrow=='all'||options.arrow=='right' ? '' : 'УКАЖИ ПОДПИСЬ'
-      span(class='button__right_arrow')=options.arrow=='right'||options.arrow=='all' ? 'arrow_forward' : ''
+      span(class='button__right_arrow material-icons-outlined ')=options.arrow=='right'||options.arrow=='all' ? 'arrow_forward' : ''
 
   mixin button (options)
     if !options
