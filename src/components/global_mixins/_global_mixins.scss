@@ -35,7 +35,6 @@ $font: (
   'upper' : var(--font-upper, bold 12px/125% 'Montserrat', 'Arial', sans-serif),
   'regular' : var(--font-regular, 14px/171.4285714% 'Montserrat', 'Arial', sans-serif),
   'regular_bold' : var(--font-regular_bold, bold 14px/171.4285714% 'Montserrat', 'Arial', sans-serif),
-  'material' : normal normal 14px/171.4285714% 'Material Icons',
 );
 $timer: (
   'main-slow' : var(--timer-main-slow, 0.8s),
