@@ -10,9 +10,9 @@ append mixins
       classes += options.block_class ? ' ' + options.block_class : ''
       classes += options.mod ? ' toggle-' + options.mod : ''
 
-    .toggle(class=classes)
-      label(class='toggle__container')
-        input(class='toggle__input',type='checkbox',checked=false)
-        .toggle__box
-          .toggle__mark
-        span(class='toggle__text')=options.text ? options.text : 'SET text'
+    label(class='toggle' + classes)
+      input(class='toggle__input',type='checkbox',checked=false)
+      //-нужно т.к. точка с градиентом
+      .toggle__box
+        .toggle__mark
+      span(class='toggle__text')=options.text ? options.text : 'SET text'

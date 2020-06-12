@@ -2,14 +2,9 @@
 @import '../global_mixins/global_mixins';
 
 .toggle{
-  display: inline-block;
-  @extend %not_select_and_pointer;
-
-  &__container {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   &__text{
     color: map.get($color, 'shade-50');
     font: map.get($font, 'regular');
@@ -29,7 +24,6 @@
     transition: map.get($timer, 'secondary-slow');
   }
   &__mark {
-    user-select: none;
     box-sizing: border-box;
     width: 12px;
     height: 12px;
@@ -38,23 +32,18 @@
     margin-right: 4px;
     background: map.get($color, 'shade-25');
     transition: map.get($timer, 'main-slow');
-
   }
   &__input{
-    position: absolute;
-    opacity: 0;
-    height: 0;
-    width: 0;
-
+    display: none;
     &:checked{
       ~ .toggle__text{
 
       }
-      ~ .toggle__box{
+      + .toggle__box{
         border-color: map.get($color, 'main');
         transition: map.get($timer, 'secondary-fast');
         justify-content: flex-end;
-        .toggle__mark{
+        > .toggle__mark{
           background: map.get($gradient, 'main');
           transition: map.get($timer, 'main-fast');
         }
