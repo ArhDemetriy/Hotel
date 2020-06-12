@@ -8,10 +8,12 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    @extend %not_select_and_pointer;
   }
   &__text{
     color: map.get($color, 'shade-50');
     font: map.get($font, 'regular');
+    @extend %pointer;
   }
   &__box{
     box-sizing: border-box;
@@ -26,6 +28,7 @@
     align-items: center;
     justify-content: center;
     transition: map.get($timer, 'secondary-slow');
+    @extend %pointer;
   }
   &__mark {
     user-select: none;
@@ -52,6 +55,7 @@
     opacity: 0;
     height: 0;
     width: 0;
+    @extend %pointer;
 
     &:checked{
       ~ .checkbox__text{

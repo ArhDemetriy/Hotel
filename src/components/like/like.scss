@@ -39,9 +39,6 @@
     justify-content: center;
   }
   &__mark {
-    font: map.get($font, 'regular');
-    font-family: 'Material Icons';
-    font-size: 10px;
 
     &-checked{
       color: map.get($color, 'main');

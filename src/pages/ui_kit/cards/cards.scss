@@ -1,19 +1,28 @@
-.button-tra{
-  width: 200px;
+.rate-settings{
+  width: auto;
+  height: auto;
 }
-.flexcontainer{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
+.button-settings{
+  width: auto;
+  height: auto;
 }
-.set_rate-three{
-  //inline-block inherit initial
-
-  --rate-0 : unset;
-  --rate-1 : unset;
-  --rate-2 : unset;
-  --rate-3 : inline-block;
-  --rate-4 : unset;
-  --rate-5 : unset;
+.checkbox-settings{
+  width: auto;
+  height: auto;
+}
+.radio-settings{
+  width: auto;
+  height: auto;
+}
+.toggle-settings{
+  width: auto;
+  height: auto;
+}
+.like-settings{
+  width: auto;
+  height: auto;
+}
+.pagination-settings{
+  width: auto;
+  height: auto;
 }

@@ -2,7 +2,6 @@
 @import '../global_mixins/global_mixins';
 
 .pagination{
-  @extend %not_select_and_pointer;
+  @extend %not_select;
   background: map.get($color, 'background');
-
 }

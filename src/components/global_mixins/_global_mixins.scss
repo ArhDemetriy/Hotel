@@ -50,7 +50,14 @@ $timer: (
   -o-user-select: $value;
   user-select: $value;
 }
-%not_select_and_pointer{
+
+%not_select{
   @include user_select(none);
+}
+%pointer{
   cursor: pointer;
+}
+%not_select_and_pointer{
+  @extend %not_select;
+  @extend %pointer;
 }
