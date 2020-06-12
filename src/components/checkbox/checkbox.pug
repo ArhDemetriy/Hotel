@@ -10,9 +10,9 @@ append mixins
       classes += options.block_class ? ' ' + options.block_class : ''
       classes += options.mod ? ' checkbox-' + options.mod : ''
 
-    .checkbox(class=classes)
-      label(class='checkbox__container')
-        input(class='checkbox__input',type='checkbox',checked=false,value='asd')
-        .checkbox__box
-          .checkbox__mark
-        span(class='checkbox__text')=options.text ? options.text : 'SET text'
+    label(class='checkbox ' + classes)
+      input(class='checkbox__input',type='checkbox',checked=false,value='asd')
+      //-необходим т.к. у точки есть градиент
+      .checkbox__box
+        .checkbox__mark
+      span(class='checkbox__text')=options.text ? options.text : 'SET text'
