@@ -4,8 +4,10 @@ doctype html
 html(lang='ru')
   head
     meta(charset = 'utf-8')
-    block skripts__before_load
-      script(src='../base/loading_check.js')
+    //- кртический скрипт для управления асинхронной загрузкой всех остальных скриптов.
+    script(src='../base/afterLoadDOMorCSS.js')
+    block skripts__sinc_before_load
+    block skripts__asinc
 
     block styles
       link(rel='stylesheet', href='../base/variables.scss')
@@ -14,10 +16,10 @@ html(lang='ru')
       link(rel='stylesheet', href='https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap')
       link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Material+Icons+Outlined')
 
-    block skripts__after_load
-
   body
     header
       block header
+      block skripts__sinc_after_load_header
     main
       block main
+      block skripts__sinc_after_load_main
