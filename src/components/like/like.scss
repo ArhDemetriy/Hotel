@@ -2,19 +2,22 @@
 @import '../global_mixins/global_mixins';
 
 .like{
-  display: inline-block;
-
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   @extend %not_select_and_pointer;
 
-  &__container {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
   &__text{
     color: map.get($color, 'shade-25');
-    font: map.get($font, 'regular');
     font-size: 10px;
+    &::before{
+      content: 'favorite_border';
+    }
+    &::after{
+      font: map.get($font, 'regular');
+      font-size: 10px;
+      content: var(--likes,'0');
+    }
   }
   &__box{
     border-radius: 40px;
@@ -49,24 +52,15 @@
     }
   }
   &__input{
-    position: absolute;
-    opacity: 0;
-    height: 0;
-    width: 0;
-
+    display: none;
     &:checked{
-      ~ .like__box{
+      + .like__box{
         background: map.get($gradient, 'main');
-        .like__text{
+        & .like__text{
           color: map.get($color, 'main');
           transition: map.get($timer, 'secondary-fast');
-        }
-        .like__mark{
-          &-checked{
-            display: inline-block;
-          }
-          &-unchecked{
-            display: none;
+          &::before{
+            content: 'favorite';
           }
         }
       }

@@ -10,11 +10,10 @@ append mixins
       classes += options.block_class ? ' ' + options.block_class : ''
       classes += options.mod ? ' like-' + options.mod : ''
 
-    .like(class=classes)
-      label(class='like__container')
-        input(class='like__input',type='checkbox',checked=false)
-        .like__box
-          .like__border_creator
-            span(class='like__mark like__mark-unchecked material-icons-outlined ')='favorite_border'
-            span(class='like__mark like__mark-checked material-icons-outlined ')='favorite'
-            span(class='like__text')=options.text ? options.text : 'NAN'
+    label(class='like' + classes)
+      input(class='like__input',type='checkbox',checked=false)
+      .like__box
+        .like__border_creator
+          //-span(class='like__mark like__mark-unchecked material-icons-outlined ')='favorite_border'
+          //-span(class='like__mark like__mark-checked material-icons-outlined ')='favorite'
+          span(class='like__text material-icons-outlined ')=' '
