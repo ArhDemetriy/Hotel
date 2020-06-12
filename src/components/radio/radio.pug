@@ -10,10 +10,10 @@ append mixins
       classes += options.block_class ? ' ' + options.block_class : ''
       classes += options.mod ? ' radio-' + options.mod : ''
 
-    .radio(class=classes)
-      label(class='radio__container')
-        input(class='radio__input', name=(options.name ? options.name : 'NOTHING'),
-              type='radio', checked=false)
-        .radio__box
-          .radio__mark
-        span(class='radio__text')=options.text ? options.text : 'SET text'
+    label(class='radio' + classes)
+      input(class='radio__input', name=(options.name ? options.name : 'NOTHING'),
+            type='radio', checked=false)
+      //-нужно т.к. у кружочка градиент
+      .radio__box
+        .radio__mark
+      span(class='radio__text')=options.text ? options.text : 'SET text'

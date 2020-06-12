@@ -2,14 +2,11 @@
 @import '../global_mixins/global_mixins';
 
 .radio{
-
   @extend %not_select_and_pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
-  &__container {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
   &__text{
     color: map.get($color, 'shade-50');
     font: map.get($font, 'regular');
@@ -29,7 +26,6 @@
     transition: map.get($timer, 'secondary-slow');
   }
   &__mark {
-    user-select: none;
     box-sizing: border-box;
     width: 12px;
     height: 12px;
@@ -38,19 +34,15 @@
     background: map.get($gradient, 'main');
     opacity: 0;
     transition: map.get($timer, 'main-slow') opacity;
-
   }
   &__input{
-    position: absolute;
-    opacity: 0;
-    height: 0;
-    width: 0;
+    display: none;
 
     &:checked{
       ~ .radio__text{
-
+        color: map.get($color, 'shade-75');
       }
-      ~ .radio__box{
+      + .radio__box{
         border-color: map.get($color, 'main');
         transition: map.get($timer, 'secondary-fast');
         .radio__mark{
