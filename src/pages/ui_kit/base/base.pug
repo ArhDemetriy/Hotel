@@ -4,11 +4,11 @@ doctype html
 html(lang='ru')
   head
     meta(charset = 'utf-8')
-    //- кртический скрипт для управления асинхронной загрузкой всех остальных скриптов.
-    script(src='../base/afterLoadDOMorCSS.js')
-    block skripts__sinc_before_load
-    block skripts__asinc
 
+    block title
+    block skripts__inline_before_load
+    block skripts__sinc_before_load
+    block skripts__defer
     block styles
       link(rel='stylesheet', href='../base/variables.scss')
       link(rel='stylesheet', href='../base/style.scss')
@@ -19,7 +19,7 @@ html(lang='ru')
   body
     header
       block header
-      block skripts__sinc_after_load_header
+      block skripts__asinc_after_load_header
     main
       block main
-      block skripts__sinc_after_load_main
+      block skripts__asinc_after_load_main
