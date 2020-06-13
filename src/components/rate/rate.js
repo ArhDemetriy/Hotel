@@ -1,4 +1,4 @@
-`use strict`;
+'use strict';
 {
   const MAX_RATE = 5;
   const setter = function (rate) {
