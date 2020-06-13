@@ -1,11 +1,29 @@
 block mixins
 
 doctype html
-html(lang='ru')
+html(lang='ru-RU' dir="ltr")
   head
+    meta(http-equiv="Content-type" content="text/html; charset=UTF-8")
+    meta(http-equiv="Content-language" content="ru-RU")
     meta(charset = 'utf-8')
+    meta(http-equiv="Window-target" content="_blank")
+    meta(http-equiv="cleartype" content="on")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="author" content="ArhDemetriy")
+    meta(name='HandheldFriendly' content='true')
+    meta(name='MobileOptimized' content='width')
+    meta(name='apple-mobile-web-app-capable' content='yes')
+    meta(name="viewport" content="width=device-width, height=device-height, initial-scale=1.0")
+    //- т.к. это поисковик отелей, инфа меняется не постоянно, но достаточно часто
+    meta(http-equiv="Cache-Control" content="private, no-store, max-age=1200")
+    //- поправить эти тэги перед релизом
+    meta(name="Document-state" content="Static")
+    meta(name="revisit-after" content="4 days")
+    meta(name="Robots" content="index,nofollow")
 
+    block description
     block title
+
     block skripts__inline_before_load
     block skripts__sinc_before_load
     block skripts__defer
