@@ -1,17 +1,21 @@
 'use strict';
 {
-
-
-  const handler = (event) => {
-    event = event || window.event;
-    if (!event || !event.currentTarget) return;
-    let likes = (event.currentTarget.likes && isFinite(event.currentTarget.likes)) ? event.currentTarget.likes : 0
-    if (event.currentTarget.querySelector(`.like__input`) && event.currentTarget.querySelector(`.like__input`).checked) likes++;
-    alert(likes);
-    const t = event.currentTarget.querySelector(`.like__text`);
-    t.style.setProperty(`--likes`, '7');
-    const p = t.style.getPropertyValue(`--likes`);
-    alert(`${p} : `+`${typeof(p)}`);
+  function handler(event){
+    const promise = Promise.all([
+      new Promise((resolve, reject) => {
+        resolve(
+          this.querySelector(`.like__text`))
+      }),
+      new Promise((resolve, reject) => {
+        resolve(
+          isFinite(this.likes) ? this.likes : 0)
+      }),
+      new Promise((resolve, reject) => {
+        resolve((
+          (this.querySelector(`.like__input`) && this.querySelector(`.like__input`).checked)) ? 1 : 0)
+      }),
+    ]);
+    promise.then(args => { args[0].innerHTML = `${args[1] + args[2]}` });
   }
 
   const elements = document.querySelectorAll(`.like`);
@@ -19,5 +23,4 @@
     // click change
     a[i].addEventListener('change', handler, { passive: true, });
   });
-
 }
