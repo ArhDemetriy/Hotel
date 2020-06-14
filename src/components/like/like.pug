@@ -1,7 +1,7 @@
 append styles
   link(rel="stylesheet", href="../../../components/like/like.scss")
 append skripts__defer
-  script(defer src="../../../components/like/like.js")
+  //-script(defer src="../../../components/like/like.js")
 
 append mixins
   mixin like(options)
@@ -16,6 +16,6 @@ append mixins
       input(class='like__input',type='checkbox',checked=false)
       .like__box
         .like__border_creator
-          //-span(class='like__mark like__mark-unchecked material-icons-outlined ')='favorite_border'
-          //-span(class='like__mark like__mark-checked material-icons-outlined ')='favorite'
-          span(class='like__text material-icons-outlined ')=' '
+          span(class='like__mark like__mark_unchecked material-icons-outlined ')='favorite_border'
+          span(class='like__mark like__mark_checked material-icons-outlined ')='favorite'
+          span(class='like__text')='NAN'
