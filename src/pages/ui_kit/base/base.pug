@@ -26,7 +26,9 @@ html(lang='ru-RU' dir="ltr")
 
     block skripts__inline_before_load
     block skripts__sinc_before_load
+      script(defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" type="text/javascript")
     block skripts__defer
+
     block styles
       link(rel='stylesheet', href='../base/variables.scss')
       link(rel='stylesheet', href='../base/style.scss')

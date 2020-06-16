@@ -1,5 +1,10 @@
 append styles
   link(rel="stylesheet", href="../../../components/text_field/text_field.scss")
+  link(href="../../../../node_modules/air-datepicker/dist/css/datepicker.min.css" rel="stylesheet" type="text/css")
+append skripts__sinc_before_load
+  //-script(src="../../../../node_modules/jquery/dist/jquery.min.js")
+  //-script(defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" type="text/javascript")
+  script(defer src="../../../../node_modules/air-datepicker/dist/js/datepicker.min.js" type="text/javascript")
 
 append mixins
   mixin text_field(options)
@@ -9,8 +14,9 @@ append mixins
       var classes = ''
       classes += options.block_class ? ' ' + options.block_class : ''
       classes += options.mod ? ' text_field-' + options.mod : ''
-
+    //- (options.type ? options.type :
+       + (options.type == 'date' ? ' datepicker-here' : '')
     label.text_field(class=classes)
-      input(class='text_field__input', type=(options.type ? options.type : 'text'))
-      if !options.mod||options.mod=='arrow'
+      input(class='text_field__input', type='text')
+      if options.mod == 'arrow'
         span(class='text_field__arrow material-icons-outlined ')='arrow_forward'
