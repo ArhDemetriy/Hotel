@@ -19,6 +19,8 @@
             weekends: [6, 0],
             dateFormat: '',
             altField: '',
+            //new version
+            rangeDividedFields: false,
             altFieldDateFormat: '@',
             toggleSelected: true,
             keyboardNav: true,
@@ -699,16 +701,21 @@
                 }),
                 altValues;
 
-            if (opts.altField && _this.$altField.length) {
-                altValues = this.selectedDates.map(function (date) {
-                    return _this.formatDate(altFormat, date)
-                });
-                altValues = altValues.join(this.opts.multipleDatesSeparator);
-                this.$altField.val(altValues);
-            }
+            value = value.join(this.opts.multipleDatesSeparator); // nev version перенёс выше условия, чтобы можно было затереть значение при необходимости
 
-            value = value.join(this.opts.multipleDatesSeparator);
-
+            if (opts.altField && _this.$altField.length)
+                if (!opts.rangeDividedFields){
+                    altValues = this.selectedDates.map(function (date) {
+                        return _this.formatDate(altFormat, date)
+                    });
+                    altValues = altValues.join(this.opts.multipleDatesSeparator);
+                    this.$altField.val(altValues);
+                } else { // nev version здесь разделяются первое и последнее значение range. старался минимально изменять оригинальную функцию
+                    value = _this.formatDate(format, _this.selectedDates[0]);
+                    //if (this.selectedDates.length > 1) //закомментить если лучше чтобы при одной выделенной дате она показывалась и как начало и как конец
+                        altValues = _this.formatDate(altFormat, this.selectedDates[this.selectedDates.length - 1]);
+                    this.$altField.val(altValues);
+                }
             this.$el.val(value)
         },
 
