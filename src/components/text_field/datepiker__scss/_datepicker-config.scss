@@ -1,7 +1,7 @@
 @use 'sass:map';
 @import '../../global_mixins/global_mixins';
 
-//- map.get($color, 'shade-25');
+//- map.get($color, 'shade-25')
 
 $datepickerDayCellSize: 32px !default;
 $datepickerWidth: 250px !default;
@@ -10,19 +10,19 @@ $datepickerBorderRadius: 4px !default;
 $datepickerPadding: 4px !default;
 $datepickerZIndex: 100 !default;
 
-$datepickerFontFamily: Tahoma !default;
-$datepickerFontSize: 14px !default;
+$datepickerFontFamily: 'Montserrat', 'Arial', sans-serif !default;
+$datepickerFontSize: 12px !default;
 
 $datepickerYearsPerRow: 4 !default;
 
 $datepickerTextColor: (
   button: #5cc4ef,
-  otherMonth: #dedede,
+  otherMonth: map.get($color, 'shade-25'),
   otherMonthInRange: #ccc,
   disabled: #aeaeae,
   currentDate: #4EB5E6,
   common: #4a4a4a,
-  dayNames: #FF9A19,
+  dayNames: map.get($color, 'main'),
   navArrows: #9c9c9c
 ) !default;
 
@@ -55,7 +55,7 @@ $datepickerTransitionOffset: 8px !default;
   color: map_get($datepickerTextColor, otherMonth);
 
   &:hover {
-    color: darken(map_get($datepickerTextColor, otherMonth), 10);
+
   }
 
   &.-disabled- {
@@ -66,18 +66,18 @@ $datepickerTransitionOffset: 8px !default;
 
   &.-selected- {
     color: #fff;
-    background: lighten(map_get($datepickerBG, selected), 15);
+
     &.-focus- {
-      background: lighten(map_get($datepickerBG, selected), 10);
+
     }
   }
 
   &.-in-range- {
     background-color: map_get($datepickerBG, inRange);
-    color: darken(map_get($datepickerTextColor, otherMonth), 7);
+
 
     &.-focus- {
-      background-color: rgba(map_get($datepickerBG, inRange), .2);
+
     }
   }
 
