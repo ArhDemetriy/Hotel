@@ -203,11 +203,24 @@
             this.maxDate = this.opts.maxDate ? this.opts.maxDate : new Date(8639999913600000);
         },
 
-        _bindEvents : function () {
-            this.$el.on(this.opts.showEvent + '.adp', this._onShowEvent.bind(this));
-            this.$el.on('mouseup.adp', this._onMouseUpEl.bind(this));
-            this.$el.on('blur.adp', this._onBlur.bind(this));
-            this.$el.on('keyup.adp', this._onKeyUpGeneral.bind(this));
+        _bindEvents: function () {
+            var elements = ['$el']
+            /* new version
+                мне нужно чтобы на альтернативное поле реагировал так-же как на основное.
+                это нужно для реализации разделённого вывода начала и конца range
+                    но если я откажусь от идеи датапикера скрывающегося средствами самого air-datapiker, это будет не нужно
+                    как и вся возня с altField и можно будет использовать оригинальный файл с добавленной кнопкой
+            */
+
+            if (this.opts.altField)
+                elements.push('$altField')
+            elements.forEach( (elem) => {
+                this[elem].on(this.opts.showEvent + '.adp', this._onShowEvent.bind(this));
+                this[elem].on('mouseup.adp', this._onMouseUpEl.bind(this));
+                this[elem].on('blur.adp', this._onBlur.bind(this));
+                this[elem].on('keyup.adp', this._onKeyUpGeneral.bind(this));
+            })
+
             $(window).on('resize.adp', this._onResize.bind(this));
             $('body').on('mouseup.adp', this._onMouseUpBody.bind(this));
         },
@@ -704,16 +717,16 @@
             value = value.join(this.opts.multipleDatesSeparator); // nev version перенёс выше условия, чтобы можно было затереть значение при необходимости
 
             if (opts.altField && _this.$altField.length)
-                if (!opts.rangeDividedFields){
+                if (!opts.rangeDividedFields || this.selectedDates.length == 0){ //без второго условия clear() не очищает текстовые поля
                     altValues = this.selectedDates.map(function (date) {
                         return _this.formatDate(altFormat, date)
                     });
                     altValues = altValues.join(this.opts.multipleDatesSeparator);
                     this.$altField.val(altValues);
                 } else { // nev version здесь разделяются первое и последнее значение range. старался минимально изменять оригинальную функцию
-                    value = _this.formatDate(format, _this.selectedDates[0]);
+                    value = this.formatDate(format, this.selectedDates[0]);
                     //if (this.selectedDates.length > 1) //закомментить если лучше чтобы при одной выделенной дате она показывалась и как начало и как конец
-                        altValues = _this.formatDate(altFormat, this.selectedDates[this.selectedDates.length - 1]);
+                        altValues = this.formatDate(altFormat, this.selectedDates[this.selectedDates.length - 1]);
                     this.$altField.val(altValues);
                 }
             this.$el.val(value)
