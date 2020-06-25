@@ -20,10 +20,12 @@ $datepickerTextColor: (
   otherMonth: map.get($color, 'shade-25'),
   otherMonthInRange: #ccc,
   disabled: #aeaeae,
-  currentDate: #4EB5E6,
-  common: #4a4a4a,
+  currentDate: map.get($color, 'contrast_with_colored'),
+  common: map.get($color, 'shade-50'),
   dayNames: map.get($color, 'main'),
-  navArrows: #9c9c9c
+  navArrows: map.get($color, 'main'),
+  navTitle: map.get($color, 'shade-100'),
+
 ) !default;
 
 $datepickerBG: (

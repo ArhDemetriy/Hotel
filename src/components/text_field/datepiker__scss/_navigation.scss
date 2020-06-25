@@ -37,25 +37,19 @@
     visibility: hidden;
   }
 
-  svg {
-    width: 32px;
-    height: 32px;
-  }
-
-  path {
-    fill: none;
-    stroke: map_get($datepickerTextColor, navArrows);
-    stroke-width: 2px;
+  .datepicker__nav_arrow {
+    color: map_get($datepickerTextColor, navArrows);
   }
 }
 
 .datepicker--nav-title {
   border-radius: $datepickerBorderRadius;
   padding: 0 8px;
+  color: map_get($datepickerTextColor, navTitle);
+  font-weight: bold;
 
   i {
     font-style: normal;
-    color: map_get($datepickerTextColor, navArrows);
     margin-left: 5px;
   }
 
@@ -79,7 +73,6 @@
 }
 
 .datepicker--button {
-  color: map_get($datepickerTextColor, currentDate);
   cursor: pointer;
   border-radius: $datepickerBorderRadius;
   flex: 1;
@@ -87,6 +80,14 @@
   justify-content: center;
   align-items: center;
   height: 32px;
+  color: map_get($datepickerTextColor, currentDate);
+  &[data-action='clear']{
+    color: map_get($datepickerTextColor, common);
+  }
+  &[data-action='set']{
+    color: map_get($datepickerTextColor, dayNames);
+  }
+
 
   &:hover {
     color: map_get($datepickerTextColor, common);

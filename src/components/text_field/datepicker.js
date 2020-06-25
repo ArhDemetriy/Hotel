@@ -49,19 +49,17 @@
 
             todayButton: false,
             clearButton: false,
+            //new version
+            setButton: false,
+            closeButton: false,
 
             showEvent: 'focus',
             autoClose: false,
 
             // navigation
             monthsField: 'monthsShort',
-            // old version
-            // prevHtml: '<svg><path d="M 17,12 l -5,5 l 5,5"></path></svg>',
-            // nextHtml: '<svg><path d="M 14,12 l 5,5 l -5,5"></path></svg>',
-
-            //new version for use material-icons
-            prevHtml: '<span class="datepicker__nav_arrow material-icons-outlined">arrow_back</span>',
-            nextHtml: '<span class="datepicker__nav_arrow material-icons-outlined">arrow_forward</span>',
+            prevHtml: '<svg><path d="M 17,12 l -5,5 l 5,5"></path></svg>',
+            nextHtml: '<svg><path d="M 14,12 l 5,5 l -5,5"></path></svg>',
             navTitles: {
                 days: 'MM, <i>yyyy</i>',
                 months: 'yyyy',
@@ -1701,7 +1699,10 @@
         },
 
         _getDayHtml: function (date) {
-           var content = this._getCellContents(date, 'day');
+            var content = this._getCellContents(date, 'day');
+            if (content.classes.indexOf(' -range-') >= 0) {
+                content.html = '<div>' + content.html + '</div>';
+            }
 
             return '<div class="' + content.classes + '" ' +
                 'data-date="' + date.getDate() + '" ' +
