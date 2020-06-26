@@ -15,9 +15,9 @@
 }
 
 .datepicker {
-  background: #fff;
+  background: map_get($datepickerBG, default);
   border: 1px solid map_get($datepickerBorderColor, default);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, .15);
+  box-shadow: 0px 10px 20px map_get($datepickerBG, shadow);
   border-radius: $datepickerBorderRadius;
   box-sizing: content-box;
   font-family: $datepickerFontFamily, sans-serif;
@@ -42,7 +42,6 @@
   &.-from-left- {
     transform: translateX(-$datepickerTransitionOffset);
   }
-
 
   &.active {
     opacity: 1;

@@ -33,11 +33,11 @@ $gradient: (
   'sad' : linear-gradient(map.get($color, 'sad'), map.get($color, 'sad_grad'))
 );
 $font: (
-  'biggest' : var(--font-biggest, bold 24px/125% 'Quicksand', 'Open Sans', sans-serif),
-  'big' : var(--font-big, bold 19px/126.3157895% 'Quicksand', 'Open Sans', sans-serif),
-  'upper' : var(--font-upper, bold 12px/125% 'Montserrat', 'Arial', sans-serif),
-  'regular' : var(--font-regular, 14px/171.4285714% 'Montserrat', 'Arial', sans-serif),
-  'regular_bold' : var(--font-regular_bold, bold 14px/171.4285714% 'Montserrat', 'Arial', sans-serif),
+  'biggest' : var(--font-biggest, bold 24px 'Quicksand', 'Open Sans', sans-serif),
+  'big' : var(--font-big, bold 19px 'Quicksand', 'Open Sans', sans-serif),
+  'upper' : var(--font-upper, bold 12px 'Montserrat', 'Arial', sans-serif),
+  'regular' : var(--font-regular, 14px 'Montserrat', 'Arial', sans-serif),
+  'regular_bold' : var(--font-regular_bold, bold 14px 'Montserrat', 'Arial', sans-serif),
 );
 $timer: (
   'main-slow' : var(--timer-main-slow, 0.8s),

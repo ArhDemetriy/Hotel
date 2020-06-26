@@ -3,12 +3,12 @@
 
 //- map.get($color, 'shade-25')
 
-$datepickerDayCellSize: 40px !default;
-$datepickerWidth: 250px !default;
+$datepickerDayCellSize: 39px !default;
+$datepickerPadding: 20px !default;
+$datepickerWidth: ($datepickerDayCellSize * 7 + $datepickerPadding * 2) !default;
 $datepickerMinBodyHeight: 170px !default;
 $datepickerBorderRadius: 4px !default;
 $datepickerCellBorderRadius: 400px !default;
-$datepickerPadding: 4px !default;
 $datepickerZIndex: 100 !default;
 
 $datepickerFontFamily: 'Montserrat', 'Arial', sans-serif !default;
@@ -33,13 +33,16 @@ $datepickerBG: (
   selected: map_get($gradient, 'main'),
   selectedHover: darken(#5cc4ef, 5),
   inRange: map_get($gradient, 'main-opacity_double'),
-  hover: #f0f0f0
+  hover: #f0f0f0,
+  default: map.get($color, 'contrast_with_colored'),
 ) !default;
 
 $datepickerBorderColor: (
   nav: #efefef,
   inline: #d7d7d7,
-  default: #dbdbdb
+  default: map.get($color, 'shade-25'),
+  shadow: map.get($color, 'shade-5'),
+
 ) !default;
 
 $datepickerNavigationHeight: 32px !default;
