@@ -18,22 +18,24 @@ append main
   each typ in types
     +text_field({type:typ})
 
-  br
-  br
-  label.text_field(class=classes)
-    input(class='text_field__input datepicker-here', type='text',
-    data-inline='false',
-    data-range='true',
 
-
-
-    )
 
   br
   br
+  label(class='date')
+    input(class='datepicker-here', type='text',
+      data-inline='true',
+      data-range='true',
+      data-range-divided-fields='true',
+      data-alt-field='.datepicker-alt',
+      )
+    input(class='datepicker-alt', type='text')
 
+  br
+  br
 
   +rate({block_class:'rate-settings'})
+
   br
   br
 
