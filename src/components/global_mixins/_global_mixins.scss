@@ -9,6 +9,8 @@ $color: (
   'main_grad' : var(--color-main_grad,#8BA4F9),
   'main-opacity' : var(--color-main-opacity,rgba(188, 156, 255, 0.5)),
   'main_grad-opacity' : var(--color-main_grad-opacity,rgba(139, 164, 249, 0.5)),
+  'main-opacity_double' : var(--color-main-opacity_double,rgba(188, 156, 255, 0.25)),
+  'main_grad-opacity_double' : var(--color-main_grad-opacity_double,rgba(139, 164, 249, 0.25)),
   'secondary' : var(--color-secondary,#6FCF97), //111 207 151
   'secondary-opacity' : var(--color-secondary-opacity,rgba(111, 207, 151, 0.5)),
   'secondary_grad' : var(--color-secondary_grad,#66D2EA), //102 210 234
@@ -24,17 +26,18 @@ $color: (
 $gradient: (
   'main' : linear-gradient(map.get($color, 'main'), map.get($color, 'main_grad')),
   'main-opacity' : linear-gradient(map.get($color, 'main-opacity'), map.get($color, 'main_grad-opacity')),
+  'main-opacity_double' : linear-gradient(map.get($color, 'main-opacity_double'), map.get($color, 'main_grad-opacity_double')),
   'secondary' : linear-gradient(map.get($color, 'secondary'), map.get($color, 'secondary_grad')),
   'secondary-opacity' : linear-gradient(map.get($color, 'secondary-opacity'), map.get($color, 'secondary_grad-opacity')),
   'happy' : linear-gradient(map.get($color, 'happy'), map.get($color, 'happy_grad')),
   'sad' : linear-gradient(map.get($color, 'sad'), map.get($color, 'sad_grad'))
 );
 $font: (
-  'biggest' : var(--font-biggest, bold 24px/125% 'Quicksand', 'Open Sans', sans-serif),
-  'big' : var(--font-big, bold 19px/126.3157895% 'Quicksand', 'Open Sans', sans-serif),
-  'upper' : var(--font-upper, bold 12px/125% 'Montserrat', 'Arial', sans-serif),
-  'regular' : var(--font-regular, 14px/171.4285714% 'Montserrat', 'Arial', sans-serif),
-  'regular_bold' : var(--font-regular_bold, bold 14px/171.4285714% 'Montserrat', 'Arial', sans-serif),
+  'biggest' : var(--font-biggest, bold 24px 'Quicksand', 'Open Sans', sans-serif),
+  'big' : var(--font-big, bold 19px 'Quicksand', 'Open Sans', sans-serif),
+  'upper' : var(--font-upper, bold 12px 'Montserrat', 'Arial', sans-serif),
+  'regular' : var(--font-regular, 14px 'Montserrat', 'Arial', sans-serif),
+  'regular_bold' : var(--font-regular_bold, bold 14px 'Montserrat', 'Arial', sans-serif),
 );
 $timer: (
   'main-slow' : var(--timer-main-slow, 0.8s),

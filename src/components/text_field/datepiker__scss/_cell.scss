@@ -1,0 +1,145 @@
+@import "datepicker-config";
+
+/* -------------------------------------------------
+    Datepicker cells
+   ------------------------------------------------- */
+
+.datepicker--cells {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+
+.datepicker--cell {
+  border-radius: $datepickerCellBorderRadius;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  z-index: 1;
+  & .datepicker--day{
+    border-radius: $datepickerCellBorderRadius;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    height: $datepickerDayCellSize;
+    width: $datepickerDayCellSize;
+  }
+
+  &.-current- > .datepicker--day{
+    color: map_get($datepickerTextColor, currentDate);
+    background: map_get($gradient, 'secondary');
+    font-weight: bold;
+  }
+
+  &.-in-range- {
+    color: map_get($datepickerTextColor, common);
+    border-radius: 0;
+    background: map_get($gradient, 'main-opacity_double');
+  }
+
+  &.-selected- > .datepicker--day{
+    color: map_get($datepickerTextColor, currentDate);
+    font-weight: bold;
+  }
+
+  &.-range-from- {
+    background: map_get($gradient, 'main-opacity_double');
+    border-radius: $datepickerCellBorderRadius 0 0 $datepickerCellBorderRadius;
+    & > .datepicker--day{
+      background: map_get($datepickerBG, selected);
+    }
+  }
+  &.-range-to- {
+    background: map_get($gradient, 'main-opacity_double');
+    border-radius: 0 $datepickerCellBorderRadius $datepickerCellBorderRadius 0;
+    & > .datepicker--day{
+      background: map_get($datepickerBG, selected);
+    }
+  }
+
+  &.-range-from-.-range-to- {
+    border-radius: $datepickerBorderRadius;
+  }
+
+  &:empty {
+    cursor: default;
+  }
+}
+
+//  Day names
+// -------------------------------------------------
+
+.datepicker--days-names {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 8px 0 3px;
+}
+
+.datepicker--day-name {
+  color: map_get($datepickerTextColor, dayNames);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  text-align: center;
+  font-weight: bold;
+}
+
+//  Day cell
+// -------------------------------------------------
+
+.datepicker--cell-day {
+  &.-other-month- {
+    @extend %otherMonth;
+  }
+}
+
+
+//  Months
+// -------------------------------------------------
+
+.datepicker--months {}
+
+.datepicker--cells-months {
+  height: $datepickerMinBodyHeight;
+}
+
+//  Month cell
+// -------------------------
+
+.datepicker--cell-month {
+  width: 33.33%;
+  height: 25%;
+}
+
+//  Years
+// -------------------------------------------------
+
+.datepicker--years {
+  height: $datepickerMinBodyHeight;
+}
+
+.datepicker--cells-years {
+  height: $datepickerMinBodyHeight;
+}
+//  Year cell
+// -------------------------
+
+.datepicker--cell-year {
+  width: 100% / $datepickerYearsPerRow;
+  height: 33.33%;
+
+  &.-other-decade- {
+    @extend %otherMonth;
+  }
+}

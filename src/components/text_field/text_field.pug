@@ -1,22 +1,28 @@
 append styles
-  link(rel="stylesheet", href="../../../components/text_field/text_field.scss")
-  link(href="../../../../node_modules/air-datepicker/dist/css/datepicker.min.css" rel="stylesheet" type="text/css")
-append skripts__sinc_before_load
-  //-script(src="../../../../node_modules/jquery/dist/jquery.min.js")
-  //-script(defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" type="text/javascript")
-  script(defer src="../../../../node_modules/air-datepicker/dist/js/datepicker.min.js" type="text/javascript")
+  link(rel="stylesheet", type="text/css", href="../../../components/text_field/text_field.scss")
+  link(rel="stylesheet", type="text/css", href="../../../components/text_field/datepicker__scss.scss")
+
+append skripts__defer
+  script(defer src="../../../components/text_field/datepicker.js" type="text/javascript")
+  script(defer src="../../../components/text_field/text_field.js" type="text/javascript")
+
+
 
 append mixins
   mixin text_field(options)
     if !options
       - options = {}
     -
-      var classes = ''
+      let classes = ''
       classes += options.block_class ? ' ' + options.block_class : ''
       classes += options.mod ? ' text_field-' + options.mod : ''
+      classes += options.type == 'date' ? ' datepicker-here ': ''
+
+      const type = options.type && options.type!='date' ? options.type : 'text'
+
     //- (options.type ? options.type :
        + (options.type == 'date' ? ' datepicker-here' : '')
     label.text_field(class=classes)
-      input(class='text_field__input', type='text')
+      input(class='text_field__input', type=type)
       if options.mod == 'arrow'
         span(class='text_field__arrow material-icons-outlined ')='arrow_forward'

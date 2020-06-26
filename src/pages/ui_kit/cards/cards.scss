@@ -1,3 +1,6 @@
+@use 'sass:map';
+@import '../../../components/global_mixins/global_mixins';
+
 .rate-settings{
   width: auto;
   height: auto;
@@ -25,4 +28,7 @@
 .pagination-settings{
   width: auto;
   height: auto;
+}
+.date{
+  display: inline-flex;
 }
