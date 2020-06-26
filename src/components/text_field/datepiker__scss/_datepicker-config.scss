@@ -3,10 +3,11 @@
 
 //- map.get($color, 'shade-25')
 
-$datepickerDayCellSize: 32px !default;
+$datepickerDayCellSize: 40px !default;
 $datepickerWidth: 250px !default;
 $datepickerMinBodyHeight: 170px !default;
 $datepickerBorderRadius: 4px !default;
+$datepickerCellBorderRadius: 400px !default;
 $datepickerPadding: 4px !default;
 $datepickerZIndex: 100 !default;
 
@@ -29,9 +30,9 @@ $datepickerTextColor: (
 ) !default;
 
 $datepickerBG: (
-  selected: #5cc4ef,
+  selected: map_get($gradient, 'main'),
   selectedHover: darken(#5cc4ef, 5),
-  inRange: rgba(#5cc4ef, .1),
+  inRange: map_get($gradient, 'main-opacity_double'),
   hover: #f0f0f0
 ) !default;
 
@@ -67,7 +68,7 @@ $datepickerTransitionOffset: 8px !default;
   }
 
   &.-selected- {
-    color: #fff;
+    color: map_get($datepickerTextColor, currentDate);
 
     &.-focus- {
 
@@ -76,8 +77,6 @@ $datepickerTransitionOffset: 8px !default;
 
   &.-in-range- {
     background-color: map_get($datepickerBG, inRange);
-
-
     &.-focus- {
 
     }

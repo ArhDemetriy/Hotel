@@ -1700,10 +1700,6 @@
 
         _getDayHtml: function (date) {
             var content = this._getCellContents(date, 'day');
-            if (content.classes.indexOf(' -range-') >= 0) {
-                content.html = '<div>' + content.html + '</div>';
-            }
-
             return '<div class="' + content.classes + '" ' +
                 'data-date="' + date.getDate() + '" ' +
                 'data-month="' + date.getMonth() + '" ' +
