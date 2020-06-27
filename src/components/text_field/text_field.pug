@@ -11,14 +11,31 @@ append mixins
     if !options
       - options = {}
     -
-      let classes = ''
+      let classes = 'text_field '
       classes += options.block_class ? ' ' + options.block_class : ''
       classes += options.mod ? ' text_field-' + options.mod : ''
       //classes += options.type == 'date' ? ' datepicker-here ': ''
 
       const type = options.type && options.type!='date' ? options.type : 'text'
+      let placeh = ''
+      switch (options.type) {
+        case 'email':
+        case 'Email':
+          placeh = 'Email';
+          break;
+        case 'date':
+        case 'Date':
+          placeh = 'ДД.ММ.ГГГГ';
+          break;
+        case 'masked':
+        case 'Masked':
+          placeh = options.placeholder ? options.placeholder : 'SET placeholder';
+          break;
 
-    label.text_field(class=classes)
-      input(class='text_field__input', type=type)
-      if options.mod == 'arrow'
-        span(class='text_field__arrow material-icons-outlined ')='arrow_forward'
+        default:
+          placeh = options.placeholder ? options.placeholder : placeh;
+      }
+    if (options.type && (options.type == 'date' || options.type == 'Date'))
+      input(class='datepicker-here', type=type, placeholder=placeh )
+    else
+      input(class=classes, type=type, placeholder=placeh )
