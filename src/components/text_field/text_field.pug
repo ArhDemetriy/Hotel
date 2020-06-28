@@ -6,6 +6,15 @@ append skripts__defer
   script(defer src="../../../components/text_field/datepicker.js" type="text/javascript")
   script(defer src="../../../components/text_field/text_field.js" type="text/javascript")
 
+//-  +text_field({
+//-     block_class:'text_field-datepicker-settings',
+//-     datepicker:{
+//-       range:true,
+//-       range_divided_fields:true,
+//-       inline:false,
+//-       field_free:false,
+//-   }})
+
 append mixins
   mixin text_field(options)
     if !options
@@ -17,35 +26,68 @@ append mixins
       classes += options.mod ? ' text_field-' + options.mod : ''
 
       const type = options.type && options.type!='date' ? options.type : 'text'
-      let placeh = ''
+
+      let placeholder = ''
       if (options.placeholder) {
-          placeh = options.placeholder;
+          placeholder = options.placeholder;
       } else if (options.datepicker) {
-          placeh = 'ДД.ММ.ГГГГ';
+          placeholder = 'ДД.ММ.ГГГГ';
       } else switch (options.type) {
           case 'email':
           case 'Email':
-            placeh = 'Email';
+            placeholder = 'Email';
             break;
           case 'date':
           case 'Date':
-            placeh = 'ДД.ММ.ГГГГ';
+            placeholder = 'ДД.ММ.ГГГГ';
             break;
           case 'masked':
           case 'Masked':
-            placeh = options.placeholder ? options.placeholder : 'SET placeholder';
+            placeholder = options.placeholder ? options.placeholder : 'SET placeholder';
             break;
 
           default:
-            placeh = '';
+            placeholder = '';
+      }
+
+      const alt_class = 'datepicker-alt';
+      var attributes = {}; //- работает тлоько с var хз почему
+      if (options.datepicker){
+        attributes.type = type;
+        attributes.placeholder = placeholder;
+        const d = options.datepicker;
+        // range == false => range_divided_fields == false
+        d.range_divided_fields = ((d.range && d.range != 'false') && d.range_divided_fields)
+        // ( inline === 'false' OR range_divided_fields == true ) => field_free == false
+        d.field_free = ((d.inline != 'false' || d.inline === false) && d.field_free)
+        d.field_free = (!(d.range_divided_fields && d.range_divided_fields != 'false') && d.field_free)
+
+        if (d.range && d.range != 'false') {attributes['data-range'] = true}
+        if (d.range_divided_fields && d.range_divided_fields != 'false') {
+            attributes['data-position'] = 'bottom right';
+            attributes['data-range-divided-fields'] = true;
+            attributes['data-alt-field'] = `.${options.block_class} > .${alt_class}`;
+
+            attributes['class'] = 'datepicker-here';
+          } else { // именно от range_divided_fields зависит у кого будет основной набор классов
+            attributes['class'] = `${classes} datepicker-here`;
+          }
+        if (d.inline && d.inline != 'false') {attributes['data-inline'] = true}
+        if (d.field_free) {attributes['data-inline'] = true}
+      } else {
+        attributes.class = classes;
+        attributes.type = type;
+        attributes.placeholder = placeholder;
       }
 
     if options.datepicker
-      input(class=classes + ' datepicker-here', type=type, placeholder=placeh,
-        data-inline=(options.datepicker.inline || 'false'),
-        data-range='true',
-        data-range-divided-fields=(options.datepicker.alt ? 'true' : 'false'),
-        data-alt-field=(options.datepicker.alt || ''),
-        )
+      if options.datepicker.field_free
+        div.text_field__input()&attributes(attributes)
+      else if !options.datepicker.range_divided_fields
+        input.text_field__input()&attributes(attributes)
+      else
+        div.text_field-divided_date(class=classes)
+          input.text_field__input(class=alt_class, placeholder=placeholder)
+          input.text_field__input()&attributes(attributes)
     else
-      input(class=classes, type=type, placeholder=placeh, )
+      input.text_field__input()&attributes(attributes)
