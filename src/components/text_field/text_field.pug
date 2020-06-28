@@ -10,32 +10,42 @@ append mixins
   mixin text_field(options)
     if !options
       - options = {}
+
     -
       let classes = 'text_field '
       classes += options.block_class ? ' ' + options.block_class : ''
       classes += options.mod ? ' text_field-' + options.mod : ''
-      //classes += options.type == 'date' ? ' datepicker-here ': ''
 
       const type = options.type && options.type!='date' ? options.type : 'text'
       let placeh = ''
-      switch (options.type) {
-        case 'email':
-        case 'Email':
-          placeh = 'Email';
-          break;
-        case 'date':
-        case 'Date':
+      if (options.placeholder) {
+          placeh = options.placeholder;
+      } else if (options.datepicker) {
           placeh = 'ДД.ММ.ГГГГ';
-          break;
-        case 'masked':
-        case 'Masked':
-          placeh = options.placeholder ? options.placeholder : 'SET placeholder';
-          break;
+      } else switch (options.type) {
+          case 'email':
+          case 'Email':
+            placeh = 'Email';
+            break;
+          case 'date':
+          case 'Date':
+            placeh = 'ДД.ММ.ГГГГ';
+            break;
+          case 'masked':
+          case 'Masked':
+            placeh = options.placeholder ? options.placeholder : 'SET placeholder';
+            break;
 
-        default:
-          placeh = options.placeholder ? options.placeholder : placeh;
+          default:
+            placeh = '';
       }
-    if (options.type && (options.type == 'date' || options.type == 'Date'))
-      input(class='datepicker-here', type=type, placeholder=placeh )
+
+    if options.datepicker
+      input(class=classes + ' datepicker-here', type=type, placeholder=placeh,
+        data-inline=(options.datepicker.inline || 'false'),
+        data-range='true',
+        data-range-divided-fields=(options.datepicker.alt ? 'true' : 'false'),
+        data-alt-field=(options.datepicker.alt || ''),
+        )
     else
-      input(class=classes, type=type, placeholder=placeh )
+      input(class=classes, type=type, placeholder=placeh, )
