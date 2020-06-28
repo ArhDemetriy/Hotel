@@ -1,16 +1,51 @@
 append styles
-  link(rel="stylesheet", href="../../../components/text_field/text_field.scss")
+  link(rel="stylesheet", type="text/css", href="../../../components/text_field/datepicker__scss.scss")
+  link(rel="stylesheet", type="text/css", href="../../../components/text_field/text_field.scss")
+
+append skripts__defer
+  script(defer src="../../../components/text_field/datepicker.js" type="text/javascript")
+  script(defer src="../../../components/text_field/text_field.js" type="text/javascript")
 
 append mixins
   mixin text_field(options)
     if !options
       - options = {}
+
     -
-      var classes = ''
+      let classes = 'text_field '
       classes += options.block_class ? ' ' + options.block_class : ''
       classes += options.mod ? ' text_field-' + options.mod : ''
 
-    label.text_field(class=classes)
-      input(class='text_field__input', type=(options.type ? options.type : 'text'))
-      if !options.mod||options.mod=='arrow'
-        span(class='text_field__arrow material-icons-outlined ')='arrow_forward'
+      const type = options.type && options.type!='date' ? options.type : 'text'
+      let placeh = ''
+      if (options.placeholder) {
+          placeh = options.placeholder;
+      } else if (options.datepicker) {
+          placeh = 'ДД.ММ.ГГГГ';
+      } else switch (options.type) {
+          case 'email':
+          case 'Email':
+            placeh = 'Email';
+            break;
+          case 'date':
+          case 'Date':
+            placeh = 'ДД.ММ.ГГГГ';
+            break;
+          case 'masked':
+          case 'Masked':
+            placeh = options.placeholder ? options.placeholder : 'SET placeholder';
+            break;
+
+          default:
+            placeh = '';
+      }
+
+    if options.datepicker
+      input(class=classes + ' datepicker-here', type=type, placeholder=placeh,
+        data-inline=(options.datepicker.inline || 'false'),
+        data-range='true',
+        data-range-divided-fields=(options.datepicker.alt ? 'true' : 'false'),
+        data-alt-field=(options.datepicker.alt || ''),
+        )
+    else
+      input(class=classes, type=type, placeholder=placeh, )

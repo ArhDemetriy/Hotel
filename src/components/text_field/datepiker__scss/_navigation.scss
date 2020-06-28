@@ -1,0 +1,86 @@
+@import "datepicker-config";
+
+/* -------------------------------------------------
+    Navigation
+   ------------------------------------------------- */
+
+.datepicker--nav {
+  display: flex;
+  justify-content: space-between;
+  min-height: $datepickerNavigationHeight;
+  padding: $datepickerPadding $datepickerPadding ($datepickerPadding / 2) $datepickerPadding;
+
+  .-only-timepicker- & {
+    display: none;
+  }
+}
+
+.datepicker--nav-title,
+.datepicker--nav-action {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+
+.datepicker--nav-action {
+  width: $datepickerDayCellSize;
+  border-radius: $datepickerBorderRadius;
+  user-select: none;
+
+  &:hover {
+    background: map_get($datepickerBG, hover);
+  }
+
+  &.-disabled- {
+    visibility: hidden;
+  }
+
+  .datepicker__nav_arrow {
+    color: map_get($datepickerTextColor, navArrows);
+  }
+}
+
+.datepicker--nav-title {
+  border-radius: $datepickerBorderRadius;
+  color: map_get($datepickerTextColor, navTitle);
+  font: map_get($font,'big');
+
+  &:hover {
+    background: map_get($datepickerBG, hover);
+  }
+
+  &.-disabled- {
+    cursor: default;
+    background: none;
+  }
+}
+
+//  Buttons
+// -------------------------------------------------
+
+.datepicker--buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 $datepickerPadding $datepickerPadding $datepickerPadding;
+}
+
+.datepicker--button {
+  cursor: pointer;
+  border-radius: $datepickerBorderRadius;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: 32px;
+  color: map_get($datepickerTextColor, currentDate);
+  font-weight: bold;
+  text-transform: uppercase;
+  &[data-action='clear']{
+    color: map_get($datepickerTextColor, common);
+  }
+  &[data-action='set']{
+    color: map_get($datepickerTextColor, dayNames);
+  }
+}
