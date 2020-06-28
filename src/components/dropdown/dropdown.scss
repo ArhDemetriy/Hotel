@@ -2,7 +2,6 @@
 @import '../global_mixins/global_mixins';
 
 .dropdown{
-  background-color: map.get($color, 'background');
   display: inline-flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -10,7 +9,33 @@
   align-content: space-evenly;
   align-items: center;
 
-  -webkit-appearance: none;/* Chrome */
-  -moz-appearance: none;/* Firefox */
-  appearance: none;/* убираем дефолнтные стрелочки */
+  font: map.get($font, 'regular');
+  border: 1px solid map.get($color, 'shade-25');
+  border-radius: 4px 4px 0 0;
+  color: map.get($color, 'shade-75');
+  height: 44px;
+  min-width: 150px;
+  &:hover, &:focus{
+    border-color: map.get($color, 'shade-50');
+    color: map.get($color, 'shade-75');
+  }
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none; // убираем дефолнтные стрелочки
+
+  &__element{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none; // убираем дефолнтные стрелочки
+    display: inline-block;
+    font: map.get($font, 'upper');
+    text-transform: uppercase;
+    color: map.get($color, 'shade-100');
+    //min-width: 266px;
+    height: 44px;
+    border-left: 1px solid map.get($color, 'shade-25');
+    border-right: 1px solid map.get($color, 'shade-25');
+
+  }
 }
