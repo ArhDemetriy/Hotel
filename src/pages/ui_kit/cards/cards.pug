@@ -16,9 +16,26 @@ append main
 
   - const types = ['date','email','']
   each typ in types
-    +text_field({type:typ})
+    +text_field({block_class:'text_field-settings', type:typ})
 
   br
+  +text_field({
+    block_class:'text_field-datepicker-settings',
+    datepicker:{
+      inline:false,
+      field_free:false,
+      range:true,
+      range_divided_fields:true,
+  }})
+  br
+  +text_field({
+    block_class:'text_field-datepicker-settings',
+    datepicker:{
+      inline:false,
+      field_free:false,
+      range:true,
+      range_divided_fields:false,
+  }})
   br
 
   +rate({block_class:'rate-settings'})

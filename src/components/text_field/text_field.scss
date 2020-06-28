@@ -1,20 +1,33 @@
 @use 'sass:map';
 @import '../global_mixins/global_mixins';
 
-
-// -webkit-appearance: none;/* Chrome */
-// -moz-appearance: none;/* Firefox */
-// appearance: none;/* убираем дефолнтные стрелочки */
-
 .text_field{
-  font: map.get($font, 'regular');
-  border: 1px solid map.get($color, 'shade-25');
-  border-radius: 4px;
-  color: map.get($color, 'shade-25');
-  height: 44px;
-  min-width: 150px;
-  &:hover, &:focus{
-    border-color: map.get($color, 'shade-50');
-    color: map.get($color, 'shade-75');
+  &__input{
+    // -webkit-appearance: none;/* Chrome */
+    // -moz-appearance: none;/* Firefox */
+    // appearance: none;/* убираем дефолнтные стрелочки */
+    font: map.get($font, 'regular');
+    border: 1px solid map.get($color, 'shade-25');
+    border-radius: 4px;
+    color: map.get($color, 'shade-25');
+    height: 44px;
+    min-width: 150px;
+    &:hover, &:focus{
+      border-color: map.get($color, 'shade-50');
+      color: map.get($color, 'shade-75');
+    }
+  }
+  &-divided_date > &__input{
+    width: 150px;
+    // content: 'keyboard_arrow_down';
+  }
+  &-divided_date{
+    width: 320px;
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: flex-start;
+    align-items: center;
   }
 }
