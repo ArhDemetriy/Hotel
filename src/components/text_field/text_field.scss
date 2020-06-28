@@ -1,11 +1,6 @@
 @use 'sass:map';
 @import '../global_mixins/global_mixins';
 
-
-// -webkit-appearance: none;/* Chrome */
-// -moz-appearance: none;/* Firefox */
-// appearance: none;/* убираем дефолнтные стрелочки */
-
 .text_field{
   font: map.get($font, 'regular');
   border: 1px solid map.get($color, 'shade-25');

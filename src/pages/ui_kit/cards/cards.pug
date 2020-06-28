@@ -7,6 +7,8 @@ include ../../../components/toggle/toggle.pug
 include ../../../components/like/like.pug
 include ../../../components/pagination/pagination.pug
 include ../../../components/text_field/text_field.pug
+include ../../../components/dropdown/dropdown.pug
+
 
 append styles
   link(rel='stylesheet', href='cards.scss')
@@ -16,10 +18,15 @@ append main
 
   - const types = ['date','email','']
   each typ in types
-    +text_field({type:typ})
+    +text_field({type:typ, block_class:'text_field-settings'})
 
   br
   br
+  +dropdown({block_class:'dropdown-settings'})
+
+  br
+  br
+
 
   +rate({block_class:'rate-settings'})
 

@@ -1,0 +1,16 @@
+@use 'sass:map';
+@import '../global_mixins/global_mixins';
+
+.dropdown{
+  background-color: map.get($color, 'background');
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-content: space-evenly;
+  align-items: center;
+
+  -webkit-appearance: none;/* Chrome */
+  -moz-appearance: none;/* Firefox */
+  appearance: none;/* убираем дефолнтные стрелочки */
+}

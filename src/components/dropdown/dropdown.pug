@@ -1,0 +1,17 @@
+append styles
+  link(rel="stylesheet", href="../../../components/dropdown/dropdown.scss")
+append skripts__defer
+  script(defer src="../../../components/dropdown/dropdown.js")
+
+append mixins
+  mixin dropdown(options)
+    if !options
+      - options = {}
+    -
+      var classes = ''
+      classes += options.block_class ? ' ' + options.block_class : ''
+      classes += options.mod ? ' dropdown-' + options.mod : ''
+
+    select(class='dropdown ' + classes)
+      option(class='dropdown__element dropdown__element-0')='qwe'
+      option(class='dropdown__element dropdown__element-1')='qwe'
