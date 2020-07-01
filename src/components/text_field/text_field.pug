@@ -91,3 +91,20 @@ append mixins
           input.text_field__input()&attributes(attributes)
     else
       input.text_field__input()&attributes(attributes)
+  //-
+    label()
+      if options.text
+        span()=options.text
+      input()
+      if options.button
+        +button(button)
+      if options.dropdown
+        +dropdown
+          +counting({
+            name: 'bedroom',
+            title: 'спальни',
+          })
+          +counting({
+            name: 'bed',
+            title: 'кровати',
+          })
