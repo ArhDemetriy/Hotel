@@ -1,0 +1,21 @@
+@use 'sass:map';
+@import '../global_mixins/global_mixins';
+
+.counting{
+  $button_size: 30px;
+  min-width: 200px;
+  &__counter{
+    width: $button_size * 3 + 2px;
+    margin-left: $button_size * (2 / 3);
+    @extend %not_select;
+  }
+  &__button{
+    box-sizing: border-box;
+    width: $button_size;
+    height: $button_size;
+    border:1px solid map_get($color, 'shade-25');
+    color: map_get($color, 'shade-50');
+    border-radius: $button_size / 2;
+    @extend %pointer;
+  }
+}

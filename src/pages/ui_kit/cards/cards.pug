@@ -7,12 +7,38 @@ include ../../../components/toggle/toggle.pug
 include ../../../components/like/like.pug
 include ../../../components/pagination/pagination.pug
 include ../../../components/text_field/text_field.pug
+//- tests
+include ../../../components/counting/counting.pug
 
 append styles
   link(rel='stylesheet', href='cards.scss')
 
 append header
 append main
+
+  +counting({
+      name: 'bed',
+      title: 'кровати',
+    })
+
+  br
+  br
+
+  br
+  br
+
+  br
+  br
+
+  br
+  br
+
+  br
+  br
+
+
+
+
 
   - const types = ['date','email','']
   each typ in types
