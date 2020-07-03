@@ -1,0 +1,25 @@
+include ../counting/counting.pug
+
+append styles
+  link(rel="stylesheet", href="../../../components/dropdown/dropdown.scss")
+append skripts__defer
+  script(defer src="../../../components/dropdown/dropdown.js")
+
+append mixins
+  mixin dropdown(options)
+    -
+      if (!options)
+        options = {};
+
+      let classes = ''
+      classes += options.block_class ? ' ' + options.block_class : ''
+      classes += options.mod ? ' dropdown-' + options.mod : ''
+
+      if (!options.items)
+        options.items = [];
+
+      var attributes = {};
+
+    div(class=`dropdown ${classes}`)&attributes(attributes)
+      each item in options.items
+        +counting(item)

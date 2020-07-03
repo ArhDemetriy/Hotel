@@ -1,0 +1,18 @@
+@use 'sass:map';
+@import '../global_mixins/global_mixins';
+
+.dropdown{
+  display: none;
+  flex-direction: column;
+
+  border: 1px solid map.get($color, 'shade-25');
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+
+  padding: 7px 7px 7px 15px ;
+
+  &:hover,&-visible{
+    display: inline-flex;
+  }
+
+}

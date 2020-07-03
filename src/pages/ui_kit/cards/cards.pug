@@ -7,8 +7,7 @@ include ../../../components/toggle/toggle.pug
 include ../../../components/like/like.pug
 include ../../../components/pagination/pagination.pug
 include ../../../components/text_field/text_field.pug
-//- tests
-include ../../../components/counting/counting.pug
+include ../../../components/dropdown/dropdown.pug
 
 append styles
   link(rel='stylesheet', href='cards.scss')
@@ -16,17 +15,26 @@ append styles
 append header
 append main
 
-  +counting({
-      name: 'bed',
-      title: 'кровати',
-    })
+  +dropdown({
+    mod:'visible',
+    items: [
+      {
+        name: 'bedroom',
+        title: 'спальни',
+      },
+      {
+        name: 'bed',
+        title: 'кровати',
+      },
+      {
+        name: 'washroom',
+        title: 'ванные комнаты',
+      },
+    ],
+  })
 
   br
   br
-
-  br
-  br
-
   br
   br
 
@@ -63,6 +71,11 @@ append main
       range_divided_fields:false,
   }})
   br
+  +dropdown({block_class:'dropdown-settings'})
+
+  br
+  br
+
 
   +rate({block_class:'rate-settings'})
 
