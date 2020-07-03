@@ -9,6 +9,8 @@ include ../../../components/pagination/pagination.pug
 include ../../../components/text_field/text_field.pug
 include ../../../components/dropdown/dropdown.pug
 
+//- tests
+include ../../../components/counting/counting.pug
 
 append styles
   link(rel='stylesheet', href='cards.scss')
@@ -16,11 +18,52 @@ append styles
 append header
 append main
 
-  - const types = ['date','email','']
-  each typ in types
-    +text_field({type:typ, block_class:'text_field-settings'})
+  +counting({
+      name: 'bed',
+      title: 'кровати',
+    })
 
   br
+  br
+
+  br
+  br
+
+  br
+  br
+
+  br
+  br
+
+  br
+  br
+
+
+
+
+
+  - const types = ['date','email','']
+  each typ in types
+    +text_field({block_class:'text_field-settings', type:typ})
+
+  br
+  +text_field({
+    block_class:'text_field-datepicker-settings',
+    datepicker:{
+      inline:false,
+      field_free:false,
+      range:true,
+      range_divided_fields:true,
+  }})
+  br
+  +text_field({
+    block_class:'text_field-datepicker-settings',
+    datepicker:{
+      inline:false,
+      field_free:false,
+      range:true,
+      range_divided_fields:false,
+  }})
   br
   +dropdown({block_class:'dropdown-settings'})
 

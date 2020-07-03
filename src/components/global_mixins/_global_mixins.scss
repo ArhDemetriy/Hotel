@@ -64,3 +64,16 @@ $timer: (
   @extend %not_select;
   @extend %pointer;
 }
+%flex{
+  display: inline-flex;
+  align-items: center;
+  align-content: center;
+}
+%flex-justify-center{
+  @extend %flex;
+  justify-content: center;
+}
+%flex-justify-between{
+  @extend %flex;
+  justify-content: space-between;
+}
