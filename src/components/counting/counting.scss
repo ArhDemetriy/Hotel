@@ -12,18 +12,18 @@
     @extend %not_select;
     @extend %flex-justify-between;
   }
-  &__button{
+  &__button {
     box-sizing: border-box;
     width: $button_size;
     height: $button_size;
-    border:1px solid map_get($color, 'shade-50');
-    color: map_get($color, 'shade-75');
+    border:1px solid map_get($color, 'shade-25');
+    color: map_get($color, 'shade-50');
     border-radius: $button_size / 2;
     @extend %pointer;
     @extend %flex-justify-center;
     &-deactive{
-      border-color: map_get($color, 'shade-25');
-      color: map_get($color, 'shade-25');
+      border-color: map_get($color, 'shade-5');
+      color: map_get($color, 'shade-5');
     }
   }
 }

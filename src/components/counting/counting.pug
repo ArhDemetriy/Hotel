@@ -8,11 +8,16 @@ append mixins
     if !options
       - options = {}
     -
-      var classes = ''
+      let classes = ''
       classes += options.block_class ? ' ' + options.block_class : ''
       classes += options.mod ? ' counting-' + options.mod : ''
 
-    div(class='counting font-upper', data-name=options.name ? options.name: 'item', data-count=0)
+      var attributes = {};
+      // if (options.max_count && isFinite(options.max_count) && options.max_count > 0) {
+      //   attributes['data-max-count'] = Number(options.max_count);
+      // }
+
+    div(class=`counting font-upper ${classes}`, data-name=options.name ? options.name: 'item', data-count=0)&attributes(attributes)
       span(class='counting__title')=(options.title ? options.title : 'items')
       span(class='counting__counter')
         span(class='counting__button counting__button-deactive counting__dec font-regular')='-'
