@@ -1,3 +1,5 @@
+include ../dropdown/dropdown.pug
+
 append styles
   link(rel="stylesheet", type="text/css", href="../../../components/text_field/datepicker__scss.scss")
   link(rel="stylesheet", type="text/css", href="../../../components/text_field/text_field.scss")
@@ -89,6 +91,28 @@ append mixins
         div.text_field-divided_date(class=classes)
           input.text_field__input(class=alt_class, placeholder=placeholder)
           input.text_field__input()&attributes(attributes)
+    else if options.type == 'dropdown'
+      - attributes.type = 'text';
+      label(class='text_field-dropdown')
+        span()='title'
+        input.text_field__input()&attributes(attributes)
+        +dropdown({
+          items: [
+            {
+              name: 'bedroom',
+              title: 'спальни',
+            },
+            {
+              name: 'bed',
+              title: 'кровати',
+            },
+            {
+              name: 'washroom',
+              title: 'ванные комнаты',
+            },
+          ],
+        })
+
     else
       input.text_field__input()&attributes(attributes)
   //-

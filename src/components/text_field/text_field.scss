@@ -30,4 +30,14 @@
     align-content: flex-start;
     align-items: center;
   }
+  &-dropdown{
+    &:hover,&:focus{
+      & > .dropdown{
+        display: inline-flex;
+      }
+    }
+    & .text_field__input:focus ~ .dropdown{
+      display: inline-flex;
+    }
+  }
 }
