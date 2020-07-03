@@ -68,13 +68,12 @@ $timer: (
   display: inline-flex;
   align-items: center;
   align-content: center;
-  &-justify-center{
-    justify-content: center;
-  }
-  &-justify-between{
-    justify-content: space-between;
-  }
-  &-wrap{
-    flex-wrap: wrap;
-  }
+}
+%flex-justify-center{
+  @extend %flex;
+  justify-content: center;
+}
+%flex-justify-between{
+  @extend %flex;
+  justify-content: space-between;
 }
