@@ -9,26 +9,32 @@ include ../../../components/pagination/pagination.pug
 include ../../../components/text_field/text_field.pug
 include ../../../components/dropdown/dropdown.pug
 
-//- tests
-include ../../../components/counting/counting.pug
-
 append styles
   link(rel='stylesheet', href='cards.scss')
 
 append header
 append main
 
-  +counting({
-      name: 'bed',
-      title: 'кровати',
-    })
+  +dropdown({
+    mod:'visible',
+    items: [
+      {
+        name: 'bedroom',
+        title: 'спальни',
+      },
+      {
+        name: 'bed',
+        title: 'кровати',
+      },
+      {
+        name: 'washroom',
+        title: 'ванные комнаты',
+      },
+    ],
+  })
 
   br
   br
-
-  br
-  br
-
   br
   br
 

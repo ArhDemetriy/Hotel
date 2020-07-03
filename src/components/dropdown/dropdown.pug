@@ -1,3 +1,5 @@
+include ../counting/counting.pug
+
 append styles
   link(rel="stylesheet", href="../../../components/dropdown/dropdown.scss")
 append skripts__defer
@@ -5,14 +7,19 @@ append skripts__defer
 
 append mixins
   mixin dropdown(options)
-    if !options
-      - options = {}
     -
-      var classes = ''
+      if (!options)
+        options = {};
+
+      let classes = ''
       classes += options.block_class ? ' ' + options.block_class : ''
       classes += options.mod ? ' dropdown-' + options.mod : ''
 
-    select(class='dropdown ' + classes)
-      option(class='dropdown__element dropdown__element-0')='спальни'
-      option(class='dropdown__element dropdown__element-1')='кровати'
-      option(class='dropdown__element dropdown__element-1')='ванные комнаты'
+      if (!options.items)
+        options.items = [];
+
+      var attributes = {};
+
+    div(class=`dropdown ${classes}`)&attributes(attributes)
+      each item in options.items
+        +counting(item)
