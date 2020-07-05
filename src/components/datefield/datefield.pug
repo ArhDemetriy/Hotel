@@ -1,3 +1,5 @@
+include ../text_field/text_field.pug
+
 append styles
   link(rel="stylesheet", href="../../../components/datefield/datefield.scss")
 append skripts__defer
@@ -15,4 +17,11 @@ append mixins
 
       var attributes = {};
 
-    div(class=`datefield ${classes}`)&attributes(attributes)
+    if options.field_free
+      div()&attributes(attributes)
+    else if !options.range_divided_fields
+      +text_field({placeholder:'placeholder'})
+    else
+      div(class=classes)
+        +text_field({class:'alt_class', placeholder:'placeholder'})
+        +text_field()

@@ -7,12 +7,22 @@ include ../../../components/toggle/toggle.pug
 include ../../../components/like/like.pug
 include ../../../components/pagination/pagination.pug
 include ../../../components/text_field/text_field.pug
+include ../../../components/datefield/datefield.pug
 
 append styles
   link(rel='stylesheet', href='cards.scss')
 
 append header
 append main
+
+  +datefield()
+    br
+    br
+    br
+    br
+
+
+
 
   - const types = ['date','email','','dropdown',]
   each typ in types
