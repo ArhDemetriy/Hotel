@@ -1,0 +1,18 @@
+append styles
+  link(rel="stylesheet", href="../../../components/datefield/datefield.scss")
+append skripts__defer
+  script(defer src="../../../components/datefield/datefield.js")
+
+append mixins
+  mixin datefield(options)
+    -
+      if (!options)
+      options = {}
+
+      let classes = ''
+      classes += options.block_class ? ' ' + options.block_class : ''
+      classes += options.mod ? ' datefield-' + options.mod : ''
+
+      var attributes = {};
+
+    div(class=`datefield ${classes}`)&attributes(attributes)
