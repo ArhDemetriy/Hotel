@@ -1,7 +1,7 @@
 @use 'sass:map';
 @import '../global_mixins/global_mixins';
 
-.text_field{
+.textfield{
     font: map.get($font, 'regular');
     border: 1px solid map.get($color, 'shade-25');
     border-radius: 4px;

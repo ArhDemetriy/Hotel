@@ -1,19 +1,19 @@
 append styles
-  link(rel="stylesheet", type="text/css", href="../../../components/text_field/text_field.scss")
+  link(rel="stylesheet", type="text/css", href="../../../components/textfield/textfield.scss")
 
 append skripts__defer
-  script(defer src="../../../components/text_field/text_field.js" type="text/javascript")
+  script(defer src="../../../components/textfield/textfield.js" type="text/javascript")
 
 append mixins
-  mixin text_field(options)
+  mixin textfield(options)
     -
       if (!options)
         options = {}
     -
       options.class = options.class ? options.class : '';
-      options.class += ` text_field `;
+      options.class += ` textfield `;
       options.class += options.block_class ? ` ${options.block_class} ` : '';
-      options.class += options.mod ? ` text_field-${options.mod} ` : '';
+      options.class += options.mod ? ` textfield-${options.mod} ` : '';
       if (!options.placeholder && (options.mod == 'masked' || options.mod == 'Masked'))
         options.placeholder = 'SET placeholder';
       delete options.mod;
