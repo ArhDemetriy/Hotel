@@ -16,41 +16,13 @@ append header
 append main
 
   +datefield()
-    br
-    br
-    br
-    br
-
-
-
-
-  - const types = ['date','email','','dropdown',]
-  each typ in types
-    +text_field({block_class:'text_field-settings', type:typ})
-    br
-    br
 
   br
-  +text_field({
-    block_class:'text_field-datepicker-settings',
-    datepicker:{
-      inline:false,
-      field_free:false,
-      range:true,
-      range_divided_fields:true,
-  }})
   br
-  +text_field({
-    block_class:'text_field-datepicker-settings',
-    datepicker:{
-      inline:false,
-      field_free:false,
-      range:true,
-      range_divided_fields:false,
-  }})
-  br
-  +dropdown({block_class:'dropdown-settings'})
 
+  +text_field()
+
+  br
   br
   br
 

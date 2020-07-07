@@ -2,10 +2,6 @@
 @import '../global_mixins/global_mixins';
 
 .text_field{
-  &__input{
-    // -webkit-appearance: none;/* Chrome */
-    // -moz-appearance: none;/* Firefox */
-    // appearance: none;/* убираем дефолнтные стрелочки */
     font: map.get($font, 'regular');
     border: 1px solid map.get($color, 'shade-25');
     border-radius: 4px;
@@ -16,28 +12,8 @@
       border-color: map.get($color, 'shade-50');
       color: map.get($color, 'shade-75');
     }
-  }
-  &-divided_date > &__input{
-    width: 150px;
-    // content: 'keyboard_arrow_down';
-  }
-  &-divided_date{
-    width: 320px;
-    display: inline-flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-content: flex-start;
-    align-items: center;
-  }
   &-dropdown{
-    &:hover,&:focus{
-      & > .dropdown{
-        display: inline-flex;
-      }
-    }
-    & .text_field__input:focus ~ .dropdown{
-      display: inline-flex;
-    }
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
   }
 }
