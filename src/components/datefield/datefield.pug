@@ -1,8 +1,10 @@
-include ../text_field/text_field.pug
+include ../textfield/textfield.pug
 
 append styles
+  link(rel="stylesheet", type="text/css", href="../../../components/datefield/datepicker__scss.scss")
   link(rel="stylesheet", href="../../../components/datefield/datefield.scss")
 append skripts__defer
+  script(defer src="../../../components/datefield/datepicker.js" type="text/javascript")
   script(defer src="../../../components/datefield/datefield.js")
 
 append mixins
@@ -68,12 +70,12 @@ append mixins
     if field_free
       div()&attributes(options)
     else if !options['data-range-divided-fields']
-      +text_field(options)
+      +textfield(options)
     else
       div(class='datefield datefield-range_divided_fields')
-        +text_field({
+        +textfield({
           placeholder: options.placeholder,
           type: options.type,
           class: `datefield__input-mini ${alt_class}`,
         })
-        +text_field(options)
+        +textfield(options)
