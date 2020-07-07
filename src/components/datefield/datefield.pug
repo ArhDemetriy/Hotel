@@ -1,8 +1,10 @@
 include ../text_field/text_field.pug
 
 append styles
+  link(rel="stylesheet", type="text/css", href="../../../components/datefield/datepicker__scss.scss")
   link(rel="stylesheet", href="../../../components/datefield/datefield.scss")
 append skripts__defer
+  script(defer src="../../../components/datefield/datepicker.js" type="text/javascript")
   script(defer src="../../../components/datefield/datefield.js")
 
 append mixins
