@@ -7,7 +7,7 @@ include ../../../components/toggle/toggle.pug
 include ../../../components/like/like.pug
 include ../../../components/pagination/pagination.pug
 include ../../../components/text_field/text_field.pug
-include ../../../components/dropdown/dropdown.pug
+include ../../../components/datefield/datefield.pug
 
 append styles
   link(rel='stylesheet', href='cards.scss')
@@ -15,42 +15,20 @@ append styles
 append header
 append main
 
-  +dropdown({
-    mod:'visible',
-    items: [
-      {
-        name: 'bedroom',
-        title: 'спальни',
-      },
-      {
-        name: 'bed',
-        title: 'кровати',
-      },
-      {
-        name: 'washroom',
-        title: 'ванные комнаты',
-      },
-    ],
-  })
-
-  br
-  br
-  br
-  br
-
-  br
-  br
-
-  br
-  br
+  +datefield()
+    br
+    br
+    br
+    br
 
 
 
 
-
-  - const types = ['date','email','']
+  - const types = ['date','email','','dropdown',]
   each typ in types
     +text_field({block_class:'text_field-settings', type:typ})
+    br
+    br
 
   br
   +text_field({
