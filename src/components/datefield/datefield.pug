@@ -34,6 +34,9 @@ append mixins
 
         if (options.range_divided_fields || options['data-range-divided-fields'] === true || options['data-range-divided-fields'] == 'true'){
           options['data-range-divided-fields'] = true;
+          attributes['data-position'] = 'bottom right';
+          options['data-alt-field'] = `.${block_class} > .${alt_class}`;
+          options.class +=' datefield__input-mini ';
           delete options.range_divided_fields;
         } else {
           delete options['data-range-divided-fields'];
@@ -52,12 +55,15 @@ append mixins
         options.type = 'text';
       }
 
+
     -
       if (!options['data-range-divided-fields'])
         options.class +=' datefield datepicker-here ';
 
+
       const field_free = options.field_free;
       delete options.field_free;
+      const alt_class = 'datefield__alt_field';
 
     if field_free
       div()&attributes(options)
@@ -68,9 +74,6 @@ append mixins
         +text_field({
           placeholder: options.placeholder,
           type: options.type,
-          class: 'datefield__input-mini datefield__alt_field',
+          class: `datefield__input-mini ${alt_class}`,
         })
-        -
-          options['data-alt-field'] = `.${block_class} > .datefield__alt_field`;
-          options.class +=' datefield__input-mini ';
         +text_field(options)
