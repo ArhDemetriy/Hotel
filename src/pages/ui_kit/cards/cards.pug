@@ -1,4 +1,4 @@
-extends ../base/base.pug
+extends ../../base/base.pug
 include ../../../components/button/button.pug
 include ../../../components/rate/rate.pug
 include ../../../components/checkbox/checkbox.pug
@@ -13,6 +13,8 @@ append styles
   link(rel='stylesheet', href='cards.scss')
 
 append header
+block title
+  title='Cards'
 append main
 
   +datefield()
