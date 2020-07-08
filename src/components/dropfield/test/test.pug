@@ -1,0 +1,14 @@
+extends ../../../pages/base/base_test.pug
+
+include ../dropfield.pug
+
+block header
+block title
+  title='test dropfield'
+append main
+  mixin test(options)
+    +base_test__test('dropfield',options)
+
+  +test()
+  +test({})
+  +test({title: 'asd'})
