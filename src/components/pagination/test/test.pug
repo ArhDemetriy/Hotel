@@ -1,37 +1,37 @@
 extends ../../../pages/base/base.pug
 
-include ../counting.pug
+include ../pagination.pug
 
 block header
 block title
-  title='test counting'
+  title='test pagination'
 append main
   span='без параметров'
   br
-  +counting()
+  +pagination()
   br
   br
 
   span='с пустым объектом'
   br
-  +counting({})
+  +pagination({})
   br
   br
 
   span='с пустым объектом'
   br
-  +counting({})
+  +pagination({})
   br
   br
 
   span='с пустым объектом'
   br
-  +counting({})
+  +pagination({})
   br
   br
 
   span='с пустым объектом'
   br
-  +counting({})
+  +pagination({})
   br
   br

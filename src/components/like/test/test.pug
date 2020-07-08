@@ -1,37 +1,37 @@
 extends ../../../pages/base/base.pug
 
-include ../counting.pug
+include ../like.pug
 
 block header
 block title
-  title='test counting'
+  title='test like'
 append main
   span='без параметров'
   br
-  +counting()
+  +like()
   br
   br
 
   span='с пустым объектом'
   br
-  +counting({})
+  +like({})
   br
   br
 
   span='с пустым объектом'
   br
-  +counting({})
+  +like({})
   br
   br
 
   span='с пустым объектом'
   br
-  +counting({})
+  +like({})
   br
   br
 
   span='с пустым объектом'
   br
-  +counting({})
+  +like({})
   br
   br

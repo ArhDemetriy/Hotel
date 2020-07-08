@@ -1,37 +1,37 @@
 extends ../../../pages/base/base.pug
 
-include ../counting.pug
+include ../radio.pug
 
 block header
 block title
-  title='test counting'
+  title='test radio'
 append main
   span='без параметров'
   br
-  +counting()
+  +radio()
   br
   br
 
   span='с пустым объектом'
   br
-  +counting({})
+  +radio({})
   br
   br
 
   span='с пустым объектом'
   br
-  +counting({})
+  +radio({})
   br
   br
 
   span='с пустым объектом'
   br
-  +counting({})
+  +radio({})
   br
   br
 
   span='с пустым объектом'
   br
-  +counting({})
+  +radio({})
   br
   br

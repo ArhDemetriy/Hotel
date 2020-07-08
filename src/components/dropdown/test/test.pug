@@ -1,37 +1,37 @@
 extends ../../../pages/base/base.pug
 
-include ../counting.pug
+include ../dropdown.pug
 
 block header
 block title
-  title='test counting'
+  title='test dropdown'
 append main
   span='без параметров'
   br
-  +counting()
+  +dropdown()
   br
   br
 
   span='с пустым объектом'
   br
-  +counting({})
+  +dropdown({})
   br
   br
 
   span='с пустым объектом'
   br
-  +counting({})
+  +dropdown({})
   br
   br
 
   span='с пустым объектом'
   br
-  +counting({})
+  +dropdown({})
   br
   br
 
   span='с пустым объектом'
   br
-  +counting({})
+  +dropdown({})
   br
   br

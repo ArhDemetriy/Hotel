@@ -1,37 +1,37 @@
 extends ../../../pages/base/base.pug
 
-include ../counting.pug
+include ../checkbox.pug
 
 block header
 block title
-  title='test counting'
+  title='test checkbox'
 append main
   span='без параметров'
   br
-  +counting()
+  +checkbox()
   br
   br
 
   span='с пустым объектом'
   br
-  +counting({})
+  +checkbox({})
   br
   br
 
   span='с пустым объектом'
   br
-  +counting({})
+  +checkbox({})
   br
   br
 
   span='с пустым объектом'
   br
-  +counting({})
+  +checkbox({})
   br
   br
 
   span='с пустым объектом'
   br
-  +counting({})
+  +checkbox({})
   br
   br
