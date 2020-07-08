@@ -1,0 +1,46 @@
+block mixins
+  mixin base_test__test(mix,options)
+    -
+      let caption = options ? '' : 'без параметров';
+      for (let item in options)
+        caption += `\n ${item.toString()} : ${options[item].toString()}; `;
+      if (!caption)
+        caption = 'пустой объект';
+
+    span=caption
+    br
+    +#{mix}(options)
+    br
+    br
+
+doctype html
+html(lang='ru-RU' dir="ltr")
+  head
+    meta(http-equiv="Content-type" content="text/html; charset=UTF-8")
+    meta(http-equiv="Content-language" content="ru-RU")
+    meta(charset = 'utf-8')
+    meta(name="author" content="ArhDemetriy")
+
+    block description
+    block title
+
+    block skripts__inline_before_load
+    block skripts__sinc_before_load
+      script(defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" type="text/javascript")
+    block skripts__defer
+
+    block styles
+      link(rel='stylesheet', href='../../../pages/base/variables.scss')
+      link(rel='stylesheet', href='../../../pages/base/style.scss')
+      link(rel='stylesheet', href='../../../pages/base/base.scss')
+      link(rel='stylesheet', href='https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap')
+      link(rel='stylesheet', href='https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap')
+      link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Material+Icons+Outlined')
+
+  body
+    header
+      block header
+      block skripts__asinc_after_load_header
+    main
+      block main
+      block skripts__asinc_after_load_main

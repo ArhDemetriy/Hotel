@@ -1,0 +1,13 @@
+extends ../../../pages/base/base_test.pug
+
+include ../radio.pug
+
+block header
+block title
+  title='test radio'
+append main
+  mixin test(options)
+    +base_test__test('radio',options)
+
+  +test()
+  +test({})

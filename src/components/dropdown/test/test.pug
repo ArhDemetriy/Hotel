@@ -1,0 +1,13 @@
+extends ../../../pages/base/base_test.pug
+
+include ../dropdown.pug
+
+block header
+block title
+  title='test dropdown'
+append main
+  mixin test(options)
+    +base_test__test('dropdown',options)
+
+  +test()
+  +test({})

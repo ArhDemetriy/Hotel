@@ -1,0 +1,13 @@
+extends ../../../pages/base/base_test.pug
+
+include ../button.pug
+
+block header
+block title
+  title='test button'
+append main
+  mixin test(options)
+    +base_test__test('button',options)
+
+  +test()
+  +test({})

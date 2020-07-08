@@ -5,6 +5,24 @@ block title
   title='tests hub'
 append main
   nav
-    a(href='../../../components/textfield/test/test.pug')='textfield'
-    br
-    a(href='../../../components/counting/test/test.pug')='counting'
+    mixin test_linc(name)
+      if name
+        a(href=`../../../components/${name}/test/test.pug`)=name
+        br
+    -
+      const names = [
+        'textfield',
+        'datefield',
+        'counting',
+        'dropdown',
+        'radio',
+        'checkbox',
+        'toggle',
+        'like',
+        'rate',
+        'button',
+        'pagination',
+        '',
+        ]
+    each name in names
+      +test_linc(name)
