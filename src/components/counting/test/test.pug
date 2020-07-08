@@ -1,0 +1,19 @@
+extends ../../../pages/base/base.pug
+
+include ../counting.pug
+
+block header
+block title
+  title='test counting'
+append main
+  span='без параметров'
+  br
+  +counting()
+  br
+  br
+
+  span='с пустым объектом'
+  br
+  +counting({})
+  br
+  br
