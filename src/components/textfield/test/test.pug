@@ -1,13 +1,14 @@
-extends ../../../pages/base/base.pug
+extends ../../../pages/base/base_test.pug
 
 include ../textfield.pug
 
-block header
+append mixins
+  mixin test(options)
+    +base_test__test('textfield',options)
+
 block title
   title='test textfield'
 append main
-  mixin test(options)
-    +base_test__test('textfield',options)
 
   +test()
   +test({})
