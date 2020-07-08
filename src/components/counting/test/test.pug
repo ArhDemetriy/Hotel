@@ -1,4 +1,4 @@
-extends ../../../pages/base/base.pug
+extends ../../../pages/base/base_test.pug
 
 include ../counting.pug
 
@@ -6,32 +6,9 @@ block header
 block title
   title='test counting'
 append main
-  span='без параметров'
-  br
-  +counting()
-  br
-  br
+  mixin test(options)
+    +base_test__test('counting',options)
 
-  span='с пустым объектом'
-  br
-  +counting({})
-  br
-  br
-
-  span='с пустым объектом'
-  br
-  +counting({})
-  br
-  br
-
-  span='с пустым объектом'
-  br
-  +counting({})
-  br
-  br
-
-  span='с пустым объектом'
-  br
-  +counting({})
-  br
-  br
+  +test()
+  +test({})
+  +test({title: 'asd'})
