@@ -1,4 +1,4 @@
-extends ../../../pages/base/base.pug
+extends ../../../pages/base/base_test.pug
 
 include ../dropdown.pug
 
@@ -6,32 +6,8 @@ block header
 block title
   title='test dropdown'
 append main
-  span='без параметров'
-  br
-  +dropdown()
-  br
-  br
+  mixin test(options)
+    +base_test__test('dropdown',options)
 
-  span='с пустым объектом'
-  br
-  +dropdown({})
-  br
-  br
-
-  span='с пустым объектом'
-  br
-  +dropdown({})
-  br
-  br
-
-  span='с пустым объектом'
-  br
-  +dropdown({})
-  br
-  br
-
-  span='с пустым объектом'
-  br
-  +dropdown({})
-  br
-  br
+  +test()
+  +test({})

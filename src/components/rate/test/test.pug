@@ -1,4 +1,4 @@
-extends ../../../pages/base/base.pug
+extends ../../../pages/base/base_test.pug
 
 include ../rate.pug
 
@@ -6,32 +6,8 @@ block header
 block title
   title='test rate'
 append main
-  span='без параметров'
-  br
-  +rate()
-  br
-  br
+  mixin test(options)
+    +base_test__test('rate',options)
 
-  span='с пустым объектом'
-  br
-  +rate({})
-  br
-  br
-
-  span='с пустым объектом'
-  br
-  +rate({})
-  br
-  br
-
-  span='с пустым объектом'
-  br
-  +rate({})
-  br
-  br
-
-  span='с пустым объектом'
-  br
-  +rate({})
-  br
-  br
+  +test()
+  +test({})

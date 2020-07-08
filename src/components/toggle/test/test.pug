@@ -1,4 +1,4 @@
-extends ../../../pages/base/base.pug
+extends ../../../pages/base/base_test.pug
 
 include ../toggle.pug
 
@@ -6,32 +6,8 @@ block header
 block title
   title='test toggle'
 append main
-  span='без параметров'
-  br
-  +toggle()
-  br
-  br
+  mixin test(options)
+    +base_test__test('toggle',options)
 
-  span='с пустым объектом'
-  br
-  +toggle({})
-  br
-  br
-
-  span='с пустым объектом'
-  br
-  +toggle({})
-  br
-  br
-
-  span='с пустым объектом'
-  br
-  +toggle({})
-  br
-  br
-
-  span='с пустым объектом'
-  br
-  +toggle({})
-  br
-  br
+  +test()
+  +test({})

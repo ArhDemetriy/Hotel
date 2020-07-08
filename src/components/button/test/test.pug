@@ -1,4 +1,4 @@
-extends ../../../pages/base/base.pug
+extends ../../../pages/base/base_test.pug
 
 include ../button.pug
 
@@ -6,32 +6,8 @@ block header
 block title
   title='test button'
 append main
-  span='без параметров'
-  br
-  +button()
-  br
-  br
+  mixin test(options)
+    +base_test__test('button',options)
 
-  span='с пустым объектом'
-  br
-  +button({})
-  br
-  br
-
-  span='с пустым объектом'
-  br
-  +button({})
-  br
-  br
-
-  span='с пустым объектом'
-  br
-  +button({})
-  br
-  br
-
-  span='с пустым объектом'
-  br
-  +button({})
-  br
-  br
+  +test()
+  +test({})

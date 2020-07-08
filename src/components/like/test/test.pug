@@ -1,4 +1,4 @@
-extends ../../../pages/base/base.pug
+extends ../../../pages/base/base_test.pug
 
 include ../like.pug
 
@@ -6,32 +6,8 @@ block header
 block title
   title='test like'
 append main
-  span='без параметров'
-  br
-  +like()
-  br
-  br
+  mixin test(options)
+    +base_test__test('like',options)
 
-  span='с пустым объектом'
-  br
-  +like({})
-  br
-  br
-
-  span='с пустым объектом'
-  br
-  +like({})
-  br
-  br
-
-  span='с пустым объектом'
-  br
-  +like({})
-  br
-  br
-
-  span='с пустым объектом'
-  br
-  +like({})
-  br
-  br
+  +test()
+  +test({})
