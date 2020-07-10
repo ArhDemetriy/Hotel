@@ -1,20 +1,31 @@
+include ../textfield/textfield.pug
+include ../dropdown/dropdown.pug
+
 append styles
   link(rel='stylesheet', href='../../../components/dropfield/dropfield.scss')
 append skripts__defer
   script(type='module', src='../../../components/dropfield/dropfield.js')
 
 append mixins
-  mixin dropfield(options)
+  mixin dropfield(options = {},items = [])
     -
-      if (!options)
-        options = {}
+      if (!options.items)
+        options.items = [];
+      items = options.items.concat(items);
+      delete options.items;
     -
       options.class = options.class ? options.class : '';
       options.class += ` dropfield `;
       options.class += options.mod ? ` dropfield-${options.mod} ` : '';
+      const mod = options.mod ? options.mod : '';
       delete options.mod;
       options.class += options.block_class ? ` ${options.block_class} ` : '';
       const block_class = options.block_class ? options.block_class : '';
       delete options.block_class;
 
-    div()&attributes(options)
+    label()&attributes(options)
+      +textfield({mod:'dropdown'})
+      +dropdown({
+        items: items,
+        mod: 'visible',
+      })

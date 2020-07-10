@@ -2,6 +2,9 @@
 @import '../global_mixins/global_mixins';
 
 .dropdown{
+  &__container{
+    position: relative;
+  }
   position: absolute;
   display: none;
   flex-direction: column;

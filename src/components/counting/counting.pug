@@ -12,14 +12,9 @@ append mixins
       classes += options.block_class ? ' ' + options.block_class : ''
       classes += options.mod ? ' counting-' + options.mod : ''
 
-      var attributes = {};
-      // if (options.max_count && isFinite(options.max_count) && options.max_count > 0) {
-      //   attributes['data-max-count'] = Number(options.max_count);
-      // }
-
-    div(class=`counting font-upper ${classes}`, data-name=options.name ? options.name: 'item', data-count=0)&attributes(attributes)
+    div(class=`counting font-upper ${classes}`, data-name=options.name ? options.name: 'item', data-count=0)
       span(class='counting__title')=(options.title ? options.title : 'items')
       span(class='counting__counter')
-        span(class='counting__button counting__button-deactive counting__dec font-regular')='-'
-        span(class='counting__iterator')='0'
-        span(class='counting__button counting__inc font-regular')='+'
+        button(class='counting__button counting__button-deactive counting__dec font-regular')='-'
+        input(class='counting__iterator', type='number', value=0)
+        button(class='counting__button counting__inc font-regular')='+'
