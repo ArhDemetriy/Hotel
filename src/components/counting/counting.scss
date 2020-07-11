@@ -5,13 +5,28 @@
   $button_size: 30px;
   min-width: 200px;
   @extend %flex-justify-between;
+  background-color: map_get($color, 'background');
   &__counter{
-    width: $button_size * 3 + 2px;
     margin-left: $button_size * (2 / 3);
     @extend %not_select;
     @extend %flex-justify-between;
   }
+  &__iterator{
+    -moz-appearance: textfield ;
+    -webkit-appearance: textfield ;
+    appearance: textfield ;
+
+    border: none;
+    background-color: map_get($color, 'background');
+    text-align: center;
+  }
   &__button {
+    -moz-appearance: none ;
+    -webkit-appearance: none ;
+    appearance: none ;
+    background-color: map_get($color, 'background');
+
+
     box-sizing: border-box;
     width: $button_size;
     height: $button_size;
@@ -20,9 +35,9 @@
     border-radius: $button_size / 2;
     @extend %pointer;
     @extend %flex-justify-center;
-    &-deactive{
+    &:disabled{
       border-color: map_get($color, 'shade-5');
-      color: map_get($color, 'shade-5');
+      color: map_get($color, 'shade-25');
     }
   }
 }
