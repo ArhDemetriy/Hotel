@@ -19,7 +19,7 @@ append mixins
         options.items = [];
 
       var attributes = {};
-
-    div(class=`dropdown ${classes}`)&attributes(attributes)
-      each item in options.items
-        +counting(item)
+    div(class=`dropdown__container`)
+      div(class=`dropdown ${classes}`)&attributes(attributes)
+        each item in options.items
+          +counting(item)
