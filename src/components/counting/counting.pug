@@ -15,6 +15,6 @@ append mixins
     div(class=`counting font-upper ${classes}`)
       span(class='counting__title')=(options.title ? options.title : 'items')
       div(class='counting__counter')
-        button(class='counting__button counting__dec font-regular')='-'
+        button(class='counting__button counting__dec font-regular', type='button')='-'
         input(class='counting__iterator font-upper', name=options.name ? options.name : 'item', type='number', value=0 , min=0, size=1)
-        button(class='counting__button counting__inc font-regular')='+'
+        button(class='counting__button counting__inc font-regular', type='button')='+'
