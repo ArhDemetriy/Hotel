@@ -12,9 +12,9 @@ append mixins
       classes += options.block_class ? ' ' + options.block_class : ''
       classes += options.mod ? ' counting-' + options.mod : ''
 
-    div(class=`counting font-upper ${classes}`, data-name=options.name ? options.name: 'item', data-count=0)
+    div(class=`counting font-upper ${classes}`)
       span(class='counting__title')=(options.title ? options.title : 'items')
-      span(class='counting__counter')
-        button(class='counting__button counting__button-deactive counting__dec font-regular')='-'
-        input(class='counting__iterator', type='number', value=0)
+      div(class='counting__counter')
+        button(class='counting__button counting__dec font-regular')='-'
+        input(class='counting__iterator font-upper', name=options.name ? options.name : 'item', type='number', value=0 , min=0, size=1)
         button(class='counting__button counting__inc font-regular')='+'
