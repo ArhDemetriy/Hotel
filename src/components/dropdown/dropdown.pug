@@ -20,6 +20,9 @@ append mixins
 
       var attributes = {};
     div(class=`dropdown__container`)
-      div(class=`dropdown ${classes}`)&attributes(attributes)
+      form(class=`dropdown ${classes}`)&attributes(attributes)
         each item in options.items
           +counting(item)
+        div(class='dropdown__buttons')
+          button(class='dropdown__button', type='reset')='delete'
+          button(class='dropdown__button', type='submit')='submit'
