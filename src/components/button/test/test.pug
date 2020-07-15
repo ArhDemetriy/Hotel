@@ -8,6 +8,106 @@ block title
 append main
   mixin test(options)
     +base_test__test('button',options)
+  -
+    const settings = {
+      mod:[
+        '',
+        'colored',
+        'transparent',
+        'frameless',
+      ],
+      color:[
+        '',
+        'main',
+        'secondary',
+      ],
+      arrow:[
+        '',
+        'left',
+        'right',
+        'all',
+      ],
+      text:[
+        '',
+        'test text',
+        'veeeeeeeeeeerrrrrrrrrrrrrrrryyyyyyyyy llonggggggggggggggggggggg tttttteeeeeeeeeeeeexxxxxxxxxxxtttttttttttttttttttt  !!@#$%^&*()_)(*&^%$#lkjghsldiurgh;l siud;l iosehl;giufd hlguioehlsriugklzxiushlrguizdlfih',
+      ],
+    }
+
+  h2='start autotest'
+  br
+
+  +base_test__mass_test('button',settings)
+
+  br
+  h2='end autotest'
+  br
 
   +test()
   +test({})
+  +test({
+    mod: '',
+  })
+  +test({
+    mod: 'colored',
+  })
+  +test({
+    mod: 'transparent',
+  })
+  +test({
+    mod: 'frameless',
+  })
+  +test({
+    mod: 'colored',
+    color: 'main',
+  })
+  +test({
+    mod: 'transparent',
+    color: 'main',
+  })
+  +test({
+    mod: 'frameless',
+    color: 'main',
+  })
+  +test({
+    mod: 'colored',
+    color: 'secondary',
+  })
+  +test({
+    mod: 'transparent',
+    color: 'secondary',
+  })
+  +test({
+    mod: 'frameless',
+    color: 'secondary',
+  })
+  +test({
+    mod: '',
+  })
+  +test({
+    mod: '',
+  })
+  +test({
+    mod: '',
+  })
+  +test({
+    mod: '',
+  })
+  +test({
+    mod: '',
+  })
+  +test({
+    mod: '',
+  })
+  +test({
+    mod: '',
+  })
+  +test({
+    mod: '',
+  })
+  +test({
+    mod: '',
+  })
+  +test({
+    mod: '',
+  })
