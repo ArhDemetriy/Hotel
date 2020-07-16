@@ -13,6 +13,45 @@ block mixins
     br
     br
 
+  mixin base_test__mass_test(mix,settings)
+    -
+      for (let key in settings) {
+        settings[key].i = 0;
+      }
+      let
+        massSettings = [],
+        temp = {};
+        IsInc = false;
+
+      do {
+        for (let key in settings)
+          temp[key] = settings[key][ settings[key].i ];
+        massSettings.push(Object.assign({},temp));
+        isInc = true;
+
+        for (let key in settings){
+          if (!isInc) break;
+          settings[key].i++;
+
+          if (isInc = settings[key].i >= settings[key].length)
+            settings[key].i = 0;
+        }
+      } while (!isInc);
+
+    each item in massSettings
+      -
+        let caption = '';
+        for (let it in item)
+          caption += `<li> ${it.toString()} : ${item[it].toString()}; </li>\n`;
+        if (!caption)
+          caption = 'пустой объект';
+
+      div.base_test__test_item
+        ul!=caption
+        +#{mix}(item)
+
+
+
 doctype html
 html(lang='ru-RU' dir="ltr")
   head
