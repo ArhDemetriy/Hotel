@@ -3,31 +3,41 @@ append styles
 
 append mixins
   mixin button__text(options)
-    div(class=  'button__flex_container' +
-                (options.mod=='transparent' ? ' button__border_creator' : ''))
-      span(class='button__left_arrow material-icons-outlined ')=options.arrow=='left'||options.arrow=='all' ? 'arrow_back' : ''
-      span(class='button__text')=options.text ? options.text : options.arrow=='left'||options.arrow=='all'||options.arrow=='right' ? '' : 'УКАЖИ ПОДПИСЬ'
-      span(class='button__right_arrow material-icons-outlined ')=options.arrow=='right'||options.arrow=='all' ? 'arrow_forward' : ''
+    span(class='button__left_arrow material-icons-outlined ')=options.arrow=='left'||options.arrow=='all' ? 'arrow_back' : ''
+    span(class='button__text')=options.text ? options.text : options.arrow=='left'||options.arrow=='all'||options.arrow=='right' ? '' : 'УКАЖИ ПОДПИСЬ'
+    span(class='button__right_arrow material-icons-outlined ')=options.arrow=='right'||options.arrow=='all' ? 'arrow_forward' : ''
 
-  mixin button (options)
-    if !options
-      - options = {}
+  mixin button (options = {})
+    -
+      options.mod = options.mod ? options.mod : 'colored';
+      options.color = options.color ? options.color : 'main';
 
     -
-      var classes = ''
-      classes += options.block_class ? ' ' + options.block_class : ''
-      classes += ' button'
-      classes += options.mod ? ' button-' + options.mod : ' button-colored'
-      classes += options.type=='input'||options.type=='submit' ? ' button-input' : ''
-      classes += options.class ? ' ' + options.class : ''
+      options.class = options.class ? options.class : '';
+      options.class += options.block_class ? ` ${options.block_class} ` : '';
+      options.class += options.mod ? ' button-' + options.mod : '';
 
-    if !options.type || options.type == 'linck'
-      a(class=classes
-        href= options.href ? options.href : 'УКАЖИ ССЫЛКУ')
-        +button__text(options)
-    else if options.type=='input'
-      input(value=options.text ? options.text : null
-            type='button' class=classes)
-    else if options.type=='submit'
-      input(value=options.text ? options.text : null
-            type='submit' class=classes)
+      const mod = `${options.mod}`;
+      delete options.mod;
+      const color = `${options.color}`;
+      delete options.color;
+      const block_class = options.block_class ? `${options.block_class}` : 'button';
+      delete options.block_class;
+      const text = options.text ? options.text : '';
+      delete options.text;
+      const arrow = options.arrow ? options.arrow : '';
+      delete options.arrow;
+
+      let tag = 'button';
+      if (!options.type || options.type == 'linck'){
+        tag = 'a';
+        delete options.type;
+      }
+
+    - options.class = `button ${options.class}`
+    #{tag}()&attributes(options)&attributes(attributes)
+      if mod=='transparent'
+        div(class= 'button__border_creator')
+          +button__text({text: text, arrow: arrow,})
+      else
+        +button__text({text: text, arrow: arrow,})
