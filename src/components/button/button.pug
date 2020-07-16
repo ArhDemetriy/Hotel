@@ -3,9 +3,12 @@ append styles
 
 append mixins
   mixin button__text(options)
-    span(class='button__left_arrow material-icons-outlined ')=options.arrow=='left'||options.arrow=='all' ? 'arrow_back' : ''
-    span(class='button__text')=options.text ? options.text : options.arrow=='left'||options.arrow=='all'||options.arrow=='right' ? '' : 'УКАЖИ ПОДПИСЬ'
-    span(class='button__right_arrow material-icons-outlined ')=options.arrow=='right'||options.arrow=='all' ? 'arrow_forward' : ''
+    if options.arrow=='left' || options.arrow=='all'
+      span(class='button__left_arrow material-icons-outlined ')=options.arrow=='left'||options.arrow=='all' ? 'arrow_back' : ''
+    if options.text
+      span(class='button__text font-upper')=options.text ? options.text : options.arrow=='left'||options.arrow=='all'||options.arrow=='right' ? '' : 'УКАЖИ ПОДПИСЬ'
+    if options.arrow=='right' || options.arrow=='all'
+      span(class='button__right_arrow material-icons-outlined ')=options.arrow=='right'||options.arrow=='all' ? 'arrow_forward' : ''
 
   mixin button (options = {})
     -
@@ -15,7 +18,7 @@ append mixins
     -
       options.class = options.class ? options.class : '';
       options.class += options.block_class ? ` ${options.block_class} ` : '';
-      options.class += options.mod ? ' button-' + options.mod : '';
+      options.class += options.mod ? ` button-${options.mod} ` : '';
 
       const mod = `${options.mod}`;
       delete options.mod;
@@ -27,6 +30,15 @@ append mixins
       delete options.text;
       const arrow = options.arrow ? options.arrow : '';
       delete options.arrow;
+
+      if (mod == 'colored' || mod == 'transparent')
+        options.class += ` button__background-${color} `;
+      if (mod == 'frameless' || mod == 'transparent')
+        options.class += ` button__text-${color} `;
+      if (mod == 'frameless')
+        options.class += ` button__text-hovereble `;
+      if (mod == 'colored')
+        options.class += ` button__text-contrast `;
 
       let tag = 'button';
       if (!options.type || options.type == 'linck'){

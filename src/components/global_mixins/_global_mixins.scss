@@ -67,7 +67,6 @@ $timer: (
 %flex{
   display: inline-flex;
   align-items: center;
-  align-content: center;
 }
 %flex-justify-center{
   @extend %flex;
@@ -76,4 +75,12 @@ $timer: (
 %flex-justify-between{
   @extend %flex;
   justify-content: space-between;
+}
+%flex-justify-around{
+  @extend %flex;
+  justify-content: space-around;
+}
+%flex-justify-evenly{
+  @extend %flex;
+  justify-content: space-evenly;
 }
