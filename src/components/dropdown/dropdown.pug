@@ -4,7 +4,7 @@ include ../button/button.pug
 append styles
   link(rel="stylesheet", href="../../../components/dropdown/dropdown.scss")
 append skripts__defer
-  script(defer src="../../../components/dropdown/dropdown.js")
+  script(type='module', src="../../../components/dropdown/dropdown.js")
 
 append mixins
   mixin dropdown(options = {})
