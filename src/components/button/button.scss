@@ -4,6 +4,13 @@
 .button{
   @extend %not_select_and_pointer;
   @extend %flex-justify-around;
+
+  -moz-appearance: none ;
+  -webkit-appearance: none ;
+  appearance: none ;
+  padding: 0;
+  border: none;
+  background-color: transparent;
   border-radius: 10000px;
   min-width: 24px;
   min-height: 24px;
