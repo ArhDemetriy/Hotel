@@ -9,6 +9,9 @@
   min-height: 24px;
   align-items: stretch;
   align-content: stretch;
+  &-hover{
+    color: map.get($color, 'shade-50');
+  }
   &__border_creator{
     @extend %flex-justify-around;
     margin: 2px;

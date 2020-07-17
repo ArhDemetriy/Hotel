@@ -18,27 +18,27 @@ append mixins
     -
       options.class = options.class ? options.class : '';
       options.class += options.block_class ? ` ${options.block_class} ` : '';
-      options.class += options.mod ? ` button-${options.mod} ` : '';
-
-      const mod = `${options.mod}`;
+      const mod = options.mod ? options.mod.split(/[,\s]\s*/) : [];
+      options.class += options.mod ? ` button-${mod.join(' button-')} ` : '';
       delete options.mod;
-      const color = `${options.color}`;
-      delete options.color;
       const block_class = options.block_class ? `${options.block_class}` : 'button';
       delete options.block_class;
+      const color = `${options.color}`;
+      delete options.color;
       const text = options.text ? options.text : '';
       delete options.text;
       const arrow = options.arrow ? options.arrow : '';
       delete options.arrow;
 
-      if (mod == 'colored' || mod == 'transparent')
+      if (mod.includes('colored') || mod.includes('transparent')){
         options.class += ` button__background-${color} `;
-      if (mod == 'frameless' || mod == 'transparent')
-        options.class += ` button__text-${color} `;
-      if (mod == 'frameless')
-        options.class += ` button__text-hovereble `;
-      if (mod == 'colored')
-        options.class += ` button__text-contrast `;
+        if (mod.includes('transparent'))
+          options.class += ` button__text-${color} `;
+        if (mod.includes('colored'))
+          options.class += ` button__text-contrast `;
+      } else if (mod.includes('frameless')){
+        options.class += ` button__text-${color} button__text-hovereble `;
+      }
 
       let tag = 'button';
       if (!options.type || options.type == 'linck'){
@@ -48,7 +48,8 @@ append mixins
 
     - options.class = `button ${options.class}`
     #{tag}()&attributes(options)&attributes(attributes)
-      if mod=='transparent'
+      - const tr = mod.includes('transparent');
+      if tr
         div(class= 'button__border_creator')
           +button__text({text: text, arrow: arrow,})
       else
