@@ -5,7 +5,7 @@
   &__container{
     position: relative;
   }
-  position: absolute;
+  // position: absolute;
   display: none;
   flex-direction: column;
 
@@ -18,5 +18,10 @@
   &:hover,&-visible{
     display: inline-flex;
   }
-
+  &__item:nth-child(n+2){
+    margin-top: 7px;
+  }
+  &__buttons{
+    margin-top: 18px;
+  }
 }

@@ -27,8 +27,9 @@ append mixins
     div(class=`dropdown__container`)
       form()&attributes(options)&attributes(attributes)
         each item in items
-          +counting(item)
+          .dropdown__item
+            +counting(item)
         if buttons
           div(class='dropdown__buttons')
-            +button({type: 'reset', mod: 'hover'})
-            +button({type: 'submit', mod: 'frameless'})
+            +button({type: 'reset', mod: 'hover', text: 'очистить'})
+            +button({type: 'submit', mod: 'frameless', text: 'применить'})
