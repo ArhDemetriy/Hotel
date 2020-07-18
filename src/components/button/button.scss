@@ -3,74 +3,71 @@
 
 .button{
   @extend %not_select_and_pointer;
+  @extend %flex-justify-around;
 
-  display: inline-block;
-  text-decoration: none;
+  -moz-appearance: none ;
+  -webkit-appearance: none ;
+  appearance: none ;
+  padding: 0;
   border: none;
+  background-color: transparent;
   border-radius: 10000px;
-  font: map.get($font, 'upper');
-  text-transform: uppercase;
-  --margin : 14px;
-  &__flex_container{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  min-width: 24px;
+  min-height: 24px;
+  align-items: stretch;
+  align-content: stretch;
+  &-hover{
+    color: map.get($color, 'shade-50');
   }
   &__border_creator{
+    @extend %flex-justify-around;
     margin: 2px;
     border-radius: 10000px;
     background-color: map.get($color, 'contrast_with_colored');
-    --margin : 12px;
-  }
-  &__text{
-    margin-bottom: var(--margin);
-    margin-top: var(--margin);
-  }
-  &__left_arrow{
-    margin-left: 7px;
-    margin: calc(var(--margin) - 0px) 0px;
-  }
-  &__right_arrow{
-    margin-right: 7px;
-    margin: calc(var(--margin) - 0px) 0px;
   }
 
-  &-colored{
-    background: map.get($gradient, 'main');
-    color: map.get($color, 'contrast_with_colored');
-    &:hover{
-      background: map.get($gradient, 'main-opacity');
+  &__background{
+    &-main{
+      background: map.get($gradient, 'main');
+      &:hover, &.button-hover{
+        background: map.get($gradient, 'main-opacity');
+      }
     }
-    &_secondary{
+    &-secondary{
       background: map.get($gradient, 'secondary');
-      color: map.get($color, 'contrast_with_colored');
-      &:hover{
+      &:hover, &.button-hover{
         background: map.get($gradient, 'secondary-opacity');
       }
-
     }
+  }
+  &__text{
+    &-main{
+      color: map.get($color, 'main');
+    }
+    &-secondary{
+      color: map.get($color, 'secondary');
+    }
+    &-contrast{
+      color: map.get($color, 'contrast_with_colored');
+    }
+    &-hovereble:hover, &-hovereble.button-hover{
+      color: map.get($color, 'shade-50');
+    }
+  }
+
+  &__text{
+    @extend %flex;
+  }
+  &__left_arrow{
+    @extend %flex;
+  }
+  &__right_arrow{
+    @extend %flex;
+  }
+  &-colored{
   }
   &-transparent{
-    background: map.get($gradient, 'main');
-    color: map.get($color, 'main');
-    &:hover{
-      background: map.get($gradient, 'main-opacity');
-    }
   }
   &-frameless{
-    color: map.get($color, 'main');
-    &:hover{
-      color: map.get($color, 'shade-50');
-    }
-    &_invert{
-      color: map.get($color, 'shade-50');
-      &:hover{
-        color: map.get($color, 'main');
-      }
-    }
-  }
-
-  &-input{
-    padding: var(--margin);
   }
 }

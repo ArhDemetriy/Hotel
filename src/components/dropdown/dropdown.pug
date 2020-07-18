@@ -1,25 +1,35 @@
 include ../counting/counting.pug
+include ../button/button.pug
 
 append styles
   link(rel="stylesheet", href="../../../components/dropdown/dropdown.scss")
 append skripts__defer
-  script(defer src="../../../components/dropdown/dropdown.js")
+  script(type='module', src="../../../components/dropdown/dropdown.js")
 
 append mixins
-  mixin dropdown(options)
+  mixin dropdown(options = {})
     -
-      if (!options)
-        options = {};
+      options.class = options.class ? options.class : '';
+      options.class += options.mod ? ` dropdown-${options.mod} ` : '';
+      const mod = options.mod ? `${options.mod}` : '';
+      delete options.mod;
+      options.class += options.block_class ? ` ${options.block_class} ` : '';
+      const block_class = options.block_class ? `${options.block_class}` : '';
+      delete options.block_class;
 
-      let classes = ''
-      classes += options.block_class ? ' ' + options.block_class : ''
-      classes += options.mod ? ' dropdown-' + options.mod : ''
+      items = options.items ? options.items : [];
+      delete options.items;
+      buttons = options.buttons && options.buttons != 'false' ? true : false;
+      delete options.buttons;
 
-      if (!options.items)
-        options.items = [];
+      options.class += ` dropdown `;
 
-      var attributes = {};
     div(class=`dropdown__container`)
-      div(class=`dropdown ${classes}`)&attributes(attributes)
-        each item in options.items
-          +counting(item)
+      form()&attributes(options)&attributes(attributes)
+        each item in items
+          .dropdown__item
+            +counting(item)
+        if buttons
+          div(class='dropdown__buttons')
+            +button({type: 'reset', mod: 'hover', text: 'очистить'})
+            +button({type: 'submit', mod: 'frameless', text: 'применить'})

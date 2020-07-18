@@ -5,7 +5,7 @@
   &__container{
     position: relative;
   }
-  position: absolute;
+  // position: absolute;
   display: none;
   flex-direction: column;
 
@@ -15,8 +15,16 @@
 
   padding: 7px 7px 7px 15px ;
 
+  min-width: 400px;
+
   &:hover,&-visible{
     display: inline-flex;
   }
-
+  &__item:nth-child(n+2){
+    margin-top: 7px;
+  }
+  &__buttons{
+    margin-top: 18px;
+    @extend %flex-justify-between;
+  }
 }
