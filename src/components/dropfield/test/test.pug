@@ -9,10 +9,44 @@ append main
   mixin test(options)
     +base_test__test('dropfield',options)
 
-  +test()
-  +test({})
-  +test({
-    items:[
-      {title:'asd'},
-    ],
-    })
+  -
+    const settings = {
+      items:[
+        [
+
+        ],
+        [
+          {
+            title:'1',
+            name:'1',
+          },
+        ],
+        [
+          {
+            title:'1',
+            name:'1',
+          },
+          {
+            title:'2',
+            name:'2',
+          },
+          {
+            title:'3',
+            name:'3',
+          },
+          {
+            title:'4',
+            name:'4',
+          },
+        ],
+      ],
+    }
+
+  h2='start autotest'
+  br
+
+  +base_test__mass_test('dropfield',settings)
+
+  br
+  h2='end autotest'
+  br
