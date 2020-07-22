@@ -3,12 +3,10 @@
 
 .counting{
   $button_size: 30px;
-  min-width: 200px;
   @extend %flex-justify-between;
   background-color: map_get($color, 'background');
   display: flex;
   &__counter{
-    margin-left: $button_size * (2 / 3);
     @extend %not_select;
     @extend %flex-justify-between;
 
