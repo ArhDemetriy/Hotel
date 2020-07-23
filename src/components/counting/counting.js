@@ -20,10 +20,13 @@
     if (newValue < 0) // проверка нужна на случай невалидных данных и клике по .counting__dec:not(:disabled)
       newValue = 0;
 
-    this.querySelector('.counting__dec').disabled = (newValue < 1);
+    // this.querySelector('.counting__dec').disabled = (newValue < 1);
 
     iterator.value = newValue;
-    // iterator.input();
+
+    (function ($) {
+      $(iterator).change();
+    })(jQuery);
   }
   function settingButtonStage(event) {
     if (!event.target.matches('.counting__iterator')) return;
@@ -34,9 +37,7 @@
     event.target.value = value * 1;
   }
 
-  const elements = document.querySelectorAll(`.counting`);
-  elements.forEach((_, i, a) => {
-    a[i].addEventListener('click', changingValue, { passive: true, });
-    a[i].addEventListener('change', settingButtonStage, { passive: true, });
-  });
+  (function ($) {
+    $('.counting').on('click', changingValue).on('change', settingButtonStage);
+  })(jQuery);
 }
