@@ -6,10 +6,7 @@
   flex-direction: column;
   align-items: stretch;
 
-  &:hover{
-    & .dropdown{
-      display: inline-flex;
-    }
+  &:hover > &__drop, &__field:focus + &__drop{
+    display: inline-flex;
   }
-
 }

@@ -22,10 +22,19 @@ append mixins
       options.class += options.block_class ? ` ${options.block_class} ` : '';
       const block_class = options.block_class ? options.block_class : '';
       delete options.block_class;
+      visible = options.visible ? true : false;
+      delete options.visible;
+      buttons = options.buttons ? true : false;
+      delete options.buttons;
 
     label()&attributes(options)
-      +textfield({mod:'dropdown'})
+      +textfield({
+        mod:'dropdown',
+        block_class: 'dropfield__field',
+        })
       +dropdown({
         items: items,
-        mod: '',
+        mod: visible ? 'visible' : '',
+        buttons: buttons,
+        block_class: 'dropfield__drop',
       })

@@ -24,12 +24,14 @@ append mixins
 
       options.class += ` dropdown `;
 
-    div(class=`dropdown__container`)
-      form()&attributes(options)&attributes(attributes)
-        each item in items
-          .dropdown__item
-            +counting(item)
-        if buttons
-          div(class='dropdown__buttons')
-            +button({type: 'reset', mod: 'hover', text: 'очистить'})
-            +button({type: 'submit', mod: 'frameless', text: 'применить'})
+    //-
+        flex column; потому все элементы столбца должны быть на одном уровне.
+        а дополнительный div.dropdown__item для генерации отступов между counting
+    form()&attributes(options)&attributes(attributes)
+      each item in items
+        .dropdown__item
+          +counting(item)
+      if buttons
+        div(class='dropdown__buttons')
+          +button({type: 'reset', mod: 'hover', text: 'очистить'})
+          +button({type: 'submit', mod: 'frameless', text: 'применить'})
