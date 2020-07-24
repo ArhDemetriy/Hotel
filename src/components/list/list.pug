@@ -28,9 +28,19 @@ append mixins
     div()&attributes(options)&attributes(attributes)
       div(class = 'list__title')
         span(class = 'font-upper')=title
-        span(class = 'list__arrow material-icons-outlined')='keyboard_arrow_down'
+        if !mod
+          span(class = 'list__arrow material-icons-outlined')='keyboard_arrow_down'
       if items.length
-        div
-          div(class = 'list__drop')
+        if !mod
+          div
+            div(class = 'list__items list__drop')
+              each item in items
+                +checkbox(item)
+        else if mod == 'visible'
+          div(class = 'list__items')
+              each item in items
+                +checkbox(item)
+        else if mod == 'list'
+          ul
             each item in items
-              +checkbox(item)
+              li=item.text
