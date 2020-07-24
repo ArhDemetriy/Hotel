@@ -5,6 +5,7 @@
   @extend %flex;
   flex-direction: column;
   align-items: flex-start;
+  position: relative;
   &__title{
     @extend %flex-justify-between;
   }
@@ -12,5 +13,13 @@
     @extend %flex;
     flex-direction: column;
     align-items: flex-start;
+    display: none;
+    position: absolute;
+    z-index: 300;
+  }
+  &:hover, &:focus{
+    & .list__drop{
+      display: flex;
+    }
   }
 }
