@@ -1,0 +1,65 @@
+extends ../../../pages/base/base_test.pug
+
+include ../list.pug
+
+block header
+block title
+  title='test list'
+append main
+  mixin test(options)
+    +base_test__test('list',options)
+
+  +test()
+  +test({})
+  +test({title: 'asd'})
+
+
+  -
+    const settings = {
+      buttons:[
+        false,
+        true,
+      ],
+      items:[
+        [
+
+        ],
+        [
+          {
+            title:'1',
+            name:'1',
+          },
+        ],
+        [
+          {
+            title:'1',
+            name:'1',
+          },
+          {
+            title:'2',
+            name:'2',
+          },
+          {
+            title:'3',
+            name:'3',
+          },
+          {
+            title:'4',
+            name:'4',
+          },
+        ],
+      ],
+      visible:[
+        false,
+        true,
+      ],
+    }
+
+  h2='start autotest'
+  br
+
+  //- +base_test__mass_test('list',settings)
+
+  br
+  h2='end autotest'
+  br

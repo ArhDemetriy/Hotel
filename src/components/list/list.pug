@@ -1,0 +1,19 @@
+append styles
+  link(rel='stylesheet', href='../../../components/list/list.scss')
+append skripts__defer
+  script(type='module', src='../../../components/list/list.js')
+
+append mixins
+  mixin list(options = {})
+    -
+      options.class = options.class ? options.class : '';
+      options.class += options.mod ? ` list-${options.mod} ` : '';
+      const mod = options.mod ? `${options.mod}` : '';
+      delete options.mod;
+      options.class += options.block_class ? ` ${options.block_class} ` : '';
+      const block_class = options.block_class ? `${options.block_class}` : '';
+      delete options.block_class;
+
+      options.class += ` list `;
+
+    div()&attributes(options)&attributes(attributes)
