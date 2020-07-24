@@ -3,4 +3,14 @@
 
 .list{
   @extend %flex;
+  flex-direction: column;
+  align-items: flex-start;
+  &__title{
+    @extend %flex-justify-between;
+  }
+  &__drop{
+    @extend %flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
