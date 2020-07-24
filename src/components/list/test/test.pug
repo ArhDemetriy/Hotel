@@ -8,57 +8,47 @@ block title
 append main
   mixin test(options)
     +base_test__test('list',options)
-
-  +test()
-  +test({})
-  +test({title: 'asd'})
-
-
   -
     const settings = {
-      buttons:[
-        false,
-        true,
-      ],
       items:[
         [
 
-        ],
+          ],
         [
           {
-            title:'1',
+            text:'1',
             name:'1',
           },
         ],
         [
           {
-            title:'1',
+            text:'1',
             name:'1',
           },
           {
-            title:'2',
+            text:'2',
             name:'2',
           },
           {
-            title:'3',
+            text:'3',
             name:'3',
           },
           {
-            title:'4',
+            text:'4',
             name:'4',
           },
         ],
       ],
-      visible:[
-        false,
-        true,
+      title:[
+        'asd',
+        'asddsfgosdhofoo dfuy pgiousdhfpiu sgh[poidfhpgohpaoufgh[pasoidf hg[oishdpouayh[osd ih[oagui h[osdfi a[oih[fds[giojh[adfih g[dioapjfnkidafo giha[df',
       ],
     }
 
   h2='start autotest'
   br
 
-  //- +base_test__mass_test('list',settings)
+  +base_test__mass_test('list',settings)
 
   br
   h2='end autotest'
