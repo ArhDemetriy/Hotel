@@ -1,0 +1,46 @@
+include ../checkbox/checkbox.pug
+
+
+append styles
+  link(rel='stylesheet', href='../../../components/list/list.scss')
+append skripts__defer
+  script(type='module', src='../../../components/list/list.js')
+
+append mixins
+  mixin list(options = {}, items = [])
+    -
+      if (!options.items)
+        options.items = [];
+      items = options.items.concat(items);
+      delete options.items;
+      options.class = options.class ? options.class : '';
+      options.class += options.mod ? ` list-${options.mod} ` : '';
+      const mod = options.mod ? `${options.mod}` : '';
+      delete options.mod;
+      options.class += options.block_class ? ` ${options.block_class} ` : '';
+      const block_class = options.block_class ? `${options.block_class}` : '';
+      delete options.block_class;
+      const title = options.title ? `${options.title}` : '';
+      delete options.title;
+
+      options.class += ` list `;
+
+    div()&attributes(options)&attributes(attributes)
+      div(class = 'list__title')
+        span(class = 'font-upper')=title
+        if !mod
+          span(class = 'list__arrow material-icons-outlined')='keyboard_arrow_down'
+      if items.length
+        if !mod
+          div
+            div(class = 'list__items list__drop')
+              each item in items
+                +checkbox(item)
+        else if mod == 'visible'
+          div(class = 'list__items')
+              each item in items
+                +checkbox(item)
+        else if mod == 'list'
+          ul
+            each item in items
+              li=item.text

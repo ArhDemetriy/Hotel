@@ -1,0 +1,69 @@
+extends ../../../pages/base/base_test.pug
+
+include ../list.pug
+
+block header
+block title
+  title='test list'
+append main
+  mixin test(options)
+    +base_test__test('list',options)
+  -
+    const settings = {
+      mod:[
+        '',
+        'visible',
+        'list',
+        'asd',
+      ],
+      items:[
+        [
+
+          ],
+        [
+          {
+            text: 'asddsfgosdhofoo dfuy pgiousdhfpiu sgh[poidfhpgohpaoufgh[pasoidf hg[oishdpouayh[osd ih[oagui h[osdfi a[oih[fds[giojh[adfih g[dioapjfnkidafo giha[df',
+            name:'1',
+          },
+        ],
+        [
+          {
+            text:'Завтрак',
+            name:'1',
+          },
+          {
+            text:'Письменный стол',
+            name:'2',
+          },
+          {
+            text:'Стул для кормления',
+            name:'3',
+          },
+          {
+            text:'Кроватка ',
+            name:'4',
+          },
+          {
+            text:'Телевизор ',
+            name:'4',
+          },
+          {
+            text:'Шампунь ',
+            name:'4',
+          },
+        ],
+      ],
+      title:[
+        'asd',
+        'asddsfgosdhofoo dfuy pgiousdhfpiu sgh[poidfhpgohpaoufgh[pasoidf hg[oishdpouayh[osd ih[oagui h[osdfi a[oih[fds[giojh[adfih g[dioapjfnkidafo giha[df',
+      ],
+    }
+
+  h2='start autotest'
+  br
+
+  +base_test__mass_test('list',settings)
+
+  br
+  h2='end autotest'
+  br
