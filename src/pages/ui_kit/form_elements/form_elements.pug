@@ -1,0 +1,43 @@
+extends ../../base/base.pug
+include ../../../components/button/button.pug
+include ../../../components/checkbox/checkbox.pug
+include ../../../components/counting/counting.pug
+include ../../../components/datefield/datefield.pug
+include ../../../components/dropdown/dropdown.pug
+include ../../../components/dropfield/dropfield.pug
+include ../../../components/like/like.pug
+include ../../../components/list/list.pug
+include ../../../components/pagination/pagination.pug
+include ../../../components/radio/radio.pug
+include ../../../components/rate/rate.pug
+include ../../../components/textfield/textfield.pug
+include ../../../components/toggle/toggle.pug
+
+append styles
+  link(rel='stylesheet', href='form_elements.scss')
+
+append header
+block title
+  title='Form Elements'
+append main
+  div(class = 'grid_container')
+    div(class = 'fields')
+      +textfield()
+    div(class = 'inputs')
+      +checkbox()
+    div(class = 'buttons')
+      +button({text:'asfegsg'})
+    div(class = 'dropfield')
+      +dropfield()
+    div(class = 'dropfield_button')
+      +dropfield({buttons: true})
+    div(class = 'dropfield_button_unclear')
+      +dropfield({buttons: true})
+    div(class = 'checkbox_list')
+      +list()
+    div(class = 'rich_checkbox')
+      +list({mod: 'visible'})
+    div(class = 'bullet_lists')
+      +list({mod: 'list'})
+    div(class = 'picts')='пикчи'
+    div(class = 'komment')='коммент'
