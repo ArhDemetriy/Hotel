@@ -20,24 +20,27 @@ append header
 block title
   title='Form Elements'
 append main
-  div(class = 'grid_container')
-    div(class = 'fields')
-      +textfield()
-    div(class = 'inputs')
+  div(class = 'form_elements')
+    div(class = 'form_elements__item_container fields')
+      +textfield({type: 'email'})
+      +textfield({mod: 'hover', value: 'This is pretty awesome'})
+      +textfield({arrow: true, value: 'Сколько гостей'})
+      +datefield({placeholder: 'ДД.ММ.ГГГГ'})
+    div(class = 'form_elements__item_container inputs')
       +checkbox()
-    div(class = 'buttons')
+    div(class = 'form_elements__item_container buttons')
       +button({text:'asfegsg'})
-    div(class = 'dropfield')
+    div(class = 'form_elements__item_container dropfield')
       +dropfield()
-    div(class = 'dropfield_button')
+    div(class = 'form_elements__item_container dropfield_button')
       +dropfield({buttons: true})
-    div(class = 'dropfield_button_unclear')
+    div(class = 'form_elements__item_container dropfield_button_unclear')
       +dropfield({buttons: true})
-    div(class = 'checkbox_list')
+    div(class = 'form_elements__item_container checkbox_list')
       +list()
-    div(class = 'rich_checkbox')
+    div(class = 'form_elements__item_container rich_checkbox')
       +list({mod: 'visible'})
-    div(class = 'bullet_lists')
+    div(class = 'form_elements__item_container bullet_lists')
       +list({mod: 'list'})
-    div(class = 'picts')='пикчи'
-    div(class = 'komment')='коммент'
+    div(class = 'form_elements__item_container picts')='пикчи'
+    div(class = 'form_elements__item_container komment')='коммент'

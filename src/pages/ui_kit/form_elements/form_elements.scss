@@ -1,6 +1,13 @@
-.grid_container{
+.form_elements{
   display: grid;
   grid-template-rows: 1fr 1fr 1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 55px;
+  padding: min(4.51388888%, 65px) 9.79166666% 0 9.79166666%;
+
+  &__item_container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
