@@ -27,20 +27,170 @@ append main
       +textfield({arrow: true, value: 'Сколько гостей'})
       +datefield({placeholder: 'ДД.ММ.ГГГГ'})
     div(class = 'form_elements__item_container inputs')
-      +checkbox()
-    div(class = 'form_elements__item_container buttons')
-      +button({text:'asfegsg'})
+      +checkbox({text:'Завтрак',})
+      +checkbox({text:'Можно с питомцами',})
+      +checkbox({text:'Можно пригласить гостей (до&nbsp;10&nbsp;человек)',})
+      .radio
+        +radio({text:'Мужчина', name:'sex',})
+        +radio({text:'Женщина', name:'sex',})
+      +toggle({text:'Получать спецпредложения', checked: true})
+      +toggle({text:'Получать спецпредложения',})
+      .like
+        +like({
+          count: 2,
+        })
+        +like({
+          count: 12,
+          checked: true,
+        })
+      .rate
+        +rate({
+          count: 4,
+          block_class: 'rate0',
+        })
+        +rate({
+          count: 5,
+          block_class: 'rate1',
+        })
+
+    div(class = 'form_elements__item_container slider_buttons')
+      .slider='slider'
+      .buttons
+        +button({text:'asfegsg', mod:'colored'})
+        +button({text:'asfegsg', mod:'colored hover'})
+        +button({text:'asfegsg', mod:'transparent'})
+        +button({text:'asfegsg', mod:'transparent hover'})
+        +button({text:'asfegsg', mod:'frameless'})
+        +button({text:'asfegsg', mod:'frameless hover'})
+        +button({text:'asfegsg', mod:'colored', arrow:'right', block_class: 'pay'})
+      +pagination({})
     div(class = 'form_elements__item_container dropfield')
       +dropfield()
+      +dropfield({
+        visible: true,
+        items: [
+          {
+            title:'Спальни',
+            name:'1',
+          },
+          {
+            title:'Кровати',
+            name:'2',
+          },
+          {
+            title:'Ванные комнаты',
+            name:'3',
+          },
+        ],
+      })
     div(class = 'form_elements__item_container dropfield_button')
-      +dropfield({buttons: true})
+      +dropfield({
+        buttons: true,
+        visible: true,
+        items: [
+          {
+            title:'Взрослые',
+            name:'1',
+          },
+          {
+            title:'Дети',
+            name:'2',
+          },
+          {
+            title:'Младенцы',
+            name:'3',
+          },
+        ],
+      })
     div(class = 'form_elements__item_container dropfield_button_unclear')
-      +dropfield({buttons: true})
+      +dropfield({
+        buttons: true,
+        visible: true,
+        items: [
+          {
+            title:'Взрослые',
+            name:'1',
+          },
+          {
+            title:'Дети',
+            name:'2',
+          },
+          {
+            title:'Младенцы',
+            name:'3',
+          },
+        ],
+      })
     div(class = 'form_elements__item_container checkbox_list')
-      +list()
+      +list({
+        title: 'expandable checkbox list',
+        arrow: true,
+      })
+      +list({
+        title: 'expandable checkbox list',
+        arrow: true,
+        items:[
+          {
+            text:'Завтрак',
+            name:'1',
+          },
+          {
+            text:'Письменный стол',
+            name:'2',
+          },
+          {
+            text:'Стул для кормления',
+            name:'3',
+          },
+          {
+            text:'Кроватка ',
+            name:'4',
+          },
+          {
+            text:'Телевизор ',
+            name:'4',
+          },
+          {
+            text:'Шампунь ',
+            name:'4',
+          },
+        ],
+      })
     div(class = 'form_elements__item_container rich_checkbox')
-      +list({mod: 'visible'})
+      +list({
+        title: 'Rich Checkbox Buttons',
+        mod: 'visible',
+        items:[
+          {
+            title:'Широкий коридор',
+            text:'Ширина коридоров в номере не&nbsp;менее&nbsp;91&nbsp;см.',
+            name:'1',
+          },
+          {
+            title:'Помощник для инвалидов',
+            text:'На 1 этаже вас встретит специалист и&nbsp;проводит до номера.',
+            name:'2',
+          },
+        ],
+      })
     div(class = 'form_elements__item_container bullet_lists')
-      +list({mod: 'list'})
+      +list({
+        title: 'Bullet list',
+        mod: 'list',
+        items:[
+          {
+            text:'Нельзя с питомцами',
+            name:'1',
+          },
+          {
+            text:'Без вечеринок и мероприятий',
+            name:'2',
+          },
+          {
+            text:'Время прибытия — после 13:00, а&nbsp;выезд до 12:00',
+            name:'3',
+          },
+        ],
+      })
     div(class = 'form_elements__item_container picts')='пикчи'
-    div(class = 'form_elements__item_container komment')='коммент'
+    div(class = 'form_elements__item_container komment')='коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент'
