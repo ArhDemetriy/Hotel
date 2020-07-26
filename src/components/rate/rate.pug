@@ -9,6 +9,7 @@ append mixins
       let classes = ''
       classes += options.block_class ? ' ' + options.block_class : ''
       classes += options.mod ? ' rate-' + options.mod : ''
+      const rateCount = isFinite(options.count) ? options.count : 0
 
     span(class='rate rate__gradient_creator' + classes)
       -
@@ -17,19 +18,15 @@ append mixins
 
       label(class=material + ' rate__gradient_creator')
         input(class='rate__radio', name=(options.block_class ? options.block_class : 'NOTHING'),
-              type='radio', value=0, checked=false)
+              type='radio', value=0, checked=(0 == rateCount))
         span(class='rate__zero')=''
 
         mixin rate__generate(n,i=1)
           label(class='rate__gradient_creator')
             input(class='rate__radio', name=(options.block_class ? options.block_class : 'NOTHING'),
-                  type='radio', value=i, checked=false)
+                  type='radio', value=i, checked=(i == rateCount))
             span(class=material + ' rate__star_b')='star_border'
             span(class=material + ' rate__star_f')='star'
             if i<n
               +rate__generate(n,i+1)
         +rate__generate(max_rate)
-
-
-//-append skripts__after_load
-  //-script(defer src='../../../components/rate/rate.js')

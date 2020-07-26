@@ -15,4 +15,10 @@ append mixins
       //-необходимо, т.к. галочка с градиентом
       .checkbox__box
         .checkbox__mark
-      span(class='checkbox__text')=options.text ? options.text : 'SET text'
+      if !options.title
+        span(class='checkbox__text font-regular')!=options.text ? options.text : 'SET text'
+      else
+        .checkbox__text_container
+          span(class='checkbox__title')!=options.title
+          br
+          span(class='checkbox__text font-regular')!=options.text ? options.text : 'SET text'

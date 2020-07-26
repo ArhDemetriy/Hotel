@@ -1,21 +1,12 @@
 'use strict';
 {
   function handler(event){
-    const promise = Promise.all([
-      new Promise((resolve, reject) => {
-        resolve(
-          this.querySelector(`.like__text`))
-      }),
-      new Promise((resolve, reject) => {
-        resolve(
-          isFinite(this.likes) ? this.likes : 0)
-      }),
-      new Promise((resolve, reject) => {
-        resolve((
-          (this.querySelector(`.like__input`) && this.querySelector(`.like__input`).checked)) ? 1 : 0)
-      }),
-    ]);
-    promise.then(args => { args[0].innerHTML = `${args[1] + args[2]}` });
+    const likesDOM = this.querySelector(`.like__text`);
+    if (!likesDOM) return;
+    let likes = Number(this.dataset.count);
+    if (!likes) likes = 0;
+    likes += this.querySelector(`.like__input`) && this.querySelector(`.like__input`).checked ? 1 : 0;
+    likesDOM.textContent = `${likes}`;
   }
 
   const elements = document.querySelectorAll(`.like`);
