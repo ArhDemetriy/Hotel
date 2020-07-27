@@ -6,12 +6,13 @@ block header
 block title
   title='test container'
 append main
-  mixin test(options)
-    +base_test__test('container',options)
-
-  +test()
-  +test({})
-  +test({title: 'asd'})
+  +container({
+    title: 'list',
+    text: 'items',
+  })
+    li='1'
+    li='2'
+    li='3'
 
   -
     const settings = {
@@ -27,9 +28,9 @@ append main
         '',
         'jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i ',
       ],
-      dropable:[
-        false,
-        true,
+      mod:[
+        '',
+        'dropable',
       ],
     }
 

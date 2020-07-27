@@ -1,7 +1,5 @@
 append styles
   link(rel='stylesheet', href='../../../components/container/container.scss')
-append skripts__defer
-  script(type='module', src='../../../components/container/container.js')
 
 append mixins
   mixin container(options = {})
@@ -17,8 +15,6 @@ append mixins
       delete options.title;
       const text = options.text ? `${options.text}` : '';
       delete options.text;
-      const dropable = options.dropable && options.dropable != 'false' ? true : false;
-      delete options.dropable;
 
       options.class += ` container `;
 

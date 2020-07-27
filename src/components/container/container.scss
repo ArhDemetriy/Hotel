@@ -6,10 +6,17 @@
   flex-direction: column;
   &__caption{
     display: flex;
+    justify-content: space-between;
   }
   &__block{
     display: flex;
     flex-direction: column;
   }
-
+  &__title{
+    color: map-get($color, 'shade-100');
+  }
+  &__text{
+    color: map-get($color, 'shade-50');
+    text-align: end;
+  }
 }
