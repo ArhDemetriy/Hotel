@@ -2,5 +2,14 @@
 @import '../global_mixins/global_mixins';
 
 .container{
-  @extend %flex;
+  display: flex;
+  flex-direction: column;
+  &__caption{
+    display: flex;
+  }
+  &__block{
+    display: flex;
+    flex-direction: column;
+  }
+
 }
