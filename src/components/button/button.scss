@@ -8,12 +8,10 @@
   -moz-appearance: none ;
   -webkit-appearance: none ;
   appearance: none ;
-  padding: 0;
   border: none;
   background-color: transparent;
   border-radius: 10000px;
-  min-width: 24px;
-  min-height: 24px;
+  box-sizing: border-box;
   align-items: stretch;
   align-content: stretch;
   &-hover{
@@ -21,7 +19,7 @@
   }
   &__border_creator{
     @extend %flex-justify-around;
-    margin: 2px;
+    width: 100%;
     border-radius: 10000px;
     background-color: map.get($color, 'contrast_with_colored');
   }
@@ -64,7 +62,10 @@
   &__right_arrow{
     @extend %flex;
   }
-  &-colored{
+  &-colored, &-transparent{
+    padding: 5px;
+    min-width: 40px;
+    min-height: 40px;
   }
   &-transparent{
   }
