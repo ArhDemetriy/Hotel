@@ -1,0 +1,6 @@
+@use 'sass:map';
+@import '../global_mixins/global_mixins';
+
+.container{
+  @extend %flex;
+}

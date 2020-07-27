@@ -1,0 +1,43 @@
+extends ../../../pages/base/base_test.pug
+
+include ../container.pug
+
+block header
+block title
+  title='test container'
+append main
+  mixin test(options)
+    +base_test__test('container',options)
+
+  +test()
+  +test({})
+  +test({title: 'asd'})
+
+  -
+    const settings = {
+      title:[
+        'qwe',
+        'jvklygrdliusdfuhg liufdsl iuh glsiudg i ',
+        '',
+        'jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i ',
+      ],
+      text:[
+        'qwe',
+        'jvklygrdliusdfuhg liufdsl iuh glsiudg i ',
+        '',
+        'jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i ',
+      ],
+      dropable:[
+        false,
+        true,
+      ],
+    }
+
+  h2='start autotest'
+  br
+
+  +base_test__mass_test('container',settings)
+
+  br
+  h2='end autotest'
+  br
