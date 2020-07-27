@@ -1,0 +1,29 @@
+append styles
+  link(rel='stylesheet', href='../../../components/container/container.scss')
+
+append mixins
+  mixin container(options = {})
+    -
+      options.class = options.class ? options.class : '';
+      options.class += options.mod ? ` container-${options.mod} ` : '';
+      const mod = options.mod ? `${options.mod}` : '';
+      delete options.mod;
+      options.class += options.block_class ? ` ${options.block_class} ` : '';
+      const block_class = options.block_class ? `${options.block_class}` : '';
+      delete options.block_class;
+      const title = options.title ? `${options.title}` : '';
+      delete options.title;
+      const text = options.text ? `${options.text}` : '';
+      delete options.text;
+
+      options.class += ` container `;
+
+    div()&attributes(options)&attributes(attributes)
+      if title || text
+        .container__caption.text-upper
+          if title
+            span.container__title=title
+          if text
+            span.container__text=text
+      .container__block
+        block
