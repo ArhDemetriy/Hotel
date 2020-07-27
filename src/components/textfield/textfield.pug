@@ -13,10 +13,15 @@ append mixins
       options.class = options.class ? options.class : '';
       options.class += ` textfield `;
       options.class += options.block_class ? ` ${options.block_class} ` : '';
+      const block_class = options.block_class ? ` ${options.block_class} ` : '';
+      delete options.block_class;
       options.class += options.mod ? ` textfield-${options.mod} ` : '';
       if (!options.placeholder && (options.mod == 'masked' || options.mod == 'Masked'))
         options.placeholder = 'SET placeholder';
       delete options.mod;
+      const arrow = options.arrow ? ` ${options.arrow} ` : '';
+      if (arrow) options.class += ` textfield-hover`;
+      delete options.arrow;
 
       if (!options.placeholder) {
         switch (options.type) {
@@ -33,4 +38,9 @@ append mixins
       if (!options.type || options.type == 'masked' || options.type == 'Masked')
         options.type = 'text';
 
-    input()&attributes(options)
+    if !arrow
+      input()&attributes(options)
+    else
+      div(class = 'textfield__container_for_arrow')
+        input()&attributes(options)
+        span(class = 'textfield__arrow material-icons-outlined')='keyboard_arrow_down'

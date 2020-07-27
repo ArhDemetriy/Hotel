@@ -1,0 +1,32 @@
+.form_elements{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto auto auto auto;
+  grid-gap: 55px;
+  padding: min(4.51388888%, 65px) 9.79166666% 0 9.79166666%;
+  grid-template-areas:
+            "fields inputs buttons"
+            "dropfield dropfield_button dropfield_button_unclear"
+            "checkbox_list rich_checkbox bullet_lists"
+            "picts komment komment";
+
+  &__item_container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+.komment{
+  grid-area: komment;
+}
+.buttons{
+  display: grid;
+  grid-template-areas:
+            "a b"
+            "c d"
+            "e f"
+            "pay pay";
+}
+.pay{
+  grid-area: pay;
+}

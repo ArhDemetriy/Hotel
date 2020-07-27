@@ -22,13 +22,15 @@ append mixins
       delete options.block_class;
       const title = options.title ? `${options.title}` : '';
       delete options.title;
+      const arrow = options.arrow;
+      delete options.arrow;
 
       options.class += ` list `;
 
     div()&attributes(options)&attributes(attributes)
       div(class = 'list__title')
         span(class = 'font-upper')=title
-        if !mod
+        if arrow
           span(class = 'list__arrow material-icons-outlined')='keyboard_arrow_down'
       if items.length
         if !mod
@@ -43,4 +45,4 @@ append mixins
         else if mod == 'list'
           ul
             each item in items
-              li=item.text
+              li!=item.text
