@@ -17,10 +17,10 @@ append mixins
 
     -
       options.class = options.class ? options.class : '';
-      options.class += options.block_class ? ` ${options.block_class} ` : '';
       const mod = options.mod ? options.mod.split(/[,\s]\s*/) : [];
       options.class += options.mod ? ` button-${mod.join(' button-')} ` : '';
       delete options.mod;
+      options.class += options.block_class ? ` ${options.block_class} ` : '';
       const block_class = options.block_class ? `${options.block_class}` : 'button';
       delete options.block_class;
       const color = `${options.color}`;

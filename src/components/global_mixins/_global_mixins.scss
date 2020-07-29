@@ -65,7 +65,7 @@ $timer: (
   @extend %pointer;
 }
 %flex{
-  display: inline-flex;
+  display: flex;
   align-items: center;
 }
 %flex-justify-center{
