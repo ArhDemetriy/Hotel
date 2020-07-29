@@ -2,13 +2,23 @@ append styles
   link(rel="stylesheet", href="../../../components/checkbox/checkbox.scss")
 
 append mixins
-  mixin checkbox(options)
-    if !options
-      - options = {}
+  mixin checkbox(options = {})
     -
-      var classes = ''
-      classes += options.block_class ? ' ' + options.block_class : ''
-      classes += options.mod ? ' checkbox-' + options.mod : ''
+      options.class = options.class ? `checkbox ${options.class}` : `checkbox `;
+      const mod = options.mod ? options.mod.trim().split(/[,\s]\s*/) : [];
+      options.class += options.mod ? ` checkbox-${mod.join(` checkbox-`)} ` : '';
+      delete options.mod;
+      options.class += options.block_class ? ` ${options.block_class} ` : '';
+      const block_class = options.block_class ? `${options.block_class}` : `checkbox`;
+      delete options.block_class;
+      const text = options.text ? options.text : '';
+      delete options.text;
+      const title = options.title ? `${options.title}` : '';
+      delete options.title;
+      options.name = options.name || block_class;
+      const name = options.name;
+      delete options.name;
+
 
     label(class='checkbox ' + classes)
       input(class='checkbox__input',type='checkbox',checked=false,value='asd')
