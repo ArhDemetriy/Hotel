@@ -15,6 +15,7 @@ body, .body, .font-regular{
 body{
   //- перед релизом поменять на white
   background-color: dimgray;
+  color: var(--color-shade-100, rgb(31, 32, 65));
 }
 .flex{
   display: inline-flex;

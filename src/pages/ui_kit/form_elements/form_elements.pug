@@ -12,6 +12,7 @@ include ../../../components/radio/radio.pug
 include ../../../components/rate/rate.pug
 include ../../../components/textfield/textfield.pug
 include ../../../components/toggle/toggle.pug
+include ../../../components/container/container.pug
 
 append styles
   link(rel='stylesheet', href='form_elements.scss')
@@ -22,105 +23,131 @@ block title
 append main
   div(class = 'form_elements')
     div(class = 'form_elements__item_container fields')
-      +textfield({type: 'email'})
-      +textfield({mod: 'hover', value: 'This is pretty awesome'})
-      +textfield({arrow: true, value: 'Сколько гостей'})
-      +datefield({placeholder: 'ДД.ММ.ГГГГ'})
+      +container({title:'textfield', text:'default'})
+        +textfield({type: 'email'})
+      +container({title:'textfield', text:'hover/focus'})
+        +textfield({mod: 'hover', value: 'This is pretty awesome'})
+      +container({title:'dropdown', text:'default'})
+        +textfield({arrow: true, value: 'Сколько гостей'})
+      +container({title:'masked text field', text:'default'})
+        +textfield({placeholder: 'ДД.ММ.ГГГГ'})
+      .datefields
+        +container({title:'date Dropdown', text:''})
+          +datefield({placeholder: 'ДД.ММ.ГГГГ'})
+        +container({title:'date Dropdown', text:''})
+          +datefield({placeholder: 'ДД.ММ.ГГГГ'})
+      +container({title:'filter date dropdown', text:''})
+        +datefield({placeholder: 'ДД.ММ.ГГГГ'})
+      +container({title:'subscription text field', text:''})
+        +datefield({placeholder: 'ДД.ММ.ГГГГ'})
+
     div(class = 'form_elements__item_container inputs')
-      +checkbox({text:'Завтрак',})
-      +checkbox({text:'Можно с питомцами',})
-      +checkbox({text:'Можно пригласить гостей (до&nbsp;10&nbsp;человек)',})
-      .radio
-        +radio({text:'Мужчина', name:'sex',})
-        +radio({text:'Женщина', name:'sex',})
-      +toggle({text:'Получать спецпредложения', checked: true})
-      +toggle({text:'Получать спецпредложения',})
-      .like
-        +like({
-          count: 2,
-        })
-        +like({
-          count: 12,
-          checked: true,
-        })
-      .rate
-        +rate({
-          count: 4,
-          block_class: 'rate0',
-        })
-        +rate({
-          count: 5,
-          block_class: 'rate1',
-        })
+      +container({title:'Checkbox Buttons', text:''})
+        +checkbox({text:'Завтрак',})
+        +checkbox({text:'Можно с питомцами',})
+        +checkbox({text:'Можно пригласить гостей (до&nbsp;10&nbsp;человек)',})
+      +container({title:'radio Buttons', text:''})
+        .radio
+          +radio({text:'Мужчина', name:'sex',})
+          +radio({text:'Женщина', name:'sex',})
+      +container({title:'Toggle', text:''})
+        +toggle({text:'Получать спецпредложения', checked: true})
+        +toggle({text:'Получать спецпредложения',})
+      +container({title:'like Button', text:''})
+        .like
+          +like({
+            count: 2,
+          })
+          +like({
+            count: 12,
+            checked: true,
+          })
+      +container({title:'rate Button', text:''})
+        .rate
+          +rate({
+            count: 4,
+            block_class: 'rate0',
+          })
+          +rate({
+            count: 5,
+            block_class: 'rate1',
+          })
 
     div(class = 'form_elements__item_container slider_buttons')
-      .slider='slider'
-      .buttons
-        +button({text:'asfegsg', mod:'colored'})
-        +button({text:'asfegsg', mod:'colored hover'})
-        +button({text:'asfegsg', mod:'transparent'})
-        +button({text:'asfegsg', mod:'transparent hover'})
-        +button({text:'asfegsg', mod:'frameless'})
-        +button({text:'asfegsg', mod:'frameless hover'})
-        +button({text:'asfegsg', mod:'colored', arrow:'right', block_class: 'pay'})
-      +pagination({})
+      +container({title:'Range Slider', text:'5 000₽ - 10 000₽'})
+        .slider='slider'
+      +container({title:'buttons', text:''})
+        .buttons
+          +button({text:'asfegsg', mod:'colored'})
+          +button({text:'asfegsg', mod:'colored hover'})
+          +button({text:'asfegsg', mod:'transparent'})
+          +button({text:'asfegsg', mod:'transparent hover'})
+          +button({text:'asfegsg', mod:'frameless'})
+          +button({text:'asfegsg', mod:'frameless hover'})
+          +button({text:'asfegsg', mod:'colored', arrow:'right', block_class: 'pay'})
+      +container({title:'pagination ', text:''})
+        +pagination({})
     div(class = 'form_elements__item_container dropfield')
-      +dropfield()
-      +dropfield({
-        visible: true,
-        items: [
-          {
-            title:'Спальни',
-            name:'1',
-          },
-          {
-            title:'Кровати',
-            name:'2',
-          },
-          {
-            title:'Ванные комнаты',
-            name:'3',
-          },
-        ],
-      })
+      +container({title:'dropdown', text:'default'})
+        +dropfield()
+      +container({title:'dropdown', text:'expanded'})
+        +dropfield({
+          visible: true,
+          items: [
+            {
+              title:'Спальни',
+              name:'1',
+            },
+            {
+              title:'Кровати',
+              name:'2',
+            },
+            {
+              title:'Ванные комнаты',
+              name:'3',
+            },
+          ],
+        })
     div(class = 'form_elements__item_container dropfield_button')
-      +dropfield({
-        buttons: true,
-        visible: true,
-        items: [
-          {
-            title:'Взрослые',
-            name:'1',
-          },
-          {
-            title:'Дети',
-            name:'2',
-          },
-          {
-            title:'Младенцы',
-            name:'3',
-          },
-        ],
-      })
+      +container({title:'dropdown', text:''})
+        +dropfield({
+          buttons: true,
+          visible: true,
+          items: [
+            {
+              title:'Взрослые',
+              name:'1',
+            },
+            {
+              title:'Дети',
+              name:'2',
+            },
+            {
+              title:'Младенцы',
+              name:'3',
+            },
+          ],
+        })
     div(class = 'form_elements__item_container dropfield_button_unclear')
-      +dropfield({
-        buttons: true,
-        visible: true,
-        items: [
-          {
-            title:'Взрослые',
-            name:'1',
-          },
-          {
-            title:'Дети',
-            name:'2',
-          },
-          {
-            title:'Младенцы',
-            name:'3',
-          },
-        ],
-      })
+      +container({title:'dropdown', text:''})
+        +dropfield({
+          buttons: true,
+          visible: true,
+          items: [
+            {
+              title:'Взрослые',
+              name:'1',
+            },
+            {
+              title:'Дети',
+              name:'2',
+            },
+            {
+              title:'Младенцы',
+              name:'3',
+            },
+          ],
+        })
     div(class = 'form_elements__item_container checkbox_list')
       +list({
         title: 'expandable checkbox list',

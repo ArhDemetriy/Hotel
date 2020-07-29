@@ -11,6 +11,7 @@
   &__block{
     display: flex;
     flex-direction: column;
+    margin-top: 5px;
   }
   &__title{
     color: map-get($color, 'shade-100');
@@ -18,5 +19,6 @@
   &__text{
     color: map-get($color, 'shade-50');
     text-align: end;
+    font-weight: normal;
   }
 }
