@@ -15,20 +15,19 @@ append mixins
       delete options.text;
       const title = options.title ? `${options.title}` : '';
       delete options.title;
+      options.checked = options.checked && options.checked != 'false' ? true : false;
       options.name = options.name || block_class;
-      const name = options.name;
-      delete options.name;
 
-
-    label(class='checkbox ' + classes)
-      input(class='checkbox__input',type='checkbox',checked=false,value='asd')
+    label(class=options.class)&attributes(attributes)
+      - delete options.class;
+      input(class='checkbox__input',type='checkbox')&attributes(options)
       //-необходимо, т.к. галочка с градиентом
       .checkbox__box
         .checkbox__mark
-      if !options.title
-        span(class='checkbox__text font-regular')!=options.text ? options.text : 'SET text'
+      if !title
+        span(class='checkbox__text font-regular')!=text ? text : 'SET text'
       else
-        .checkbox__text_container
-          span(class='checkbox__title')!=options.title
+        span.checkbox__text_container
+          span(class='checkbox__title')!=title
           br
-          span(class='checkbox__text font-regular')!=options.text ? options.text : 'SET text'
+          span(class='checkbox__text font-regular')!=text ? text : 'SET text'

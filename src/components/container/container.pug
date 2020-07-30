@@ -2,21 +2,26 @@ append styles
   link(rel='stylesheet', href='../../../components/container/container.scss')
 
 append mixins
-  mixin container(options = {})
+  mixin container(options = {}, items = [])
     -
-      options.class = options.class ? options.class : '';
-      options.class += options.mod ? ` container-${options.mod} ` : '';
-      const mod = options.mod ? `${options.mod}` : '';
+      if (!options.items)
+        options.items = [];
+      items = options.items.concat(items);
+      delete options.items;
+
+      options.class = options.class ? `container ${options.class}` : `container `;
+      const mod = options.mod ? options.mod.trim().split(/[,\s]\s*/) : [];
+      options.class += options.mod ? ` container-${mod.join(` container-`)} ` : '';
       delete options.mod;
       options.class += options.block_class ? ` ${options.block_class} ` : '';
-      const block_class = options.block_class ? `${options.block_class}` : '';
+      const block_class = options.block_class ? `${options.block_class}` : `container`;
       delete options.block_class;
+      const text = options.text ? options.text : '';
+      delete options.text;
       const title = options.title ? `${options.title}` : '';
       delete options.title;
-      const text = options.text ? `${options.text}` : '';
-      delete options.text;
-
-      options.class += ` container `;
+      const dropable = options.dropable ? true : false;
+      delete options.dropable;
 
     div()&attributes(options)&attributes(attributes)
       if title || text
