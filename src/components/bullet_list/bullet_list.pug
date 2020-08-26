@@ -1,0 +1,33 @@
+append styles
+  link(rel="stylesheet", href="../../../components/bullet_list/bullet_list.scss")
+append skripts__defer
+  script(type='module', src='../../../components/bullet_list/bullet_list.js')
+append mixins
+  mixin bullet_list(options = {}, items = [])
+    -
+      if (!options.items)
+        options.items = [];
+      items = options.items.concat(items);
+      delete options.items;
+    -
+      options.class = options.class ? options.class : '';
+      // mods
+      const mod = options.mod ? options.mod.split(/[,\s]\s*/) : [];
+      options.class += options.mod ? ` bullet_list-${mod.join(' bullet_list-')} ` : '';
+      delete options.mod; // if (mod.includes('colored') {}
+      // parent class
+      options.class += options.block_class ? ` ${options.block_class} ` : '';
+      const block_class = options.block_class ? `${options.block_class}` : 'bullet_list';
+      delete options.block_class;
+      // title; major information
+      const title = options.title ? `${options.title}` : '';
+      delete options.title;
+      // text; minor information
+      const text = options.text ? options.text : '';
+      delete options.text;
+      // this can drop?
+      const dropable = options.dropable && options.dropable != 'false' ? true : false;
+      delete options.dropable;
+
+    - options.class = `bullet_list ${options.class}`
+    div()&attributes(options)&attributes(attributes)

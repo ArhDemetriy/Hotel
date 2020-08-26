@@ -1,0 +1,19 @@
+@use 'sass:map';
+@import '../global_mixins/global_mixins';
+
+.bullet_list{
+  @extend %not_select_and_pointer;
+  @extend %flex;
+
+  -moz-appearance: none ;
+  -webkit-appearance: none ;
+  appearance: none ;
+
+  border: none;
+  background-color: transparent;
+  box-sizing: border-box;
+
+  &:hover, &:focus, &-visible{
+    display: flex;
+  }
+}

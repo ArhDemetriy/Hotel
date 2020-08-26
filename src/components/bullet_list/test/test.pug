@@ -1,0 +1,73 @@
+extends ../../../pages/base/base_test.pug
+
+include ../bullet_list.pug
+
+block header
+block title
+  title='test bullet_list'
+append main
+  -
+    const settings = {
+      title:[
+        'qwe',
+        'jvklygrdliusdfuhg liufdsl iuh glsiudg i ',
+        '',
+        'jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i ',
+      ],
+      text:[
+        'qwe',
+        'jvklygrdliusdfuhg liufdsl iuh glsiudg i ',
+        '',
+        'jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i ',
+      ],
+      dropable:[
+        false,
+        true,
+      ],
+      items:[
+        [
+
+          ],
+        [
+          {
+            text: 'asddsfgosdhofoo dfuy pgiousdhfpiu sgh[poidfhpgohpaoufgh[pasoidf hg[oishdpouayh[osd ih[oagui h[osdfi a[oih[fds[giojh[adfih g[dioapjfnkidafo giha[df',
+            name:'1',
+          },
+        ],
+        [
+          {
+            text:'Завтрак',
+            name:'1',
+          },
+          {
+            text:'Письменный стол',
+            name:'2',
+          },
+          {
+            text:'Стул для кормления',
+            name:'3',
+          },
+          {
+            text:'Кроватка ',
+            name:'4',
+          },
+          {
+            text:'Телевизор ',
+            name:'4',
+          },
+          {
+            text:'Шампунь ',
+            name:'4',
+          },
+        ],
+      ],
+    }
+
+  h2='start autotest'
+  br
+
+  +base_test__mass_test('bullet_list',settings)
+
+  br
+  h2='end autotest'
+  br
