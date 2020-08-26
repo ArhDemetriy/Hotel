@@ -1,6 +1,8 @@
 extends ../../../pages/base/base_test.pug
 
 include ../container.pug
+include ../../checkbox/checkbox.pug
+
 
 block header
 block title
@@ -33,6 +35,15 @@ append main
         'dropable',
       ],
     }
+
+
+  +container({title:'checkbox'})
+    +checkbox()
+    +checkbox()
+  +container({title:'checkbox',mod:'dropable'})
+    +checkbox()
+    +checkbox()
+
 
   h2='start autotest'
   br

@@ -30,5 +30,9 @@ append mixins
             span.container__title=title
           if text
             span.container__text=text
-      .container__block
-        block
+      .container__block(class = mod.includes('dropable') ? 'container__block-dropable' : '')
+        if !mod.includes('dropable')
+          block
+        else
+          .container__absolute_box
+            block
