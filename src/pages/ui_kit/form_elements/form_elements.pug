@@ -13,6 +13,7 @@ include ../../../components/rate/rate.pug
 include ../../../components/textfield/textfield.pug
 include ../../../components/toggle/toggle.pug
 include ../../../components/container/container.pug
+include ../../../components/bullet_list/bullet_list.pug
 
 append styles
   link(rel='stylesheet', href='form_elements.scss')
@@ -54,13 +55,15 @@ append main
         +toggle({text:'Получать спецпредложения', checked: true})
         +toggle({text:'Получать спецпредложения',})
       +container({title:'like Button', text:''})
-        .like
+        .like_container
           +like({
             count: 2,
+            name: 'left-like',
           })
           +like({
-            count: 12,
+            count: 11,
             checked: true,
+            name: 'right-like',
           })
       +container({title:'rate Button', text:''})
         .rate
@@ -172,8 +175,10 @@ append main
           })
     div(class = 'form_elements__item_container bullet_lists')
       +container({title: 'Bullet list',mod: 'list'})
-        li='Нельзя с питомцами'
-        li='Без вечеринок и мероприятий'
-        li!='Время прибытия — после 13:00, а&nbsp;выезд до 12:00'
+        +bullet_list({},[
+          {text:'Нельзя с питомцами'},
+          {text:'Без вечеринок и мероприятий'},
+          {text:'Время прибытия — после 13:00, а&nbsp;выезд до 12:00'},
+        ])
     div(class = 'form_elements__item_container picts')='пикчи'
     div(class = 'form_elements__item_container komment')='коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент'
