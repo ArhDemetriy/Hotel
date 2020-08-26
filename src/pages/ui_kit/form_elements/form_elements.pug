@@ -78,13 +78,13 @@ append main
         .slider='slider'
       +container({title:'buttons', text:''})
         .buttons
-          +button({text:'asfegsg', mod:'colored'})
-          +button({text:'asfegsg', mod:'colored hover'})
-          +button({text:'asfegsg', mod:'transparent'})
-          +button({text:'asfegsg', mod:'transparent hover'})
-          +button({text:'asfegsg', mod:'frameless'})
-          +button({text:'asfegsg', mod:'frameless hover'})
-          +button({text:'asfegsg', mod:'colored', arrow:'right', block_class: 'pay'})
+          +button({text:'CLICK ME', mod:'colored'})
+          +button({text:'CLICK ME', mod:'colored hover'})
+          +button({text:'CLICK ME', mod:'transparent'})
+          +button({text:'CLICK ME', mod:'transparent hover'})
+          +button({text:'CLICK ME', mod:'frameless'})
+          +button({text:'CLICK ME', mod:'frameless hover'})
+          +button({text:'перейти к оплате', mod:'colored', arrow:'right', block_class: 'pay'})
       +container({title:'pagination ', text:''})
         +pagination({})
     div(class = 'form_elements__item_container dropfield')
@@ -149,75 +149,31 @@ append main
           ],
         })
     div(class = 'form_elements__item_container checkbox_list')
-      +list({
-        title: 'expandable checkbox list',
-        arrow: true,
-      })
-      +list({
-        title: 'expandable checkbox list',
-        arrow: true,
-        items:[
-          {
-            text:'Завтрак',
-            name:'1',
-          },
-          {
-            text:'Письменный стол',
-            name:'2',
-          },
-          {
-            text:'Стул для кормления',
-            name:'3',
-          },
-          {
-            text:'Кроватка ',
-            name:'4',
-          },
-          {
-            text:'Телевизор ',
-            name:'4',
-          },
-          {
-            text:'Шампунь ',
-            name:'4',
-          },
-        ],
-      })
+      +container({title: 'expandable checkbox list', mod: 'dropable',})
+      +container({title: 'expandable checkbox list', mod: 'dropable',})
+        +checkbox({text:'Завтрак',})
+        +checkbox({text:'Письменный стол',})
+        +checkbox({text:'Стул для кормления',})
+        +checkbox({text:'Кроватка',})
+        +checkbox({text:'Телевизор',})
+        +checkbox({text:'Шампунь',})
     div(class = 'form_elements__item_container rich_checkbox')
-      +list({
-        title: 'Rich Checkbox Buttons',
-        mod: 'visible',
-        items:[
-          {
+
+      +container({title: 'Rich Checkbox Buttons',})
+        +checkbox({
             title:'Широкий коридор',
             text:'Ширина коридоров в номере не&nbsp;менее&nbsp;91&nbsp;см.',
             name:'1',
-          },
-          {
+          })
+        +checkbox({
             title:'Помощник для инвалидов',
             text:'На 1 этаже вас встретит специалист и&nbsp;проводит до номера.',
             name:'2',
-          },
-        ],
-      })
+          })
     div(class = 'form_elements__item_container bullet_lists')
-      +list({
-        title: 'Bullet list',
-        mod: 'list',
-        items:[
-          {
-            text:'Нельзя с питомцами',
-            name:'1',
-          },
-          {
-            text:'Без вечеринок и мероприятий',
-            name:'2',
-          },
-          {
-            text:'Время прибытия — после 13:00, а&nbsp;выезд до 12:00',
-            name:'3',
-          },
-        ],
-      })
+      +container({title: 'Bullet list',mod: 'list'})
+        li='Нельзя с питомцами'
+        li='Без вечеринок и мероприятий'
+        li!='Время прибытия — после 13:00, а&nbsp;выезд до 12:00'
     div(class = 'form_elements__item_container picts')='пикчи'
     div(class = 'form_elements__item_container komment')='коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент'
