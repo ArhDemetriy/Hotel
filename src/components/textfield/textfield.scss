@@ -26,11 +26,17 @@
     right: $padding;
     color: map.get($color, 'shade-50');
   }
+  &-double_date{
+    width: 150px;
+  }
   &-dropdown{
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-  }
-  &-double_date{
-  width: 150px;
+    min-width: none;
+    max-width: none;
+    display: flex;
+    &:hover, &:focus, &-hover{
+      border-bottom: none;
+    }
   }
 }

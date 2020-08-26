@@ -3,15 +3,17 @@
 
 .dropdown{
   display: none;
-  flex-direction: column;
+  // position: absolute;
 
+  flex-direction: column;
   border: 1px solid map.get($color, 'shade-25');
   border-top: none;
   border-radius: 0 0 4px 4px;
   padding: 7px 7px 7px 15px ;
+  background: white;
 
   &:hover,&-visible{
-    display: inline-flex;
+    display: flex;
   }
   &__item:nth-child(n+2){
     margin-top: 7px;

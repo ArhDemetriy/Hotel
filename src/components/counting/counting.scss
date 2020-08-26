@@ -6,6 +6,7 @@
   @extend %flex-justify-between;
   background-color: map_get($color, 'background');
   display: flex;
+  box-sizing: border-box;
   &__counter{
     @extend %not_select;
     @extend %flex-justify-between;
@@ -15,10 +16,12 @@
     -moz-appearance: textfield ;
     -webkit-appearance: textfield ;
     appearance: textfield ;
+    width: 4ch;
 
     border: none;
     background-color: map_get($color, 'background');
     text-align: center;
+    box-sizing: border-box;
   }
   &__button {
     -moz-appearance: none ;
