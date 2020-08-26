@@ -4,6 +4,9 @@
 .container{
   display: flex;
   flex-direction: column;
+  max-width: 266px;
+  width: max-content;
+
   &__caption{
     display: flex;
     justify-content: space-between;
@@ -12,6 +15,11 @@
     display: flex;
     flex-direction: column;
     margin-top: 5px;
+    &-dropable{
+      display: none;
+      margin-top: 0;
+      position: relative;
+    }
   }
   &__title{
     color: map-get($color, 'shade-100');
@@ -20,5 +28,31 @@
     color: map-get($color, 'shade-50');
     text-align: end;
     font-weight: normal;
+  }
+  &-dropable > &__caption{
+    position: relative;
+    padding-right: 2ch;
+    &::after{
+      content: '^';
+      position: absolute;
+      right: 0;
+    }
+  }
+  &-dropable:hover > &__caption::after, &-hover > &__caption::after{
+    content: 'v';
+  }
+
+  &-dropable:hover,&-hover{
+    & > .container__block-dropable{
+      display: flex;
+    }
+  }
+  &__absolute_box{
+    padding-top: 5px;
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    right: 0;
+    background-color: white;
   }
 }
