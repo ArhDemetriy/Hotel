@@ -30,4 +30,6 @@ append mixins
       delete options.dropable;
 
     - options.class = `bullet_list ${options.class}`
-    div()&attributes(options)&attributes(attributes)
+    ul()&attributes(options)&attributes(attributes)
+      each item in items
+        li=item.text
