@@ -25,12 +25,12 @@ append mixins
       delete options.text;
       const title = options.title ? `${options.title}` : '';
       delete options.title;
-      const dropable = options.dropable && options.dropable == 'false' ? false : true; //sic! dropable is default
-      delete options.dropable;
+      const visible = options.visible && options.visible == 'false' ? false : true;
+      delete options.visible;
       buttons = options.buttons && options.buttons != 'false' ? true : false;
       delete options.buttons;
 
-      const textfield_options: {
+      const textfield_options = {
         mod: 'dropdown',
         type: 'text',
         block_class: 'dropfield__field',
@@ -39,10 +39,10 @@ append mixins
         textfield_options.placeholder = options.placeholder;
       delete options.placeholder;
 
-      const dropdown_options: {
+      const dropdown_options = {
         items: items,
         buttons: buttons,
-        dropable: dropable,
+        visible: visible,
         block_class: 'dropfield__drop',
       }
 

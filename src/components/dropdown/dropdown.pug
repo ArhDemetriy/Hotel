@@ -21,8 +21,8 @@ append mixins
       options.class += options.block_class ? ` ${options.block_class} ` : '';
       const block_class = options.block_class ? `${options.block_class}` : `dropdown`;
       delete options.block_class;
-      const dropable = options.dropable && options.dropable != 'false' ? true : false;
-      delete options.dropable;
+      const visible = options.visible && options.visible != 'false' ? true : false;
+      delete options.visible;
       const buttons = options.buttons && options.buttons != 'false' ? true : false;
       delete options.buttons;
 
