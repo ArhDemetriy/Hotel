@@ -13,28 +13,41 @@ append mixins
         options.items = [];
       items = options.items.concat(items);
       delete options.items;
-    -
-      options.class = options.class ? options.class : '';
-      options.class += ` dropfield `;
-      options.class += options.mod ? ` dropfield-${options.mod} ` : '';
-      const mod = options.mod ? options.mod : '';
+
+      options.class = options.class ? `dropfield ${options.class}` : `dropfield `;
+      const mod = options.mod ? options.mod.trim().split(/[,\s]\s*/) : [];
+      options.class += options.mod ? ` dropfield-${mod.join(` dropfield-`)} ` : '';
       delete options.mod;
       options.class += options.block_class ? ` ${options.block_class} ` : '';
-      const block_class = options.block_class ? options.block_class : '';
+      const block_class = options.block_class ? `${options.block_class}` : `dropfield`;
       delete options.block_class;
-      visible = options.visible ? true : false;
+      const text = options.text ? options.text : '';
+      delete options.text;
+      const title = options.title ? `${options.title}` : '';
+      delete options.title;
+      const visible = options.visible && options.visible == 'false' ? false : true;
       delete options.visible;
-      buttons = options.buttons ? true : false;
+      buttons = options.buttons && options.buttons != 'false' ? true : false;
       delete options.buttons;
 
-    label()&attributes(options)
-      +textfield({
-        mod:'dropdown',
+      const textfield_options = {
+        mod: 'dropdown',
+        type: 'text',
         block_class: 'dropfield__field',
-        })
-      +dropdown({
+      };
+      if (options.placeholder)
+        textfield_options.placeholder = options.placeholder;
+      delete options.placeholder;
+
+      const dropdown_options = {
         items: items,
-        mod: visible ? 'visible' : '',
         buttons: buttons,
+        visible: visible,
         block_class: 'dropfield__drop',
-      })
+      }
+
+    form()&attributes(options)&attributes(attributes)
+      +textfield(textfield_options)
+      //- +dropdown(dropdown_options)
+      .dropfield__hidebele_container
+        +dropdown(dropdown_options)

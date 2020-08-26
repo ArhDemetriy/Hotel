@@ -2,23 +2,25 @@ append styles
   link(rel="stylesheet", type="text/css", href="../../../components/textfield/textfield.scss")
 
 append mixins
-  mixin textfield(options)
+  mixin textfield(options = {})
     -
-      if (!options)
-        options = {}
-    -
-      options.class = options.class ? options.class : '';
-      options.class += ` textfield `;
-      options.class += options.block_class ? ` ${options.block_class} ` : '';
-      const block_class = options.block_class ? ` ${options.block_class} ` : '';
-      delete options.block_class;
-      options.class += options.mod ? ` textfield-${options.mod} ` : '';
-      if (!options.placeholder && (options.mod == 'masked' || options.mod == 'Masked'))
-        options.placeholder = 'SET placeholder';
+      options.class = options.class ? `textfield ${options.class}` : `textfield `;
+      const mod = options.mod ? options.mod.trim().split(/[,\s]\s*/) : [];
+      options.class += options.mod ? ` textfield-${mod.join(` textfield-`)} ` : '';
       delete options.mod;
-      const arrow = options.arrow ? ` ${options.arrow} ` : '';
-      if (arrow) options.class += ` textfield-hover`;
+      options.class += options.block_class ? ` ${options.block_class} ` : '';
+      const block_class = options.block_class ? `${options.block_class}` : `textfield`;
+      delete options.block_class;
+      if (!options.value) options.value = options.text ? options.text : '';
+      delete options.text;
+      options.name = options.name || block_class;
+
+      const arrow = options.arrow ? `${options.arrow}` : '';
       delete options.arrow;
+      if (arrow) options.class += ` textfield-hover`;
+
+      if (!options.placeholder && (mod.includes('masked') || mod.includes('Masked')) )
+        options.placeholder = 'SET placeholder';
 
       if (!options.placeholder) {
         switch (options.type) {
@@ -36,8 +38,9 @@ append mixins
         options.type = 'text';
 
     if !arrow
-      input()&attributes(options)
+      input()&attributes(options)&attributes(attributes)
     else
-      div(class = 'textfield__container_for_arrow')
+      div(class = 'textfield__container_for_arrow', class = options.class)&attributes(attributes)
+        - delete options.class;
         input()&attributes(options)
         span(class = 'textfield__arrow material-icons-outlined')='keyboard_arrow_down'

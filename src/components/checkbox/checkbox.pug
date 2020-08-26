@@ -2,23 +2,32 @@ append styles
   link(rel="stylesheet", href="../../../components/checkbox/checkbox.scss")
 
 append mixins
-  mixin checkbox(options)
-    if !options
-      - options = {}
+  mixin checkbox(options = {})
     -
-      var classes = ''
-      classes += options.block_class ? ' ' + options.block_class : ''
-      classes += options.mod ? ' checkbox-' + options.mod : ''
+      options.class = options.class ? `checkbox ${options.class}` : `checkbox `;
+      const mod = options.mod ? options.mod.trim().split(/[,\s]\s*/) : [];
+      options.class += options.mod ? ` checkbox-${mod.join(` checkbox-`)} ` : '';
+      delete options.mod;
+      options.class += options.block_class ? ` ${options.block_class} ` : '';
+      const block_class = options.block_class ? `${options.block_class}` : `checkbox`;
+      delete options.block_class;
+      const text = options.text ? options.text : '';
+      delete options.text;
+      const title = options.title ? `${options.title}` : '';
+      delete options.title;
+      options.checked = options.checked && options.checked != 'false' ? true : false;
+      options.name = options.name || block_class;
 
-    label(class='checkbox ' + classes)
-      input(class='checkbox__input',type='checkbox',checked=false,value='asd')
+    label(class=options.class)&attributes(attributes)
+      - delete options.class;
+      input(class='checkbox__input',type='checkbox')&attributes(options)
       //-необходимо, т.к. галочка с градиентом
       .checkbox__box
         .checkbox__mark
-      if !options.title
-        span(class='checkbox__text font-regular')!=options.text ? options.text : 'SET text'
+      if !title
+        span(class='checkbox__text font-regular')!=text ? text : 'SET text'
       else
-        .checkbox__text_container
-          span(class='checkbox__title')!=options.title
+        span.checkbox__text_container
+          span(class='checkbox__title')!=title
           br
-          span(class='checkbox__text font-regular')!=options.text ? options.text : 'SET text'
+          span(class='checkbox__text font-regular')!=text ? text : 'SET text'

@@ -1,6 +1,5 @@
 include ../checkbox/checkbox.pug
 
-
 append styles
   link(rel='stylesheet', href='../../../components/list/list.scss')
 append skripts__defer
@@ -13,19 +12,24 @@ append mixins
         options.items = [];
       items = options.items.concat(items);
       delete options.items;
-      options.class = options.class ? options.class : '';
-      options.class += options.mod ? ` list-${options.mod} ` : '';
-      const mod = options.mod ? `${options.mod}` : '';
+
+      options.class = options.class ? `list ${options.class}` : `list `;
+      const mod = options.mod ? options.mod.trim().split(/[,\s]\s*/) : [];
+      options.class += options.mod ? ` list-${mod.join(` list-`)} ` : '';
       delete options.mod;
+      // if (mod.includes('colored')) {};
       options.class += options.block_class ? ` ${options.block_class} ` : '';
-      const block_class = options.block_class ? `${options.block_class}` : '';
+      const block_class = options.block_class ? `${options.block_class}` : `list`;
       delete options.block_class;
+      const text = options.text ? options.text : '';
+      delete options.text;
       const title = options.title ? `${options.title}` : '';
       delete options.title;
+      const dropable = options.dropable && options.dropable != 'false' ? true : false;
+      delete options.dropable;
       const arrow = options.arrow;
       delete options.arrow;
 
-      options.class += ` list `;
 
     div()&attributes(options)&attributes(attributes)
       div(class = 'list__title')

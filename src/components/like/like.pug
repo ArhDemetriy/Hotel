@@ -4,18 +4,28 @@ append skripts__defer
   script(defer src="../../../components/like/like.js")
 
 append mixins
-  mixin like(options)
-    if !options
-      - options = {}
+  mixin like(options = {})
     -
-      var classes = ''
-      classes += options.block_class ? ' ' + options.block_class : ''
-      classes += options.mod ? ' like-' + options.mod : ''
+      options.class = options.class ? `like ${options.class}` : `like `;
+      const mod = options.mod ? options.mod.trim().split(/[,\s]\s*/) : [];
+      options.class += options.mod ? ` like-${mod.join(` like-`)} ` : '';
+      delete options.mod;
+      options.class += options.block_class ? ` ${options.block_class} ` : '';
+      const block_class = options.block_class ? `${options.block_class}` : `like`;
+      delete options.block_class;
+      const count = isFinite(options.count) ? Number(options.count) : 0;
+      delete options.count;
+      options.checked = options.checked && options.checked != 'false' ? true : false;
+      options.name = options.name || block_class;
+      const text = `${(Number(count) + options.checked ? 1 : 0)}`;
 
-    label(class='like' + classes, 'data-count'=(options.count ? options.count : 0))
-      input(class='like__input',type='checkbox',checked=(options.checked ? options.checked : false))
+
+
+    label('data-count'=count, class=options.class)&attributes(attributes)
+      - delete options.class;
+      input(class='like__input', type='checkbox')&attributes(options)
       .like__box
         .like__border_creator
           span(class='like__mark like__mark_unchecked material-icons-outlined ')='favorite_border'
           span(class='like__mark like__mark_checked material-icons-outlined ')='favorite'
-          span(class='like__text')=options.count || options.count === 0 ? options.count : 'NAN'
+          span(class='like__text')=text
