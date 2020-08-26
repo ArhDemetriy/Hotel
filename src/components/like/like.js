@@ -4,7 +4,7 @@
     const likesDOM = this.querySelector(`.like__text`);
     if (!likesDOM) return;
     let likes = Number(this.dataset.count);
-    if (!likes) likes = 0;
+    if (!isFinite(likes)) likes = 0;
     likes += this.querySelector(`.like__input`) && this.querySelector(`.like__input`).checked ? 1 : 0;
     likesDOM.textContent = `${likes}`;
   }

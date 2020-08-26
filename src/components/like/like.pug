@@ -13,11 +13,11 @@ append mixins
       options.class += options.block_class ? ` ${options.block_class} ` : '';
       const block_class = options.block_class ? `${options.block_class}` : `like`;
       delete options.block_class;
-      const count = isFinite(options.count) ? Number(options.count) : 0;
+      const count = isFinite(Number(options.count)) ? Number(options.count) : 0;
       delete options.count;
       options.checked = options.checked && options.checked != 'false' ? true : false;
       options.name = options.name || block_class;
-      const text = `${(Number(count) + options.checked ? 1 : 0)}`;
+      const text = `${(Number(count) + (options.checked ? 1 : 0))}`;
 
 
 
