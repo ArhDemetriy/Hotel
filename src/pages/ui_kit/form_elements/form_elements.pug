@@ -22,12 +22,25 @@ append header
 block title
   title='Form Elements'
 append main
+  .grid
+    div.grid__fierst
+    div
+    div
+    div
+    div.grid__double
+    div
+    div
+    div
+    div
+    div.grid__double
+
+
   div(class = 'form_elements')
     div(class = 'form_elements__item_container fields')
       +container({title:'textfield', text:'default'})
         +textfield({type: 'email'})
       +container({title:'textfield', text:'hover/focus'})
-        +textfield({mod: 'hover', value: 'This is pretty awesome'})
+        +textfield({value: 'This is pretty awesome', autofocus:true})
       +container({title:'dropdown', text:'default'})
         +textfield({arrow: true, value: 'Сколько гостей'})
       +container({title:'masked text field', text:'default'})

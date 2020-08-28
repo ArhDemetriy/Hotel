@@ -1,3 +1,21 @@
+.grid{
+  $const:9.71222222vw;
+  $main_padding: max(0px, calc(#{$const*2} - 200px));
+  padding: min(4.51388888%, 65px) $main_padding 0 $main_padding;
+
+  display: grid;
+  grid-template-columns: minmax(374px, 1.16875fr) repeat(auto-fit, minmax(320px, 1fr));
+  grid-gap: max(0px, calc(15vw - 144px));
+  & > div{
+    border: solid 1px red;
+    width: 100%;
+    height: 500px;
+  }
+  &__double{
+    grid-column: -3 / -1;
+  }
+}
+
 .form_elements{
   display: grid;
   grid-template-columns: max(22.222222222%, 320px) max(22.222222222%, 320px) max(22.222222222%, 320px);
@@ -26,6 +44,8 @@
             "c d"
             "e f"
             "pay pay";
+  grid-gap: 19px;
+
 }
 .pay{
   grid-area: pay;
