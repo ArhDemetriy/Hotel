@@ -1,63 +1,98 @@
 .form_elements{
-  display: grid;
-  grid-template-columns: max(22.222222222%, 320px) max(22.222222222%, 320px) max(22.222222222%, 320px);
-  grid-template-rows: auto auto auto auto;
-  grid-gap: 55px;
-  padding: min(4.51388888%, 65px) 9.79166666% 0 9.79166666%;
-  grid-template-areas:
-            "fields inputs buttons"
-            "dropfield dropfield_button dropfield_button_unclear"
-            "checkbox_list rich_checkbox bullet_lists"
-            "picts komment komment";
+  $const:9.71222222vw;
+  $main_padding: max(0px, calc(#{$const*2} - 200px));
+  // padding: min(4.51388888%, 65px) $main_padding 0 $main_padding;
+  max-width: 1440px;
+  margin: min(4.51388888vh, 65px) 140px 0 140px;
 
-  &__item_container{
+  display: grid;
+  grid-template-columns: minmax(374px, 1.16875fr) repeat(2, minmax(320px, 1fr));
+  grid-gap: 72px;
+  &__double{
+    grid-column: -3 / -1;
+  }
+  &__form_block{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
   }
-}
-.komment{
-  grid-area: komment;
-}
-.buttons{
-  display: grid;
-  grid-template-areas:
-            "a b"
-            "c d"
-            "e f"
-            "pay pay";
-}
-.pay{
-  grid-area: pay;
-}
-.datefields{
-  display: flex;
-  justify-content: space-between;
-  width: 320px;
-  & .textfield{
-    width: 150px;
+  &__radios, &__rates, &__likes, &__dropfield_button, &__datefields, &__toggles, &__rich_checkboxes{
+    display: flex;
+    justify-content: space-between;
   }
-}
-.fields{
-  & > :nth-child(-n+3){
-    margin-bottom: 20px;
+  &__radios{
+    width: 220px;
   }
-  & > :nth-child(n+5){
-    margin-top: 40px;
+  &__rates{
+    width: 260px;
   }
-}
-.inputs, .slider_buttons{
-  & > :nth-child(n+2) {
-    margin-top: 40px;
+  &__likes{
+    width: 90px;
   }
-}
-.dropfield{
-  & > :nth-child(n+2){
-    margin-top: 20px;
+  &__dropfield_button{
+    flex-direction: row;
   }
-}
-.checkbox_list{
-  & > :nth-child(n+2){
-    margin-top: 50px;
+  &__datefields{
+    width: 320px;
+    & .textfield{
+      width: 150px;
+    }
+  }
+  &__checkboxes{
+    & > :nth-child(n+2) {
+      margin-top: 10px;
+    }
+  }
+  &__toggles{
+    flex-direction: column;
+    & > :nth-child(n+2) {
+      margin-top: 14px;
+    }
+  }
+  &__rich_checkboxes{
+    flex-direction: column;
+    width: 320px;
+    & > :nth-child(n+2) {
+      margin-top: 10px;
+    }
+  }
+
+  &__buttons{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 320px;
+    & > :nth-child(2n){
+      margin-left: 20px;
+    }
+    & > :nth-child(n){
+      margin-bottom: 40px;
+    }
+  }
+
+  &__one_field{
+    width: 320px;
+  }
+  &__fields{
+    & > :nth-child(-n+3){
+      margin-bottom: 20px;
+    }
+    & > :nth-child(n+5){
+      margin-top: 40px;
+    }
+  }
+  &__inputs, &__slider_buttons{
+    & > :nth-child(n+2) {
+      margin-top: 40px;
+    }
+  }
+  &__dropfield{
+    & > :nth-child(n+2){
+      margin-top: 20px;
+    }
+  }
+  &__checkbox_list{
+    & > :nth-child(n+2){
+      margin-top: 50px;
+    }
   }
 }

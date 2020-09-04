@@ -32,4 +32,4 @@ append mixins
     - options.class = `bullet_list ${options.class}`
     ul()&attributes(options)&attributes(attributes)
       each item in items
-        li=item.text
+        li!=item.text

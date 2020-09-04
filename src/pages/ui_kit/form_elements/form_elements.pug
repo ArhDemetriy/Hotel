@@ -13,6 +13,7 @@ include ../../../components/rate/rate.pug
 include ../../../components/textfield/textfield.pug
 include ../../../components/toggle/toggle.pug
 include ../../../components/container/container.pug
+include ../../../components/bullet_list/bullet_list.pug
 
 append styles
   link(rel='stylesheet', href='form_elements.scss')
@@ -21,17 +22,21 @@ append header
 block title
   title='Form Elements'
 append main
-  div(class = 'form_elements')
-    div(class = 'form_elements__item_container fields')
+  .form_elements
+    div.form_elements__form_block(class='form_elements__fields')
       +container({title:'textfield', text:'default'})
-        +textfield({type: 'email'})
+        .form_elements__one_field
+          +textfield({type: 'email'})
       +container({title:'textfield', text:'hover/focus'})
-        +textfield({mod: 'hover', value: 'This is pretty awesome'})
+        .form_elements__one_field
+          +textfield({value: 'This is pretty awesome', autofocus:true, mod:'hover'})
       +container({title:'dropdown', text:'default'})
-        +textfield({arrow: true, value: 'Сколько гостей'})
+        .form_elements__one_field
+          +textfield({value: 'Сколько гостей'})
       +container({title:'masked text field', text:'default'})
-        +textfield({placeholder: 'ДД.ММ.ГГГГ'})
-      .datefields
+        .form_elements__one_field
+          +textfield({placeholder: 'ДД.ММ.ГГГГ'})
+      .form_elements__datefields
         +container({title:'date Dropdown', text:''})
           +datefield({placeholder: 'ДД.ММ.ГГГГ'})
         +container({title:'date Dropdown', text:''})
@@ -40,30 +45,33 @@ append main
         +datefield({placeholder: 'ДД.ММ.ГГГГ'})
       +container({title:'subscription text field', text:''})
         +datefield({placeholder: 'ДД.ММ.ГГГГ'})
-
-    div(class = 'form_elements__item_container inputs')
+    div.form_elements__form_block(class='form_elements__inputs')
       +container({title:'Checkbox Buttons', text:''})
-        +checkbox({text:'Завтрак',})
-        +checkbox({text:'Можно с питомцами',})
-        +checkbox({text:'Можно пригласить гостей (до&nbsp;10&nbsp;человек)',})
+        .form_elements__checkboxes
+          +checkbox({text:'Завтрак',})
+          +checkbox({text:'Можно с питомцами',})
+          +checkbox({text:'Можно пригласить гостей (до&nbsp;10&nbsp;человек)',})
       +container({title:'radio Buttons', text:''})
-        .radio
+        .form_elements__radios
           +radio({text:'Мужчина', name:'sex',})
           +radio({text:'Женщина', name:'sex',})
       +container({title:'Toggle', text:''})
-        +toggle({text:'Получать спецпредложения', checked: true})
-        +toggle({text:'Получать спецпредложения',})
+        .form_elements__toggles
+          +toggle({text:'Получать спецпредложения', checked: true})
+          +toggle({text:'Получать спецпредложения',})
       +container({title:'like Button', text:''})
-        .like
+        .form_elements__likes
           +like({
             count: 2,
+            name: 'left-like',
           })
           +like({
-            count: 12,
+            count: 11,
             checked: true,
+            name: 'right-like',
           })
       +container({title:'rate Button', text:''})
-        .rate
+        .form_elements__rates
           +rate({
             count: 4,
             block_class: 'rate0',
@@ -72,12 +80,11 @@ append main
             count: 5,
             block_class: 'rate1',
           })
-
-    div(class = 'form_elements__item_container slider_buttons')
+    div.form_elements__form_block(class='form_elements__slider_buttons')
       +container({title:'Range Slider', text:'5 000₽ - 10 000₽'})
         .slider='slider'
       +container({title:'buttons', text:''})
-        .buttons
+        .form_elements__buttons
           +button({text:'CLICK ME', mod:'colored'})
           +button({text:'CLICK ME', mod:'colored hover'})
           +button({text:'CLICK ME', mod:'transparent'})
@@ -87,7 +94,7 @@ append main
           +button({text:'перейти к оплате', mod:'colored', arrow:'right', block_class: 'pay'})
       +container({title:'pagination ', text:''})
         +pagination({})
-    div(class = 'form_elements__item_container dropfield')
+    div.form_elements__form_block(class='form_elements__dropfield')
       +container({title:'dropdown', text:'default'})
         +dropfield()
       +container({title:'dropdown', text:'expanded'})
@@ -108,7 +115,7 @@ append main
             },
           ],
         })
-    div(class = 'form_elements__item_container dropfield_button')
+    div.form_elements__form_block(class='form_elements__dropfield_button')
       +container({title:'dropdown', text:''})
         +dropfield({
           buttons: true,
@@ -128,7 +135,7 @@ append main
             },
           ],
         })
-    div(class = 'form_elements__item_container dropfield_button_unclear')
+    div.form_elements__form_block(class='form_elements__dropfield_button')
       +container({title:'dropdown', text:''})
         +dropfield({
           buttons: true,
@@ -148,7 +155,7 @@ append main
             },
           ],
         })
-    div(class = 'form_elements__item_container checkbox_list')
+    div.form_elements__form_block(class='form_elements__checkbox_list')
       +container({title: 'expandable checkbox list', mod: 'dropable',})
       +container({title: 'expandable checkbox list', mod: 'dropable',})
         +checkbox({text:'Завтрак',})
@@ -157,23 +164,25 @@ append main
         +checkbox({text:'Кроватка',})
         +checkbox({text:'Телевизор',})
         +checkbox({text:'Шампунь',})
-    div(class = 'form_elements__item_container rich_checkbox')
-
+    div.form_elements__form_block(class='form_elements__rich_checkbox')
       +container({title: 'Rich Checkbox Buttons',})
-        +checkbox({
-            title:'Широкий коридор',
-            text:'Ширина коридоров в номере не&nbsp;менее&nbsp;91&nbsp;см.',
-            name:'1',
-          })
-        +checkbox({
-            title:'Помощник для инвалидов',
-            text:'На 1 этаже вас встретит специалист и&nbsp;проводит до номера.',
-            name:'2',
-          })
-    div(class = 'form_elements__item_container bullet_lists')
+        .form_elements__rich_checkboxes
+          +checkbox({
+              title:'Широкий коридор',
+              text:'Ширина коридоров в номере не&nbsp;менее&nbsp;91&nbsp;см.',
+              name:'1',
+            })
+          +checkbox({
+              title:'Помощник для инвалидов',
+              text:'На 1 этаже вас встретит специалист и&nbsp;проводит до номера.',
+              name:'2',
+            })
+    div.form_elements__form_block(class='form_elements__bullet_lists')
       +container({title: 'Bullet list',mod: 'list'})
-        li='Нельзя с питомцами'
-        li='Без вечеринок и мероприятий'
-        li!='Время прибытия — после 13:00, а&nbsp;выезд до 12:00'
-    div(class = 'form_elements__item_container picts')='пикчи'
-    div(class = 'form_elements__item_container komment')='коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент'
+        +bullet_list({},[
+          {text:'Нельзя с питомцами'},
+          {text:'Без вечеринок и мероприятий'},
+          {text:'Время прибытия — после 13:00, а&nbsp;выезд до 12:00'},
+        ])
+    div.form_elements__form_block(class='form_elements__picts')='пикчи'
+    div.form_elements__form_block.form_elements__double(class='form_elements__komment')='коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент'
