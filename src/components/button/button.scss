@@ -14,6 +14,7 @@
   box-sizing: border-box;
   align-items: stretch;
   align-content: stretch;
+  // width: 200px;
   &-hover{
     color: map.get($color, 'shade-50');
   }
@@ -64,8 +65,9 @@
   }
   &-colored, &-transparent{
     padding: 5px;
-    min-width: 40px;
-    min-height: 40px;
+    min-width: 44px;
+    min-height: 44px;
+    width: calc(max-content + 200px);
   }
   &-transparent{
   }
