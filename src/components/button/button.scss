@@ -14,17 +14,24 @@
   box-sizing: border-box;
   align-items: stretch;
   align-content: stretch;
-  // width: 200px;
+  width: max-content;
+  max-width: 320px;
+  &-fill{
+    width: 100%;
+    display: flex;
+  }
   &-hover{
     color: map.get($color, 'shade-50');
   }
   &__border_creator{
     @extend %flex-justify-around;
-    width: 100%;
+    // width: 100%;
     border-radius: 10000px;
     background-color: map.get($color, 'contrast_with_colored');
   }
-
+  &-colored, &__border_creator{
+    padding: 0 1.3em 0 1.3em;
+  }
   &__background{
     &-main{
       background: map.get($gradient, 'main');
@@ -64,13 +71,16 @@
     @extend %flex;
   }
   &-colored, &-transparent{
-    padding: 5px;
+    // padding: 5px;
     min-width: 44px;
     min-height: 44px;
-    width: calc(max-content + 200px);
+    // width: calc(max-content + 200px);
   }
   &-transparent{
+    padding: 2px;
   }
   &-frameless{
   }
+
+
 }

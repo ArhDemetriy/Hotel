@@ -3,11 +3,11 @@ append styles
 
 append mixins
   mixin button__text(options)
-    if options.arrow=='left' || options.arrow=='all'
+    if (options.arrow && options.text) || (options.arrow=='left' || options.arrow=='all')
       span(class='button__left_arrow material-icons-outlined ')=options.arrow=='left'||options.arrow=='all' ? 'arrow_back' : ''
     if options.text
       span(class='button__text font-upper')=options.text ? options.text : options.arrow=='left'||options.arrow=='all'||options.arrow=='right' ? '' : 'УКАЖИ ПОДПИСЬ'
-    if options.arrow=='right' || options.arrow=='all'
+    if (options.arrow && options.text) || (options.arrow=='right' || options.arrow=='all')
       span(class='button__right_arrow material-icons-outlined ')=options.arrow=='right'||options.arrow=='all' ? 'arrow_forward' : ''
 
   mixin button (options = {})
