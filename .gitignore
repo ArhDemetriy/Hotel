@@ -2,8 +2,6 @@ Img/
 git-bash.lnk
 */index.pug
 index.html
-.gitignore
-package.json
 package-lock.json
 .cache/
 node_modules/
@@ -15,3 +13,19 @@ report.*.json
 all_merge_master.js
 air-datepicker/
 Style/
+*.code-workspace
+
+.cache/
+coverage/
+dist/*
+node_modules/
+*.log
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db

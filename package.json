@@ -1,0 +1,28 @@
+{
+  "name": "hotel",
+  "version": "1.0.0",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "GNU",
+  "scripts": {
+    "clean": "rm dist/bundle.js",
+    "start": "parcel src/pages/ui_kit/form_elements/form_elements.pug",
+    "build-prod": "parcel build src/index.html"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4",
+    "pug": "^3.0.0",
+    "sass": "^1.26.10"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArhDemetriy/Hotel.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ArhDemetriy/Hotel/issues"
+  },
+  "homepage": "https://github.com/ArhDemetriy/Hotel#readme",
+  "description": ""
+}
