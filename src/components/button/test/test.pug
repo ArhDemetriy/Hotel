@@ -1,0 +1,51 @@
+extends ../../../pages/base/base_test.pug
+
+include ../button.pug
+
+block header
+block title
+  title='test button'
+append main
+  mixin test(options)
+    +base_test__test('button',options)
+  -
+    const settings = {
+      mod:[
+        '',
+        'colored',
+        'transparent',
+        'frameless',
+        'hover',
+        'colored hover',
+        'transparent hover',
+        'frameless hover',
+      ],
+      color:[
+        '',
+        'main',
+        'secondary',
+      ],
+      arrow:[
+        '',
+        'left',
+        'right',
+        'all',
+      ],
+      text:[
+        '',
+        'test text',
+        'veeeeeeeeeeerrrrrrrrrrrrrrrryyyyyyyyy llonggggggggggggggggggggg tttttteeeeeeeeeeeeexxxxxxxxxxxtttttttttttttttttttt  !!@#$%^&*()_)(*&^%$#lkjghsldiurgh;l siud;l iosehl;giufd hlguioehlsriugklzxiushlrguizdlfih',
+      ],
+    }
+
+  h2='start autotest'
+  br
+
+  +base_test__mass_test('button',settings)
+
+  br
+  h2='end autotest'
+  br
+
+  +test()
+  +test({})

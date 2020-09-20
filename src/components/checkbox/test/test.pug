@@ -1,0 +1,13 @@
+extends ../../../pages/base/base_test.pug
+
+include ../checkbox.pug
+
+block header
+block title
+  title='test checkbox'
+append main
+  mixin test(options)
+    +base_test__test('checkbox',options)
+
+  +test()
+  +test({})

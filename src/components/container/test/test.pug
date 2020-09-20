@@ -1,0 +1,55 @@
+extends ../../../pages/base/base_test.pug
+
+include ../container.pug
+include ../../checkbox/checkbox.pug
+
+
+block header
+block title
+  title='test container'
+append main
+  +container({
+    title: 'list',
+    text: 'items',
+  })
+    li='1'
+    li='2'
+    li='3'
+
+  -
+    const settings = {
+      title:[
+        'qwe',
+        'jvklygrdliusdfuhg liufdsl iuh glsiudg i ',
+        '',
+        'jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i ',
+      ],
+      text:[
+        'qwe',
+        'jvklygrdliusdfuhg liufdsl iuh glsiudg i ',
+        '',
+        'jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i jvklygrdliusdfuhg liufdsl iuh glsiudg i ',
+      ],
+      mod:[
+        '',
+        'dropable',
+      ],
+    }
+
+
+  +container({title:'checkbox'})
+    +checkbox()
+    +checkbox()
+  +container({title:'checkbox',mod:'dropable'})
+    +checkbox()
+    +checkbox()
+
+
+  h2='start autotest'
+  br
+
+  +base_test__mass_test('container',settings)
+
+  br
+  h2='end autotest'
+  br

@@ -1,0 +1,51 @@
+block mixins
+
+doctype html
+html(lang='ru-RU' dir="ltr")
+  head
+    meta(http-equiv="Content-type" content="text/html; charset=UTF-8")
+    meta(http-equiv="Content-language" content="ru-RU")
+    meta(charset = 'utf-8')
+    meta(http-equiv="Window-target" content="_blank")
+    meta(http-equiv="cleartype" content="on")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="author" content="ArhDemetriy")
+    meta(name='HandheldFriendly' content='true')
+    meta(name='MobileOptimized' content='width')
+    meta(name='apple-mobile-web-app-capable' content='yes')
+    meta(name="viewport" content="width=device-width, height=device-height, initial-scale=1.0")
+    //- т.к. это поисковик отелей, инфа меняется не постоянно, но достаточно часто
+    meta(http-equiv="Cache-Control" content="private, no-store, max-age=1200")
+    //- поправить эти тэги перед релизом
+    meta(name="Document-state" content="Static")
+    meta(name="revisit-after" content="4 days")
+    meta(name="Robots" content="index,nofollow")
+
+    block description
+    block title
+
+    block skripts__inline_before_load
+    block skripts__sinc_before_load
+      script(defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" type="text/javascript")
+    block skripts__defer
+
+    block styles
+      link(rel='stylesheet', href='../../../pages/base/variables.scss')
+      link(rel='stylesheet', href='../../../pages/base/style.scss')
+      link(rel='stylesheet', href='../../../pages/base/base.scss')
+      link(rel='stylesheet', href='https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap')
+      link(rel='stylesheet', href='https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap')
+      link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Material+Icons+Outlined')
+
+  body
+    header
+      block header
+        svg(class='logo' width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg")
+          path(class='logo__main_color' d="M23.9989 32.4712C23.2224 32.4712 22.5871 31.8359 22.5871 31.0594C22.5871 25.6241 18.14 21.177 12.7047 21.177C11.9283 21.177 11.293 20.5418 11.293 19.7653C11.293 18.9888 11.9283 18.3535 12.7047 18.3535C19.7283 18.3535 25.4106 24.0359 25.4106 31.0594C25.4106 31.8359 24.7753 32.4712 23.9989 32.4712Z" fill="#1F2041" fill-opacity="0.25")
+          path(class='logo__second_color' d="M36.7068 19.7653C36.7068 20.5418 36.0715 21.177 35.295 21.177C31.9421 21.177 28.9421 22.8712 27.1774 25.4476C26.7892 24.4594 26.3303 23.5418 25.7656 22.6947C28.095 20.0123 31.5186 18.3535 35.295 18.3535C36.0715 18.3535 36.7068 18.9888 36.7068 19.7653Z" fill="#1F2041" fill-opacity="0.25")
+          path(class='logo__main_color' d="M24 48C10.7647 48 0 37.2353 0 24C0 10.7647 10.7647 0 24 0C37.2353 0 48 10.7647 48 24C48 37.2353 37.2353 48 24 48ZM24 2.82353C12.3176 2.82353 2.82353 12.3176 2.82353 24C2.82353 35.6824 12.3176 45.1765 24 45.1765C35.6824 45.1765 45.1765 35.6824 45.1765 24C45.1765 12.3176 35.6824 2.82353 24 2.82353Z" fill="#1F2041" fill-opacity="0.25")
+
+      block skripts__asinc_after_load_header
+    main
+      block main
+      block skripts__asinc_after_load_main

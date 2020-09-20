@@ -1,0 +1,38 @@
+append styles
+  link(rel='stylesheet', href='../../../components/container/container.scss')
+
+append mixins
+  mixin container(options = {}, items = [])
+    -
+      if (!options.items)
+        options.items = [];
+      items = options.items.concat(items);
+      delete options.items;
+
+      options.class = options.class ? `container ${options.class}` : `container `;
+      const mod = options.mod ? options.mod.trim().split(/[,\s]\s*/) : [];
+      options.class += options.mod ? ` container-${mod.join(` container-`)} ` : '';
+      delete options.mod;
+      options.class += options.block_class ? ` ${options.block_class} ` : '';
+      const block_class = options.block_class ? `${options.block_class}` : `container`;
+      delete options.block_class;
+      const text = options.text ? options.text : '';
+      delete options.text;
+      const title = options.title ? `${options.title}` : '';
+      delete options.title;
+      const dropable = options.dropable ? true : false;
+      delete options.dropable;
+
+    div()&attributes(options)&attributes(attributes)
+      if title || text
+        .container__caption.font-upper
+          if title
+            span.container__title=title
+          if text
+            span.container__text=text
+      .container__block(class = mod.includes('dropable') ? 'container__block-dropable' : '')
+        if !mod.includes('dropable')
+          block
+        else
+          .container__absolute_box
+            block

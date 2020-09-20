@@ -1,0 +1,39 @@
+include ../counting/counting.pug
+include ../button/button.pug
+
+append styles
+  link(rel="stylesheet", href="../../../components/dropdown/dropdown.scss")
+append skripts__defer
+  script(type='module', src="../../../components/dropdown/dropdown.js")
+
+append mixins
+  mixin dropdown(options = {}, items = [])
+    -
+      if (!options.items)
+        options.items = [];
+      items = options.items.concat(items);
+      delete options.items;
+
+      options.class = options.class ? `dropdown ${options.class}` : `dropdown `;
+      const mod = options.mod ? options.mod.trim().split(/[,\s]\s*/) : [];
+      options.class += options.mod ? ` dropdown-${mod.join(` dropdown-`)} ` : '';
+      delete options.mod;
+      options.class += options.block_class ? ` ${options.block_class} ` : '';
+      const block_class = options.block_class ? `${options.block_class}` : `dropdown`;
+      delete options.block_class;
+      const visible = options.visible && options.visible != 'false' ? true : false;
+      delete options.visible;
+      const buttons = options.buttons && options.buttons != 'false' ? true : false;
+      delete options.buttons;
+
+    //-
+        flex column; потому все элементы столбца должны быть на одном уровне.
+        а дополнительный div.dropdown__item для генерации отступов между counting
+    label()&attributes(options)&attributes(attributes)
+      each item in items
+        .dropdown__item
+          +counting(item)
+      if buttons
+        .dropdown__buttons
+          +button({type: 'reset', mod: 'hover', text: 'очистить', block_class: 'dropdown__button_reset'})
+          +button({type: 'submit', mod: 'frameless', text: 'применить'})

@@ -1,0 +1,31 @@
+extends ../../base/base.pug
+
+block header
+block title
+  title='tests hub'
+append main
+  nav
+    mixin test_linc(name)
+      if name
+        a(href=`../../../components/${name}/test/test.pug`)=name
+        br
+    -
+      const names = [
+        'textfield',
+        'datefield',
+        'counting',
+        'dropdown',
+        'dropfield',
+        'radio',
+        'checkbox',
+        'toggle',
+        'like',
+        'rate',
+        'button',
+        'pagination',
+        'list',
+        'container',
+        'bullet_list',
+        ].sort();
+    each name in names
+      +test_linc(name)

@@ -1,0 +1,29 @@
+@use 'sass:map';
+@import '../global_mixins/global_mixins';
+
+.dropdown{
+  // display: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 1;
+
+  flex-direction: column;
+  border: 1px solid map.get($color, 'shade-25');
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+  padding: 7px 7px 7px 15px ;
+  background: white;
+  // width: max-content;
+
+  &:hover,&-visible{
+    display: flex;
+  }
+  &__item:nth-child(n+2){
+    margin-top: 7px;
+  }
+  &__buttons{
+    margin-top: 18px;
+    @extend %flex-justify-between;
+  }
+}

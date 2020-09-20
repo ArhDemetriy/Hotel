@@ -1,0 +1,43 @@
+body{
+  --color-shade-100 : rgb(31, 32, 65);
+  --color-shade-75 : rgba(31, 32, 65, 0.75);
+  --color-shade-50 : rgba(31, 32, 65, 0.5);
+  --color-shade-25 : rgba(31, 32, 65, 0.25);
+  --color-shade-5 : rgba(31, 32, 65, 0.05);
+
+  --color-main : #BC9CFF;
+  --color-main_grad : #8BA4F9;
+  --color-main-opacity : rgba(188, 156, 255, 0.5);
+  --color-main_grad-opacity : rgba(139, 164, 249, 0.5);
+  --color-main-opacity_double : rgba(188, 156, 255, 0.25);
+  --color-main_grad-opacity_double : rgba(139, 164, 249, 0.25);
+
+  --color-secondary : #6FCF97;
+  --color-secondary-opacity : rgba(111, 207, 151, 0.5);
+  --color-secondary_grad : #66D2EA;
+  --color-secondary_grad-opacity : rgba(102, 210, 234, 0.5);
+
+  --color-happy : #FFE39C;
+  --color-happy_grad : #FFBA9C;
+  --color-sad : #919191;
+  --color-sad_grad : #3D4975;
+
+  --color-contrast_with_colored : white;
+  --color-under_background : #E5E5E5;
+  --color-background : darkgreen;
+
+  --font-biggest : bold 24px 'Quicksand', 'Open Sans', sans-serif;
+  --font-big : bold 19px 'Quicksand', 'Open Sans', sans-serif;
+  --font-upper : bold 12px 'Montserrat', 'Arial', sans-serif;
+  --font-regular : 14px 'Montserrat', 'Arial', sans-serif;
+
+  --gradient-main : linear-gradient(var(--color-main, #BC9CFF), var(--color-main_grad, #8BA4F9));
+  --gradient-main-opacity : linear-gradient(var(--color-main-opacity, rgba(188, 156, 255, 0.5)), var(--color-main_grad-opacity, rgba(139, 164, 249, 0.5)));
+  --gradient-test : linear-gradient(var(--color-main, #BC9CFF), var(--color-secondary, #6FCF97));
+  --gradient-secondary : linear-gradient(var(--color-secondary, #6FCF97), var(--color-secondary_grad, #66D2EA));
+
+  --timer-main-slow : 0.8s;
+  --timer-main-fast : 0.3s;
+  --timer-secondary-slow : 0.5s;
+  --timer-secondary-fast : 0.15s;
+}

@@ -2,16 +2,23 @@
 @import '../global_mixins/global_mixins';
 
 .checkbox{
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  @extend %flex;
+  align-items: baseline;
+
   @extend %not_select_and_pointer;
 
   &__text{
     color: map.get($color, 'shade-50');
-    font: map.get($font, 'regular');
+    // font: map.get($font, 'regular');
     @extend %pointer;
   }
+  &__title{
+    color: map.get($color, 'shade-100');
+    font: map.get($font, 'regular');
+    font-style: bold;
+    @extend %pointer;
+  }
+
   &__box{
     box-sizing: border-box;
     width: 20px;

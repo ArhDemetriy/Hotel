@@ -1,0 +1,33 @@
+
+h1, .h1, .font-biggest{
+  font: var(--font-biggest, bold 24px 'Quicksand', 'Open Sans', sans-serif);
+}
+h2, .h2, .font-big{
+  font: var(--font-big, bold 19px 'Quicksand', 'Open Sans', sans-serif);
+}
+h3, .h3 , .font-upper{
+  font: var(--font-upper, bold 12px 'Montserrat', 'Arial', sans-serif);
+  text-transform: uppercase;
+}
+body, .body, .font-regular{
+  font: var(--font-regular, 14px 'Montserrat', 'Arial', sans-serif);
+}
+body{
+  //- перед релизом поменять на white
+  background-color: dimgray;
+  color: var(--color-shade-100, rgb(31, 32, 65));
+}
+.flex{
+  display: inline-flex;
+  align-items: center;
+  align-content: center;
+  &-justify-center{
+    justify-content: center;
+  }
+  &-justify-between{
+    justify-content: space-between;
+  }
+  &-wrap{
+    flex-wrap: wrap;
+  }
+}

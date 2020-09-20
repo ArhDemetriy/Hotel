@@ -1,0 +1,14 @@
+extends ../../../pages/base/base_test.pug
+
+include ../counting.pug
+
+block header
+block title
+  title='test counting'
+append main
+  mixin test(options)
+    +base_test__test('counting',options)
+
+  +test()
+  +test({})
+  +test({title: 'asd'})

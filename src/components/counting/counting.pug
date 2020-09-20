@@ -1,0 +1,28 @@
+append styles
+  link(rel="stylesheet", href="../../../components/counting/counting.scss")
+append skripts__defer
+  script(type="module" src="../../../components/counting/counting.js")
+
+append mixins
+  mixin counting(options = {})
+    -
+      options.class = options.class ? `counting ${options.class}` : `counting `;
+      const mod = options.mod ? options.mod.trim().split(/[,\s]\s*/) : [];
+      options.class += options.mod ? ` counting-${mod.join(` counting-`)} ` : '';
+      delete options.mod;
+      options.class += options.block_class ? ` ${options.block_class} ` : '';
+      const block_class = options.block_class ? `${options.block_class}` : `counting`;
+      delete options.block_class;
+      options.name = options.name ? options.name : 'item';
+      const text = options.text ? options.text : options.name;
+      delete options.text;
+      options.min = options.min ? options.min : 0;
+      options.value = options.value ? options.value : options.min;
+
+    div(class=`font-upper`, class = options.class)&attributes(attributes)
+      - delete options.class;
+      span(class='counting__title')=text
+      div(class='counting__counter')
+        button(class='counting__button counting__dec font-regular', type='button')='-'
+        input(class='counting__iterator font-upper', type='number', size=1)&attributes(options)
+        button(class='counting__button counting__inc font-regular', type='button')='+'

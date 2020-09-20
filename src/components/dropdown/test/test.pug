@@ -1,0 +1,86 @@
+extends ../../../pages/base/base_test.pug
+
+include ../dropdown.pug
+
+block header
+block title
+  title='test dropdown'
+append main
+  mixin test(options)
+    +base_test__test('dropdown',options)
+  -
+    const settings = {
+      buttons:[
+        true,
+        false,
+      ],
+      items:[
+        [
+
+        ],
+        [
+          {
+            title:'1',
+            name:'1',
+          },
+        ],
+        [
+          {
+            title:'1',
+            name:'1',
+          },
+          {
+            title:'2',
+            name:'2',
+          },
+          {
+            title:'3',
+            name:'3',
+          },
+          {
+            title:'4',
+            name:'4',
+          },
+        ],
+      ],
+      mod:[
+        'visible',
+        '',
+      ],
+    }
+
+  h2='start autotest'
+  br
+
+  +base_test__mass_test('dropdown',settings)
+
+  br
+  h2='end autotest'
+  br
+
+
+
+  +test()
+  +test({})
+  +test({mod:'visible',})
+  +test({mod:'visible',
+    items:[
+      {
+        title:'1',
+        name:'1',
+      },
+      {
+        title:'2',
+        name:'2',
+      },
+      {
+        title:'3',
+        name:'3',
+      },
+      {
+        title:'4',
+        name:'4',
+      },
+
+    ],
+  })

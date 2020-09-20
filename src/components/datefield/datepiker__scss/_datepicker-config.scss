@@ -1,0 +1,93 @@
+@use 'sass:map';
+@import '../../global_mixins/global_mixins';
+
+//- map.get($color, 'shade-25')
+
+$datepickerDayCellSize: 39px !default;
+$datepickerPadding: 20px !default;
+$datepickerWidth: ($datepickerDayCellSize * 7 + $datepickerPadding * 2) !default;
+$datepickerMinBodyHeight: 170px !default;
+$datepickerBorderRadius: 4px !default;
+$datepickerCellBorderRadius: 400px !default;
+$datepickerZIndex: 100 !default;
+
+$datepickerFontFamily: 'Montserrat', 'Arial', sans-serif !default;
+$datepickerFontSize: 12px !default;
+
+$datepickerYearsPerRow: 4 !default;
+
+$datepickerTextColor: (
+  button: #5cc4ef,
+  otherMonth: map.get($color, 'shade-25'),
+  otherMonthInRange: #ccc,
+  disabled: #aeaeae,
+  currentDate: map.get($color, 'contrast_with_colored'),
+  common: map.get($color, 'shade-50'),
+  dayNames: map.get($color, 'main'),
+  navArrows: map.get($color, 'main'),
+  navTitle: map.get($color, 'shade-100'),
+
+) !default;
+
+$datepickerBG: (
+  selected: map_get($gradient, 'main'),
+  selectedHover: darken(#5cc4ef, 5),
+  inRange: map_get($gradient, 'main-opacity_double'),
+  hover: #f0f0f0,
+  default: map.get($color, 'contrast_with_colored'),
+) !default;
+
+$datepickerBorderColor: (
+  nav: #efefef,
+  inline: #d7d7d7,
+  default: map.get($color, 'shade-25'),
+  shadow: map.get($color, 'shade-5'),
+
+) !default;
+
+$datepickerNavigationHeight: 32px !default;
+$datepickerNavigationButtonsOffset: 2px !default;
+
+$datepickerPointerSize: 10px !default;
+$datepickerPointerOffset: 10px !default;
+
+// Transitions
+$datepickerTransitionSpeed: .3s !default;
+$datepickerTransitionEase: ease !default;
+$datepickerTransitionOffset: 8px !default;
+
+// Objects
+%otherMonth {
+  color: map_get($datepickerTextColor, otherMonth);
+
+  &:hover {
+
+  }
+
+  &.-disabled- {
+    &.-focus- {
+      color: map_get($datepickerTextColor, otherMonth);
+    }
+  }
+
+  &.-selected- {
+    color: map_get($datepickerTextColor, currentDate);
+
+    &.-focus- {
+
+    }
+  }
+
+  &.-in-range- {
+    background-color: map_get($datepickerBG, inRange);
+    &.-focus- {
+
+    }
+  }
+
+
+  &:empty {
+    background: none;
+    border: none;
+  }
+}

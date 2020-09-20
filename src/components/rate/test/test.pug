@@ -1,0 +1,13 @@
+extends ../../../pages/base/base_test.pug
+
+include ../rate.pug
+
+block header
+block title
+  title='test rate'
+append main
+  mixin test(options)
+    +base_test__test('rate',options)
+
+  +test()
+  +test({})

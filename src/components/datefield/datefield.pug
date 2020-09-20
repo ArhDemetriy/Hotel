@@ -1,0 +1,81 @@
+include ../textfield/textfield.pug
+
+append styles
+  link(rel="stylesheet", type="text/css", href="../../../components/datefield/datepicker__scss.scss")
+  link(rel="stylesheet", href="../../../components/datefield/datefield.scss")
+append skripts__defer
+  script(defer src="../../../components/datefield/datepicker.js" type="text/javascript")
+  script(defer src="../../../components/datefield/datefield.js")
+
+append mixins
+  mixin datefield(options)
+    -
+      if (!options)
+      options = {}
+
+      options.class = options.class ? options.class : ''
+      options.class += options.block_class ? ` ${options.block_class} ` : '';
+      options.class += options.mod ? ' datefield-' + options.mod : ''
+      delete options.mod
+
+      const block_class = options.block_class ? `${options.block_class}` : 'datefield';
+      delete options.block_class;
+
+      if (options.field_free){
+        options['data-inline'] = true;
+        delete options.inline;
+        delete options['data-range-divided-fields'];
+        delete options.range_divided_fields;
+      } else {
+        delete options.field_free;
+      }
+
+      if (options.range || options['data-range'] === true || options['data-range'] == 'true'){
+        options['data-range'] = true;
+        delete options.range;
+
+        if (options.range_divided_fields || options['data-range-divided-fields'] === true || options['data-range-divided-fields'] == 'true'){
+          options['data-range-divided-fields'] = true;
+          attributes['data-position'] = 'bottom right';
+          options['data-alt-field'] = `.${block_class} > .${alt_class}`;
+          options.class +=' datefield__input-mini ';
+          delete options.range_divided_fields;
+        } else {
+          delete options['data-range-divided-fields'];
+          delete options.range_divided_fields;
+        }
+
+      } else {
+        delete options['data-range'];
+        delete options.range;
+        delete options['data-range-divided-fields'];
+        delete options.range_divided_fields;
+      }
+
+      if (!options.field_free){
+        options.placeholder = 'ДД.ММ.ГГГГ';
+        options.type = 'text';
+      }
+
+
+    -
+      if (!options['data-range-divided-fields'])
+        options.class +=' datefield datepicker-here ';
+
+
+      const field_free = options.field_free;
+      delete options.field_free;
+      const alt_class = 'datefield__alt_field';
+
+    if field_free
+      div()&attributes(options)
+    else if !options['data-range-divided-fields']
+      +textfield(options)
+    else
+      div(class='datefield datefield-range_divided_fields')
+        +textfield({
+          placeholder: options.placeholder,
+          type: options.type,
+          class: `datefield__input-mini ${alt_class}`,
+        })
+        +textfield(options)

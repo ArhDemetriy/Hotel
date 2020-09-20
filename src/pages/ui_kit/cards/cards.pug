@@ -1,4 +1,4 @@
-extends ../base/base.pug
+extends ../../base/base.pug
 include ../../../components/button/button.pug
 include ../../../components/rate/rate.pug
 include ../../../components/checkbox/checkbox.pug
@@ -6,22 +6,31 @@ include ../../../components/radio/radio.pug
 include ../../../components/toggle/toggle.pug
 include ../../../components/like/like.pug
 include ../../../components/pagination/pagination.pug
-include ../../../components/text_field/text_field.pug
+include ../../../components/textfield/textfield.pug
+include ../../../components/datefield/datefield.pug
 
 append styles
   link(rel='stylesheet', href='cards.scss')
 
 append header
+block title
+  title='Cards'
 append main
 
-  - const types = ['date','email','']
-  each typ in types
-    +text_field({type:typ})
+  +datefield()
 
   br
   br
+
+  +textfield()
+
+  br
+  br
+  br
+
 
   +rate({block_class:'rate-settings'})
+
   br
   br
 

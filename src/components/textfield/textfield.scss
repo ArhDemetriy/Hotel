@@ -1,0 +1,42 @@
+@use 'sass:map';
+@import '../global_mixins/global_mixins';
+
+.textfield{
+  font: map.get($font, 'regular');
+  border: 1px solid map.get($color, 'shade-25');
+  border-radius: 4px;
+  color: map.get($color, 'shade-25');
+  box-sizing: border-box;
+  height: 44px;
+  min-width: 150px;
+  max-width: 320px;
+  width: 100%;
+  $padding : 15px;
+  padding: 0 $padding 0 $padding;
+  &:hover, &:focus, &-hover{
+    border-color: map.get($color, 'shade-50');
+    color: map.get($color, 'shade-75');
+  }
+  &__container_for_arrow{
+    @extend %flex;
+    position: relative;
+  }
+  &__arrow{
+    position: absolute;
+    right: $padding;
+    color: map.get($color, 'shade-50');
+  }
+  &-double_date{
+    width: 150px;
+  }
+  &-dropdown{
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    min-width: none;
+    max-width: none;
+    display: flex;
+    &:hover, &:focus, &-hover{
+      border-bottom: none;
+    }
+  }
+}

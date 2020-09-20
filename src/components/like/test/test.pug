@@ -1,0 +1,13 @@
+extends ../../../pages/base/base_test.pug
+
+include ../like.pug
+
+block header
+block title
+  title='test like'
+append main
+  mixin test(options)
+    +base_test__test('like',options)
+
+  +test()
+  +test({})

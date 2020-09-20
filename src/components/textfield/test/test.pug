@@ -1,0 +1,27 @@
+extends ../../../pages/base/base_test.pug
+
+include ../textfield.pug
+
+append mixins
+  mixin test(options)
+    +base_test__test('textfield',options)
+
+block title
+  title='test textfield'
+append main
+
+  +test()
+  +test({})
+  +test({mod: 'masked'})
+  +test({placeholder: 'asd'})
+  +test({mod: 'masked', placeholder: 'asd'})
+  +test({placeholder: 'asdilusdghlksdjfhlivuyp;dsloifhlsgliuyfvi duyfaiuhdl ol dslauy lfkjagluiysd;oiyfa pusgdl;hksdl phhk sdlyuf lpiuysdk jha h'})
+  +test({type: 'email'})
+  +test({type: 'Email'})
+  +test({type: 'date'})
+  +test({type: 'Date'})
+  +test({type: 'DATE'})
+  +test({type: 'vdflsouhlkdfbhv'})
+  +test({placeholder: 'asd', type: 'date'})
+  +test({placeholder: 'asd', type: 'email'})
+  +test({})
