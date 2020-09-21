@@ -4,7 +4,7 @@
 .container{
   display: flex;
   flex-direction: column;
-  max-width: 266px;
+  max-width: 320px;
   width: max-content;
 
   &__caption{
@@ -54,5 +54,7 @@
     left: 0;
     right: 0;
     background-color: white;
+    min-width: max-content;
+
   }
 }
