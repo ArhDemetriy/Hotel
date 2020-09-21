@@ -23,6 +23,25 @@ append mixins
       const dropable = options.dropable ? true : false;
       delete options.dropable;
 
+      function blockLength(input){
+        const open = '\\u003C'
+        const close = '\\u003C'+'\\u002F'
+        let begins = []
+        let ends = []
+        let count = 0
+        for(let i = input.indexOf(open,0); i>=0; i = input.indexOf(open,i+1)){
+          if (input.indexOf(close,i) != i)
+            begins.push(i)
+          else
+            begins.pop();
+          if (begins.length <= 0)
+            count++;
+        }
+        if (count <= 0)
+          count = input.split(');').length - 1;
+        return count;
+      }
+
     div()&attributes(options)&attributes(attributes)
       if title || text
         .container__caption.font-upper
@@ -30,9 +49,14 @@ append mixins
             span.container__title=title
           if text
             span.container__text=text
-      .container__block(class = mod.includes('dropable') ? 'container__block-dropable' : '')
-        if !mod.includes('dropable')
-          block
-        else
-          .container__absolute_box
+      if block
+        if mod.includes('dropable')
+          .container__block.container__block-dropable
+            .container__absolute_box
+              block
+        else if (blockLength(block.toString()) > 1)
+          .container__block
             block
+        else
+          block
+
