@@ -1,0 +1,181 @@
+extends ../../base/base.pug
+include ../../../components/button/button.pug
+include ../../../components/checkbox/checkbox.pug
+include ../../../components/counting/counting.pug
+include ../../../components/datefield/datefield.pug
+include ../../../components/dropdown/dropdown.pug
+include ../../../components/dropfield/dropfield.pug
+include ../../../components/like/like.pug
+include ../../../components/list/list.pug
+include ../../../components/pagination/pagination.pug
+include ../../../components/radio/radio.pug
+include ../../../components/rate/rate.pug
+include ../../../components/textfield/textfield.pug
+include ../../../components/toggle/toggle.pug
+include ../../../components/container/container.pug
+include ../../../components/bullet_list/bullet_list.pug
+
+append styles
+  link(rel='stylesheet', href='form_elements.scss')
+
+append header
+block title
+  title='Form Elements'
+append main
+  .form_elements
+    div.form_elements__form_block.form_elements__fierst(class='form_elements__fields')
+      +container({title:'textfield', text:'default'})
+        +textfield({type: 'email'})
+      +container({title:'textfield', text:'hover/focus'})
+        +textfield({value: 'This is pretty awesome', autofocus:true})
+      +container({title:'dropdown', text:'default'})
+        +textfield({arrow: true, value: 'Сколько гостей'})
+      +container({title:'masked text field', text:'default'})
+        +textfield({placeholder: 'ДД.ММ.ГГГГ'})
+      .form_elements__datefields
+        +container({title:'date Dropdown', text:''})
+          +datefield({placeholder: 'ДД.ММ.ГГГГ'})
+        +container({title:'date Dropdown', text:''})
+          +datefield({placeholder: 'ДД.ММ.ГГГГ'})
+      +container({title:'filter date dropdown', text:''})
+        +datefield({placeholder: 'ДД.ММ.ГГГГ'})
+      +container({title:'subscription text field', text:''})
+        +datefield({placeholder: 'ДД.ММ.ГГГГ'})
+    div.form_elements__form_block(class='form_elements__inputs')
+      +container({title:'Checkbox Buttons', text:''})
+        +checkbox({text:'Завтрак',})
+        +checkbox({text:'Можно с питомцами',})
+        +checkbox({text:'Можно пригласить гостей (до&nbsp;10&nbsp;человек)',})
+      +container({title:'radio Buttons', text:''})
+        .radio
+          +radio({text:'Мужчина', name:'sex',})
+          +radio({text:'Женщина', name:'sex',})
+      +container({title:'Toggle', text:''})
+        +toggle({text:'Получать спецпредложения', checked: true})
+        +toggle({text:'Получать спецпредложения',})
+      +container({title:'like Button', text:''})
+        .like_container
+          +like({
+            count: 2,
+            name: 'left-like',
+          })
+          +like({
+            count: 11,
+            checked: true,
+            name: 'right-like',
+          })
+      +container({title:'rate Button', text:''})
+        .rate
+          +rate({
+            count: 4,
+            block_class: 'rate0',
+          })
+          +rate({
+            count: 5,
+            block_class: 'rate1',
+          })
+    div.form_elements__form_block(class='form_elements__slider_buttons')
+      +container({title:'Range Slider', text:'5 000₽ - 10 000₽'})
+        .slider='slider'
+      +container({title:'buttons', text:''})
+        .buttons
+          +button({text:'CLICK ME', mod:'colored'})
+          +button({text:'CLICK ME', mod:'colored hover'})
+          +button({text:'CLICK ME', mod:'transparent'})
+          +button({text:'CLICK ME', mod:'transparent hover'})
+          +button({text:'CLICK ME', mod:'frameless'})
+          +button({text:'CLICK ME', mod:'frameless hover'})
+          +button({text:'перейти к оплате', mod:'colored', arrow:'right', block_class: 'pay'})
+      +container({title:'pagination ', text:''})
+        +pagination({})
+    div.form_elements__form_block(class='form_elements__dropfield')
+      +container({title:'dropdown', text:'default'})
+        +dropfield()
+      +container({title:'dropdown', text:'expanded'})
+        +dropfield({
+          visible: true,
+          items: [
+            {
+              title:'Спальни',
+              name:'1',
+            },
+            {
+              title:'Кровати',
+              name:'2',
+            },
+            {
+              title:'Ванные комнаты',
+              name:'3',
+            },
+          ],
+        })
+    div.form_elements__form_block(class='form_elements__dropfield_button')
+      +container({title:'dropdown', text:''})
+        +dropfield({
+          buttons: true,
+          visible: true,
+          items: [
+            {
+              title:'Взрослые',
+              name:'1',
+            },
+            {
+              title:'Дети',
+              name:'2',
+            },
+            {
+              title:'Младенцы',
+              name:'3',
+            },
+          ],
+        })
+    div.form_elements__form_block(class='form_elements__dropfield_button')
+      +container({title:'dropdown', text:''})
+        +dropfield({
+          buttons: true,
+          visible: true,
+          items: [
+            {
+              title:'Взрослые',
+              name:'1',
+            },
+            {
+              title:'Дети',
+              name:'2',
+            },
+            {
+              title:'Младенцы',
+              name:'3',
+            },
+          ],
+        })
+    div.form_elements__form_block(class='form_elements__checkbox_list')
+      +container({title: 'expandable checkbox list', mod: 'dropable',})
+      +container({title: 'expandable checkbox list', mod: 'dropable',})
+        +checkbox({text:'Завтрак',})
+        +checkbox({text:'Письменный стол',})
+        +checkbox({text:'Стул для кормления',})
+        +checkbox({text:'Кроватка',})
+        +checkbox({text:'Телевизор',})
+        +checkbox({text:'Шампунь',})
+    div.form_elements__form_block(class='form_elements__rich_checkbox')
+      +container({title: 'Rich Checkbox Buttons',})
+        +checkbox({
+            title:'Широкий коридор',
+            text:'Ширина коридоров в номере не&nbsp;менее&nbsp;91&nbsp;см.',
+            name:'1',
+          })
+        +checkbox({
+            title:'Помощник для инвалидов',
+            text:'На 1 этаже вас встретит специалист и&nbsp;проводит до номера.',
+            name:'2',
+          })
+    div.form_elements__form_block(class='form_elements__bullet_lists')
+      +container({title: 'Bullet list',mod: 'list'})
+        +bullet_list({},[
+          {text:'Нельзя с питомцами'},
+          {text:'Без вечеринок и мероприятий'},
+          {text:'Время прибытия — после 13:00, а&nbsp;выезд до 12:00'},
+        ])
+    div.form_elements__form_block(class='form_elements__picts')='пикчи'
+    div.form_elements__form_block.form_elements__double(class='form_elements__komment')='коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент'

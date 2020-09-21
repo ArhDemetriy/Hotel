@@ -24,12 +24,12 @@ body{
 
   --color-contrast_with_colored : white;
   --color-under_background : #E5E5E5;
-  --color-background : none;
+  --color-background : darkgreen;
 
-  --font-biggest : bold 24px/125% 'Quicksand', 'Open Sans', sans-serif;
-  --font-big : bold 19px/126.3157895% 'Quicksand', 'Open Sans', sans-serif;
-  --font-upper : bold 12px/125% 'Montserrat', 'Arial', sans-serif;
-  --font-regular : 14px/171.4285714% 'Montserrat', 'Arial', sans-serif;
+  --font-biggest : bold 24px 'Quicksand', 'Open Sans', sans-serif;
+  --font-big : bold 19px 'Quicksand', 'Open Sans', sans-serif;
+  --font-upper : bold 12px 'Montserrat', 'Arial', sans-serif;
+  --font-regular : 14px 'Montserrat', 'Arial', sans-serif;
 
   --gradient-main : linear-gradient(var(--color-main, #BC9CFF), var(--color-main_grad, #8BA4F9));
   --gradient-main-opacity : linear-gradient(var(--color-main-opacity, rgba(188, 156, 255, 0.5)), var(--color-main_grad-opacity, rgba(139, 164, 249, 0.5)));

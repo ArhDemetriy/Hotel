@@ -5,11 +5,25 @@
   @extend %flex;
   flex-direction: column;
   align-items: stretch;
+  position: relative;
 
-  &:hover{
-    & .dropdown{
-      display: inline-flex;
-    }
+
+  max-width: 320px;
+  min-width: 266px;
+  &__hidebele_container{
+    // flex-direction: column;
+    display: none;
+    // align-items: stretch;
+    position: relative;
+  }
+
+  // &:hover > &__drop, &__field:focus + &__drop{
+  &:hover > &__hidebele_container, &__field:focus + &__hidebele_container{
+    display: flex;
+  }
+  &:hover > &__hidebele_container > &__drop{
+    z-index: 2;
+
   }
 
 }

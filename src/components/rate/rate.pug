@@ -2,34 +2,36 @@ append styles
   link(rel="stylesheet", href="../../../components/rate/rate.scss")
 
 append mixins
-  mixin rate(options)
-    if !options
-      - options = {}
+  mixin rate(options = {})
     -
-      let classes = ''
-      classes += options.block_class ? ' ' + options.block_class : ''
-      classes += options.mod ? ' rate-' + options.mod : ''
+      options.class = options.class ? `rate ${options.class}` : `rate `;
+      const mod = options.mod ? options.mod.trim().split(/[,\s]\s*/) : [];
+      options.class += options.mod ? ` rate-${mod.join(` rate-`)} ` : '';
+      delete options.mod;
+      // if (mod.includes('colored')) {};
+      options.class += options.block_class ? ` ${options.block_class} ` : '';
+      const block_class = options.block_class ? `${options.block_class}` : `rate`;
+      delete options.block_class;
+      const max_rate = isFinite(options.max_rate) ? options.max_rate : 5;
+      delete options.max_rate;
+      const count = isFinite(options.count) ? options.count : max_rate;
+      delete options.count;
+      const name = options.name || block_class || `NOTHING_${match.random()}`;
+      delete options.name;
 
-    span(class='rate rate__gradient_creator' + classes)
-      -
-        const max_rate = options.max_rate ? options.max_rate : 5
-        const material = options.off_material ? '' : ' material-icons-outlined '
 
-      label(class=material + ' rate__gradient_creator')
-        input(class='rate__radio', name=(options.block_class ? options.block_class : 'NOTHING'),
-              type='radio', value=0, checked=false)
+    span(class='rate__gradient_creator')&attributes(options)&attributes(attributes)
+      label(class='material-icons-outlined rate__gradient_creator')
+        input(class='rate__radio', name=name,
+              type='radio', value=0, checked=Boolean(0 == count))
         span(class='rate__zero')=''
 
         mixin rate__generate(n,i=1)
           label(class='rate__gradient_creator')
-            input(class='rate__radio', name=(options.block_class ? options.block_class : 'NOTHING'),
-                  type='radio', value=i, checked=false)
-            span(class=material + ' rate__star_b')='star_border'
-            span(class=material + ' rate__star_f')='star'
+            input(class='rate__radio', name=name,
+                  type='radio', value=i, checked=Boolean(i == count))
+            span(class='material-icons-outlined rate__star_b')='star_border'
+            span(class='material-icons-outlined rate__star_f')='star'
             if i<n
               +rate__generate(n,i+1)
         +rate__generate(max_rate)
-
-
-//-append skripts__after_load
-  //-script(defer src='../../../components/rate/rate.js')
