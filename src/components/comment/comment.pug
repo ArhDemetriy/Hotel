@@ -2,8 +2,8 @@ include ../like/like.pug
 
 append styles
   link(rel='stylesheet', href='../../../components/comment/comment.scss')
-append skripts
-  script(type='module', src='../../../components/comment/comment.ts')
+//- append skripts
+//-   script(type='module', src='../../../components/comment/comment.ts')
 
 append mixins
   mixin comment(options = {}, items = [])
@@ -23,12 +23,14 @@ append mixins
       delete options.block_class;
       const likes = isFinite(options.likes) ? options.likes : 0;
       delete options.likes;
+      const checked = options.checked && (options.checked != 'false') ? true : false;
+      delete options.checked;
       const src = options.src ? options.src : '';
       delete options.src;
       const text = options.text ? options.text : '';
       delete options.text;
-      const title = options.title ? `${options.title}` : '';
-      delete options.title;
+      const autor_name = options.autor_name ? `${options.autor_name}` : '';
+      delete options.autor_name;
       const recentness = options.recentness ? `${options.recentness}` : 'только что';
       delete options.recentness;
 
@@ -51,10 +53,10 @@ append mixins
       }
 
     div()&attributes(options)&attributes(attributes)
-      .comment__autor
-        img.comment__avatar(src=src)
-        +like({count: likes, checked: true, block_class:'comment__like'})
-      .comment__message
-        span.comment__title=title
-        span.comment__recentness=recentness
-        span.comment__text=text
+      .comment__minor_content
+        img.comment__autor_avatar(src=src)
+        +like({count: likes, checked: checked, block_class:'comment__like'})
+      .comment__major_content
+          span.comment__autor_name.font-regular=autor_name
+          span.comment__recentness=recentness
+          span.comment__text=text
