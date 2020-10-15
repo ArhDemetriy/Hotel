@@ -1,0 +1,47 @@
+append styles
+  link(rel='stylesheet', href='../../../components/icon_text_list/icon_text_list.scss')
+append skripts
+  script(type='module', src='../../../components/icon_text_list/icon_text_list.ts')
+
+append mixins
+  mixin icon_text_list(options = {}, items = [])
+    -
+      if (!options.items)
+        options.items = [];
+      items = options.items.concat(items);
+      delete options.items;
+
+      options.class = options.class ? `icon_text_list ${options.class}` : `icon_text_list `;
+      const mod = options.mod ? options.mod.trim().split(/[,\s]\s*/) : [];
+      // if (mod.includes('dropable'))
+      options.class += options.mod ? ` icon_text_list-${mod.join(` icon_text_list-`)} ` : '';
+      delete options.mod;
+      options.class += options.block_class ? ` ${options.block_class} ` : '';
+      const block_class = options.block_class ? `${options.block_class}` : `icon_text_list`;
+      delete options.block_class;
+      const text = options.text ? options.text : '';
+      delete options.text;
+      const title = options.title ? `${options.title}` : '';
+      delete options.title;
+      const dropable = options.dropable ? true : false;
+      delete options.dropable;
+
+      function blockLength(block){
+        const open = '\\u003C';
+        const close = '\\u003C'+'\\u002F';
+        let begins = [];
+        let count = 0;
+        for(let i = block.indexOf(open,0); i>=0; i = block.indexOf(open,i+1)){
+          if (block.indexOf(close,i) != i)
+            begins.push(i)
+          else
+            begins.pop();
+          if (begins.length <= 0)
+            count++;
+        }
+        if (count <= 0)
+          count = block.split(');').length - 1;
+        return count;
+      }
+
+    div()&attributes(options)&attributes(attributes)
