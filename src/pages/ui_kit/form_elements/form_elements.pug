@@ -14,6 +14,7 @@ include ../../../components/textfield/textfield.pug
 include ../../../components/toggle/toggle.pug
 include ../../../components/container/container.pug
 include ../../../components/bullet_list/bullet_list.pug
+include ../../../components/comment/comment.pug
 
 append styles
   link(rel='stylesheet', href='form_elements.scss')
@@ -178,4 +179,12 @@ append main
           {text:'Время прибытия — после 13:00, а&nbsp;выезд до 12:00'},
         ])
     div.form_elements__form_block(class='form_elements__picts')='пикчи'
-    div.form_elements__form_block.form_elements__double(class='form_elements__komment')='коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент коммент'
+    .form_elements__double
+      +comment({
+        autor_name:'Мурад Сарафанов',
+        text:'Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.',
+        recentness:'5 дней назад',
+        likes:11,
+        checked:true,
+        src:'comment_avatar.png'
+      })
