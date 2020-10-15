@@ -4,11 +4,14 @@
   &__icon{
     min-width: 4.8rem;
     min-height: 4.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   &__paragraph{
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-around;
   }
   &__title{
     font-weight: bold;
