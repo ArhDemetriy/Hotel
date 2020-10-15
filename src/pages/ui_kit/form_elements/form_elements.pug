@@ -15,6 +15,7 @@ include ../../../components/toggle/toggle.pug
 include ../../../components/container/container.pug
 include ../../../components/bullet_list/bullet_list.pug
 include ../../../components/comment/comment.pug
+include ../../../components/icon_text_list/icon_text_list.pug
 
 append styles
   link(rel='stylesheet', href='form_elements.scss')
@@ -178,7 +179,11 @@ append main
           {text:'Без вечеринок и мероприятий'},
           {text:'Время прибытия — после 13:00, а&nbsp;выезд до 12:00'},
         ])
-    div.form_elements__form_block(class='form_elements__picts')='пикчи'
+    div.form_elements__form_block(class='form_elements__picts')
+      +icon_text_list({},[
+        {title:'Комфорт', text:'Шумопоглощающие стены', icon:'insert_emoticon'},
+        {title:'Удобство', text:'Окно в каждой из спален', icon:'location_city'},
+      ])
     .form_elements__double
       +comment({
         autor_name:'Мурад Сарафанов',

@@ -1,7 +1,7 @@
+include ../icon_text/icon_text.pug
+
 append styles
   link(rel='stylesheet', href='../../../components/icon_text_list/icon_text_list.scss')
-append skripts
-  script(type='module', src='../../../components/icon_text_list/icon_text_list.ts')
 
 append mixins
   mixin icon_text_list(options = {}, items = [])
@@ -45,3 +45,6 @@ append mixins
       }
 
     div()&attributes(options)&attributes(attributes)
+      each item in items
+        +icon_text(item)
+        hl.icon_text_list__stroke
