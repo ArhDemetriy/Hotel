@@ -1,0 +1,16 @@
+.icon_text{
+  display: flex;
+  gap: 1rem;
+  &__icon{
+    min-width: 4.8rem;
+    min-height: 4.8rem;
+  }
+  &__paragraph{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+  &__title{
+    font-weight: bold;
+  }
+}
