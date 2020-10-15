@@ -13,7 +13,7 @@
   }
 
   (function ($) {
-    $('.dropfield__drop').on('change', summator);
+    $('.dropfield__hidebele_container').on('change', summator);
     $('.dropfield').on('click', resetter);
   })(jQuery);
 }

@@ -46,8 +46,9 @@ append mixins
         block_class: 'dropfield__drop',
       }
 
-    form()&attributes(options)&attributes(attributes)
+      const tag = buttons ? 'form' : 'label'
+
+    #{tag}()&attributes(options)&attributes(attributes)
       +textfield(textfield_options)
-      //- +dropdown(dropdown_options)
       .dropfield__hidebele_container
         +dropdown(dropdown_options)
