@@ -1,3 +1,25 @@
 .comment{
-
+  display: flex;
+  gap: 1rem;
+  &__minor_content{
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  &__major_content{
+    display: flex;
+    flex-direction: column;
+    gap: 1.3rem;
+  }
+  &__autor_avatar{
+    width: 4.8rem;
+    height: 4.8rem;
+    border: 2px white solid;
+    box-sizing: border-box;
+    border-radius: 50vh;
+    filter: drop-shadow(0 10px 20px rgba(31, 32, 65, 0.1));
+  }
+  &__autor_name{
+    font-weight: bold;
+  }
 }
