@@ -10,7 +10,9 @@
     "start": "parcel src/pages/ui_kit/form_elements/form_elements.pug",
     "build-prod": "parcel build src/index.html"
   },
-  "dependencies": {},
+  "dependencies": {
+    "air-datepicker": "^2.2.3"
+  },
   "devDependencies": {
     "@babel/core": "^7.11.6",
     "parcel-bundler": "^1.12.4",
