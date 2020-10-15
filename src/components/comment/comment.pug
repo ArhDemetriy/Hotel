@@ -1,4 +1,5 @@
 include ../like/like.pug
+include ../icon_text/icon_text.pug
 
 append styles
   link(rel='stylesheet', href='../../../components/comment/comment.scss')
@@ -53,10 +54,9 @@ append mixins
       }
 
     div()&attributes(options)&attributes(attributes)
-      .comment__minor_content
+      +icon_text({title:autor_name, text: recentness})
         img.comment__autor_avatar(src=src)
-        +like({count: likes, checked: checked, block_class:'comment__like'})
       .comment__major_content
-          span.comment__autor_name.font-regular=autor_name
-          span.comment__recentness=recentness
-          span.comment__text=text
+        .comment__like
+          +like({count: likes, checked: checked, block_class:'comment__like'})
+        span.comment__text=text
