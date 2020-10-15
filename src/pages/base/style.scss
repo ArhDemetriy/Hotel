@@ -10,6 +10,7 @@ h3, .h3 , .font-upper{
 }
 body, .body, .font-regular{
   font: var(--font-regular, 14px 'Montserrat', 'Arial', sans-serif);
+  line-height: 24px;
 }
 body{
   //- перед релизом поменять на white
