@@ -45,8 +45,13 @@ append mixins
       }
 
     div()&attributes(options)&attributes(attributes)
-      .icon_text__icon
-        block
+
+      if block
+        .icon_text__icon_container
+          block
+      else
+        .icon_text__icon_container.icon_text__gradient_creator
+          span.icon_text__icon.material-icons-outlined=icon
       .icon_text__paragraph
         span.icon_text__title=title
         span.icon_text__text=text
