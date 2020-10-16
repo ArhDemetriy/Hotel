@@ -3,26 +3,31 @@
 
 .button{
   @extend %not_select_and_pointer;
-  @extend %flex-justify-around;
-
-  -moz-appearance: none ;
-  -webkit-appearance: none ;
-  appearance: none ;
+  display: inline-flex;
+  &-longed{
+    display: flex;
+    width: 100%;
+  }
+  justify-content: space-around;
+  align-items: stretch;
   border: none;
+  outline: none;
   background-color: transparent;
   border-radius: 10000px;
   box-sizing: border-box;
-  align-items: stretch;
-  align-content: stretch;
   text-decoration: none;
+
+  $min_width: 40px;
 
   &-hover{
     color: map.get($color, 'shade-50');
   }
   &__border_creator{
+    border-radius: 10000px;
+    $margin : 5px;
+    margin: $margin;
     @extend %flex-justify-around;
     width: 100%;
-    border-radius: 10000px;
     background-color: map.get($color, 'contrast_with_colored');
   }
 
@@ -56,7 +61,10 @@
   }
 
   &__text{
-    @extend %flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // margin: 0 (($min_width/2)-2px);
   }
   &__left_arrow{
     @extend %flex;
@@ -65,8 +73,8 @@
     @extend %flex;
   }
   &-colored, &-transparent{
-    padding: 5px;
-    min-width: 40px;
+    // padding: 5px;
+    min-width: $min_width;
     min-height: 40px;
   }
   &-transparent{
