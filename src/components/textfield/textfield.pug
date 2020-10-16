@@ -15,13 +15,8 @@ append mixins
       delete options.text;
       options.name = options.name || block_class;
 
-      const arrow = options.arrow ? `${options.arrow}` : '';
-      delete options.arrow;
-      if (arrow) options.class += ` textfield-hover`;
-
       if (!options.placeholder && (mod.includes('masked') || mod.includes('Masked')) )
         options.placeholder = 'SET placeholder';
-
       if (!options.placeholder) {
         switch (options.type) {
           case 'email':
@@ -37,10 +32,4 @@ append mixins
       if (!options.type || options.type == 'masked' || options.type == 'Masked')
         options.type = 'text';
 
-    if !arrow
-      input()&attributes(options)&attributes(attributes)
-    else
-      div(class = 'textfield__container_for_arrow', class = options.class)&attributes(attributes)
-        - delete options.class;
-        input()&attributes(options)
-        span(class = 'textfield__arrow material-icons-outlined')='keyboard_arrow_down'
+    input()&attributes(options)&attributes(attributes)
