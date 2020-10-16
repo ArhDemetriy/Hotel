@@ -2,35 +2,32 @@
 @import '../global_mixins/global_mixins';
 
 .button{
+  $min_height: 40px;
+  $border_size : 5px;
   @extend %not_select_and_pointer;
   display: inline-flex;
   &-longed{
     display: flex;
     width: 100%;
   }
-  justify-content: space-around;
+  justify-content: center;
   align-items: stretch;
   border: none;
   outline: none;
   background-color: transparent;
-  border-radius: 10000px;
+  border-radius: 50vh;
   box-sizing: border-box;
   text-decoration: none;
 
-  $min_width: 40px;
 
-  &-hover{
-    color: map.get($color, 'shade-50');
-  }
   &__border_creator{
-    border-radius: 10000px;
-    $margin : 5px;
-    margin: $margin;
-    @extend %flex-justify-around;
+    border-radius: 50vh;
+    margin: $border_size;
+    display: flex;
+    justify-content: center;
     width: 100%;
     background-color: map.get($color, 'contrast_with_colored');
   }
-
   &__background{
     &-main{
       background: map.get($gradient, 'main');
@@ -46,6 +43,9 @@
     }
   }
   &__text{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     &-main{
       color: map.get($color, 'main');
     }
@@ -59,23 +59,49 @@
       color: map.get($color, 'shade-50');
     }
   }
-
-  &__text{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    // margin: 0 (($min_width/2)-2px);
+  &-arrow_left{
+    position: relative;
+    &::before{
+      position: absolute;
+      content: 'arrow_back';
+      font-family: 'Material Icons Outlined';
+      text-transform: none;
+      font-weight: normal;
+      font-size: 24px;
+    }
+    &:not(.button-short)::before {
+      left: 0.3em;
+    }
   }
-  &__left_arrow{
-    @extend %flex;
-  }
-  &__right_arrow{
-    @extend %flex;
+  &-arrow_right{
+    position: relative;
+    &::after{
+      position: absolute;
+      content: 'arrow_forward';
+      font-family: 'Material Icons Outlined';
+      text-transform: none;
+      font-weight: normal;
+      font-size: 24px;
+    }
+    &:not(.button-short)::after {
+      right: 0.3em;
+    }
   }
   &-colored, &-transparent{
-    // padding: 5px;
-    min-width: $min_width;
-    min-height: 40px;
+    min-width: 40px;
+    min-height: $min_height;
+  }
+  &-colored:not(.button-short) {
+    --button__padding: #{$min_height/2};
+  }
+  &-transparent:not(.button-short) {
+    --button__padding: #{$min_height/2-$border_size};
+  }
+  &__text{
+    padding: 0 var(--button__padding, 0);
+  }
+
+  &-colored{
   }
   &-transparent{
   }

@@ -47,10 +47,15 @@ append mixins
       }
 
     - options.class = `button ${options.class}`
-    #{tag}()&attributes(options)&attributes(attributes)
-      - const tr = mod.includes('transparent');
-      if tr
-        div(class= 'button__border_creator')
-          +button__text({text: text, arrow: arrow,})
-      else
-        +button__text({text: text, arrow: arrow,})
+
+    - const tr = mod.includes('transparent');
+    if tr
+      #{tag}()&attributes(options)&attributes(attributes)
+        div(class= 'button__border_creator button__text font-upper')!=text
+          //- span(class='button__text font-upper')
+          //- +button__text({text: text, arrow: arrow,})
+    else
+      #{tag}(class= 'button__text font-upper')&attributes(options)&attributes(attributes)!=text
+
+        //- span(class='button__text font-upper')
+        //- +button__text({text: text, arrow: arrow,})
