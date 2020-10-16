@@ -13,19 +13,19 @@ append mixins
 
     .pagination(class=classes)
       nav(class='pagination__links')
-        +button({mod:'colored_secondary',arrow:'left',class:'pagination__link_left'})
-        +button({mod:'frameless',class:'pagination__link_fierst'})
+        +button({mod:'colored', color:'secondary', arrow:'left', href:'#', class:'pagination__link_left'})
+        +button({mod:'frameless', href:'#', text:'null', class:'pagination__link_fierst'})
         span(class='pagination__link_pre_separator')='...'
-        +button({mod:'frameless',class:'pagination__link_prew2_this'})
-        +button({mod:'frameless',class:'pagination__link_prew_this'})
-        +button({mod:'colored',class:'pagination__link_this'})
-        +button({mod:'frameless',class:'pagination__link_next_this'})
-        +button({mod:'frameless',class:'pagination__link_next2_this'})
+        +button({mod:'frameless', href:'#', text:'null', class:'pagination__link_prew2_this'})
+        +button({mod:'frameless', href:'#', text:'null', class:'pagination__link_prew_this'})
+        +button({mod:'colored', href:'#', text:'1', class:'pagination__link_this'})
+        +button({mod:'frameless', href:'#', text:'2', class:'pagination__link_next_this'})
+        +button({mod:'frameless', href:'#', text:'3', class:'pagination__link_next2_this'})
         span(class='pagination__link_post_separator')='...'
-        +button({mod:'frameless',class:'pagination__link_last'})
-        +button({mod:'colored_secondary',arrow:'right',class:'pagination__link_right'})
-      span(class='pagination__text')
-        span(class='pagination__text_selection')='–'
+        +button({mod:'frameless', href:'#', text:'20', class:'pagination__link_last'})
+        +button({mod:'colored', color:'secondary', arrow:'right', href:'#', class:'pagination__link_right'})
+      div(class='pagination__text')
+        span(class='pagination__text_selection')=' – '
         span()=' из '
-        span(class='pagination__text_population')='+ вариант'
+        span(class='pagination__text_population')=' вариант'
         span()=' аренды'

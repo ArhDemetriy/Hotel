@@ -3,5 +3,44 @@
 
 .pagination{
   @extend %not_select;
-  background: map.get($color, 'background');
+  --pagination__number_begin:'1';
+  --pagination__number_end:'12';
+  --pagination__number_all:'100+';
+
+  &__link_pre_separator,
+  &__link_post_separator{
+    text-align: center;
+  }
+  &__links{
+    display: flex;
+    align-items: center;
+    & > *{
+      min-width: 4rem;
+    }
+  }
+  &__text{
+    text-align: center;
+    &_selection{
+      &::before{
+        content: var(--pagination__number_begin);
+      }
+      &::after{
+        content: var(--pagination__number_end);
+      }
+    }
+    &_population{
+      &::before {
+        content: var(--pagination__number_all);
+      }
+    }
+  }
+
+  &__link_left,
+  &__link_fierst,
+  &__link_pre_separator,
+  &__link_prew2_this,
+  &__link_prew_this{
+    display: none;
+  }
+
 }
