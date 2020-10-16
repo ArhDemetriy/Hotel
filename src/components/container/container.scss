@@ -6,7 +6,10 @@
   flex-direction: column;
   max-width: 320px;
   width: max-content;
-
+  gap: 0.5rem;
+  &-huge_margin{
+    gap: 1.6rem;
+  }
   &__caption{
     display: flex;
     justify-content: space-between;
@@ -14,7 +17,7 @@
   &__block{
     display: flex;
     flex-direction: column;
-    margin-top: 5px;
+    gap: 1rem;
     &-dropable{
       display: none;
       margin-top: 0;
@@ -55,6 +58,5 @@
     right: 0;
     background-color: white;
     min-width: max-content;
-
   }
 }
