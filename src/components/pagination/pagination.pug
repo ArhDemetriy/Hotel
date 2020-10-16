@@ -13,7 +13,7 @@ append mixins
 
     .pagination(class=classes)
       nav(class='pagination__links')
-        +button({mod:'colored short', color:'secondary', arrow:'left', href:'#', class:'pagination__link_left'})
+        +button({mod:'colored short arrow_left', color:'secondary', href:'#', class:'pagination__link_left'})
         +button({mod:'frameless', href:'#', text:'null', class:'pagination__link_fierst'})
         span(class='pagination__link_pre_separator')='...'
         +button({mod:'frameless', href:'#', text:'null', class:'pagination__link_prew2_this'})
@@ -23,7 +23,7 @@ append mixins
         +button({mod:'frameless', href:'#', text:'3', class:'pagination__link_next2_this'})
         span(class='pagination__link_post_separator')='...'
         +button({mod:'frameless', href:'#', text:'20', class:'pagination__link_last'})
-        +button({mod:'colored short', color:'secondary', arrow:'right', href:'#', class:'pagination__link_right'})
+        +button({mod:'colored short arrow_right', color:'secondary', href:'#', class:'pagination__link_right'})
       div(class='pagination__text')
         span(class='pagination__text_selection')=' – '
         span()=' из '
