@@ -53,4 +53,16 @@
       margin-top: 50px;
     }
   }
+  &__radio {
+    display: flex;
+    gap: 2rem;
+  }
+  &__like {
+    display: flex;
+    gap: 1rem;
+  }
+  &__rate{
+    display: flex;
+    gap: 2rem;
+  }
 }

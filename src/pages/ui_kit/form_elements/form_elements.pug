@@ -44,19 +44,19 @@ append main
       +container({title:'subscription text field', text:''})
         +datefield({placeholder: 'ДД.ММ.ГГГГ'})
     div.form_elements__form_block(class='form_elements__inputs')
-      +container({title:'Checkbox Buttons', text:''})
-        +checkbox({text:'Завтрак',})
+      +container({title:'Checkbox Buttons', text:'', mod:'huge_margin'})
+        +checkbox({text:'Можно курить',})
         +checkbox({text:'Можно с питомцами',})
         +checkbox({text:'Можно пригласить гостей (до&nbsp;10&nbsp;человек)',})
-      +container({title:'radio Buttons', text:''})
-        .radio
+      +container({title:'radio Buttons', text:'', mod:'huge_margin'})
+        .form_elements__radio
           +radio({text:'Мужчина', name:'sex',})
           +radio({text:'Женщина', name:'sex',})
-      +container({title:'Toggle', text:''})
+      +container({title:'Toggle', text:'', mod:'huge_margin'})
         +toggle({text:'Получать спецпредложения', checked: true})
         +toggle({text:'Получать спецпредложения',})
-      +container({title:'like Button', text:''})
-        .like_container
+      +container({title:'like Button', text:'', mod:'huge_margin'})
+        .form_elements__like
           +like({
             count: 2,
             name: 'left-like',
@@ -66,8 +66,8 @@ append main
             checked: true,
             name: 'right-like',
           })
-      +container({title:'rate Button', text:''})
-        .rate
+      +container({title:'rate Button', text:'', mod:'huge_margin'})
+        .form_elements__rate
           +rate({
             count: 4,
             block_class: 'rate0',
