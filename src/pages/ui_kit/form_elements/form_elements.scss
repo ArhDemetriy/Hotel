@@ -69,8 +69,5 @@
     display: flex;
     flex-wrap: wrap;
     gap: 3rem 2rem;
-    & > *{
-      min-width: 100px;
-    }
   }
 }
