@@ -77,18 +77,18 @@ append main
             block_class: 'rate1',
           })
     div.form_elements__form_block(class='form_elements__slider_buttons')
-      +container({title:'Range Slider', text:'5 000₽ - 10 000₽'})
+      +container({title:'Range Slider', text:'5 000₽ - 10 000₽', mod:'huge_margin'})
         .slider='slider'
-      +container({title:'buttons', text:''})
-        .buttons
-          +button({text:'CLICK ME', mod:'colored'})
+      +container({title:'buttons', text:'', mod:'huge_margin'})
+        .form_elements__buttons
+          +button({text:'CLICK ME', mod:'colored', type: 'button'})
           +button({text:'CLICK ME', mod:'colored hover'})
           +button({text:'CLICK ME', mod:'transparent'})
           +button({text:'CLICK ME', mod:'transparent hover'})
           +button({text:'CLICK ME', mod:'frameless'})
           +button({text:'CLICK ME', mod:'frameless hover'})
-          +button({text:'перейти к оплате', mod:'colored', arrow:'right', block_class: 'pay'})
-      +container({title:'pagination ', text:''})
+          +button({text:'перейти к оплате', mod:'colored longed', arrow:'right'})
+      +container({title:'pagination ', text:'', mod:'huge_margin'})
         +pagination({})
     div.form_elements__form_block(class='form_elements__dropfield')
       +container({title:'dropdown', text:'default'})
