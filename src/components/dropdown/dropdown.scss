@@ -2,19 +2,18 @@
 @import '../global_mixins/global_mixins';
 
 .dropdown{
-  // display: none;
   position: absolute;
   left: 0;
   right: 0;
   z-index: 1;
+  box-sizing: border-box;
 
   flex-direction: column;
-  border: 1px solid map.get($color, 'shade-25');
+  border: 1px solid map.get($color, 'shade-50');
   border-top: none;
   border-radius: 0 0 4px 4px;
   padding: 7px 7px 7px 15px ;
   background: white;
-  // width: max-content;
 
   &:hover,&-visible{
     display: flex;
