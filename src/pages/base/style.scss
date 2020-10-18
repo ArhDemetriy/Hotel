@@ -1,3 +1,6 @@
+*{
+  box-sizing: border-box;
+}
 h1, .h1, .font-biggest{
   font: var(--font-biggest, bold 24px 'Quicksand', 'Open Sans', sans-serif);
 }
@@ -16,6 +19,23 @@ body{
   //- перед релизом поменять на white
   background-color: dimgray;
   color: var(--color-shade-100, rgb(31, 32, 65));
+}
+input{
+  /* Chrome, Safari, Edge, Opera */
+  outline: none;
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  /* Firefox */
+  &[type=number] {
+    -moz-appearance: textfield;
+  }
+}
+button{
+  /* Chrome, Safari, Edge, Opera */
+  outline: none;
 }
 .flex{
   display: inline-flex;
