@@ -5,28 +5,29 @@
   font: map.get($font, 'regular');
   border: 1px solid map.get($color, 'shade-25');
   border-radius: 4px;
-  color: map.get($color, 'shade-25');
+  color: map.get($color, 'shade-75');
   box-sizing: border-box;
   min-height: 44px;
   min-width: 150px;
   max-width: 320px;
-  width: 100%;
   $padding : 15px;
   padding: 0 $padding 0 $padding;
+  &::placeholder{
+    color: map.get($color, 'shade-25');
+  }
   &:hover, &:focus, &-hover{
     border-color: map.get($color, 'shade-50');
-    color: map.get($color, 'shade-75');
   }
   &-double_date{
     width: 150px;
+    &::placeholder{
+      color: map.get($color, 'shade-75');
+    }
   }
   &-dropdown{
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
     min-width: none;
     max-width: none;
-    &:hover, &:focus, &-hover{
-      border-bottom: none;
-    }
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
   }
 }
