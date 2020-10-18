@@ -1,3 +1,4 @@
+include ../textfield/textfield.pug
 include ../counting/counting.pug
 include ../button/button.pug
 
@@ -21,19 +22,38 @@ append mixins
       options.class += options.block_class ? ` ${options.block_class} ` : '';
       const block_class = options.block_class ? `${options.block_class}` : `dropdown`;
       delete options.block_class;
-      const visible = options.visible && options.visible != 'false' ? true : false;
-      delete options.visible;
       const buttons = options.buttons && options.buttons != 'false' ? true : false;
       delete options.buttons;
 
-    //-
-        flex column; потому все элементы столбца должны быть на одном уровне.
-        а дополнительный div.dropdown__item для генерации отступов между counting
-    label()&attributes(options)&attributes(attributes)
-      each item in items
-        .dropdown__item
-          +counting(item)
-      if buttons
-        .dropdown__buttons
-          +button({type: 'reset', mod: 'hover', text: 'очистить', block_class: 'dropdown__button_reset'})
-          +button({type: 'submit', mod: 'frameless', text: 'применить'})
+      const textfield_options = {
+        mod: 'dropdown',
+        type: 'text',
+        class: 'dropdown__field',
+      };
+      if (options.placeholder)
+        textfield_options.placeholder = options.placeholder;
+      delete options.placeholder;
+      if (options.value)
+        textfield_options.value = options.value;
+      delete options.value;
+      if (options.name)
+        textfield_options.name = options.name;
+      delete options.name;
+
+      const tag = buttons ? 'form' : 'label' //=''//'expand_more'
+
+    #{tag}()&attributes(options)&attributes(attributes)
+      +textfield(textfield_options)
+      span.dropdown__arrow.dropdown__arrow-more
+        span(class='material-icons-outlined')='expand_more'
+      span.dropdown__arrow.dropdown__arrow-less
+        span(class='material-icons-outlined')='expand_less'
+      if items
+        .dropdown__hidebele_container
+          each item in items
+            .dropdown__item
+              +counting(item)
+          if buttons
+            .dropdown__buttons
+              +button({type: 'reset', mod: 'hover', text: 'очистить', block_class: 'dropdown__button_reset'})
+              +button({type: 'submit', mod: 'frameless', text: 'применить'})
