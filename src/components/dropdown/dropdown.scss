@@ -6,9 +6,13 @@
   border-radius: 4px;
   background: white;
   border-bottom: none;
+  min-width: 26.6rem;
   position: relative;
   &:hover>&__field{
     border-color: map.get($color, 'shade-50');
+  }
+  &__field {
+    width: 100%;
   }
 
   &__arrow {
@@ -37,7 +41,14 @@
   }
 
   &__hidebele_container{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    background-color: map_get($color, 'background');
+
     display: none;
+
     border: 1px solid map.get($color, 'shade-50');
     border-top: none;
     border-bottom-left-radius: 4px;
@@ -47,13 +58,54 @@
     gap: $gap;
     padding: $gap $gap $gap #{$gap*2+1px};
   }
-  &:hover>&__hidebele_container,
   &__field:focus~&__hidebele_container {
+    z-index: 1;
+    display: flex;
+  }
+  &:hover>&__hidebele_container {
+    z-index: 2;
     display: flex;
   }
 
-  &__buttons{
-    margin-top: 18px;
+  $button_size: 30px;
+  &__counter{
+    display: flex;
+    align-items: center;
+  }
+  &__counter_title{
+    flex-grow: 1;
+  }
+  &__iterator_button {
+    background-color: map_get($color, 'background');
+    box-sizing: border-box;
+    width: $button_size;
+    height: $button_size;
+    border: 1px solid map_get($color, 'shade-25');
+    color: map_get($color, 'shade-50');
+    font-size: 18px;
+    line-height: 22px;
+    border-radius: $button_size / 2;
+    @extend %not_select_and_pointer;
+    @extend %flex-justify-center;
+    &:disabled {
+      border-color: map_get($color, 'shade-5');
+      color: map_get($color, 'shade-25');
+    }
+  }
+  &__iterator{
+    border: none;
+    background-color: map_get($color, 'background');
+    text-align: center;
+    box-sizing: border-box;
+    max-width: $button_size+2px;
+    color: map_get($color, 'shade-100');
+  }
+
+  &__bottom_buttons_block {
+    margin-top: 1.3rem;
     @extend %flex-justify-between;
+  }
+  &__button_reset-hidden {
+    visibility: hidden;
   }
 }
