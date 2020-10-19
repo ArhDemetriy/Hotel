@@ -1,10 +1,10 @@
 extends ../../base/base.pug
 include ../../../components/button/button.pug
 include ../../../components/checkbox/checkbox.pug
-include ../../../components/counting/counting.pug
+//- include ../../../components/counting/counting.pug
 include ../../../components/datefield/datefield.pug
 include ../../../components/dropdown/dropdown.pug
-include ../../../components/dropfield/dropfield.pug
+//- include ../../../components/dropfield/dropfield.pug
 include ../../../components/like/like.pug
 include ../../../components/list/list.pug
 include ../../../components/pagination/pagination.pug
@@ -98,55 +98,55 @@ append main
           visible: true,
           items: [
             {
-              title:'Спальни',
+              text:'Спальни',
               name:'1',
             },
             {
-              title:'Кровати',
+              text:'Кровати',
               name:'2',
             },
             {
-              title:'Ванные комнаты',
+              text:'Ванные комнаты',
               name:'3',
             },
           ],
         })
     div.form_elements__form_block(class='form_elements__dropfield_button')
       +container({title:'dropdown', text:''})
-        +dropfield({
+        +dropdown({
           buttons: true,
           visible: true,
           items: [
             {
-              title:'Взрослые',
+              text:'Взрослые',
               name:'1',
             },
             {
-              title:'Дети',
+              text:'Дети',
               name:'2',
             },
             {
-              title:'Младенцы',
+              text:'Младенцы',
               name:'3',
             },
           ],
         })
     div.form_elements__form_block(class='form_elements__dropfield_button')
       +container({title:'dropdown', text:''})
-        +dropfield({
+        +dropdown({
           buttons: true,
           visible: true,
           items: [
             {
-              title:'Взрослые',
+              text:'Взрослые',
               name:'1',
             },
             {
-              title:'Дети',
+              text:'Дети',
               name:'2',
             },
             {
-              title:'Младенцы',
+              text:'Младенцы',
               name:'3',
             },
           ],
