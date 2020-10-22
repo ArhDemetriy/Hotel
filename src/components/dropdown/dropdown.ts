@@ -55,7 +55,7 @@ export class Dropdown implements iDestructible, iDropdown {
     return errors;
   }
 
-  selfElement: Element;
+  selfElement: HTMLElement;
   output: HTMLInputElement;
   counters: iClearebleCounter[];
 
@@ -66,10 +66,10 @@ export class Dropdown implements iDestructible, iDropdown {
       throw new Error(
         'not valid element. please use Dropdown.checkElement(element[, true]) before create this class');
 
-    this.selfElement = element;
+    this.selfElement = element as HTMLElement;
     this.output = element.querySelector('.dropdown__field') as HTMLInputElement;
 
-    const counters: iCounter[] = Array.from(element.querySelectorAll('.dropdown__counter'), counter => {
+    const staticCounters: iCounter[] = Array.from(element.querySelectorAll('.dropdown__counter'), counter => {
       const title = counter.querySelector('.dropdown__counter_title')!.textContent!;
       return {
         text: function () {
@@ -86,17 +86,33 @@ export class Dropdown implements iDestructible, iDropdown {
         decrementButton: counter.querySelector('.dropdown__dec') as HTMLButtonElement,
       }
     });
-    this.counters = fabricEventListenersForCounters(counters);
-    (this.selfElement as HTMLElement).addEventListener('click', this.bindedSetFieldText, { passive: true });
-
+    this.counters = fabricEventListenersForCounters(staticCounters);
+    this.selfElement.addEventListener('click', this.bindedSetFieldText, { passive: true });
   }
-  private readonly bindedSetFieldText = (function(event: MouseEvent) {
-    // if (!(event.target as Element).classList.contains('dropdown__iterator_button')) return;
-    console.log('onChange')
+  private readonly bindedSetFieldText = (function(this: Dropdown, event: MouseEvent) {
+    if (!(event.target as Element).classList.contains('dropdown__iterator_button')) return;
+    const counterTexts = this.counters
+      .map(counter => counter.text())
+      .filter(text => (text.length >= 1));
+    let result = '';
+    if (counterTexts.length >= 1) {
+      const MAX_COUNTER_TEXTS = 2;
+      let i = 0;
+      result = counterTexts[i++];
+      for (const N = Math.min(counterTexts.length, MAX_COUNTER_TEXTS); i < N; i++){
+        result += `, ${counterTexts[i]}`;
+      }
+      if (counterTexts.length > MAX_COUNTER_TEXTS) {
+        const OVER_COUNTERS_MARKER = '...'
+        result += OVER_COUNTERS_MARKER;
+      }
+    }
+    this.output.value = result;
   }).bind(this);
   action(){}
   destroy() {
-    // this.active.removeEventListener('click', this.bindedAction);
+    this.selfElement.removeEventListener('click', this.bindedSetFieldText);
+    this.counters.forEach(counter => counter.removeEventListeners());
   }
 }
 
