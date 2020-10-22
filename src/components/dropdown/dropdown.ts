@@ -1,3 +1,4 @@
+import { iCounter, iClearebleCounter, fabricEventListenersForCounters } from './dropdown__counter'
 export { iDestructible, iDropdown }
 
 interface iDestructible {
@@ -7,14 +8,6 @@ interface iDropdown {
   action(): void;
 }
 type ArrayOfDestructible = [() => void, ...Array<iDestructible>];
-type tCounter = {
-  text: () => string;
-  self: Element;
-  iterator: HTMLInputElement;
-  decrementButton: HTMLButtonElement;
-  incrementButton: HTMLButtonElement;
-  removeEventListener: () => void;
-}
 
 export class Dropdown implements iDestructible, iDropdown {
   static checkElement(element: Element, full = false) {
@@ -64,8 +57,10 @@ export class Dropdown implements iDestructible, iDropdown {
 
   selfElement: Element;
   output: HTMLInputElement;
+  counters: iClearebleCounter[];
 
-  private readonly bindedAction = this.action.bind(this);
+
+  // private readonly bindedSetFieldText = this.setFieldText.bind(this);
   constructor(element: Element) {
     if (Dropdown.checkElement(element).length >= 1)
       throw new Error(
@@ -74,7 +69,7 @@ export class Dropdown implements iDestructible, iDropdown {
     this.selfElement = element;
     this.output = element.querySelector('.dropdown__field') as HTMLInputElement;
 
-    const counters: tCounter[] = Array.from(element.querySelectorAll('.dropdown__counter'), counter => {
+    const counters: iCounter[] = Array.from(element.querySelectorAll('.dropdown__counter'), counter => {
       const title = counter.querySelector('.dropdown__counter_title')!.textContent!;
       return {
         text: function () {
@@ -87,48 +82,25 @@ export class Dropdown implements iDestructible, iDropdown {
         },
         self: counter,
         iterator: counter.querySelector('.dropdown__iterator') as HTMLInputElement,
-        decrementButton: counter.querySelector('.dropdown__dec') as HTMLButtonElement,
         incrementButton: counter.querySelector('.dropdown__inc') as HTMLButtonElement,
-        removeEventListener: function () { this.self.removeEventListener('click', this.text) },
+        decrementButton: counter.querySelector('.dropdown__dec') as HTMLButtonElement,
       }
     });
-    // this.active.addEventListener('click', this.bindedAction);
+    this.counters = fabricEventListenersForCounters(counters);
+    (this.selfElement as HTMLElement).addEventListener('click', this.bindedSetFieldText, { passive: true });
+
   }
-  private fabricEventListenersForCounters(counters: tCounter[]) {
-    const getValue = (strValue: string, strMin: string) => {
-      const min = isFinite(+strMin) ? +strMin : 0;
-      return Math.max(min, isFinite(+strValue) ? +strValue : min);
-    }
-    const setValue = (iterator: HTMLInputElement, value: string, oppositeButton: HTMLButtonElement) => {
-      iterator.value = value;
-      if (oppositeButton.disabled)
-        oppositeButton.disabled = false;
-    }
-    function increment(this: tCounter) {
-      const value = getValue(this.iterator.value, this.iterator.min);
-      const max = isFinite(+this.iterator.max) ? +this.iterator.max : Infinity;
-      if (value < max - 1)
-        setTimeout(setValue, 0, this.iterator, String(value + 1), this.decrementButton)
-      else {
-        this.incrementButton.disabled = true;
-        if (value != max)
-          setTimeout(setValue, 0, this.iterator, String(max), this.decrementButton)
-      }
-    }
-    function decrement(this: tCounter) {
-      const value = getValue(this.iterator.value, this.iterator.min);
-      const min = isFinite(+this.iterator.min) ? +this.iterator.min : 0;
-      if (value > min + 1)
-        setTimeout(setValue, 0, this.iterator, String(value - 1), this.incrementButton)
-      else {
-        this.decrementButton.disabled = true;
-        if (value != min)
-          setTimeout(setValue, 0, this.iterator, String(min), this.incrementButton)
-      }
-    }
-  }
+  private readonly bindedSetFieldText = (function(event: MouseEvent) {
+    // if (!(event.target as Element).classList.contains('dropdown__iterator_button')) return;
+    console.log('onChange')
+  }).bind(this);
   action(){}
   destroy() {
     // this.active.removeEventListener('click', this.bindedAction);
   }
 }
+
+document.querySelectorAll('.dropdown').forEach(element => {
+  if (Dropdown.checkElement(element).length <= 0)
+    (element as any).MyDropdown = new Dropdown(element)
+})
