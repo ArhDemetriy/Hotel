@@ -25,22 +25,26 @@ function fabricEventListenersForCounters(counters: iCounter[]) {
       const value = getValue(this.iterator.value, this.iterator.min);
       const max = isFinite(+this.iterator.max) ? +this.iterator.max : Infinity;
       if (value < max - 1)
-        setTimeout(setValue, 0, this.iterator, String(value + 1), this.decrementButton)
+        setValue(this.iterator, String(value + 1), this.decrementButton)
+        // setTimeout(setValue, 0, this.iterator, String(value + 1), this.decrementButton)
       else {
         this.incrementButton.disabled = true;
         if (value != max)
-          setTimeout(setValue, 0, this.iterator, String(max), this.decrementButton)
+          setValue(this.iterator, String(max), this.decrementButton)
+          // setTimeout(setValue, 0, this.iterator, String(max), this.decrementButton)
       }
     }
     function decrement(this: iCounter) {
       const value = getValue(this.iterator.value, this.iterator.min);
       const min = isFinite(+this.iterator.min) ? +this.iterator.min : 0;
       if (value > min + 1)
-        setTimeout(setValue, 0, this.iterator, String(value - 1), this.incrementButton)
+        setValue(this.iterator, String(value - 1), this.incrementButton)
+        // setTimeout(setValue, 0, this.iterator, String(value - 1), this.incrementButton)
       else {
         this.decrementButton.disabled = true;
         if (value != min)
-          setTimeout(setValue, 0, this.iterator, String(min), this.incrementButton)
+          setValue(this.iterator, String(min), this.incrementButton)
+          // setTimeout(setValue, 0, this.iterator, String(min), this.incrementButton)
       }
     }
     return counters.map(counter => {
