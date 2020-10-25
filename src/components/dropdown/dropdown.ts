@@ -58,6 +58,7 @@ export class Dropdown implements iDestructible, iDropdown {
   selfElement: HTMLElement;
   output: HTMLInputElement;
   counters: iClearebleCounter[];
+  resetButton: HTMLInputElement | HTMLButtonElement | null;
 
 
   // private readonly bindedSetFieldText = this.setFieldText.bind(this);
@@ -68,6 +69,7 @@ export class Dropdown implements iDestructible, iDropdown {
 
     this.selfElement = element as HTMLElement;
     this.output = element.querySelector('.dropdown__field') as HTMLInputElement;
+    this.resetButton = element.querySelector('.dropdown__button_reset');
 
     const staticCounters: iCounter[] = Array.from(element.querySelectorAll('.dropdown__counter'), counter => {
       const title = counter.querySelector('.dropdown__counter_title')!.textContent!;
@@ -107,7 +109,23 @@ export class Dropdown implements iDestructible, iDropdown {
         result += OVER_COUNTERS_MARKER;
       }
     }
-    this.output.value = result;
+    // this.output.value = result;
+    // if (result.length >= 1){
+    //   if (this.resetButton)
+    //     this.resetButton.classList.remove('dropdown__button_reset-hidden');
+    // } else {
+    //   if (this.resetButton)
+    //     this.resetButton.classList.add('dropdown__button_reset-hidden');
+    // }
+    setTimeout((output: HTMLInputElement, result: string, resetButton: HTMLInputElement | HTMLButtonElement | null) => {
+      output.value = result;
+      if (resetButton)
+        if (result.length >= 1)
+          resetButton.classList.remove('dropdown__button_reset-hidden');
+        else
+          resetButton.classList.add('dropdown__button_reset-hidden');
+    },0,this.output,result,this.resetButton)
+
   }).bind(this);
   action(){}
   destroy() {
