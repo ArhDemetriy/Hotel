@@ -1,15 +1,15 @@
 import { iCounter, iClearebleCounter, fabricEventListenersForCounters } from './dropdown__counter'
+import { iDestructible, iExtendDOMElement } from '../global_mixins/global_mixins'
 export { iDestructible, iDropdown }
 
-interface iDestructible {
-  destroy(): void;
-}
-interface iDropdown {
-  action(): void;
+interface iDropdown extends iExtendDOMElement{
+  output: HTMLInputElement;
+  counters: iClearebleCounter[];
+  resetButton: HTMLInputElement | HTMLButtonElement | null;
 }
 type ArrayOfDestructible = [() => void, ...Array<iDestructible>];
 
-export class Dropdown implements iDestructible, iDropdown {
+export class Dropdown implements iDestructible, iExtendDOMElement, iDropdown {
   static checkElement(element: Element, full = false) {
     const errors: Array<string> = []
     let temp: Element | HTMLInputElement | null = element.querySelector('.dropdown__field');
@@ -60,8 +60,6 @@ export class Dropdown implements iDestructible, iDropdown {
   counters: iClearebleCounter[];
   resetButton: HTMLInputElement | HTMLButtonElement | null;
 
-
-  // private readonly bindedSetFieldText = this.setFieldText.bind(this);
   constructor(element: Element) {
     if (Dropdown.checkElement(element).length >= 1)
       throw new Error(
@@ -90,6 +88,7 @@ export class Dropdown implements iDestructible, iDropdown {
     });
     this.counters = fabricEventListenersForCounters(staticCounters);
     this.selfElement.addEventListener('click', this.bindedSetFieldText, { passive: true });
+    this.selfElement.addEventListener('reset', this.bindedReset, { passive: true });
   }
   private readonly bindedSetFieldText = (function(this: Dropdown, event: MouseEvent) {
     if (!(event.target as Element).classList.contains('dropdown__iterator_button')) return;
@@ -109,14 +108,6 @@ export class Dropdown implements iDestructible, iDropdown {
         result += OVER_COUNTERS_MARKER;
       }
     }
-    // this.output.value = result;
-    // if (result.length >= 1){
-    //   if (this.resetButton)
-    //     this.resetButton.classList.remove('dropdown__button_reset-hidden');
-    // } else {
-    //   if (this.resetButton)
-    //     this.resetButton.classList.add('dropdown__button_reset-hidden');
-    // }
     setTimeout((output: HTMLInputElement, result: string, resetButton: HTMLInputElement | HTMLButtonElement | null) => {
       output.value = result;
       if (resetButton)
@@ -124,12 +115,28 @@ export class Dropdown implements iDestructible, iDropdown {
           resetButton.classList.remove('dropdown__button_reset-hidden');
         else
           resetButton.classList.add('dropdown__button_reset-hidden');
-    },0,this.output,result,this.resetButton)
-
+    }, 0, this.output, result, this.resetButton);
   }).bind(this);
-  action(){}
+
+  private readonly bindedReset = (function (this: Dropdown, event: Event) {
+    setTimeout((counters: iCounter[], resetButton: HTMLInputElement | HTMLButtonElement | null) => {
+      if (resetButton)
+        resetButton.classList.add('dropdown__button_reset-hidden');
+      for (let counter of counters.values()) {
+        const value = +counter.iterator.value;
+        if (value <= +counter.iterator.min) {
+          counter.decrementButton.disabled = true;
+        }
+        if (value >= +counter.iterator.max) {
+          counter.incrementButton.disabled = true;
+        }
+      }
+    }, 0, this.counters, this.resetButton);
+  }).bind(this);
+
   destroy() {
     this.selfElement.removeEventListener('click', this.bindedSetFieldText);
+    this.selfElement.removeEventListener('reset', this.bindedReset);
     this.counters.forEach(counter => counter.removeEventListeners());
   }
 }
