@@ -89,27 +89,45 @@ export class Dropdown implements iDestructible, iExtendDOMElement, iDropdown {
       }
     });
     this.counters = fabricEventListenersForCounters(staticCounters);
+    this.calcOutputText = ((mod: 'adder' | 'devided'): (counters: iCounter[]) => string => {
+      if (mod == 'devided')
+        return (counters: iCounter[]) => {
+          const counterTexts = counters
+            .map(counter => counter.text())
+            .filter(text => (text.length >= 1));
+          let result = '';
+          if (counterTexts.length >= 1) {
+            const MAX_COUNTER_TEXTS = 2;
+            let i = 0;
+            result = counterTexts[i++];
+            for (const N = Math.min(counterTexts.length, MAX_COUNTER_TEXTS); i < N; i++){
+              result += `, ${counterTexts[i]}`;
+            }
+            if (counterTexts.length > MAX_COUNTER_TEXTS) {
+              const OVER_COUNTERS_MARKER = '...'
+              result += OVER_COUNTERS_MARKER;
+            }
+          }
+          return result;
+        }
+      if (mod == 'adder')
+        return (counters: iCounter[]) => {
+          const count = counters.reduce((previousValue, counter) => {
+            return previousValue + (parseFloat(counter.iterator.value) || 0)
+          }, 0);
+          const adderName = 'Гостя';
+          return `${count} ${adderName}`;
+        }
+      return (counters: iCounter[]) => { return '' };
+    })(this.selfElement.classList.contains('dropdown-adder') ? 'adder' : 'devided');
+
     this.selfElement.addEventListener('click', this.bindedSetFieldText, { passive: true });
     this.selfElement.addEventListener('reset', this.bindedReset, { passive: true });
   }
+  private readonly calcOutputText: (counters: iCounter[]) => string;
   private readonly bindedSetFieldText = (function(this: Dropdown, event: MouseEvent) {
     if (!(event.target as Element).classList.contains('dropdown__iterator_button')) return;
-    const counterTexts = this.counters
-      .map(counter => counter.text())
-      .filter(text => (text.length >= 1));
-    let result = '';
-    if (counterTexts.length >= 1) {
-      const MAX_COUNTER_TEXTS = 2;
-      let i = 0;
-      result = counterTexts[i++];
-      for (const N = Math.min(counterTexts.length, MAX_COUNTER_TEXTS); i < N; i++){
-        result += `, ${counterTexts[i]}`;
-      }
-      if (counterTexts.length > MAX_COUNTER_TEXTS) {
-        const OVER_COUNTERS_MARKER = '...'
-        result += OVER_COUNTERS_MARKER;
-      }
-    }
+    let result = this.calcOutputText(this.counters);
     setTimeout((output: HTMLInputElement, result: string, resetButton: HTMLInputElement | HTMLButtonElement | null) => {
       output.value = result;
       if (resetButton)
