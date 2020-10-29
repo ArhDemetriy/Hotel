@@ -13,7 +13,8 @@ interface iClearebleCounter extends iCounter {
 }
 
 function fabricEventListenersForCounters(counters: iCounter[]) {
-    const getValue = (strValue: string, strMin: string) => {
+  const getValue = (strValue: string, strMin: string) => {
+      // по бизнес-логике min >= 0 всегда, даже если не указан явно. потому нас не волнуют пустые строки или пробелы.
       const min = isFinite(+strMin) ? +strMin : 0;
       return Math.max(min, isFinite(+strValue) ? +strValue : min);
     }
@@ -26,7 +27,8 @@ function fabricEventListenersForCounters(counters: iCounter[]) {
     }
     function increment(this: iCounter) {
       const value = getValue(this.iterator.value, this.iterator.min);
-      const max = this.iterator.max && isFinite(+this.iterator.max) ? +this.iterator.max : Infinity;
+      //по бизнес-логике если max не указан, он, по умолчанию, равен бесконечности. поэтому пустые строки и пробелы это не 0
+      const max = parseFloat(this.iterator.max) || Infinity;
       if (value < max - 1)
         setValue(this.iterator, String(value + 1), this.decrementButton)
       else {
@@ -37,7 +39,8 @@ function fabricEventListenersForCounters(counters: iCounter[]) {
     }
     function decrement(this: iCounter) {
       const value = getValue(this.iterator.value, this.iterator.min);
-      const min = this.iterator.min && isFinite(+this.iterator.min) ? +this.iterator.min : 0;
+      // по бизнес-логике min >= 0 всегда, даже если не указан явно. потому нас не волнуют пустые строки или пробелы.
+      const min = isFinite(+this.iterator.min) ? +this.iterator.min : 0;
       if (value > min + 1)
         setValue(this.iterator, String(value - 1), this.incrementButton)
       else {

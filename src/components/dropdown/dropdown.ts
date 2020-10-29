@@ -73,9 +73,11 @@ export class Dropdown implements iDestructible, iExtendDOMElement, iDropdown {
       const title = counter.querySelector('.dropdown__counter_title')!.textContent!;
       return {
         text: function () {
-          const value = +this.iterator.value;
-          const min = +this.iterator.min;
-          if (isFinite(value) && isFinite(min) && min < value)
+          const value = parseFloat(this.iterator.value);
+          if (isNaN(value))
+            return ''
+          const min = parseFloat(this.iterator.min);
+          if (isNaN(min) || min < value)
             return `${value} ${title}`
           else
             return ''
@@ -127,7 +129,7 @@ export class Dropdown implements iDestructible, iExtendDOMElement, iDropdown {
         if (value <= +counter.iterator.min) {
           counter.decrementButton.disabled = true;
         }
-        if (value >= +counter.iterator.max) {
+        if (value >= parseFloat(counter.iterator.max)) {
           counter.incrementButton.disabled = true;
         }
       }
