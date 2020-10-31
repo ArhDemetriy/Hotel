@@ -1,11 +1,18 @@
 .form_elements{
   $const:9.71222222vw;
-  $main_padding: max(0px, calc(#{$const*2} - 200px));
-  padding: min(4.51388888%, 65px) $main_padding 0 $main_padding;
+  $main_padding: 14rem;
+  // padding: 65px $main_padding 0 $main_padding;
+  justify-content: center;
+  padding-top: 6.5rem;
+  max-width: 144rem;
+  margin: 0 auto;
 
   display: grid;
-  grid-template-columns: minmax(374px, 1.16875fr) repeat(auto-fit, minmax(320px, 1fr));
-  grid-gap: min(7.2rem, calc(15vw - 144px));
+  grid-template-columns: repeat(auto-fit, 320px);
+  // grid-gap: min(7.2rem, calc(15vw - 144px));
+  grid-gap: 100px 126px;
+  // column-gap: 10px;
+  // row-gap: 100px;
 
 
   &__double{
