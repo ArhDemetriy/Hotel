@@ -1,10 +1,11 @@
-include ../counting/counting.pug
+include ../textfield/textfield.pug
+//- include ../counting/counting.pug
 include ../button/button.pug
 
 append styles
   link(rel="stylesheet", href="../../../components/dropdown/dropdown.scss")
 append skripts__defer
-  script(type='module', src="../../../components/dropdown/dropdown.js")
+  script(type='module', src="../../../components/dropdown/dropdown.ts")
 
 append mixins
   mixin dropdown(options = {}, items = [])
@@ -21,19 +22,57 @@ append mixins
       options.class += options.block_class ? ` ${options.block_class} ` : '';
       const block_class = options.block_class ? `${options.block_class}` : `dropdown`;
       delete options.block_class;
-      const visible = options.visible && options.visible != 'false' ? true : false;
-      delete options.visible;
       const buttons = options.buttons && options.buttons != 'false' ? true : false;
       delete options.buttons;
 
-    //-
-        flex column; потому все элементы столбца должны быть на одном уровне.
-        а дополнительный div.dropdown__item для генерации отступов между counting
-    label()&attributes(options)&attributes(attributes)
-      each item in items
-        .dropdown__item
-          +counting(item)
-      if buttons
-        .dropdown__buttons
-          +button({type: 'reset', mod: 'hover', text: 'очистить', block_class: 'dropdown__button_reset'})
-          +button({type: 'submit', mod: 'frameless', text: 'применить'})
+      const textfield_options = {
+        mod: 'dropdown',
+        type: 'text',
+        class: 'dropdown__field',
+        autocomplete: 'off',
+      };
+      if (options.placeholder)
+        textfield_options.placeholder = options.placeholder;
+      delete options.placeholder;
+      if (options.value)
+        textfield_options.value = options.value;
+      delete options.value;
+      if (options.name)
+        textfield_options.name = options.name;
+      delete options.name;
+
+      const tag = buttons ? 'form' : 'label' //=''//'expand_more'
+
+    #{tag}()&attributes(options)&attributes(attributes)
+      +textfield(textfield_options)
+      span.dropdown__arrow.dropdown__arrow-more
+        span(class='material-icons-outlined')='expand_more'
+      span.dropdown__arrow.dropdown__arrow-less
+        span(class='material-icons-outlined')='expand_less'
+      if items.length >= 1
+        label.dropdown__hidebele_container.font-upper
+          each item in items
+            label.dropdown__counter
+              span(class='dropdown__counter_title')=item.text
+              -
+                delete item.text;
+
+                item.min = isFinite(item.min) ? item.min : 0;
+
+                if ( !(isFinite(item.max) && (item.min<=item.max)) )
+                  delete item.max;
+
+                if ( !isFinite(item.value) || item.value<item.min )
+                  item.value = item.min
+                else if ( isFinite(item.max) && (item.max<item.value) )
+                  item.value = item.max;
+
+                const dec_is_disabled = item.value<=item.min;
+                const inc_is_disabled = item.max<=item.value;
+              button(class='dropdown__iterator_button dropdown__dec font-regular', type='button', disabled=dec_is_disabled)='-'
+              input(class='dropdown__iterator font-upper', type='number')&attributes(item)
+              button(class='dropdown__iterator_button dropdown__inc font-regular', type='button', disabled=inc_is_disabled)='+'
+          if buttons
+            label.dropdown__bottom_buttons_block
+              +button({type: 'reset', mod: 'frameless', text: 'очистить', class: 'dropdown__button_reset dropdown__button_reset-hidden'})
+              +button({type: 'submit', mod: 'frameless', text: 'применить'})

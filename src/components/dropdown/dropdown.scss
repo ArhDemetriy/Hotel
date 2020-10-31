@@ -2,27 +2,110 @@
 @import '../global_mixins/global_mixins';
 
 .dropdown{
-  position: absolute;
-  left: 0;
-  right: 0;
-  z-index: 1;
   box-sizing: border-box;
-
-  flex-direction: column;
-  border: 1px solid map.get($color, 'shade-50');
-  border-top: none;
-  border-radius: 0 0 4px 4px;
-  padding: 7px 7px 7px 15px ;
+  border-radius: 4px;
   background: white;
+  border-bottom: none;
+  min-width: 26.6rem;
+  position: relative;
+  &:hover>&__field{
+    border-color: map.get($color, 'shade-50');
+  }
+  &__field {
+    width: 100%;
+  }
 
-  &:hover,&-visible{
+  &__arrow {
+    position: relative;
+    vertical-align: middle;
+    color: map.get($color, 'shade-75');
+    &>span{
+      position: absolute;
+      right: 0;
+      transform: translate(0, 50%);
+    }
+    &-more{
+    }
+    &-less {
+      display: none;
+    }
+  }
+  &:hover>&__arrow,
+  &__field:focus~&__arrow {
+    &-more {
+      display: none;
+    }
+    &-less {
+      display: inline;
+    }
+  }
+
+  &__hidebele_container{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    background-color: map_get($color, 'background');
+
+    display: none;
+
+    border: 1px solid map.get($color, 'shade-50');
+    border-top: none;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    flex-direction: column;
+    $gap: 7px;
+    gap: $gap;
+    padding: $gap $gap $gap #{$gap*2+1px};
+  }
+  &__field:focus~&__hidebele_container {
+    z-index: 1;
     display: flex;
   }
-  &__item:nth-child(n+2){
-    margin-top: 7px;
+  &:hover>&__hidebele_container {
+    z-index: 2;
+    display: flex;
   }
-  &__buttons{
-    margin-top: 18px;
+
+  $button_size: 30px;
+  &__counter{
+    display: flex;
+    align-items: center;
+  }
+  &__counter_title{
+    flex-grow: 1;
+  }
+  &__iterator_button {
+    background-color: map_get($color, 'background');
+    box-sizing: border-box;
+    width: $button_size;
+    height: $button_size;
+    border: 1px solid map_get($color, 'shade-25');
+    color: map_get($color, 'shade-50');
+    font-size: 18px;
+    line-height: 22px;
+    border-radius: $button_size / 2;
+    @extend %not_select_and_pointer;
+    @extend %flex-justify-center;
+    &:disabled {
+      border-color: map_get($color, 'shade-5');
+      color: map_get($color, 'shade-25');
+    }
+  }
+  &__iterator{
+    border: none;
+    background-color: map_get($color, 'background');
+    text-align: center;
+    box-sizing: border-box;
+    max-width: $button_size+2px;
+    color: map_get($color, 'shade-100');
+  }
+
+  &__bottom_buttons_block {
+    margin-top: 1.3rem;
     @extend %flex-justify-between;
+  }
+  &__button_reset-hidden {
+    visibility: hidden;
   }
 }

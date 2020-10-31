@@ -1,3 +1,6 @@
+# temp component folders
+src/components/.*/
+
 Img/
 git-bash.lnk
 */index.pug
