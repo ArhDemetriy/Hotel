@@ -5,10 +5,14 @@
   display: flex;
   flex-direction: column;
   max-width: 320px;
-  width: max-content;
+  width: 100%;
+
   gap: 0.5rem;
   &-huge_margin{
     gap: 1.6rem;
+  }
+  &__show_flag{
+    display: none;
   }
   &__caption{
     display: flex;
@@ -18,9 +22,10 @@
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    margin-top: 1.3rem;
     &-dropable{
       display: none;
-      margin-top: 0;
+      // margin-top: 0;
       position: relative;
     }
   }
@@ -32,31 +37,39 @@
     text-align: end;
     font-weight: normal;
   }
+
   &-dropable > &__caption{
     position: relative;
     padding-right: 2ch;
+    display: flex;
+    align-items: center;
     &::after{
-      content: '^';
+      font-family: 'Material Icons Outlined';
+      font-size: 24px;
+      line-height: 24px;
+      font-weight: normal;
+      text-transform: none;
+      content: 'expand_more';
       position: absolute;
       right: 0;
     }
   }
-  &-dropable:hover > &__caption::after, &-hover > &__caption::after{
-    content: 'v';
+  // &-dropable:hover>&__caption::after,
+  &__show_flag:checked+&__caption::after {
+    content: 'expand_less';
+  }
+  // &-dropable:hover>&__block-dropable,
+  &__show_flag:checked~&__block-dropable {
+    display: flex;
   }
 
-  &-dropable:hover,&-hover{
-    & > .container__block-dropable{
-      display: flex;
-    }
-  }
-  &__absolute_box{
-    padding-top: 5px;
-    position: absolute;
-    z-index: 1;
-    left: 0;
-    right: 0;
-    background-color: white;
-    min-width: max-content;
-  }
+  // &__absolute_box{
+  //   padding-top: 5px;
+  //   // position: absolute;
+  //   z-index: 1;
+  //   left: 0;
+  //   right: 0;
+  //   background-color: white;
+  //   min-width: max-content;
+  // }
 }

@@ -20,8 +20,8 @@ append mixins
       delete options.text;
       const title = options.title ? `${options.title}` : '';
       delete options.title;
-      const dropable = options.dropable ? true : false;
-      delete options.dropable;
+      const visible = options.visible ? true : false;
+      delete options.visible;
 
       function blockLength(input){
         const open = '\\u003C'
@@ -42,7 +42,11 @@ append mixins
         return count;
       }
 
-    div()&attributes(options)&attributes(attributes)
+      const tag = mod.includes('dropable') ? 'label' : 'div'
+
+    #{tag}()&attributes(options)&attributes(attributes)
+      if mod.includes('dropable')
+        input.container__show_flag(type='checkbox', checked= visible ? true : false)
       if title || text
         .container__caption.font-upper
           if title
@@ -52,8 +56,8 @@ append mixins
       if block
         if mod.includes('dropable')
           .container__block.container__block-dropable
-            .container__absolute_box
-              block
+            //- .container__absolute_box
+            block
         else if (blockLength(block.toString()) > 1)
           .container__block
             block
