@@ -26,9 +26,9 @@ block title
 append main
   .form_elements
     div.form_elements__form_block.form_elements__fierst(class='form_elements__fields')
-      +container({title:'textfield', text:'default'})
-        +textfield({type: 'email'})
-      +container({title:'textfield', text:'hover/focus'})
+      +container({title:'text field', text:'default'})
+        +textfield({type: 'email', mod:'long'})
+      +container({title:'text field', text:'hover/focus'})
         +textfield({value: 'This is pretty awesome', autofocus:true})
       +container({title:'dropdown', text:'default'})
         +textfield({arrow: true, value: 'Сколько гостей'})
@@ -96,6 +96,7 @@ append main
       +container({title:'dropdown', text:'expanded'})
         +dropdown({
           visible: true,
+          mod:'hover',
           items: [
             {
               text:'Спальни',
@@ -117,12 +118,12 @@ append main
             },
           ],
         })
-    div.form_elements__form_block(class='form_elements__dropfield_button')
+    div.form_elements__form_block.form_elements__double(class='form_elements__dropfield_button')
       +container({title:'dropdown', text:''})
         +dropdown({
           buttons: true,
           visible: true,
-          mod:'adder',
+          mod:'adder hover',
           items: [
             {
               text:'Взрослые',
@@ -144,12 +145,11 @@ append main
             },
           ],
         })
-    div.form_elements__form_block(class='form_elements__dropfield_button')
       +container({title:'dropdown', text:''})
         +dropdown({
           buttons: true,
           visible: true,
-          mod:'adder',
+          mod:'adder hover',
           items: [
             {
               text:'Взрослые',
@@ -167,7 +167,7 @@ append main
         })
     div.form_elements__form_block(class='form_elements__checkbox_list')
       +container({title: 'expandable checkbox list', mod: 'dropable',})
-      +container({title: 'expandable checkbox list', mod: 'dropable',})
+      +container({title: 'expandable checkbox list', mod: 'dropable', visible: true})
         +checkbox({text:'Завтрак',})
         +checkbox({text:'Письменный стол',})
         +checkbox({text:'Стул для кормления',})
