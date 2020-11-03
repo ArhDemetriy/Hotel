@@ -108,4 +108,8 @@
   &__button_reset-hidden {
     visibility: hidden;
   }
+  &-hover > &__hidebele_container{
+    display: flex;
+  }
+
 }

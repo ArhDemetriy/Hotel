@@ -18,6 +18,9 @@
   &:hover, &:focus, &-hover{
     border-color: map.get($color, 'shade-50');
   }
+  &-long{
+    width: 100%;
+  }
   &-double_date{
     width: 150px;
     &::placeholder{
