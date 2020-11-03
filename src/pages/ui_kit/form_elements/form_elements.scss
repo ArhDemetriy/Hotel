@@ -8,12 +8,8 @@
   margin: 0 auto;
 
   display: grid;
-  grid-template-columns: repeat(auto-fit, 320px);
-  // grid-gap: min(7.2rem, calc(15vw - 144px));
+  grid-template-columns: 32rem 26.6rem 32rem;
   grid-gap: 100px 126px;
-  // column-gap: 10px;
-  // row-gap: 100px;
-
 
   &__double{
     grid-column: -3 / -1;
@@ -27,12 +23,14 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    min-height: 22.2rem;
   }
 
   &__datefields{
     display: flex;
     justify-content: space-between;
     width: 320px;
+    gap: 2rem;
     & .textfield{
       width: 150px;
     }
