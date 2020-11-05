@@ -18,14 +18,14 @@ append mixins
       options.checked = options.checked && options.checked != 'false' ? true : false;
       options.name = options.name || block_class;
 
-    label(class=options.class)&attributes(attributes)
+    label(class=options.class, class = 'font-regular')&attributes(attributes)
       - delete options.class;
       input(class='checkbox__input',type='checkbox')&attributes(options)
       //-необходимо, т.к. галочка с градиентом
       .checkbox__box
         .checkbox__mark
       if !title
-        span(class='checkbox__text font-regular')!=text ? text : 'SET text'
+        span(class='')!=text ? text : 'SET text'
       else
         span.checkbox__text_container
           span(class='checkbox__title')!=title

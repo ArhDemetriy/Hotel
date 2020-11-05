@@ -2,27 +2,23 @@
 @import '../global_mixins/global_mixins';
 
 .checkbox{
-  @extend %pointer;
+  @extend %not_select_and_pointer;
   display: flex;
   align-items: baseline;
-
-  @extend %not_select_and_pointer;
+  color: map.get($color, 'shade-50');
+  line-height: 18px;
   &__text_container{
     display: flex;
     flex-direction: column;
     gap: 0.35rem;
   }
   &__text{
-    color: map.get($color, 'shade-50');
-    display: flex;
     font-size: 1.2rem;
     line-height: 1.4rem;
   }
-  &__title{
+  &__title {
     color: map.get($color, 'shade-75');
-    font: map.get($font, 'regular');
     font-weight: bold;
-    vertical-align: middle;
   }
 
   &__box{
@@ -52,17 +48,12 @@
     border-image-slice: 1;
     opacity: 0;
     transition: map.get($timer, 'main-slow') opacity;
-
     position: relative;
     top: -1px;
   }
   &__input{
     display: none;
-
     &:checked{
-      ~ .checkbox__text{
-
-      }
       + .checkbox__box{
         border-color: map.get($color, 'main');
         transition: map.get($timer, 'secondary-fast');
