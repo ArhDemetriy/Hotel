@@ -2,8 +2,8 @@
 @import '../global_mixins/global_mixins';
 
 .button{
-  $min_height: 40px;
-  $border_size : 5px;
+  $min_height: 4.4rem;
+  $border_size : .1rem;
   @extend %not_select_and_pointer;
   display: inline-flex;
   &-longed{
@@ -70,7 +70,7 @@
       font-size: 24px;
     }
     &:not(.button-short)::before {
-      left: 0.3em;
+      left: 1rem;
     }
   }
   &-arrow_right{
@@ -84,18 +84,22 @@
       font-size: 24px;
     }
     &:not(.button-short)::after {
-      right: 0.3em;
+      right: 1rem;
     }
   }
   &-colored, &-transparent{
-    min-width: 40px;
+    min-width: $min_height;
+    min-height: $min_height;
+  }
+  &-short{
+    min-width: 4rem;
     min-height: $min_height;
   }
   &-colored:not(.button-short) {
-    --button__padding: #{$min_height/2};
+    --button__padding: #{$min_height/2 - 0.2rem};
   }
   &-transparent:not(.button-short) {
-    --button__padding: #{$min_height/2-$border_size};
+    --button__padding: #{$min_height/2-$border_size - 0.2rem};
   }
   &__text{
     padding: 0 var(--button__padding, 0);
