@@ -25,7 +25,6 @@
     justify-content: space-between;
     min-height: 22.2rem;
   }
-
   &__datefields{
     display: flex;
     justify-content: space-between;
@@ -70,7 +69,8 @@
     display: flex;
     gap: 2rem;
   }
-  &__buttons{
+  &__buttons,
+  &__buttons_frameless {
     display: flex;
     flex-wrap: wrap;
     gap: 3rem 2rem;
