@@ -17,15 +17,13 @@ append mixins
 
     -
       options.class = options.class ? options.class : '';
-      const mod = options.mod ? options.mod.split(/[,\s]\s*/) : [];
-      options.class += options.mod ? ` button-${mod.join(' button-')} ` : '';
-      delete options.mod;
+      let mod = options.mod ? options.mod.split(/[,\s]\s*/) : [];
       options.class += options.block_class ? ` ${options.block_class} ` : '';
       const block_class = options.block_class ? `${options.block_class}` : 'button';
       delete options.block_class;
       const color = `${options.color}`;
       delete options.color;
-      const text = options.text ? options.text : '';
+      let text = options.text ? options.text : '';
       delete options.text;
       const arrow = options.arrow ? options.arrow : '';
       delete options.arrow;
@@ -40,6 +38,21 @@ append mixins
         options.class += ` button__text-${color} button__text-hovereble `;
       }
 
+      if (!text){
+        if (mod.includes('arrow_left')){
+          options.class += 'material-icons-outlined';
+          text = 'arrow_back';
+          mod = mod.filter(item => item!='arrow_left');
+        } else if (mod.includes('arrow_right')){
+          options.class += 'material-icons-outlined';
+          text = 'arrow_forward';
+          mod = mod.filter(item => item!='arrow_right');
+        }}
+      else
+        options.class += 'font-upper';
+      options.class += options.mod ? ` button-${mod.join(' button-')} ` : '';
+      delete options.mod;
+
       let tag = 'button';
       if (!options.type || options.type == 'linck'){
         tag = 'a';
@@ -50,12 +63,7 @@ append mixins
 
     - const tr = mod.includes('transparent');
     if tr
-      #{tag}(class= 'font-upper')&attributes(options)&attributes(attributes)
+      #{tag}()&attributes(options)&attributes(attributes)
         div(class= 'button__border_creator button__text')!=text
-          //- span(class='button__text font-upper')
-          //- +button__text({text: text, arrow: arrow,})
     else
-      #{tag}(class= 'button__text font-upper')&attributes(options)&attributes(attributes)!=text
-
-        //- span(class='button__text font-upper')
-        //- +button__text({text: text, arrow: arrow,})
+      #{tag}(class= 'button__text')&attributes(options)&attributes(attributes)!=text

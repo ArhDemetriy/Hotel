@@ -7,10 +7,6 @@
   --pagination__number_end:'12';
   --pagination__number_all:'100+';
 
-  &__link_pre_separator,
-  &__link_post_separator{
-    text-align: center;
-  }
   &__links{
     display: flex;
     align-items: center;
@@ -18,6 +14,15 @@
       min-width: 4rem;
     }
   }
+  &__link_left,
+  &__link_right{
+    min-height: 4rem;
+  }
+  &__link_pre_separator,
+  &__link_post_separator{
+    text-align: center;
+  }
+
   &__text{
     text-align: center;
     &_selection{

@@ -61,6 +61,8 @@
   }
   &-arrow_left{
     position: relative;
+    text-align: center;
+
     &::before{
       position: absolute;
       content: 'arrow_back';
@@ -68,6 +70,8 @@
       text-transform: none;
       font-weight: normal;
       font-size: 24px;
+      text-align: center;
+
     }
     &:not(.button-short)::before {
       left: 1rem;
@@ -75,6 +79,7 @@
   }
   &-arrow_right{
     position: relative;
+
     &::after{
       position: absolute;
       content: 'arrow_forward';
@@ -99,10 +104,15 @@
     --button__padding: #{$min_height/2 - 0.2rem};
   }
   &-transparent:not(.button-short) {
-    --button__padding: #{$min_height/2-$border_size - 0.2rem};
+    --button__padding: #{$min_height/2 - $border_size - 0.2rem};
   }
   &__text{
     padding: 0 var(--button__padding, 0);
+  }
+  &-fix_size{
+    min-width: 4rem;
+    min-height: 4rem;
+    padding: 0;
   }
 
   &-colored{
