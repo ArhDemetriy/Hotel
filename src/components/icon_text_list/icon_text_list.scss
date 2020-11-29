@@ -1,3 +1,16 @@
-.icon_text_list{
+@use 'sass:map';
+@import '../global_mixins/global_mixins';
 
+.icon_text_list{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  &__stroke{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    height: .1rem;
+    width: 100%;
+    background-color: map.get($color, 'shade-5');
+  }
 }
