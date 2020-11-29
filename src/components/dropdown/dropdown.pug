@@ -73,6 +73,6 @@ append mixins
               input(class='dropdown__iterator font-upper', type='number')&attributes(item)
               button(class='dropdown__iterator_button dropdown__inc font-regular', type='button', disabled=inc_is_disabled)='+'
           if buttons
-            label.dropdown__bottom_buttons_block
+            .dropdown__bottom_buttons_block
               +button({type: 'reset', mod: 'frameless', text: 'очистить', class: 'dropdown__button_reset dropdown__button_reset-hidden'})
               +button({type: 'submit', mod: 'frameless', text: 'применить'})
