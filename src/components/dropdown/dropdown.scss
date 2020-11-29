@@ -21,7 +21,7 @@
     color: map.get($color, 'shade-75');
     &>span{
       position: absolute;
-      right: 0;
+      right: 1rem;
       transform: translate(0, 50%);
     }
     &-more{
